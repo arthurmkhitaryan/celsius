@@ -14,9 +14,9 @@ function Language() {
     <S.LanguageWrapper>
       <Image priority src={LangLogo} alt="Select Language" />
       <S.LanguageSelect>
-        <S.LanguageOption>ENG</S.LanguageOption>
-        <S.LanguageOption>RUS</S.LanguageOption>
-        <S.LanguageOption>ARM</S.LanguageOption>
+        <S.LanguageOption value="en">ENG</S.LanguageOption>
+        <S.LanguageOption value="ru">RUS</S.LanguageOption>
+        <S.LanguageOption value="am">ARM</S.LanguageOption>
       </S.LanguageSelect>
     </S.LanguageWrapper>
   );

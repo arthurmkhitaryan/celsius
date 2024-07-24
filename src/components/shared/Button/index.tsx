@@ -10,6 +10,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string | React.ReactNode;
   disabled?: boolean;
   width?: number;
+  onCLick?: () => void;
   px?: number;
   py?: number;
   type?: 'button' | 'submit' | 'reset';
@@ -19,6 +20,7 @@ function Button({
   children,
   btnStyle,
   disabled,
+  onClick,
   width,
   px,
   py,
@@ -31,6 +33,7 @@ function Button({
       $btnStyle={btnStyle}
       $width={width}
       type={type}
+      onClick={onClick}
       disabled={disabled}
       $py={py}
       $px={px}

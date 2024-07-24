@@ -60,7 +60,7 @@ export const CareersButtonWrapper = styled.div`
     color: ${({ theme }) => theme.palette.common.mainBlue};
     padding: 16px 32px;
     gap: 10px;
-      border: none;
+    border: none;
 
     &:hover {
       background: #e9e9e9;

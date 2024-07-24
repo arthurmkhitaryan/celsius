@@ -11,21 +11,22 @@ import OurPartners from '@/components/OurPartners';
 import Newsroom from '@/components/Newsroom';
 import CareersCV from '@/components/CareersCV';
 import CareerListItem from '@/components/CareerItem';
-import { careersList } from '@/app/careers/mock';
+import { careersList } from '@/app/[locale]/careers/mock';
+import { useTranslations } from 'next-intl';
 
-function Career() {
+export default function Career() {
+  const t = useTranslations('Careers');
+
   return (
     <S.CareerWrapper>
       <S.CareerBanner $backgroundImage={BannerImage.src}>
         <S.CareerBannerContent>
           <S.CareerBannerSubTitle>
-            Elevate your career at Celsius.
+            {t('career_banner_sub_title')}
           </S.CareerBannerSubTitle>
-          <S.CareerBannerTitle>JOIN OUR TEAM</S.CareerBannerTitle>
+          <S.CareerBannerTitle> {t('career_banner_title')}</S.CareerBannerTitle>
           <S.CareerBannerDescription>
-            {
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has  been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and "
-            }
+            {t('career_banner_description')}
           </S.CareerBannerDescription>
         </S.CareerBannerContent>
       </S.CareerBanner>
@@ -64,5 +65,3 @@ function Career() {
     </S.CareerWrapper>
   );
 }
-
-export default Career;

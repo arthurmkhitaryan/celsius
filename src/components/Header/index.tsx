@@ -12,8 +12,16 @@ import BasketLogo from '@/public/images/basket.svg';
 import Image from 'next/image';
 import Button from '@/components/shared/Button';
 import Language from '@/components/Language';
+import LoginForm from '../forms/LoginForm';
 
 function Header() {
+  const [formVisible, setFormVisible] = React.useState(false);
+
+  const handleOpenLoginForm = () => {
+    console.log({ formVisible })
+    setFormVisible(!formVisible);
+  }
+
   return (
     <S.HeaderWrapper>
       <S.HeaderLeftSide>
@@ -32,15 +40,19 @@ function Header() {
         <Button btnStyle="bordered" px={32} py={16} width={208}>
           {'Business Partner >'}
         </Button>
-        <Button
-          className="sign-in"
-          btnStyle="filled"
-          px={32}
-          py={16}
-          width={110}
-        >
-          Sign In
-        </Button>
+        <S.SignInWrapper>
+          <Button
+            className="sign-in"
+            btnStyle="filled"
+            onClick={handleOpenLoginForm}
+            px={32}
+            py={16}
+            width={110}
+          >
+             Sign In 
+          </Button>
+          <LoginForm visible={formVisible} onChangeVisibility={setFormVisible}/>
+        </S.SignInWrapper>
         <Image src={BasketLogo} alt="Basket Logo" priority />
       </S.HeaderRightSide>
     </S.HeaderWrapper>

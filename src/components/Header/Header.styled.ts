@@ -25,3 +25,7 @@ export const HeaderRightSide = styled.div`
   justify-content: space-around;
   gap: 32px;
 `;
+
+export const SignInWrapper = styled.div`
+  position: relative;
+`;

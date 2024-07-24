@@ -9,6 +9,7 @@ export const Button = styled.button<{
   $py?: number;
   $px?: number;
 }>`
+  position: relative;
   border: ${({ theme }) => `2px solid ${theme.palette.common.mainBlue}`};
   background-color: ${({ $btnStyle, theme }) =>
     $btnStyle === 'bordered' ? 'transparent' : theme.palette.common.mainBlue};
