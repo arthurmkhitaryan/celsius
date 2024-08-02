@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 // styles & images
@@ -10,13 +12,14 @@ import Achievements from '@/components/Achievements';
 import OurPartners from '@/components/OurPartners';
 import Newsroom from '@/components/Newsroom';
 import CareersCV from '@/components/CareersCV';
-import CareerListItem from '@/components/CareerItem';
-import { careersList } from '@/app/[locale]/careers/mock';
 import { useTranslations } from 'next-intl';
+import { useGetCareersQuery } from '@/features/careers';
+import CareerListItem from '@/components/CareerItem';
 
 export default function Career() {
   const t = useTranslations('Careers');
-
+  const { data, isLoading } = useGetCareersQuery();
+  console.log({ data });
   return (
     <S.CareerWrapper>
       <S.CareerBanner $backgroundImage={BannerImage.src}>
@@ -48,11 +51,12 @@ export default function Career() {
         <S.BackgroundLogo>
           <CareersCV />
           <S.CareerList>
-            {careersList.map((career) => (
+            {data?.map((career) => (
               <CareerListItem
                 key={career.id}
-                title={career.title}
+                title={career.name}
                 address={career.address}
+                content={career.content}
                 postingDate={career.postingDate}
               />
             ))}

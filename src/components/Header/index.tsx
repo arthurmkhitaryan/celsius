@@ -18,9 +18,9 @@ function Header() {
   const [formVisible, setFormVisible] = React.useState(false);
 
   const handleOpenLoginForm = () => {
-    console.log({ formVisible })
+    console.log({ formVisible });
     setFormVisible(!formVisible);
-  }
+  };
 
   return (
     <S.HeaderWrapper>
@@ -49,9 +49,12 @@ function Header() {
             py={16}
             width={110}
           >
-             Sign In 
+            Sign In
           </Button>
-          <LoginForm visible={formVisible} onChangeVisibility={setFormVisible}/>
+          <LoginForm
+            visible={formVisible}
+            onChangeVisibility={setFormVisible}
+          />
         </S.SignInWrapper>
         <Image src={BasketLogo} alt="Basket Logo" priority />
       </S.HeaderRightSide>

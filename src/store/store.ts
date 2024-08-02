@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { productsApi, authApi } from '@/features';
+import { productsApi, authApi, careersApi } from '@/features';
 
 // reducers
 import productsReducer from '../features/products/products.slice';
 import authReducer from '../features/auth/auth.slice';
+import { aboutApi } from '@/features/about/about.api';
+import { newsroomApi } from '@/features/newsroom/newsroom.api';
 
 export const store = configureStore({
   reducer: {
@@ -11,9 +13,19 @@ export const store = configureStore({
     auth: authReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     products: productsReducer,
+    [careersApi.reducerPath]: careersApi.reducer,
+    careers: productsReducer,
+    [aboutApi.reducerPath]: aboutApi.reducer,
+    about: productsReducer,
+    [newsroomApi.reducerPath]: newsroomApi.reducer,
+    news: productsReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productsApi.middleware),
+    getDefaultMiddleware()
+      .concat(productsApi.middleware)
+      .concat(careersApi.middleware)
+      .concat(aboutApi.middleware)
+      .concat(newsroomApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

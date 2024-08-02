@@ -10,9 +10,15 @@ export interface CareerItemProps {
   title: string;
   address: string;
   postingDate: string;
+  content: string;
 }
 
-const CareerListItem = ({ address, postingDate, title }: CareerItemProps) => {
+const CareerListItem = ({
+  address,
+  postingDate,
+  title,
+  content,
+}: CareerItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -40,7 +46,7 @@ const CareerListItem = ({ address, postingDate, title }: CareerItemProps) => {
       <CareerModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        career={{ address, postingDate, title }}
+        career={{ address, postingDate, title, content }}
       />
     </>
   );

@@ -14,8 +14,6 @@ interface CareerModalProps {
 }
 
 function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
-  console.log({ isOpen, onRequestClose });
-
   return (
     <Modal
       isOpen={isOpen}
@@ -23,20 +21,30 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
       style={{
         overlay: {
           backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflow: 'hidden', // Ensure the overlay itself does not scroll
         },
         content: {
-          top: '50%',
-          left: '50%',
+          position: 'relative',
+          top: 'auto',
+          left: 'auto',
           right: 'auto',
           bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
+          margin: 'auto',
           width: '100%',
+          height: '97vh',
           maxWidth: '1152px',
           padding: '80px 54px',
-          marginTop: '90px',
           boxShadow: '2px 2px 40px 0px #00000033',
           borderRadius: '15px',
+          overflow: 'hidden', // Ensure modal content does not scroll
         },
       }}
     >
@@ -54,34 +62,10 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
         <button onClick={onRequestClose}>&times;</button>
       </S.ModalHeader>
       <S.ModalContent>
-        <S.Section>
-          <h3>Job Description</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry...
-          </p>
-        </S.Section>
-        <S.Section>
-          <h3>Responsibilities</h3>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing...</li>
-            {/* More list items */}
-          </ul>
-        </S.Section>
-        <S.Section>
-          <h3>Qualifications</h3>
-          <ul>
-            <li>Lorem Ipsum is simply dummy text of the printing...</li>
-            {/* More list items */}
-          </ul>
-        </S.Section>
-        <S.Section>
-          <h3>About Us</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry...
-          </p>
-        </S.Section>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: career.content }}
+        />
         <S.Form>
           <S.FormRow>
             <S.FormField>
@@ -112,11 +96,11 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
           <S.FormRow>
             <S.FormField>
               <label htmlFor="other-info">Other Information:</label>
-              <textarea id="other-info" name="other-info"></textarea>
+              <input id="other-info" type="text" name="other-info" />
             </S.FormField>
           </S.FormRow>
           <S.FormRow>
-            <S.FormField>
+            <S.FormField className="upload">
               <label htmlFor="cv">
                 CV Allowed File Types (JPG, JPEG, PDF, DOC, DOCX):
               </label>

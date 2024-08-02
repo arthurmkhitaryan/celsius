@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Navbar from '@/components/Navbar';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import Footer from '@/components/Footer';
 
 const poppins = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -38,6 +39,7 @@ export default async function RootLayout({
             <Header />
             <Navbar />
             {children}
+            <Footer />
           </Providers>
         </NextIntlClientProvider>
       </body>

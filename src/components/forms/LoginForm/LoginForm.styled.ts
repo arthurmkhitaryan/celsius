@@ -13,12 +13,12 @@ export const LoginFormWrapper = styled.div<{ visible: boolean }>`
   top: 72px;
   right: -48px;
   z-index: 100;
-`;  
+`;
 
 export const ArrowUp = styled.img`
-    position: absolute;
-    top: -32px;
-    right: 30px;
+  position: absolute;
+  top: -32px;
+  right: 30px;
 `;
 
 export const Title = styled.h1`
@@ -34,12 +34,12 @@ export const Title = styled.h1`
     position: absolute;
     top: -9px;
     right: -32px;
-    cursor: pointer
+    cursor: pointer;
   }
 `;
 
 export const Description = styled.p`
-white-space: nowrap;
+  white-space: nowrap;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -75,18 +75,18 @@ export const Input = styled.input`
   border: 1px solid #e2e5ea;
   border-radius: 66px;
 
-  &[type="email"] {
+  &[type='email'] {
     font-size: 14px;
     font-weight: 400;
   }
 
-  &[type="password"] {
+  &[type='password'] {
     font-size: 10px;
     font-weight: 400;
     position: relative;
   }
 
-  &[type="password"]::placeholder {
+  &[type='password']::placeholder {
     font-size: 18px;
     font-weight: 400;
     line-height: 30px;
@@ -109,14 +109,14 @@ export const RememberMeWrapper = styled.div`
 `;
 
 export const Checkbox = styled.input`
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    position: relative;
-    cursor: pointer;
-    margin-right: 10px;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
 
   &:checked::before {
     content: '\\2714'; // Unicode for checkmark
@@ -134,10 +134,10 @@ export const Checkbox = styled.input`
 `;
 
 export const RememberMeLabel = styled.label`
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #969696;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #969696;
 `;
 
 export const SubmitButton = styled.button`
@@ -154,35 +154,35 @@ export const SubmitButton = styled.button`
 `;
 
 export const ForgetLink = styled(Link)`
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    color: ${({ theme }) => theme.palette.common.mainBlue};
-    text-decoration: none;
-    text-align: center;
-    margin: 12px 0;
-    padding-bottom: 12px;
-    border-bottom: 1px solid ${({ theme }) => theme.palette.common.mainBlue};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: ${({ theme }) => theme.palette.common.mainBlue};
+  text-decoration: none;
+  text-align: center;
+  margin: 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.common.mainBlue};
 `;
 
 export const NewHereText = styled.p`
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    color: #0D2427;
-    text-align: center;
-    margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #0d2427;
+  text-align: center;
+  margin-bottom: 12px;
 `;
 
 export const GoToRegister = styled.button`
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 30px;
-    color: ${({ theme }) => theme.palette.common.mainBlue};
-    background-color: transparent;
-    padding: 5px;
-    border: 2px solid ${({ theme }) => theme.palette.common.mainBlue};
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  color: ${({ theme }) => theme.palette.common.mainBlue};
+  background-color: transparent;
+  padding: 5px;
+  border: 2px solid ${({ theme }) => theme.palette.common.mainBlue};
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
 `;

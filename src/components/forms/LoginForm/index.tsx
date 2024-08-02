@@ -11,11 +11,14 @@ import { useParams, usePathname, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 
 interface LoginFormProps {
-    visible: boolean;
-    onChangeVisibility: Dispatch<SetStateAction<boolean>>;
+  visible: boolean;
+  onChangeVisibility: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function LoginForm({ visible = false, onChangeVisibility }: LoginFormProps) {
+export default function LoginForm({
+  visible = false,
+  onChangeVisibility,
+}: LoginFormProps) {
   const {
     register,
     handleSubmit,
@@ -46,32 +49,37 @@ export default function LoginForm({ visible = false, onChangeVisibility }: Login
 
   const handleRedirecToSignUp = () => {
     if (!pathname.includes(`${locale}/sign-up`)) {
-        router.push(`${locale}/sign-up`);
-    } 
+      router.replace(`${locale}/sign-up`);
+    }
     onChangeVisibility(false);
-  }
+  };
 
   const handleClose = () => {
     onChangeVisibility(false);
-  }
+  };
 
   return (
     <S.LoginFormWrapper visible={visible ?? false}>
-      <S.Title>Sign In         
+      <S.Title>
+        Sign In
         <S.ArrowUp src={ArrowUpLogin.src} />
-        <X className="close-button" size={24} onClick={handleClose}/>
+        <X className="close-button" size={24} onClick={handleClose} />
       </S.Title>
       <S.Description>Use Your email address & password to login</S.Description>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <S.InputWrapper> 
+        <S.InputWrapper>
           <S.Label>Email</S.Label>
-          <S.Input placeholder='YourEmail@gmail.com' type="email" {...register('email', { required: true })} />
+          <S.Input
+            placeholder="YourEmail@gmail.com"
+            type="email"
+            {...register('email', { required: true })}
+          />
           {errors.email && <S.Error>This field is required</S.Error>}
         </S.InputWrapper>
         <S.InputWrapper>
           <S.Label>Password</S.Label>
           <S.Input
-            placeholder='**********'
+            placeholder="**********"
             type="password"
             {...register('password', { required: true })}
           />
@@ -88,14 +96,10 @@ export default function LoginForm({ visible = false, onChangeVisibility }: Login
         <S.SubmitButton type="submit" disabled={isLoading}>
           Sign In
         </S.SubmitButton>
-        <S.ForgetLink href='/forget'>
-            Forgot Username or Password?
-        </S.ForgetLink>
-        <S.NewHereText>
-            New Here?
-        </S.NewHereText>
+        <S.ForgetLink href="/forget">Forgot Username or Password?</S.ForgetLink>
+        <S.NewHereText>New Here?</S.NewHereText>
         <S.GoToRegister type="button" onClick={handleRedirecToSignUp}>
-            Become a customer
+          Become a customer
         </S.GoToRegister>
       </S.Form>
     </S.LoginFormWrapper>
