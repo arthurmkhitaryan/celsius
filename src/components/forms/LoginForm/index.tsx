@@ -40,8 +40,7 @@ export default function LoginForm({
         localStorage.setItem('access_token', response.access_token);
       } else {
         sessionStorage.setItem('access_token', response.access_token);
-      }
-      console.log(response);
+      } 
     } catch (error) {
       console.error(error);
     }

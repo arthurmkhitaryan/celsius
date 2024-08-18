@@ -1,0 +1,202 @@
+.prodcut_slider_block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .fixed_block {
+    position: sticky;
+    top: 20px;  // This will make the block stick to 20px from the top of the viewport
+    width: 300px; // Adjust the width according to your design
+    margin-right: 20px; // Add some margin for spacing
+    height: fit-content; // The block will fit its content
+  }
+  
+  .slider_images {
+    overflow-y: auto;
+    max-height: 100vh; // Make the slider images scrollable within the viewport height
+  }
+  
+  .add_to_cart_block {
+    max-height: 100vh; // Make the add to cart block scrollable within the viewport height
+    overflow-y: auto;
+  }
+  
+  .main_product_images {
+    padding:0 120px;
+    overflow-y: auto;
+    img{
+        margin-bottom: 10px;
+    }
+  }
+  
+  .scroller_image {
+    margin-bottom: 20px;
+    background: radial-gradient(circle, #F2F6FD 100%, #E7EEFB 100%);
+    img{
+        height: 100%;
+        width: 100%;
+    }
+  }
+  .thumbnail_image{
+    margin-bottom: 10px;
+    background: radial-gradient(circle, #F2F6FD 100%, #E7EEFB 100%);
+  }
+
+.product_inner_page{
+    margin-top: 50px;
+
+    .add_to_cart_btn {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        text-align: left;
+        color: #0044CC;
+        background: white;
+        border-radius: 4px;
+        padding: 16px;
+        text-align: center;
+        width: 100%;
+        border: 1px solid #0044CC;
+        margin-top: 10px;
+    }
+    .buy_it_now_btn {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        text-align: left;
+        color: white;
+        background: #0044CC;
+        border-radius: 4px;
+        padding: 16px;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    button:hover {
+        opacity: 0.7;
+        transition: all .7s;
+    }
+    .add_to_cart_block{
+        max-width: 300px;
+    }
+    .active_thumbnail{
+        border: 1px solid #1F94D2;
+    }
+    .product{
+        &_title {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        &_price {
+            font-size: 28px;
+            font-weight: 500;
+            color: #0044CC;
+            text-align: left            
+        }
+        &_code {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        &_fullName {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: left; 
+            margin-bottom: 5px;           
+        }
+        &_desc {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: left;
+            color: #828282;
+            max-width: 300px;   
+            margin-bottom: 15px;         
+        }
+        &_power {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: left;
+            margin-bottom: 15px;            
+        }
+        &_activity {
+           display: flex;
+           justify-content: space-between;
+           flex-wrap: nowrap;
+           text-align: center;
+           margin: 20px 0 30px 0;
+           .activity_name {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                text-align: center;
+                color: #4F4F4F;
+                margin-top: 5px;
+                max-width: 100px;
+           }
+        }
+    }
+}
+
+.product_tabs_block{
+    .tabs{
+        display: flex;
+    }
+    .active_tab{
+        border: 2px solid #0044CC !important;
+    }
+    .tab {
+        border: 1px solid #828282;
+        border-radius: 4px 4px 0 0;
+        margin-right: 5px;
+        padding: 7px 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.product_counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 158px; // Adjust the width to your design
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    height: 44px;
+  
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  
+    input {
+      width: 100px;
+      text-align: center;
+      border: none;
+      font-size: 16px;
+      -moz-appearance: textfield; // Remove default number input arrows in Firefox
+    }
+  
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; // Remove default number input arrows in WebKit browsers
+    }
+  
+    input:focus {
+      outline: none; // Remove the outline when the input is focused
+    }
+  }
+  

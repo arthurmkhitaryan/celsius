@@ -6,25 +6,37 @@ import * as S from './RegisterForm.styled';
 import { useRegisterMutation } from '@/features';
 import { Register } from '@/features/auth/auth.types';
 import Link from 'next/link';
-import { error } from 'console';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setError
   } = useForm<Register>();
   const [registerUser, { isLoading }] = useRegisterMutation();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<Register> = async (data) => {
     try {
       const response = await registerUser(data).unwrap();
-      console.log(response);
-    } catch (error) {
-      console.error(error);
+      if (response.data) {
+        router.push('/');
+      }
+    } catch (error: any) {
+     const errors = error.data.error.error.details.errors.map((error: any) => {
+      return {
+        name: error.path[0],
+        message: error.message
+      }})
+      errors.forEach((element: any) => {
+        setError(element.name, {
+          message: element.message,
+        })
+      });
+     };
     }
-  };
 
   return (
     <S.RegisterFormWrapper>
@@ -91,7 +103,7 @@ export default function RegisterForm() {
               placeholder="Enter your email"
               error={!!errors.email}
             />
-            {errors.email && <S.Error>This field is required</S.Error>}
+            {errors.email && <S.Error>{errors.email.message || "This field is required"}</S.Error>}
           </S.InputWrapper>
 
           <S.InputWrapper>
@@ -103,7 +115,7 @@ export default function RegisterForm() {
               placeholder="Enter your phone number"
               error={!!errors.phoneNumber}
             />
-            {errors.phoneNumber && <S.Error>This field is required</S.Error>}
+            {errors.phoneNumber && <S.Error>{errors.phoneNumber.message || "This field is required"}</S.Error>}
           </S.InputWrapper>
 
           <S.InputWrapper>
