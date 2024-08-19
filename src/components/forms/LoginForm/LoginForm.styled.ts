@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const LoginFormWrapper = styled.div<{ visible: boolean }>`
+export const LoginFormWrapper = styled.div<{ $visible: boolean }>`
   width: 380px;
   padding: 16px 40px 28px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   background: radial-gradient(50% 50% at 50% 50%, #f2f6fd 0%, #e7eefb 100%);
-  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  display: ${({ $visible }) => ($visible ? 'flex' : 'none')};
   position: absolute;
   top: 72px;
   right: -48px;

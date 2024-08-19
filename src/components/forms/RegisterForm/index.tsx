@@ -25,12 +25,12 @@ export default function RegisterForm() {
         router.push('/');
       }
     } catch (error: any) {
-     const errors = error.data.error.error.details.errors.map((error: any) => {
+     const errors = error?.data?.error?.error?.details?.errors.map((error: any) => {
       return {
         name: error.path[0],
         message: error.message
       }})
-      errors.forEach((element: any) => {
+      errors?.forEach((element: any) => {
         setError(element.name, {
           message: element.message,
         })

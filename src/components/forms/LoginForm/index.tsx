@@ -36,6 +36,7 @@ export default function LoginForm({
       const response = await loginUser(data).unwrap();
       dispatch(setUser(response.user));
       dispatch(setToken(response.access_token));
+      localStorage.setItem('access_token', response.access_token);
       if (rememberMe) {
         localStorage.setItem('access_token', response.access_token);
       } else {
@@ -58,7 +59,7 @@ export default function LoginForm({
   };
 
   return (
-    <S.LoginFormWrapper visible={visible ?? false}>
+    <S.LoginFormWrapper $visible={visible}>
       <S.Title>
         Sign In
         <S.ArrowUp src={ArrowUpLogin.src} />

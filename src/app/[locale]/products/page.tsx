@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Cond from '@/public/images/product/cond.png';
@@ -6,10 +8,12 @@ import ImageLayerIcon from '@/public/images/product/layer.png';
 import ImageArrow from '@/public/images/product/arrow.png';
 import '../../../components/styles/main.scss';
 import './page.scss';
-import Filter from '../../../components/Products/Filter';
 import Newsroom from '@/components/Newsroom';
 import { ChevronRight } from 'lucide-react';
 import Achievements from '@/components/Achievements';
+import Filter from '@/components/Products/Filter';
+import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 const productMockList = [
   {
@@ -50,8 +54,11 @@ const productMockList = [
   },
 ];
 
-const Products = () => {
-  const renderProductDesc = (desc: []) => {
+export default function Products() {
+  const { locale } = useParams();
+  const router = useRouter();
+
+  const renderProductDesc = (desc: string[]) => {
     return desc.map((item, index) => {
       return (
         <div key={index} className="card_desc_item">
@@ -62,7 +69,12 @@ const Products = () => {
   };
 
   const handleRedirect = (id: string) => {
-    console.log(id)
+    const path = `/${locale}/products/${id}`;
+    router.push(path);
+  };
+
+  const handleChangeCategories = (filters: { [key: string]: string[] }) => {
+    console.log(filters)
   }
 
   const renderProducts = () => {
@@ -79,7 +91,7 @@ const Products = () => {
             />
           </div>
           <div className="product_card_info">
-            <div className="card_title" onClick={handleRedirect(product.id)}>{product.name}</div>
+            <div className="card_title" onClick={() => handleRedirect(product.id)}>{product.name}</div>
             <div className="card_param">{product.param}</div>
             <div className="card_size">{product.size}</div>
             <div className="card_desc">{renderProductDesc(product.about)}</div>
@@ -191,7 +203,7 @@ const Products = () => {
             </div>
             <div className="product_sell_container">
                 <div className="filters_block">
-                    <Filter />
+                    <Filter onFilterChange={handleChangeCategories} />
                 </div>
                 <div className="product_block">{renderProducts()}</div>
             </div>
@@ -201,5 +213,3 @@ const Products = () => {
     </div>
   );
 };
-
-export default Products;

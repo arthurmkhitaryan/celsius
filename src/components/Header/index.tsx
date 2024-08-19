@@ -25,6 +25,7 @@ function Header() {
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
+    console.log({ token })
     if (token) {
       setIsLogin(true);
       getUserFromToken(token)
@@ -43,7 +44,7 @@ function Header() {
     }
   }, [dispatch]);
   
-  console.log({ user })
+  console.log({ user, isLogin,  })
   const handleOpenLoginForm = () => {
     setFormVisible(!formVisible);
   };
@@ -67,7 +68,7 @@ function Header() {
           {'Business Partner >'}
         </Button>
         <S.SignInWrapper>
-          {isLogin ? (
+          {user ? (
             <Button
               className="sign-in"
               btnStyle="filled"

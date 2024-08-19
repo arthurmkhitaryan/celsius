@@ -25,7 +25,8 @@ export const store = configureStore({
       .concat(productsApi.middleware)
       .concat(careersApi.middleware)
       .concat(aboutApi.middleware)
-      .concat(newsroomApi.middleware),
+      .concat(newsroomApi.middleware)
+      .concat(authApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

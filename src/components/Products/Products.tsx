@@ -1,11 +1,11 @@
 import React from "react";
 
-const InnterPage = () => {
+const Products = () => {
     return (
         <div>
-            ahhhhahh
+            Products
         </div>
     )
 }
 
-export default InnterPage;
+export default Products
