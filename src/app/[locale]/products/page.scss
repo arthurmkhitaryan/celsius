@@ -93,7 +93,7 @@
                 font-size: 16px;
                 color: #000;
                 text-decoration: none;
-            
+
                 &_item{
                     font-family: "Inter", sans-serif;
                     font-size: 16px;
@@ -107,73 +107,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-.producs_block{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 50px;
-    .product_block{
-        flex: 0 0 33%;
-        display: flex;
-        background: linear-gradient(90deg, #1F94D2 0%, #0044CC 100%);
-        padding: 20px;
-        border-radius: 15px;
-        .product_info {
-            flex: 0 0 50%;
-            padding-left: 10px;
-            text-align: center;
-            .product_title {
-                font-family: 'Inter', sans-serif;
-                font-size: 18px;
-                font-weight: 500;
-                text-align: center;
-                color: white;
-                margin-bottom: 30px;
-            }
-            .view_more_btn{
-                padding: 12px 24px;
-                font-family: 'Inter', sans-serif;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-                background: white;
-                color: #0044CC;
-                border-radius: 4px;
-                cursor: pointer;
-                width: fit-content;
-                margin: 0 auto;
-                &:hover{
-                    opacity: 0.7;
-                    transition: all .7s;
-                }
-                display: flex;
-                align-items: center;
-                img{
-                    margin-left: 10px;
-                }
-            }
-        }
-        .product_img {
-            flex: 0 0 50%;
-            padding-right: 10px;
-            img{
-            width: 140px;
-            height: 150px;
-            }  
-        }
-        .product_icon{
-            margin-bottom: 5px;
-            img {
-                width: 50px;
-                height: 50px;    
-            }
-
         }
     }
 }

@@ -3,9 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Cond from '@/public/images/product/cond.png';
-import ImageHeating from '@/public/images/product/product_img.png';
-import ImageLayerIcon from '@/public/images/product/layer.png';
-import ImageArrow from '@/public/images/product/arrow.png';
 import '../../../components/styles/main.scss';
 import './page.scss';
 import Newsroom from '@/components/Newsroom';
@@ -14,6 +11,7 @@ import Achievements from '@/components/Achievements';
 import Filter from '@/components/Products/Filter';
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
+import ProductList from '@/components/ProductList';
 
 const productMockList = [
   {
@@ -106,101 +104,7 @@ export default function Products() {
   return (
     <div className="product_page">
         <div className="inner_container">
-            <div className="producs_block">
-            <div className="product_block">
-                    <div className="product_img">
-                    <Image
-                        src={ImageHeating}
-                        alt={'heating'}
-                        width={100}
-                        height={100}
-                    />
-                    </div>
-                    <div className="product_info">
-                    <div className="product_icon">
-                        <Image 
-                            src={ImageLayerIcon}
-                            alt={'heating'}
-                            width={100}
-                            height={100}
-                        />
-                    </div>
-                    <div className="product_title">Heating & Cooling</div>
-                    <div className="view_more_btn">
-                        View More 
-                        <Image 
-                            src={ImageArrow}
-                            alt=''
-                            title=''
-                            width={10}
-                            height={10}
-                        />
-                        </div>
-                    </div>
-                </div>
-                <div className="product_block">
-                    <div className="product_img">
-                    <Image
-                        src={ImageHeating}
-                        alt={'heating'}
-                        width={100}
-                        height={100}
-                    />
-                    </div>
-                    <div className="product_info">
-                    <div className="product_icon">
-                        <Image 
-                            src={ImageLayerIcon}
-                            alt={'heating'}
-                            width={100}
-                            height={100}
-                        />
-                    </div>
-                    <div className="product_title">Heating & Cooling</div>
-                    <div className="view_more_btn">
-                        View More 
-                        <Image 
-                            src={ImageArrow}
-                            alt=''
-                            title=''
-                            width={10}
-                            height={10}
-                        />
-                        </div>
-                    </div>
-                </div>
-                <div className="product_block">
-                    <div className="product_img">
-                    <Image
-                        src={ImageHeating}
-                        alt={'heating'}
-                        width={100}
-                        height={100}
-                    />
-                    </div>
-                    <div className="product_info">
-                    <div className="product_icon">
-                        <Image 
-                            src={ImageLayerIcon}
-                            alt={'heating'}
-                            width={100}
-                            height={100}
-                        />
-                    </div>
-                    <div className="product_title">Heating & Cooling</div>
-                    <div className="view_more_btn">
-                        View More 
-                        <Image 
-                            src={ImageArrow}
-                            alt=''
-                            title=''
-                            width={10}
-                            height={10}
-                        />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ProductList />
             <div className="product_sell_container">
                 <div className="filters_block">
                     <Filter onFilterChange={handleChangeCategories} />
