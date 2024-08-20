@@ -20,7 +20,7 @@ const productMockList = [
     param: 'SLPO-324',
     size: '5L',
     about: ['smart', 'white', '360 deg'],
-    price: '256,000',
+    price: '256,000 ֏',
     id: '1',
   },
   {
@@ -29,7 +29,7 @@ const productMockList = [
     param: 'SLPO-324',
     size: '5L',
     about: ['smart', 'white', '360 deg'],
-    price: '256,000',
+    price: '256,000 ֏',
     id: '2',
   },
   {
@@ -38,7 +38,7 @@ const productMockList = [
     param: 'SLPO-324',
     size: '5L',
     about: ['smart', 'white', '360 deg'],
-    price: '256,000',
+    price: '256,000 ֏',
     id: '3',
   },
   {
@@ -47,7 +47,7 @@ const productMockList = [
     param: 'SLPO-324',
     size: '5L',
     about: ['smart', 'white', '360 deg'],
-    price: '256,000',
+    price: '256,000 ֏',
     id: '4',
   },
 ];
@@ -60,7 +60,7 @@ export default function Products() {
     return desc.map((item, index) => {
       return (
         <div key={index} className="card_desc_item">
-          <ChevronRight size={12} color='#0044CC'/>{item}
+          <ChevronRight size={12} color='#1F94D2'/><p>{item}</p>
         </div>
       );
     });

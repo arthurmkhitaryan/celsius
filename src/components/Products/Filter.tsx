@@ -12,20 +12,24 @@ const mockData = [
   {
     category: 'HORSEPOWER',
     types: [
-      '12K (1.5HP)', 
-      '18K (2.25HP)', 
-      '24K (3HP)', 
-      '30K (4HP)', 
-      '36K (4.5HP)', 
-      '3 ~ 30 Ton', 
-      '8 to 45 Kw', 
-      '800 ~ 2000 cfm', 
+      '12K (1.5HP)',
+      '18K (2.25HP)',
+      '24K (3HP)',
+      '30K (4HP)',
+      '36K (4.5HP)',
+      '3 ~ 30 Ton',
+      '8 to 45 Kw',
+      '800 ~ 2000 cfm',
       '8 to 50'
     ]
   },
   {
-    category: 'Placement',
-    types: ['aa', 'vv']
+    category: 'PLACEMENT',
+    types: ['First', 'Second']
+  },
+  {
+    category: 'CATEGORY',
+    types: ['First', 'Second']
   },
 ];
 
@@ -65,7 +69,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
     <div className="filter-container">
       {mockData.map(({ category, types }) => (
         <div key={category} className="filter_block">
-          <div 
+          <div
             className="category-header"
             onClick={() => handleCategoryClick(category)}
           >
@@ -81,7 +85,6 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
                   <input
                     type="checkbox"
                     id={`${category}-${type}`}
-                    checked={selectedTypes[category]?.includes(type) || false}
                     onChange={() => handleTypeChange(category, type)}
                   />
                   <label htmlFor={`${category}-${type}`}>{type}</label>
