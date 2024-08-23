@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 import Cond from '@/public/images/product/cond.png';
 import '../../../components/styles/main.scss';
 import './page.scss';
@@ -12,6 +11,7 @@ import Filter from '@/components/Products/Filter';
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import ProductList from '@/components/ProductList';
+import ProductItem from '@/app/[locale]/products/ProductItem';
 
 const productMockList = [
   {
@@ -56,16 +56,6 @@ export default function Products() {
   const { locale } = useParams();
   const router = useRouter();
 
-  const renderProductDesc = (desc: string[]) => {
-    return desc.map((item, index) => {
-      return (
-        <div key={index} className="card_desc_item">
-          <ChevronRight size={12} color='#1F94D2'/><p>{item}</p>
-        </div>
-      );
-    });
-  };
-
   const handleRedirect = (id: string) => {
     const path = `/${locale}/products/${id}`;
     router.push(path);
@@ -78,25 +68,7 @@ export default function Products() {
   const renderProducts = () => {
     return productMockList.map((product, index) => {
       return (
-        <div key={index} className="product_card">
-          <div className="card_image">
-            {' '}
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={100}
-              height={100}
-            />
-          </div>
-          <div className="product_card_info">
-            <div className="card_title" onClick={() => handleRedirect(product.id)}>{product.name}</div>
-            <div className="card_param">{product.param}</div>
-            <div className="card_size">{product.size}</div>
-            <div className="card_desc">{renderProductDesc(product.about)}</div>
-            <div className="card_price">{product.price}</div>
-          </div>
-          <div className="add_to_cart_btn">BUY IT NOW</div>
-        </div>
+        <ProductItem product={product} handleRedirect={handleRedirect} />
       );
     });
   };

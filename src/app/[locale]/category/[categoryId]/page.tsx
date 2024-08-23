@@ -12,8 +12,6 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
 
   if (!data) return null;
 
-  console.log(433333, data);
-
   return (
     <>
       <S.HeaderSection>
