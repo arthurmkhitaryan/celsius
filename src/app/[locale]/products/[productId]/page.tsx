@@ -16,8 +16,8 @@ interface ProductParamProps {
 }
 
 export default function Product({ params }: { params: ProductParamProps }) {
-  const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>(
-    slidersMockData.map(() => React.createRef<HTMLDivElement>())
+const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>(
+  Array(slidersMockData.length).fill(null).map(() => React.createRef<HTMLDivElement>())
 );
 const [activeThumbnail, setActiveThumbnail] = useState(1)
 const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>({}); // State to manage FAQ open/close
@@ -42,14 +42,15 @@ const [activeTab, setActiveTab] = useState(tabs[0].id)
 
 const scrollToImage = (index: number) => {
     setActiveThumbnail(index)
-    if (imageRefs.current[index]?.current) {
-        imageRefs.current[index].current!.scrollIntoView({ behavior: 'smooth' });
+    const ref = imageRefs.current[index]?.current;
+    if (ref) {
+        ref.scrollIntoView({ behavior: 'smooth' });
     }
 };
 const renderMainBlockImages = () => {
-    return slidersMockData.map((item) => {
+    return slidersMockData.map((item, index) => {
         return (
-            <div key={item.id} className="scroller_image" ref={imageRefs.current[item.id]}>
+            <div key={item.id} className="scroller_image" ref={imageRefs.current[index]}>
                 <Image
                     src={item.image}
                     height={500}
@@ -62,11 +63,11 @@ const renderMainBlockImages = () => {
 };
 
 const renderThumbnails = () => {
-    return slidersMockData.map((item) => (
+    return slidersMockData.map((item, index) => (
         <div
             key={item.id}
-            className={`thumbnail_image ${item.id === activeThumbnail ? 'active_thumbnail' : ''}`}
-            onClick={() => scrollToImage(item.id)}
+            className={`thumbnail_image ${index === activeThumbnail ? 'active_thumbnail' : ''}`}
+            onClick={() => scrollToImage(index)}
         >
             <Image
                 src={item.image}
