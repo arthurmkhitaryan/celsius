@@ -31,17 +31,17 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
           </S.Description>
         </S.DescriptionContainer>
         <S.ProductsSection>
-          {data.category.map((category) => (
-            <S.ProductCard key={category.name}>
+          {data.products.map((product) => (
+            <S.ProductCard key={product.name}>
               <S.ProductImageWrapper>
                 <img
-                  src={category.image}
-                  alt={category.name}
+                  src={product.image}
+                  alt={product.name}
                 />
               </S.ProductImageWrapper>
               <S.ProductInfo>
-                <S.ProductTitle>{category.name}</S.ProductTitle>
-                <S.ProductDescription>{category.description}</S.ProductDescription>
+                <S.ProductTitle>{product.name}</S.ProductTitle>
+                <S.ProductDescription>{product.description}</S.ProductDescription>
                 <S.ProductButton>See More</S.ProductButton>
               </S.ProductInfo>
             </S.ProductCard>

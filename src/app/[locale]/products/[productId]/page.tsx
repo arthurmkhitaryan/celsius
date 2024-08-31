@@ -1,28 +1,43 @@
 "use client"
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ArrowWind from '@/public/images/product/arrow_wind.png';
 import Banner from '@/public/images/product/banner.png';
 import '../../../../components/styles/main.scss';
 import './page.scss';
-import { faqData, generalDetails, generalFeatures, productMockList, slidersMockData, tabs } from './mock';
+import { productMockList, tabs } from './mock';
 import MainLayout from "@/components/Layout";
 import ProductItem from '@/app/[locale]/products/ProductItem';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { useGetProductQuery } from '@/features/product';
+import { dotingPrice } from '@/utils/doting-price';
 
 interface ProductParamProps {
     productId: string;
 }
 
 export default function Product({ params }: { params: ProductParamProps }) {
-const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>(
-  Array(slidersMockData.length).fill(null).map(() => React.createRef<HTMLDivElement>())
-);
 const [activeThumbnail, setActiveThumbnail] = useState(1)
 const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>({}); // State to manage FAQ open/close
 
 const [activeTab, setActiveTab] = useState(tabs[0].id)
+
+const [count, setCount] = useState(1);
+
+const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
+
+const { data } = useGetProductQuery({ id: params.productId });
+
+    useEffect(() => {
+        if (data) {
+            imageRefs.current = Array(data.images.length)
+              .fill(null)
+              .map(() => React.createRef<HTMLDivElement>());
+        }
+    }, [data]);
+
+    if (!data) return null;
 
     const renderTabs = () => {
         return tabs.map((tab) => {
@@ -48,14 +63,14 @@ const scrollToImage = (index: number) => {
     }
 };
 const renderMainBlockImages = () => {
-    return slidersMockData.map((item, index) => {
+    return data.images.map((item, index) => {
         return (
-            <div key={item.id} className="scroller_image" ref={imageRefs.current[index]}>
-                <Image
-                    src={item.image}
+            <div key={index} className="scroller_image" ref={imageRefs.current[index]}>
+                <img
+                    src={item}
                     height={500}
                     width={500}
-                    alt={item.name}
+                    alt={item}
                 />
             </div>
         );
@@ -63,23 +78,21 @@ const renderMainBlockImages = () => {
 };
 
 const renderThumbnails = () => {
-    return slidersMockData.map((item, index) => (
+    return data.images.map((item, index) => (
         <div
-            key={item.id}
+            key={index}
             className={`thumbnail_image ${index === activeThumbnail ? 'active_thumbnail' : ''}`}
             onClick={() => scrollToImage(index)}
         >
-            <Image
-                src={item.image}
+            <img
+                src={item}
                 height={80}
                 width={80}
-                alt={item.name}
+                alt={item}
             />
         </div>
     ));
 };
-
-const [count, setCount] = useState(1);
 
 const handleIncrement = () => {
     setCount(prevCount => prevCount + 1);
@@ -111,15 +124,15 @@ const renderTabContent = () => {
             return <div className="tab-content">
                 <h3>General Features</h3>
                 <div className="general-features">
-                    {generalFeatures.map((generalFeature) => {
+                    {data.fullSpecification.general.map((generalFeature) => {
                         return (
-                          <p>{generalFeature.name}</p>
+                          <p>{generalFeature.title}</p>
                         );
                     })}
                 </div>
                 <h3>General Details</h3>
                 <div className="general-details">
-                    {generalDetails.map((generalFeature, index) => {
+                    {data.fullSpecification.details.map((generalFeature, index) => {
                         return (
                           <div className="general-detail" key={index}>
                               <p className="general-detail-key">{generalFeature.key}</p>
@@ -131,23 +144,18 @@ const renderTabContent = () => {
             </div>;
         case tabs[1].id:
             return <div className="portfolio">
-                <Image src={Banner} alt="Banner" />
-                <Image src={Banner} alt="Banner" />
-                <Image src={Banner} alt="Banner" />
-                <Image src={Banner} alt="Banner" />
-                <Image src={Banner} alt="Banner" />
-                <Image src={Banner} alt="Banner" />
+                {data.portfolio.map((img) => <img src={img} alt="Banner" />)}
             </div>;
         case tabs[2].id:
             return (
               <div className="faq">
-                  {faqData.map((faq) => (
+                  {data.faqs.map((faq) => (
                     <div key={faq.id} className="faq-item">
                         <div className="faq-question" onClick={() => toggleFaq(faq.id)}>
-                            <span>{faq.question}</span>
+                            <span>{faq.key}</span>
                             {faqOpenState[faq.id] ? <ChevronDown /> : <ChevronRight />}
                         </div>
-                        {faqOpenState[faq.id] && <p>{faq.answer}</p>}
+                        {faqOpenState[faq.id] && <p>{faq.value}</p>}
                     </div>
                   ))}
               </div>
@@ -176,13 +184,12 @@ const renderTabContent = () => {
                               {renderMainBlockImages()}
                           </div>
                           <div className="add_to_cart_block">
-                              <div className="product_title">BreezeleSS+</div>
-                              <div className="product_price">299,000</div>
+                              <div className="product_title">{data.name}</div>
+                              <div className="product_price">{dotingPrice(data.price)}</div>
                               <span className="devider"></span>
                               <div className="product_code">MSFAAU-12HRFN8-QRD6GW</div>
                               <div className="product_fullName">Breezeless technology</div>
-                              <div className="product_desc">Harsh wind 'elimination', to enjoy the ultimate comfort, say
-                                  goodbye to discomfort experience
+                              <div className="product_desc">{data.description}
                               </div>
                               <div className="product_power">
                                   12000(4500~14900) Btu/h
@@ -238,14 +245,17 @@ const renderTabContent = () => {
                   </div>
               </div>
           </MainLayout>
-          <Image src={Banner} alt="Banner" layout="responsive" />
+          <img
+            className="banner-image"
+            src={data.banner}
+            alt="Banner"
+          />
           <div className="products_block">
               <h3>You May Also Like</h3>
               <div className="product_block">
                   {renderProducts()}
               </div>
           </div>
-
       </div>
     );
 }

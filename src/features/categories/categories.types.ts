@@ -1,4 +1,4 @@
-interface Category {
+interface Product {
   name: string;
   description: string;
   image: any;
@@ -11,7 +11,7 @@ interface Categories {
   image: any;
   icon: any;
   description: string;
-  category: Category[];
+  products: Product[];
 }
 
 interface CategoriesState {

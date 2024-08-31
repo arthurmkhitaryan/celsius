@@ -8,7 +8,7 @@ export const categoriesApi = createApi({
     getCategoryById: builder.query<Categories | null, { categoryId: string | number }>({
       query: ({ categoryId }) => {
         return {
-          url: `categories?populate[image]=*&populate[icon]=*&populate[category][populate][image]=*&filters[id][$eq]=${categoryId}`,
+          url: `categories?populate[image]=*&populate[icon]=*&populate[products][populate][images]=*&filters[id][$eq]=${categoryId}`,
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
           },
@@ -17,6 +17,7 @@ export const categoriesApi = createApi({
       transformResponse: (response: { data: any }) => {
         const [data] = response.data;
         if (!data) return null;
+        console.log('PRODUCTS', data.attributes.products)
         return {
           id: data.id,
           name: data.attributes.name,
@@ -24,10 +25,10 @@ export const categoriesApi = createApi({
           description: data.attributes.description,
           image: getImageUrl(data.attributes.image),
           icon: getImageUrl(data.attributes.icon),
-          category: data.attributes.category.map((category: any) => ({
-            name: category.name,
-            description: category.description,
-            image: getImageUrl(category.image)
+          products: data.attributes.products.data.map((product: any) => ({
+            name: product.attributes.name,
+            description: product.attributes.description,
+            image: getImageUrl(product.attributes.images.data[0])
           }))
         }
       },
