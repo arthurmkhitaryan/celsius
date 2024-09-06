@@ -5,13 +5,13 @@ import Cond from '@/public/images/product/cond.png';
 import '../../../components/styles/main.scss';
 import './page.scss';
 import Newsroom from '@/components/Newsroom';
-import { ChevronRight } from 'lucide-react';
 import Achievements from '@/components/Achievements';
 import Filter from '@/components/Products/Filter';
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import ProductList from '@/components/ProductList';
 import ProductItem from '@/app/[locale]/products/ProductItem';
+import { useGetProductsQuery } from '@/features';
 
 const productMockList = [
   {
@@ -55,6 +55,7 @@ const productMockList = [
 export default function Products() {
   const { locale } = useParams();
   const router = useRouter();
+  const { data: products } = useGetProductsQuery({ limit: 4 });
 
   const handleRedirect = (id: string) => {
     const path = `/${locale}/products/${id}`;
@@ -66,9 +67,10 @@ export default function Products() {
   }
 
   const renderProducts = () => {
-    return productMockList.map((product, index) => {
+    if (!products?.length) return null;
+    return products.map((product, index) => {
       return (
-        <ProductItem product={product} handleRedirect={handleRedirect} />
+        <ProductItem product={product} />
       );
     });
   };
