@@ -3,15 +3,15 @@
 import Image from "next/image";
 import React, { useRef, useState, useEffect } from "react";
 import ArrowWind from '@/public/images/product/arrow_wind.png';
-import Banner from '@/public/images/product/banner.png';
 import '../../../../components/styles/main.scss';
 import './page.scss';
-import { productMockList, tabs } from './mock';
+import { tabs } from './mock';
 import MainLayout from "@/components/Layout";
 import ProductItem from '@/app/[locale]/products/ProductItem';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useGetProductQuery } from '@/features/product';
 import { dotingPrice } from '@/utils/doting-price';
+import { useGetProductsQuery } from '@/features';
 
 interface ProductParamProps {
     productId: string;
@@ -28,6 +28,7 @@ const [count, setCount] = useState(1);
 const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
 
 const { data } = useGetProductQuery({ id: params.productId });
+const { data: products } = useGetProductsQuery({ limit: 3, excludeId: params.productId });
 
     useEffect(() => {
         if (data) {
@@ -164,9 +165,10 @@ const renderTabContent = () => {
 }
 
     const renderProducts = () => {
-        return productMockList.map((product, index) => {
+    if (!products?.length) return;
+        return products.map((product, index) => {
             return (
-              <ProductItem product={product} handleRedirect={() => null} />
+              <ProductItem product={product} />
             );
         });
     };
