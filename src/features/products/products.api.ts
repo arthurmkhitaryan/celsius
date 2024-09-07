@@ -13,8 +13,8 @@ export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], { limit?: number; excludeId?: number | string }>({
-      query: ({ limit, excludeId }) => {
+    getProducts: builder.query<Product[], { limit?: number; excludeId?: number | string, productTypes?: string[] }>({
+      query: ({ limit, excludeId, productTypes }) => {
         const params = new URLSearchParams();
         if (limit) {
           params.append('limit', limit.toString());
@@ -22,6 +22,12 @@ export const productsApi = createApi({
         }
         if (excludeId) {
           params.append('filters[id][$ne]', excludeId.toString());
+        }
+
+        if (productTypes && productTypes.length) {
+          productTypes.forEach((type, index) => {
+            params.append(`filters[$or][${index}][productTypes][title][$eq]`, type);
+          });
         }
 
         return {
@@ -60,4 +66,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useLazyGetProductsQuery } = productsApi;

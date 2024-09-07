@@ -25,41 +25,38 @@ const mockData = [
   },
   {
     category: 'PLACEMENT',
-    types: ['First', 'Second']
+    types: ['Indoor', 'Outdoor']
   },
   {
     category: 'CATEGORY',
-    types: ['First', 'Second']
+    types: ['Residential', 'Commercial', 'Industrial']
   },
 ];
 
 interface FilterProps {
-  onFilterChange: (filters: { [key: string]: string[] }) => void;
+  onFilterChange: (filters: string[]) => void;
 }
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
-    const [openCategories, setOpenCategories] = useState<{ [key: string]: any }>(
-        mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {})
-      );  const [selectedTypes, setSelectedTypes] = useState<{ [key: string]: string[] }>({});
+  const [openCategories, setOpenCategories] = useState<{ [key: string]: any }>(
+      mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {})
+    );
+
+  const [_, setSelectedTypes] = useState<string[]>([]);
 
   const handleCategoryClick = (category: string) => {
-    setOpenCategories((prevState: {[key: string]: any}) => ({
+    setOpenCategories((prevState) => ({
       ...prevState,
-      [category]: !prevState[category]
+      [category]: !prevState[category],
     }));
   };
 
-  const handleTypeChange = (category: string, type: string) => {
-    setSelectedTypes(prevState => {
-      const updated = { ...prevState };
-      if (!updated[category]) {
-        updated[category] = [];
-      }
-      if (updated[category].includes(type)) {
-        updated[category] = updated[category].filter(t => t !== type);
-      } else {
-        updated[category].push(type);
-      }
+  const handleTypeChange = (type: string) => {
+    setSelectedTypes((prevState) => {
+      const updated = prevState.includes(type)
+        ? prevState.filter((selectedType) => selectedType !== type)
+        : [...prevState, type];
+
       onFilterChange(updated);
       return updated;
     });
@@ -85,7 +82,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
                   <input
                     type="checkbox"
                     id={`${category}-${type}`}
-                    onChange={() => handleTypeChange(category, type)}
+                    onChange={() => handleTypeChange(type)}
                   />
                   <label htmlFor={`${category}-${type}`}>{type}</label>
                 </div>
