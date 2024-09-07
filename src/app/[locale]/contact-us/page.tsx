@@ -1,13 +1,60 @@
 'use client';
 
 import * as S from './page.styled';
-import React from 'react';
-import Banner from '@/public/images/contact-us/banner.jpeg'
-import Main from '@/public/images/contact-us/main.jpeg'
+import React, { useState } from 'react';
+import Banner from '@/public/images/contact-us/banner.jpeg';
+import Main from '@/public/images/contact-us/main.jpeg';
 import Image from 'next/image';
 import Achievements from '@/components/Achievements';
+import { useCreateContactUsMutation } from '@/features/contact-us/contact-us.api';
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    companyName: '',
+    email: '',
+    phoneNumber: '',
+    city: '',
+    postCode: '',
+    address: '',
+    employess: '',
+    comment: ''
+  });
+
+  const [createContactUs] = useCreateContactUsMutation();
+
+  const handleInputChange = (e: any) => {
+    const { id, value } = e.target;
+    setFormData({
+      ...formData,
+      [id]: value
+    });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      await createContactUs({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        companyName: formData.companyName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        city: formData.city,
+        postCode: formData.postCode,
+        address: formData.address,
+        employess: +formData.employess,
+        comment: formData.comment,
+      }).unwrap();
+
+      window.location.reload();
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
   return (
     <>
       <S.HeaderImage>
@@ -56,57 +103,116 @@ export default function ContactUs() {
           <h2>Join Our Team</h2>
         </S.Header>
         <S.MainContent>
-          <S.Form>
+          <S.Form onSubmit={handleSubmit}>
             <S.TwoColumnRow>
               <S.InputGroup>
                 <label htmlFor="firstName">First Name*</label>
-                <input id="firstName" type="text" placeholder="Enter your first name" />
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="Enter your first name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="lastName">Last Name*</label>
-                <input id="lastName" type="text" placeholder="Enter your last name" />
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="Enter your last name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
               <label htmlFor="companyName">Company Name*</label>
-              <input id="companyName" type="text" placeholder="Enter your company name" />
+              <input
+                id="companyName"
+                type="text"
+                placeholder="Enter your company name"
+                value={formData.companyName}
+                onChange={handleInputChange}
+              />
             </S.InputGroup>
             <S.TwoColumnRow>
               <S.InputGroup>
                 <label htmlFor="email">Email*</label>
-                <input id="email" type="text" placeholder="Enter your email" />
+                <input
+                  id="email"
+                  type="text"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="phone">Phone Number*</label>
-                <input id="phone" type="text" placeholder="Enter your phone number" />
+                <label htmlFor="phoneNumber">Phone Number*</label>
+                <input
+                  id="phoneNumber"
+                  type="text"
+                  placeholder="Enter your phone number"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.TwoColumnRow>
               <S.InputGroup>
                 <label htmlFor="city">City*</label>
-                <input id="city" type="text" placeholder="Enter your city" />
+                <input
+                  id="city"
+                  type="text"
+                  placeholder="Enter your city"
+                  value={formData.city}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="postcode">Postcode*</label>
-                <input id="postcode" type="text" placeholder="Enter your postcode" />
+                <label htmlFor="postCode">Postcode*</label>
+                <input
+                  id="postCode"
+                  type="text"
+                  placeholder="Enter your postcode"
+                  value={formData.postCode}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.TwoColumnRow>
               <S.InputGroup>
                 <label htmlFor="address">Address*</label>
-                <input id="address" type="text" placeholder="Enter your house/flat N" />
+                <input
+                  id="address"
+                  type="text"
+                  placeholder="Enter your house/flat N"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="postcode">Number of Employees</label>
-                <input id="postcode" type="number" placeholder="001" />
+                <label htmlFor="employess">Number of Employees</label>
+                <input
+                  id="employess"
+                  type="number"
+                  placeholder="001"
+                  value={formData.employess}
+                  onChange={handleInputChange}
+                />
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
-              <label htmlFor="comments">Comments</label>
-              <textarea id="comments" placeholder="Your comments"></textarea>
+              <label htmlFor="comment">Comments</label>
+              <textarea
+                id="comment"
+                placeholder="Your comments"
+                value={formData.comment}
+                onChange={handleInputChange}
+              />
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button>Become a partner</S.Button>
+              <S.Button type="submit">Become a partner</S.Button>
             </S.ButtonContainer>
           </S.Form>
         </S.MainContent>

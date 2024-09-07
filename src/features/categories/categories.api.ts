@@ -16,8 +16,9 @@ export const categoriesApi = createApi({
       },
       transformResponse: (response: { data: any }) => {
         const [data] = response.data;
+
         if (!data) return null;
-        console.log('PRODUCTS', data.attributes.products)
+
         return {
           id: data.id,
           name: data.attributes.name,
@@ -26,6 +27,7 @@ export const categoriesApi = createApi({
           image: getImageUrl(data.attributes.image),
           icon: getImageUrl(data.attributes.icon),
           products: data.attributes.products.data.map((product: any) => ({
+            id: product.id,
             name: product.attributes.name,
             description: product.attributes.description,
             image: getImageUrl(product.attributes.images.data[0])

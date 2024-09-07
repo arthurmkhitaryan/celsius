@@ -6,11 +6,19 @@ import * as S from './page.styled';
 import Newsroom from '@/components/Newsroom';
 import Achievements from '@/components/Achievements';
 import { useGetCategoryByIdQuery } from '@/features/categories';
+import { useParams, useRouter } from 'next/navigation';
 
 const Category = ({ params }: { params: { categoryId: number } }) => {
   const { data } = useGetCategoryByIdQuery({ categoryId: params.categoryId });
 
   if (!data) return null;
+
+  const router = useRouter();
+  const { locale } = useParams();
+
+  const handleRedirect = (id: number): void => {
+    router.push(`/${locale}/products/${id}`);
+  }
 
   return (
     <>
@@ -42,7 +50,7 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
               <S.ProductInfo>
                 <S.ProductTitle>{product.name}</S.ProductTitle>
                 <S.ProductDescription>{product.description}</S.ProductDescription>
-                <S.ProductButton>See More</S.ProductButton>
+                <S.ProductButton onClick={() => handleRedirect(product.id)}>See More</S.ProductButton>
               </S.ProductInfo>
             </S.ProductCard>
           ))}
