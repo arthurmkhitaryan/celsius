@@ -6,7 +6,7 @@ export const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getProduct: builder.query<Product, { id: string | number }>({
+    getProduct: builder.query<Product, { id: string | number, role?: string }>({
       query: ({ id }) => ({
         url: 'products',
         headers: {
@@ -22,12 +22,14 @@ export const productApi = createApi({
           'filters[id][$eq]': id,
         }
       }),
-      transformResponse: (response: { data: any[] }) =>
-        response.data.map((item) => ({
+      transformResponse: (response: { data: any[] },  meta, arg) => {
+        const { role } = arg;
+
+        return response.data.map((item) => ({
           id: item.id,
           name: item.attributes.name,
           description: item.attributes.description,
-          price: item.attributes.price,
+          price: role === 'Partner' && item.attributes.partnerPrice ? item.attributes.partnerPrice : item.attributes.price,
           images: item.attributes.images.data.map((img: any) => getImageUrl(img)),
           banner: getImageUrl(item.attributes.banner),
           fullSpecification: {
@@ -36,7 +38,8 @@ export const productApi = createApi({
           },
           portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
           faqs: item.attributes.faqs,
-        }))[0],
+        }))[0];
+      },
     }),
   }),
 });

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,40 +13,19 @@ import BasketLogo from '@/public/images/basket.svg';
 import Button from '@/components/shared/Button';
 import Language from '@/components/Language';
 import LoginForm from '../forms/LoginForm';
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { getUserFromToken } from '@/services/authService';
-import { setUser } from '@/features';
+import { useParams, useRouter } from 'next/navigation';
 
-function Header() {
-  const [formVisible, setFormVisible] = React.useState(false);
-  const [isLogin, setIsLogin] = React.useState(false);
-  const user = useAppSelector((state) => state.auth.user);
-  const dispatch = useAppDispatch();
+function Header({ user }: any) {
+  const [formVisible, setFormVisible] = useState(false);
+  const router = useRouter();
+  const { locale } = useParams();
 
-  useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    console.log({ token })
-    if (token) {
-      setIsLogin(true);
-      getUserFromToken(token)
-        .then((data) => {
-          if (data) {
-            dispatch(setUser(data));
-          }
-        })
-        .catch((error) => {
-          console.error('Error fetching user:', error);
-          if (error.response && error.response.status === 401) {
-            localStorage.removeItem('access_token');
-            setIsLogin(false); 
-          }
-        });
-    }
-  }, [dispatch]);
-  
-  console.log({ user, isLogin,  })
   const handleOpenLoginForm = () => {
     setFormVisible(!formVisible);
+  };
+
+  const handleRedirectProfilePage = () => {
+    router.push(`/${locale}/profile`);
   };
 
   return (
@@ -72,7 +51,7 @@ function Header() {
             <Button
               className="sign-in"
               btnStyle="filled"
-              onClick={handleOpenLoginForm}
+              onClick={handleRedirectProfilePage}
               px={32}
               py={16}
             >

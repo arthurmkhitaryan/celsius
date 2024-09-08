@@ -3,6 +3,7 @@ import * as S from "./account-settings.styled";
 import { useAppSelector } from '@/store/hooks';
 import { User } from '@/features';
 import { UserService } from '@/services/userService';
+import { getCookie } from 'cookies-next';
 
 const AccountSettings = () => {
   const user = useAppSelector((state) => state.auth.user) as User;
@@ -27,7 +28,8 @@ const AccountSettings = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const token = localStorage.getItem('access_token');
+    const token = getCookie('access_token');
+
     if (!token) {
       return null;
     }

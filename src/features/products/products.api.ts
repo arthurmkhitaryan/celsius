@@ -13,7 +13,7 @@ export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], { limit?: number; excludeId?: number | string, productTypes?: string[] }>({
+    getProducts: builder.query<Product[], { limit?: number; excludeId?: number | string, productTypes?: string[], role?: string }>({
       query: ({ limit, excludeId, productTypes }) => {
         const params = new URLSearchParams();
         if (limit) {
@@ -46,12 +46,14 @@ export const productsApi = createApi({
           }
         };
       },
-      transformResponse: (response: { data: any[] }) =>
-        response.data.map((item) => ({
+      transformResponse: (response: { data: any[] },  meta, arg) => {
+        const { role } = arg;
+
+        return response.data.map((item) => ({
           id: item.id,
           name: item.attributes.name,
           description: item.attributes.description,
-          price: item.attributes.price,
+          price: role === 'Partner' && item.attributes.partnerPrice ? item.attributes.partnerPrice : item.attributes.price,
           images: item.attributes.images.data.map((img: any) => getImageUrl(img)),
           banner: getImageUrl(item.attributes.banner),
           fullSpecification: {
@@ -61,7 +63,8 @@ export const productsApi = createApi({
           portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
           faqs: item.attributes.faqs,
           liter: item.attributes.liter,
-        })),
+        }));
+      },
     }),
   }),
 });

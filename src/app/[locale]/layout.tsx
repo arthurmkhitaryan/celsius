@@ -8,6 +8,9 @@ import Navbar from '@/components/Navbar';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
+import { getUserFromToken } from '@/services/authService';
+import { cookies } from 'next/headers';
+import ClientWrapper from '@/store/client-wrapper';
 
 const poppins = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -26,9 +29,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
+  const cookieStore = cookies()
+  ;
+  const token = cookieStore.get('access_token')?.value;
+  const user = await getUserFromToken(token || '');
 
   return (
     <html lang={locale}>
@@ -36,9 +41,11 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <GlobalStyles />
-            <Header />
+            <Header user={user} />
             <Navbar />
-            {children}
+            <ClientWrapper user={user}>
+              {children}
+            </ClientWrapper>
             <Footer />
           </Providers>
         </NextIntlClientProvider>

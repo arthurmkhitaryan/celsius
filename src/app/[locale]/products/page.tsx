@@ -9,14 +9,16 @@ import Filter from '@/components/Products/Filter';
 import ProductList from '@/components/ProductList';
 import ProductItem from '@/app/[locale]/products/ProductItem';
 import { useLazyGetProductsQuery } from '@/features';
+import { useAppSelector } from '@/store/hooks';
 
 export default function Products() {
+  const user = useAppSelector((state) => state.auth.user) as any;
   const [triggerGetProducts, { data: products }] = useLazyGetProductsQuery();
 
   const handleChangeCategories = (filters: string[]) => {
     const productTypes = filters.length ? filters : undefined;
 
-    triggerGetProducts({ limit: 14, productTypes });
+    triggerGetProducts({ limit: 14, productTypes, role: user?.role });
   };
 
   const renderProducts = () => {
@@ -27,8 +29,8 @@ export default function Products() {
   };
 
   useEffect(() => {
-    triggerGetProducts({ limit: 14 });
-  }, [triggerGetProducts]);
+    triggerGetProducts({ limit: 14, role: user?.role });
+  }, [triggerGetProducts, user?.role]);
 
   return (
     <div className="product_page">

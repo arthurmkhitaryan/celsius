@@ -12,6 +12,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useGetProductQuery } from '@/features/product';
 import { dotingPrice } from '@/utils/doting-price';
 import { useGetProductsQuery } from '@/features';
+import { useAppSelector } from '@/store/hooks';
 
 interface ProductParamProps {
     productId: string;
@@ -27,7 +28,9 @@ const [count, setCount] = useState(1);
 
 const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
 
-const { data } = useGetProductQuery({ id: params.productId });
+const user = useAppSelector((state) => state.auth.user) as any;
+
+const { data } = useGetProductQuery({ id: params.productId, role: user?.role });
 const { data: products } = useGetProductsQuery({ limit: 3, excludeId: params.productId });
 
     useEffect(() => {

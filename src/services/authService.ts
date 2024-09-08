@@ -14,6 +14,5 @@ export const getUserFromToken = async (token: string) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching user:', error);
-    throw error;
   }
 };

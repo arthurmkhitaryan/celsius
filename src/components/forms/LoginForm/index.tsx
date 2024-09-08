@@ -9,6 +9,7 @@ import { setToken, setUser, useLoginMutation } from '@/features';
 import ArrowUpLogin from '@/public/images/login/arrow-up.png';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
+import { setCookie } from 'cookies-next';
 
 interface LoginFormProps {
   visible: boolean;
@@ -36,12 +37,15 @@ export default function LoginForm({
       const response = await loginUser(data).unwrap();
       dispatch(setUser(response.user));
       dispatch(setToken(response.access_token));
-      localStorage.setItem('access_token', response.access_token);
-      if (rememberMe) {
-        localStorage.setItem('access_token', response.access_token);
-      } else {
-        sessionStorage.setItem('access_token', response.access_token);
-      } 
+
+      setCookie('access_token', response.access_token, {
+        maxAge: rememberMe ? 7 * 24 * 60 * 60 : undefined, // 7 days if rememberMe, otherwise session cookie
+        path: '/',
+        secure: process.env.NODE_ENV === 'production', // Ensure it's only secure in production
+        sameSite: 'strict',
+      });
+
+      router.push('/profile'); // Redirect after login
     } catch (error) {
       console.error(error);
     }
