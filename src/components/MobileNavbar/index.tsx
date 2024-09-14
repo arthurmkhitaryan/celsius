@@ -3,16 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import * as S from './Navbar.styled';
+import * as S from './MobileNavbar.styled';
 import { useLocale } from 'use-intl';
-import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import { ChevronRight } from 'lucide-react';
 
-function Navbar() {
+function MobileNavbar() {
   const locale = useLocale();
   const pathname = usePathname();
-  const isTablet = useClientMediaQuery('(max-width: 768px)');
-
-  if (isTablet) return null;
 
   const getLocalizedPath = (path: string) => {
     if (pathname === '/') {
@@ -34,26 +31,31 @@ function Navbar() {
             <Link href={getLocalizedPath('/products')} passHref>
               Products
             </Link>
+            <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
             <Link href={getLocalizedPath('/careers')} passHref>
               Career
             </Link>
+            <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
             <Link href={getLocalizedPath('/newsroom')} passHref>
               Newsroom
             </Link>
+            <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
             <Link href={getLocalizedPath('/about-us')} passHref>
               About Us
             </Link>
+            <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
             <Link href={getLocalizedPath('/contact-us')} passHref>
               Contact Us
             </Link>
+            <ChevronRight size={18} />
           </S.NavListItem>
         </S.NavList>
       </S.Navbar>
@@ -61,4 +63,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default MobileNavbar;
