@@ -13,6 +13,11 @@ export const NewsroomWrapper = styled.div`
 export const NewsroomTitle = styled.h2`
   ${typographyPreset5};
   color: ${({ theme }) => theme.palette.common.textDefault};
+
+  @media (max-width: 768px) {
+      font-size: 24px;
+      margin: 20px 20px 0 20px;
+  }
 `;
 
 export const NewsroomContent = styled.div``;
@@ -33,4 +38,10 @@ export const NewsroomList = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 48px;
+
+  @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+  }
 `;

@@ -10,10 +10,13 @@ import { Clock5, Mail, MapPin, Phone } from 'lucide-react';
 import FacebookLogo from '@/public/images/footer/facebook-logo.svg';
 import InstagramLogo from '@/public/images/footer/instagram.svg';
 import LinkedinLogo from '@/public/images/footer/linkedin-logo.svg';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 
 // components
 
 function Footer() {
+  const isTablet = useClientMediaQuery('(max-width: 768px)');
+
   return (
     <S.FooterWrapper>
       <S.LetsStayInTouch>
@@ -48,9 +51,9 @@ function Footer() {
             />
           </S.FooterContentHeader>
           <S.FooterContentSections>
-            <S.FooterSection>
+            <S.FooterSection className={isTablet ? 'middle' : ''}>
               <S.FooterSectionContent>
-                <S.FooterSectionTitle className="contacts-title">
+                <S.FooterSectionTitle isTablet={isTablet}>
                   Contacts
                 </S.FooterSectionTitle>
                 <S.FooterSectionItem>
@@ -88,6 +91,26 @@ function Footer() {
                     <span>Sat. / 10:00 - 18:00</span>
                   </div>
                 </S.FooterSectionItem>
+                {isTablet && <S.FooterContentFooter isTablet>
+                  <Image
+                    src={FacebookLogo.src}
+                    alt={'celsius-facebook'}
+                    width={26}
+                    height={26}
+                  />
+                  <Image
+                    src={InstagramLogo.src}
+                    alt={'celsius-instagram'}
+                    width={26}
+                    height={26}
+                  />
+                  <Image
+                    src={LinkedinLogo.src}
+                    alt={'celsius-linkedin'}
+                    width={26}
+                    height={26}
+                  />
+                </S.FooterContentFooter>}
               </S.FooterSectionContent>
             </S.FooterSection>
             <S.FooterSection className="middle">
@@ -110,7 +133,7 @@ function Footer() {
               </S.FooterSectionContent>
             </S.FooterSection>
           </S.FooterContentSections>
-          <S.FooterContentFooter>
+          {!isTablet && <S.FooterContentFooter>
             <Image
               src={FacebookLogo.src}
               alt={'celsius-facebook'}
@@ -129,7 +152,7 @@ function Footer() {
               width={26}
               height={26}
             />
-          </S.FooterContentFooter>
+          </S.FooterContentFooter>}
         </S.FooterContentWrapper>
       </S.FooterContent>
     </S.FooterWrapper>

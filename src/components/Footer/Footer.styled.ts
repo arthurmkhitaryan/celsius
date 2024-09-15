@@ -21,6 +21,12 @@ export const LetsStayInTouchContentWrapper = styled.div`
   justify-content: space-between;
   max-width: 1140px;
   width: 100%;
+
+  @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      margin: 0 20px;
+  }
 `;
 
 export const LetsStayInTouchContent = styled.div`
@@ -101,12 +107,24 @@ export const FooterContentWrapper = styled.div`
 
 export const FooterContentHeader = styled.div`
   width: 100%;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-export const FooterContentFooter = styled.div`
-  padding-left: 30px;
-  display: flex;
-  gap: 25px;
+export const FooterContentFooter = styled.div<{ isTablet?: boolean }>`
+    padding-left: 30px;
+    display: flex;
+    gap: 25px;
+
+    ${({ isTablet }) =>
+            isTablet &&
+            `
+      margin: 15px 0;
+      justify-content: center;
+  `}
 `;
 
 export const FooterContentSections = styled.div`
@@ -124,10 +142,26 @@ export const FooterContentSections = styled.div`
     justify-content: flex-end;
     border: none;
   }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+
+        .middle, .last {
+            justify-content: center;
+        }
+    }
 `;
 
 export const FooterSection = styled.div`
   border-right: 1px solid #d9d9d9;
+
+    @media (max-width: 768px) {
+        border-right: none;
+        border-bottom: 1px solid #d9d9d9;
+        padding: 20px 0;
+        margin: 0 30px;
+        margin: 0 30px;
+    }
 `;
 
 export const FooterSectionContent = styled.div`
@@ -137,7 +171,7 @@ export const FooterSectionContent = styled.div`
   gap: 8px;
 `;
 
-export const FooterSectionTitle = styled.div`
+export const FooterSectionTitle = styled.div<{ isTablet?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,6 +183,13 @@ export const FooterSectionTitle = styled.div`
   text-align: left;
   color: white;
   margin-bottom: 12px;
+
+    ${({ isTablet }) =>
+            isTablet &&
+            `
+    position: relative;
+    left: 15%;
+`}
 `;
 
 export const FooterSectionItem = styled.div`
@@ -156,7 +197,6 @@ export const FooterSectionItem = styled.div`
   font-weight: 400;
   line-height: 30px;
   text-align: left;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
