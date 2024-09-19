@@ -18,6 +18,7 @@ import OurPartners from '@/components/OurPartners';
 import Newsroom from '@/components/Newsroom';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import SliderMobile from '@/components/SliderMobile';
+import ServicesMobile from '@/components/ServicesMobile';
 
 function Home() {
   const isTablet = useClientMediaQuery('(max-width: 768px)');
@@ -27,7 +28,7 @@ function Home() {
       {isTablet ? <SliderMobile /> : <Slider /> }
       <MainLayout>
         <Achievements />
-        <Services />
+        {isTablet ? <ServicesMobile /> : <Services />}
         <Description />
         <Calculator />
       </MainLayout>
