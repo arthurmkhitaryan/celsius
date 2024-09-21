@@ -9,6 +9,8 @@ import { newsroomApi } from '@/features/newsroom/newsroom.api';
 import { categoriesApi } from '@/features/categories';
 import { productApi } from '@/features/product';
 import { contactUsApi } from '@/features/contact-us/contact-us.api';
+import headerReducer from '@/features/header/header.slice';
+import filtersReducer from '@/features/filters/filters.slice';
 
 export const store = configureStore({
   reducer: {
@@ -25,6 +27,8 @@ export const store = configureStore({
     [categoriesApi.reducerPath]: categoriesApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [contactUsApi.reducerPath]: contactUsApi.reducer,
+    header: headerReducer,
+    filters: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

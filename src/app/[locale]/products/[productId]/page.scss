@@ -317,6 +317,10 @@
     display: flex;
     gap: 20px;
   }
+
+  @media (max-width: 768px) {
+    padding: initial;
+  }
 }
 
 .banner-image {

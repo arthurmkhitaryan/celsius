@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -19,12 +19,22 @@ import LoginForm from '../forms/LoginForm';
 import { useParams, useRouter } from 'next/navigation';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import MobileNavbar from '@/components/MobileNavbar';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { closeFilterMenu } from '@/features/header/header.slice';
+import Filter from '../Products/Filter';
+import { setFilters } from '@/features/filters/filters.slice';
 
 function Header({ user }: any) {
+  const isFilterMenuVisible = useAppSelector((state: any) => state.header.isFilterMenuVisible);
   const [formVisible, setFormVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const { locale } = useParams();
+
+  const handleChangeCategories = (filters: string[]) => {
+    dispatch(setFilters(filters));
+  };
 
   const isTablet = useClientMediaQuery('(max-width: 768px)');
 
@@ -38,7 +48,14 @@ function Header({ user }: any) {
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
+    if (menuVisible) {
+      dispatch(closeFilterMenu())
+    }
   };
+
+  useEffect(() => {
+    setMenuVisible(isFilterMenuVisible)
+  }, [isFilterMenuVisible])
 
   return (
     <S.HeaderWrapper>
@@ -114,7 +131,7 @@ function Header({ user }: any) {
 
         {isTablet && menuVisible && (
           <S.MobileMenu>
-            <MobileNavbar />
+            {isFilterMenuVisible ? <Filter onFilterChange={handleChangeCategories} /> : <MobileNavbar />}
           </S.MobileMenu>
         )}
       </S.MainWrapper>
