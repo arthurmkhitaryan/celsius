@@ -42,7 +42,7 @@ const ProductItem = ({ product }: IProductItemProps) => {
         <div className="card_size">{product.liter}L</div>
         <div className="card_desc">{renderProductDesc(product.fullSpecification.general)}</div>
       </div>
-      <div className="card_price">{product.price}</div>
+      <div className="card_price">{product.price} ֏</div>
       <div className="add_to_cart_btn" onClick={() => handleRedirect(product.id)}>BUY IT NOW</div>
     </div>
   )

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../../../components/styles/main.scss';
 import './page.scss';
 import Newsroom from '@/components/Newsroom';
@@ -12,7 +12,7 @@ import { useLazyGetProductsQuery } from '@/features';
 import { useAppSelector } from '@/store/hooks';
 
 export default function Products() {
-  const user = useAppSelector((state) => state.auth.user) as any;
+  const user = useAppSelector((state: any) => state.auth.user) as any;
   const [triggerGetProducts, { data: products }] = useLazyGetProductsQuery();
 
   const handleChangeCategories = (filters: string[]) => {
