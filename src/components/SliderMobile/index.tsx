@@ -36,11 +36,9 @@ const slides = [
 
 function SliderMobile() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [translateX, setTranslateX] = useState(slides[0].translateX);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
-    setTranslateX(slides[swiper.activeIndex].translateX);
   };
 
   return (
@@ -68,7 +66,6 @@ function SliderMobile() {
       {slides.map((slide, index) => (
         <S.SlideContentWrapper
           key={index}
-          translateX={translateX}
           isActive={activeIndex === index}
         >
           <S.SlideTitle>{slide.title}</S.SlideTitle>

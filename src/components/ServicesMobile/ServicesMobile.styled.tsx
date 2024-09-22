@@ -93,7 +93,7 @@ export const FooterMenuWrapper = styled.div`
   text-align: center;
 `;
 
-export const FooterMenuItem = styled.div`
+export const FooterMenuItem = styled.div<{ isActive: boolean }>`
   padding: 10px;
   cursor: pointer;
   color: #fff;
