@@ -11,6 +11,7 @@ import { productApi } from '@/features/product';
 import { contactUsApi } from '@/features/contact-us/contact-us.api';
 import headerReducer from '@/features/header/header.slice';
 import filtersReducer from '@/features/filters/filters.slice';
+import { newsCategoriesApi } from '@/features/newsCategories/newsCategories.api';
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
     [contactUsApi.reducerPath]: contactUsApi.reducer,
     header: headerReducer,
     filters: filtersReducer,
+    [newsCategoriesApi.reducerPath]: newsCategoriesApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -39,7 +41,9 @@ export const store = configureStore({
       .concat(authApi.middleware)
       .concat(categoriesApi.middleware)
       .concat(productApi.middleware)
-      .concat(contactUsApi.middleware),
+      .concat(contactUsApi.middleware)
+      .concat(newsCategoriesApi.middleware)
+      .concat(productApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

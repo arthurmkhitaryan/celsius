@@ -11,13 +11,13 @@ import { NextUIProvider } from '@nextui-org/react';
 const Providers = ({ children }: React.PropsWithChildren) => {
   return (
     <Provider store={store}>
-      <StyledComponentsRegistry>
-        <ThemeProvider theme={theme}>
-          <NextUIProvider>
-            {children}
-          </NextUIProvider>
-        </ThemeProvider>
-      </StyledComponentsRegistry>
+      <NextUIProvider>
+        <StyledComponentsRegistry>
+          <ThemeProvider theme={theme}>
+              {children}
+          </ThemeProvider>
+        </StyledComponentsRegistry>
+      </NextUIProvider>
     </Provider>
   );
 };

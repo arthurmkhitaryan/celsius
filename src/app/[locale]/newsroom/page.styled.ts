@@ -15,6 +15,7 @@ export const BannerWrapper = styled.div`
   gap: 54px;
   padding-bottom: 80px;
   border-bottom: 2px solid #1F94D2;
+  margin-bottom: 32px;
 `;
 
 export const BannerImage = styled.img`
@@ -60,3 +61,9 @@ export const ReadFullButton = styled.button`
   align-self: flex-end;
   background-color: transparent;
 `;
+
+export const Tabs = styled.div`
+  display: flex;
+`;
+
+export const Tab = styled.button``;
