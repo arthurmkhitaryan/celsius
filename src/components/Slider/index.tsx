@@ -57,6 +57,7 @@ function Slider() {
           prevEl: '.custom-prev',
         }}
         pagination={{ clickable: true }}
+        allowTouchMove={false}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

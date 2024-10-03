@@ -35,6 +35,7 @@ import VentilationAnimateIconTwo from '@/public/images/home/services/icons-mobil
 
 import ShopMain from '@/public/images/home/services/4.jpg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons-mobile/shop-1.svg';
+import { useParams, useRouter } from 'next/navigation';
 
 const services = [
     {
@@ -105,6 +106,12 @@ const services = [
 
 const ServicesMobile = () => {
   const [activeService, setActiveService] = useState(1); // Default to first service
+  const router = useRouter();
+  const { locale } = useParams();
+
+  const handleRedirect = (id: number): void => {
+    router.push(`/${locale}/category/${id}`);
+  }
 
   const handleFooterClick = (id: number) => {
     setActiveService(id);
@@ -134,7 +141,7 @@ const ServicesMobile = () => {
                     <ContentDescription>
                         {service.description}
                     </ContentDescription>
-                    <ViewMoreButton>
+                    <ViewMoreButton onClick={() => handleRedirect(service.id)}>
                         View More <ArrowRight size={18} />
                     </ViewMoreButton>
                     <ServiceIconWrapper>

@@ -6,7 +6,7 @@ import { UserService } from '@/services/userService';
 import { getCookie } from 'cookies-next';
 
 const AccountSettings = () => {
-  const user = useAppSelector((state) => state.auth.user) as User;
+  const user = useAppSelector((state) => state.auth.user) as User || {};
   const [formData, setFormData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,

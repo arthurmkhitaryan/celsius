@@ -8,9 +8,18 @@ import VentilationIcon from '@/public/images/home/services/icons/ventilation.svg
 import IconWrapper from '@/public/images/home/services/icon-wrapper.svg';
 import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.svg';
 import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.svg';
+import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
 import ImageArrow from '@/public/images/product/arrow.png';
+import { useParams, useRouter } from 'next/navigation';
 
 const ServiceSingle = () => {
+  const router = useRouter();
+  const { locale } = useParams();
+
+  const handleRedirect = (): void => {
+    router.push(`/${locale}/category/2`);
+  }
+
   return (
       <S.BottomWrapper>
         <S.ServiceFooter>
@@ -46,7 +55,7 @@ const ServiceSingle = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
               Lorem Ipsum
             </S.ServiceAdditionalContent>
-            <S.ServiceAdditionalButton>
+            <S.ServiceAdditionalButton onClick={handleRedirect}>
               View More
               <Image
                 src={ImageArrow}
@@ -66,7 +75,7 @@ const ServiceSingle = () => {
         </S.ServiceFooter>
         <S.ServiceFooter>
           <S.TextContainer>
-            <Image src={CoolingIcon} alt="Celsius Service Icon" />
+            <Image src={ShopIcon} alt="Celsius Service Icon" />
             <S.ServiceTitle>Shop</S.ServiceTitle>
           </S.TextContainer>
         </S.ServiceFooter>

@@ -15,10 +15,10 @@ export default function Profile() {
     const user = useAppSelector((state) => state.auth.user);
     const navigation = useRouter();
 
-    if (!user) {
-        navigation.push('/');
-        return null;
-    }
+    // if (!user) {
+    //     navigation.push('/');
+    //     return null;
+    // }
 
     const [activeMenu, setActiveMenu] = useState("account-settings");
 
