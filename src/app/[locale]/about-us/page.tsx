@@ -13,10 +13,12 @@ import * as S from './page.styled';
 import MideaLogo from '@/public/images/about/midea.png';
 import ClivetLogo from '@/public/images/about/clivet.png';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { useParams } from 'next/navigation';
 
 export default function About() {
+  const { locale } = useParams();
   const t = useTranslations('About');
-  const { data, isLoading } = useGetAboutContentQuery();
+  const { data, isLoading } = useGetAboutContentQuery({ locale: locale as string });
   console.log({ data });
 
   if (isLoading) return;

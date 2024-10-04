@@ -13,12 +13,14 @@ import { useGetProductQuery } from '@/features/product';
 import { dotingPrice } from '@/utils/doting-price';
 import { useGetProductsQuery } from '@/features';
 import { useAppSelector } from '@/store/hooks';
+import { useParams } from "next/navigation";
 
 interface ProductParamProps {
     productId: string;
 }
 
 export default function Product({ params }: { params: ProductParamProps }) {
+const { locale } = useParams();
 const [activeThumbnail, setActiveThumbnail] = useState(1)
 const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>({}); // State to manage FAQ open/close
 
@@ -30,8 +32,8 @@ const imageRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
 
 const user = useAppSelector((state) => state.auth.user) as any;
 
-const { data } = useGetProductQuery({ id: params.productId, role: user?.role });
-const { data: products } = useGetProductsQuery({ limit: 3, excludeId: params.productId });
+const { data } = useGetProductQuery({ id: params.productId, role: user?.role, locale: locale as string });
+const { data: products } = useGetProductsQuery({ limit: 3, excludeId: params.productId, locale: locale as string });
 
     useEffect(() => {
         if (data) {

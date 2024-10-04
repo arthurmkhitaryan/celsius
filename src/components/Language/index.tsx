@@ -1,25 +1,40 @@
 'use client';
 
 import React from 'react';
+
+import {
+  localeNames,
+  locales,
+  usePathname,
+  useRouter,
+  type Locale,
+} from '@/i18n.config';
+
+// styles & images
+import * as S from './Language.styled';
+import LangLogo from '@/public/images/lang.svg';
 import Image from 'next/image';
 
-// styles
-import * as S from './Language.styled';
+export default function LanguageSwitcher({ locale }: { locale: string }) {
+  const pathname = usePathname();
+  const router = useRouter();
 
-// images
-import LangLogo from '@/public/images/lang.svg';
+  const changeLocale = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLocale = event.target.value as Locale;
 
-function Language() {
+    router.replace(pathname, { locale: newLocale });
+  };
+
   return (
     <S.LanguageWrapper>
       <Image priority src={LangLogo} alt="Select Language" />
-      <S.LanguageSelect>
-        <S.LanguageOption value="en">ENG</S.LanguageOption>
-        <S.LanguageOption value="ru">RUS</S.LanguageOption>
-        <S.LanguageOption value="am">ARM</S.LanguageOption>
+      <S.LanguageSelect value={locale} onChange={changeLocale}>
+        {locales.map((loc) => (
+          <S.LanguageOption key={loc} value={loc}>
+            {localeNames[loc]}
+          </S.LanguageOption>
+        ))}
       </S.LanguageSelect>
     </S.LanguageWrapper>
   );
 }
-
-export default Language;

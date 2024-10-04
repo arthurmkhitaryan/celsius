@@ -11,7 +11,6 @@ import CoolingIcon from '@/public/images/home/services/icons/cooling.svg';
 import CoolingAnimateIconOne from '@/public/images/home/services/icons/cooling-1.svg';
 import CoolingAnimateIconTwo from '@/public/images/home/services/icons/cooling-2.svg';
 // ...
-import HvacMain from '@/public/images/home/services/2.jpg';
 import HvacIcon from '@/public/images/home/services/icons/hvac.svg';
 import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.svg';
 import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.svg';
@@ -24,6 +23,7 @@ import VentilationAnimateIconTwo from '@/public/images/home/services/icons/venti
 import ShopMain from '@/public/images/home/services/4.jpg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons/shop-1.svg';
 import ServiceSingle from '@/components/ServiceSingle';
+import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
 
 function Services() {
   const [serviceSingleShow, setServiceSingleShow] = useState(false);
@@ -62,7 +62,6 @@ function Services() {
             <S.ServiceTitle>Heating & Cooling</S.ServiceTitle>
           </S.ServiceFooter>
         </S.ServiceItem>}
-        {/* transition: all 0.3s ease-in; */}
         <S.ServiceItem serviceSingleShow={serviceSingleShow} isExpanded onClick={showServiceSingle}>
           <S.ServiceHeader>
             <S.ImageWrapper imageUrl={SingleImage.src} serviceSingleShow={serviceSingleShow} isExpanded className="image-wrapper" />
@@ -73,7 +72,6 @@ function Services() {
             visibility: serviceSingleShow? "visible": "hidden",
             transition:"all 0.5s ease-in",
           }}><ServiceSingle  /></div>
-
           {!serviceSingleShow && <div style={{
             width: serviceSingleShow ? "0" : "auto",
             height:serviceSingleShow ? "0" : "auto",
@@ -88,14 +86,8 @@ function Services() {
           <Image src={HvacIcon} alt="HVAC Service Icon" />
           <S.ServiceTitle>HVAC</S.ServiceTitle>
         </S.ServiceFooter>
-        
         </div>}
-
-
-
-
         </S.ServiceItem>
-
         {!hideOthers && <S.ServiceItem serviceSingleShow={serviceSingleShow}>
             <S.ServiceHeader>
               <S.ImageWrapper className="image-wrapper">
@@ -112,7 +104,6 @@ function Services() {
               <S.ServiceTitle>Ventilation</S.ServiceTitle>
             </S.ServiceFooter>
           </S.ServiceItem>}
-
           {!hideOthers && <S.ServiceItem serviceSingleShow={serviceSingleShow}>
             <S.ServiceHeader>
               <S.ImageWrapper className="image-wrapper">
@@ -124,11 +115,10 @@ function Services() {
               <Image className="animate-shop-icon-one" src={ShopAnimateIconOne} alt="icon" />
             </S.ServiceIconWrapper>
             <S.ServiceFooter>
-              <Image src={VentilationIcon} alt="Shop Service Icon" />
+              <Image src={ShopIcon} alt="Shop Service Icon" />
               <S.ServiceTitle>Shop</S.ServiceTitle>
             </S.ServiceFooter>
           </S.ServiceItem> }
-
       <Image className="footer" src={ServicesFooterVector} alt="ServicesFooterVector" />
     </S.ServicesWrapper>
   );

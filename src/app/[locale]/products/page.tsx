@@ -14,8 +14,10 @@ import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import FilterOptionsIcon from '@/public/images/product/filter-options.svg';
 import { toggleFilterMenu } from '@/features/header/header.slice';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 
 export default function Products() {
+  const { locale } = useParams();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();
 
@@ -26,7 +28,7 @@ export default function Products() {
   const handleChangeCategories = (filters: string[]) => {
     const productTypes = filters.length ? filters : undefined;
 
-    triggerGetProducts({ limit: 14, productTypes, role: user?.role });
+    triggerGetProducts({ limit: 14, productTypes, role: user?.role, locale: locale as string });
   };
 
   const renderProducts = () => {
@@ -37,7 +39,7 @@ export default function Products() {
   };
 
   useEffect(() => {
-    triggerGetProducts({ limit: 14, role: user?.role, productTypes: filters.length ? filters : undefined });
+    triggerGetProducts({ limit: 14, role: user?.role, productTypes: filters.length ? filters : undefined, locale: locale as string });
   }, [triggerGetProducts, user?.role, filters]);
 
   const openFilterMobile = () => {

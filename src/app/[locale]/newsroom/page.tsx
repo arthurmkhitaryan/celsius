@@ -11,10 +11,12 @@ import { getImageUrl } from '@/utils/getImageFullUrl';
 import { Tab, Tabs } from '@nextui-org/react';
 import { useGetNewsCategoriesQuery } from '@/features/newsCategories/newsCategories.api';
 import ProductList from '@/components/ProductList';
+import { useParams } from 'next/navigation';
 
 export default function Newsroom() {
+  const { locale } = useParams();
   const t = useTranslations('Newsroom');
-  const { data, isLoading } = useGetNewsQuery();
+  const { data, isLoading } = useGetNewsQuery({ locale: locale as string });
   const { data: categories, isLoading: isLoadingCategories } = useGetNewsCategoriesQuery();
   const [bannerPost, setBannerPost] = React.useState<News>();
 

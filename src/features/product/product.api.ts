@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Product } from '@/features/product/product.types';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getProduct: builder.query<Product, { id: string | number, role?: string }>({
-      query: ({ id }) => ({
+    getProduct: builder.query<Product, { id: string | number, role?: string, locale: string }>({
+      query: ({ id, locale }) => ({
         url: 'products',
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
@@ -19,7 +20,8 @@ export const productApi = createApi({
           'populate[fullSpecification][populate][details]': 'true',
           'populate[portfolio][populate][images]': 'true',
           'populate[faqs]': 'true',
-          'filters[id][$eq]': id,
+          'filters[slug][$eq]': id,
+          'locale': strapiLanguageAdapter(locale)
         }
       }),
       transformResponse: (response: { data: any[] },  meta, arg) => {

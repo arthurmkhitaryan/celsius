@@ -9,12 +9,12 @@ import { useGetCategoryByIdQuery } from '@/features/categories';
 import { useParams, useRouter } from 'next/navigation';
 
 const Category = ({ params }: { params: { categoryId: number } }) => {
-  const { data } = useGetCategoryByIdQuery({ categoryId: params.categoryId });
+  const { locale } = useParams();
+  const { data } = useGetCategoryByIdQuery({ categoryId: params.categoryId, locale: locale as string });
 
   if (!data) return null;
 
   const router = useRouter();
-  const { locale } = useParams();
 
   const handleRedirect = (id: number): void => {
     router.push(`/${locale}/products/${id}`);

@@ -74,7 +74,7 @@ function Header({ user }: any) {
 
         {isTablet ? (
           <S.HamburgerWrapper>
-            <Language />
+            <Language locale={locale as string} />
             <Image src={BasketLogo} alt="Basket Logo" priority />
             {!menuVisible ? <Image
               src={HamburgerIcon}
@@ -92,7 +92,7 @@ function Header({ user }: any) {
           </S.HamburgerWrapper>
         ) : (
           <S.HeaderRightSide>
-            <Language />
+            <Language locale={locale as string} />
             <Button btnStyle="bordered" px={32} py={16} width={208}>
               {'Business Partner >'}
             </Button>

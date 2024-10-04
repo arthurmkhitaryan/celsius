@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 
 interface Product {
   id: number;
@@ -13,15 +14,15 @@ export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getProducts: builder.query<Product[], { limit?: number; excludeId?: number | string, productTypes?: string[], role?: string }>({
-      query: ({ limit, excludeId, productTypes }) => {
+    getProducts: builder.query<Product[], { locale: string, limit?: number; excludeId?: number | string, productTypes?: string[], role?: string }>({
+      query: ({ limit, excludeId, productTypes, locale }) => {
         const params = new URLSearchParams();
         if (limit) {
           params.append('limit', limit.toString());
           params.append('pagination[start]', "0");
         }
         if (excludeId) {
-          params.append('filters[id][$ne]', excludeId.toString());
+          params.append('filters[slug][$ne]', excludeId.toString());
         }
 
         if (productTypes && productTypes.length) {
@@ -42,6 +43,7 @@ export const productsApi = createApi({
             'populate[fullSpecification][populate][details]': 'true',
             'populate[portfolio][populate][images]': 'true',
             'populate[faqs]': 'true',
+            'locale': strapiLanguageAdapter(locale),
             ...params,
           }
         };

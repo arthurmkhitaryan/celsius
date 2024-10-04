@@ -1,14 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 
 export const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL }),
   endpoints: (builder) => ({
-    getCategoryById: builder.query<Categories | null, { categoryId: string | number }>({
-      query: ({ categoryId }) => {
+    getCategoryById: builder.query<Categories | null, { categoryId: string | number, locale: string }>({
+      query: ({ categoryId, locale }) => {
         return {
-          url: `categories?populate[image]=*&populate[icon]=*&populate[products][populate][images]=*&filters[id][$eq]=${categoryId}`,
+          url: `categories?populate[image]=*&populate[icon]=*&populate[products][populate][images]=*&filters[slug][$eq]=${categoryId}&locale=${strapiLanguageAdapter(locale)}`,
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
           },
