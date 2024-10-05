@@ -6,20 +6,14 @@ import { useGetNewsQuery } from '@/features/newsroom/newsroom.api';
 import MainLayout from '@/components/Layout';
 
 // styles & images
-import * as S from './page.styled';
+import * as S from './NewsRoomItem.styled';
 import { getImageUrl } from '@/utils/getImageFullUrl';
-import { useGetNewsCategoriesQuery } from '@/features/newsCategories/newsCategories.api';
-import ProductList from '@/components/ProductList';
 import { useParams } from 'next/navigation';
-import NewsroomItem from '@/components/NewsRoomItem';
-import Pagination from '@/components/Pagination';
-import { PaginationWrapper } from '@/components/Pagination/Pagination.styled';
 
-export default function Newsroom() {
+export default function NewsroomItem() {
   const { locale } = useParams();
   const t = useTranslations('Newsroom');
   const { data, isLoading } = useGetNewsQuery({ locale: locale as string });
-  const { data: categories, isLoading: isLoadingCategories } = useGetNewsCategoriesQuery();
   const [bannerPost, setBannerPost] = React.useState<News>();
 
   useEffect(() => {
@@ -41,25 +35,12 @@ export default function Newsroom() {
             <S.BannerDescription>
               {bannerPost?.smallDescription}
             </S.BannerDescription>
-            <S.PostAuthor>{bannerPost?.author} | 04.04.2024</S.PostAuthor>
             <S.ReadFullButtonWrapper>
+            <S.PostAuthor>{bannerPost?.author} | 04.04.2024</S.PostAuthor>
             <S.ReadFullButton>{t('read_full_story')} {">>"}</S.ReadFullButton>
           </S.ReadFullButtonWrapper>
           </S.BannerContent>
         </S.BannerWrapper>
-        <S.Tabs>
-          <S.Tab key={'all'}>All Topics</S.Tab>
-          {!isLoadingCategories && categories?.map((item) => (
-            <S.Tab key={item.id}>{item.name}</S.Tab>
-          ))}
-        </S.Tabs>
-        <NewsroomItem />
-        <NewsroomItem />
-        <NewsroomItem />
-        <S.PaginationWrapper>
-          <Pagination currentPage={1} onPageChange={() => {}} totalPages={15} />
-        </S.PaginationWrapper>
-        <ProductList />
       </MainLayout>
     </S.NewsroomWrapper>
   );

@@ -3,24 +3,21 @@
 import styled from 'styled-components';
 
 export const NewsroomWrapper = styled.div`
-  margin: 80px 0;
+  margin: 30px 0 10px 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const BannerWrapper = styled.div`
   display: flex;
   gap: 54px;
-  padding-bottom: 80px;
-  border-bottom: 2px solid #1F94D2;
+  padding-bottom: 50px;
+  border-bottom: 2px solid #DBE5EA;
   margin-bottom: 32px;
 `;
 
 export const BannerImage = styled.img`
-  max-width: 564px;
-  height: 420px;
+  max-width: 380px;
+  height: 228px;
   width: 100%;
   border-radius: 15px;
 `;
@@ -52,6 +49,9 @@ export const PostAuthor = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 30px;
+  display: flex;
+  align-items: end;
+  width: 100%;
 `;
 
 export const ReadFullButtonWrapper = styled.div`
@@ -93,8 +93,3 @@ export const Tab = styled.button`
     border-right: none;
   }
 `;
-
-export const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`
