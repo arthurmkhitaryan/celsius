@@ -12,7 +12,7 @@ import ProductList from '@/components/ProductList';
 import { useParams } from 'next/navigation';
 import { useGetNewsCategoriesQuery } from '@/features/newsCategories/newsCategories.api';
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 5;
 
 export default function Newsroom() {
   const { locale } = useParams();
