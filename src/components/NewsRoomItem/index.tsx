@@ -8,35 +8,36 @@ import MainLayout from '@/components/Layout';
 // styles & images
 import * as S from './NewsRoomItem.styled';
 import { getImageUrl } from '@/utils/getImageFullUrl';
-import { useParams } from 'next/navigation';
 
-export default function NewsroomItem() {
-  const { locale } = useParams();
+interface Props {
+    image: string;
+    title: string;
+    smallDescription: string;
+    author: string;
+    date: Date;
+}
+
+export default function NewsroomItem({ image, title, smallDescription, author, date }: Props) {
   const t = useTranslations('Newsroom');
-  const { data, isLoading } = useGetNewsQuery({ locale: locale as string });
-  const [bannerPost, setBannerPost] = React.useState<News>();
 
-  useEffect(() => {
-    if (data) { 
-      const bannerPost = data.find((post: News) => post.isBanner);
-      setBannerPost(bannerPost);
-    }
-  }, [data]);
-
-  if (isLoading) return;
+  const formattedDate = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(new Date(date)).replaceAll('/', '.');
   
   return (
     <S.NewsroomWrapper>
       <MainLayout>
         <S.BannerWrapper>
-          <S.BannerImage src={getImageUrl(bannerPost?.smallImage)} />
+          <S.BannerImage src={getImageUrl(image)} />
           <S.BannerContent>
-            <S.BannerTitle>{bannerPost?.title}</S.BannerTitle>
+            <S.BannerTitle>{title}</S.BannerTitle>
             <S.BannerDescription>
-              {bannerPost?.smallDescription}
+              {smallDescription}
             </S.BannerDescription>
             <S.ReadFullButtonWrapper>
-            <S.PostAuthor>{bannerPost?.author} | 04.04.2024</S.PostAuthor>
+            <S.PostAuthor>{author} | {formattedDate}</S.PostAuthor>
             <S.ReadFullButton>{t('read_full_story')} {">>"}</S.ReadFullButton>
           </S.ReadFullButtonWrapper>
           </S.BannerContent>

@@ -77,12 +77,13 @@ export const Tabs = styled.div`
   display: flex;
 `;
 
-export const Tab = styled.button`
+export const Tab = styled.button<{ active: boolean }>`
   color: #282828;
   background: transparent;
   padding: 0px 15px;
   border-right: 1px solid #DBE5EA;
   font-size: 18px;
+  color: ${props => (props.active ? '#0044CC' : '#282828')};
 
   &:first-child {
     padding: initial;

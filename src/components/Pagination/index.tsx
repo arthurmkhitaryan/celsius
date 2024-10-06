@@ -1,11 +1,11 @@
-'use client'
+'use client';
 import React from 'react';
 import * as S from './Pagination.styled';
 
 interface IProps {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
 }
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
@@ -15,44 +15,36 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
     }
   };
 
-  return (
-    <S.PaginationWrapper>
-      <S.PageLink onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
-        &laquo; Previous
-      </S.PageLink>
+  const renderPageNumbers = () => {
+    const pageLinks = [];
 
-      <S.PageLink
-        key={1}
-        active={currentPage === 1}
-        onClick={() => handleClick(1)}
-      >
+    pageLinks.push(
+      <S.PageLink key={1} active={currentPage === 1} onClick={() => handleClick(1)}>
         1
       </S.PageLink>
+    );
 
-      {totalPages >= 2 && (
-        <S.PageLink
-          key={2}
-          active={currentPage === 2}
-          onClick={() => handleClick(2)}
-        >
-          2
+    if (currentPage > 3) {
+      pageLinks.push(<S.Ellipsis key="startEllipsis">...</S.Ellipsis>);
+    }
+
+    const startPage = Math.max(2, currentPage - 2);
+    const endPage = Math.min(totalPages - 1, currentPage + 2);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageLinks.push(
+        <S.PageLink key={i} active={currentPage === i} onClick={() => handleClick(i)}>
+          {i}
         </S.PageLink>
-      )}
-      {totalPages >= 3 && (
-        <S.PageLink
-          key={3}
-          active={currentPage === 3}
-          onClick={() => handleClick(3)}
-        >
-          3
-        </S.PageLink>
-      )}
+      );
+    }
 
-      {totalPages > 3 && currentPage < totalPages - 1 && (
-        <S.Ellipsis key="ellipsis">...</S.Ellipsis>
-      )}
+    if (currentPage < totalPages - 2) {
+      pageLinks.push(<S.Ellipsis key="endEllipsis">...</S.Ellipsis>);
+    }
 
-      {totalPages > 3 && (
+    if (totalPages > 1) {
+      pageLinks.push(
         <S.PageLink
           key={totalPages}
           active={currentPage === totalPages}
@@ -60,8 +52,18 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
         >
           {totalPages}
         </S.PageLink>
-      )}
+      );
+    }
 
+    return pageLinks;
+  };
+
+  return (
+    <S.PaginationWrapper>
+      <S.PageLink onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
+        &laquo; Previous
+      </S.PageLink>
+      {renderPageNumbers()}
       <S.PageLink onClick={() => handleClick(currentPage + 1)} disabled={currentPage === totalPages}>
         Next &raquo;
       </S.PageLink>

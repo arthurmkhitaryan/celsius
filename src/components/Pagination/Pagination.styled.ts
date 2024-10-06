@@ -11,7 +11,7 @@ export const PageLink = styled.a<{ active?: boolean, disabled?: boolean }>`
     color: #969696;
   }
 
-  color: ${props => (props.active ? 'blue' : 'black')};
+  color: ${props => (props.active ? '#0044CC' : '#282828')};
   margin: 0 8px;
   cursor: pointer;
   text-decoration: none;

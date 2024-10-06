@@ -8,6 +8,7 @@ interface News {
   largeImage: any;
   content: string;
   category: NewsCategory;
+  createdAt: Date;
 }
 
 interface NewsCategory {

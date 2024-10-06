@@ -1,3 +1,4 @@
+import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const newsCategoriesApi = createApi({
@@ -6,9 +7,9 @@ export const newsCategoriesApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL,
   }),
   endpoints: (builder) => ({
-    getNewsCategories: builder.query<NewsCategory[], void>({
-      query: () => ({
-        url: '/newsroom-categories?populate*',
+    getNewsCategories: builder.query<NewsCategory[], { locale: string }>({
+      query: ({ locale }) => ({
+        url: `/newsroom-categories?populate*&locale=${strapiLanguageAdapter(locale)}`,
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
