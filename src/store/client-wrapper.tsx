@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/store/hooks';
 import { setUser } from '@/features';
+import { useClientMediaQuery } from './useClientMediaQuery';
 
 export default function ClientWrapper({
   user,
@@ -12,6 +13,8 @@ export default function ClientWrapper({
   children: React.ReactNode;
 }) {
   const dispatch = useAppDispatch();
+  const isTablet = useClientMediaQuery('(max-width: 768px)');
+  const [paddingTop, setPaddingTop] = useState(0); 
 
   useEffect(() => {
     if (user) {
@@ -19,5 +22,13 @@ export default function ClientWrapper({
     }
   }, [user, dispatch]);
 
-  return <>{children}</>;
+  useEffect(() => {
+    setPaddingTop(isTablet ? 50 : 0);
+  }, [isTablet]);
+
+  return (
+    <div style={{ paddingTop: `${paddingTop}px` }}>
+      {children}
+    </div>
+  );
 }

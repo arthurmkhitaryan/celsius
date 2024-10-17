@@ -28,9 +28,8 @@ function Calculator() {
             {`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of.`}
           </S.CalculatorDescription>
           <S.CalculatorButtonWrapper>
-            <Button onClick={handleToggleCalculator}>
-              Get started
-              <ArrowRight size={18} />
+            <Button onClick={handleToggleCalculator} style={{ maxWidth: '165px' }}>
+              Get started <ArrowRight size={12} />
             </Button>
           </S.CalculatorButtonWrapper>
         </S.CalculatorContent>

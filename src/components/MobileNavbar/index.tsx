@@ -7,7 +7,11 @@ import * as S from './MobileNavbar.styled';
 import { useLocale } from 'use-intl';
 import { ChevronRight } from 'lucide-react';
 
-function MobileNavbar() {
+interface IProps {
+  changeToggleMenu: () => void;
+}
+
+function MobileNavbar({ changeToggleMenu }: IProps) {
   const locale = useLocale();
   const pathname = usePathname();
 
@@ -28,31 +32,31 @@ function MobileNavbar() {
       <S.Navbar>
         <S.NavList>
           <S.NavListItem>
-            <Link href={getLocalizedPath('/products')} passHref>
+            <Link onClick={changeToggleMenu} href={getLocalizedPath('/products')} passHref>
               Products
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link href={getLocalizedPath('/careers')} passHref>
+            <Link onClick={changeToggleMenu} href={getLocalizedPath('/careers')} passHref>
               Career
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link href={getLocalizedPath('/newsroom')} passHref>
+            <Link onClick={changeToggleMenu} href={getLocalizedPath('/newsroom')} passHref>
               Newsroom
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link href={getLocalizedPath('/about-us')} passHref>
+            <Link onClick={changeToggleMenu} href={getLocalizedPath('/about-us')} passHref>
               About Us
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link href={getLocalizedPath('/contact-us')} passHref>
+            <Link onClick={changeToggleMenu} href={getLocalizedPath('/contact-us')} passHref>
               Contact Us
             </Link>
             <ChevronRight size={18} />

@@ -34,15 +34,17 @@ export const Slide = styled.div<{
 `;
 
 export const SlideTitle = styled.h2`
-    color: white;
+    color: #D9D9D9;
     font-size: 48px;
     font-weight: 600;
 `;
 
 export const SlideContent = styled.div`
-    color: white;
-    line-height: 38px;
+    color: #D9D9D9;
+    line-height: 30px;
     margin: 20px 0 40px 0;
+    font-weight: 700;
+    font-size: 18px;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -59,6 +61,7 @@ export const CalculatorButton = styled.button`
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 20px;
 `;
 
 export const CustomNavigationButton = styled.div<{

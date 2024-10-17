@@ -27,7 +27,7 @@ function Careers() {
           <S.CareersButtonWrapper>
             <Button>
               Join Our Team
-              <ArrowRight size={18} />
+              <ArrowRight size={12} />
             </Button>
           </S.CareersButtonWrapper>
         </S.CareersSectionContent>

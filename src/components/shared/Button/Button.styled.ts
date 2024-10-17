@@ -20,7 +20,6 @@ export const Button = styled.button<{
   outline: none;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
-  max-width: 100%;
   max-height: 100%;
   padding: ${({ $px, $py }) => `${$py}px ${$px}px`};
   ${typographyPreset1};
@@ -28,6 +27,7 @@ export const Button = styled.button<{
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 185px;
 
   &:hover {
     background-color: ${({ $btnStyle, theme }) =>

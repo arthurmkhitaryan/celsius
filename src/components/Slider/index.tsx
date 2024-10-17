@@ -78,7 +78,7 @@ function Slider() {
           <S.SlideContent>{slide.content}</S.SlideContent>
           <S.ButtonWrapper>
             <S.CalculatorButton>
-              Go to calculator <ArrowRight size={18} />
+              Go to calculator <ArrowRight size={12} />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

@@ -36,6 +36,7 @@ import VentilationAnimateIconTwo from '@/public/images/home/services/icons-mobil
 import ShopMain from '@/public/images/home/services/4.jpg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons-mobile/shop-1.svg';
 import { useParams, useRouter } from 'next/navigation';
+import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
 
 const services = [
     {
@@ -94,7 +95,7 @@ const services = [
       title: 'Shop',
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum",
       image: ShopMain,
-      icon: ShopAnimateIconOne,
+      icon: ShopIcon,
       animateIcons: [
         {
             icon: ShopAnimateIconOne,

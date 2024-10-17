@@ -96,10 +96,6 @@ export const CareersButtonWrapper = styled.div`
     &:hover {
       background: #e9e9e9;
     }
-
-    svg {
-      fill: ${({ theme }) => theme.palette.common.mainBlue};
-    }
   }
 
   @media (max-width: 768px) {

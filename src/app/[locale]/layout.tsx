@@ -41,8 +41,11 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <GlobalStyles />
-            <Header user={user} />
-            <Navbar />
+            <div style={{ position: 'fixed', width: '100%', zIndex: 999, background: '#fff', top: 0 }}>
+              <Header user={user} />
+              <Navbar />
+            </div>
+            <div style={{ paddingTop: '150px' }} />
             <ClientWrapper user={user}>
               {children}
             </ClientWrapper>

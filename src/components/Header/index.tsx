@@ -131,7 +131,7 @@ function Header({ user }: any) {
 
         {isTablet && menuVisible && (
           <S.MobileMenu>
-            {isFilterMenuVisible ? <Filter onFilterChange={handleChangeCategories} /> : <MobileNavbar />}
+            {isFilterMenuVisible ? <Filter onFilterChange={handleChangeCategories} /> : <MobileNavbar changeToggleMenu={toggleMenu} />}
           </S.MobileMenu>
         )}
       </S.MainWrapper>
