@@ -171,7 +171,7 @@ const renderTabContent = () => {
 
     const renderProducts = () => {
     if (!products?.length) return;
-        return products.map((product, index) => {
+        return products.map(product => {
             return (
               <ProductItem product={product} />
             );
@@ -194,8 +194,8 @@ const renderTabContent = () => {
                               <div className="product_title">{data.name}</div>
                               <div className="product_price">{dotingPrice(data.price)}</div>
                               <span className="devider"></span>
-                              <div className="product_code">MSFAAU-12HRFN8-QRD6GW</div>
-                              <div className="product_fullName">Breezeless technology</div>
+                              <div className="product_code">{data.code}</div>
+                              <div className="product_fullName">{data.mainProductName}</div>
                               <div className="product_desc">{data.description}
                               </div>
                               <div className="product_power">

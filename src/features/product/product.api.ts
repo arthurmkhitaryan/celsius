@@ -40,6 +40,8 @@ export const productApi = createApi({
           },
           portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
           faqs: item.attributes.faqs,
+          code: item.attributes.code,
+          mainProductName: item.attributes.mainProductName
         }))[0];
       },
     }),

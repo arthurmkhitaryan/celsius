@@ -28,6 +28,8 @@ export interface Product {
   fullSpecification: FullSpecification;
   portfolio: string[];
   faqs: Faqs[];
+  code: string;
+  mainProductName: string;
 }
 
 export interface ProductState {

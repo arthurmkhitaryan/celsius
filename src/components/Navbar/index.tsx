@@ -1,16 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as S from './Navbar.styled';
 import { useLocale } from 'use-intl';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import ArrowDown from '@/public/images/arrow-down.svg';
+import Image from 'next/image';
+import ProductHover from './ProductHover';
 
 function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+  const [isHovered, setIsHovered] = useState(false);
 
   if (isTablet) return null;
 
@@ -27,14 +31,23 @@ function Navbar() {
   };
 
   return (
-    <S.NavbarWrapper>
+    <>
+    <S.NavbarWrapper onMouseLeave={() => setIsHovered(false)}>
       <S.Navbar>
         <S.NavList>
-          <S.NavListItem>
-            <Link href={getLocalizedPath('/products')} passHref>
+          <S.NavListItem
+            onMouseEnter={() => setIsHovered(true)}
+          >
+            <Link
+              style={{ display: 'flex', gap: '5px', alignItems: 'center' }}
+              href={getLocalizedPath('/products')}
+              passHref
+            >
               Products
+              <Image alt="arrow-down" src={ArrowDown} width={8} height={4} />
             </Link>
           </S.NavListItem>
+
           <S.NavListItem>
             <Link href={getLocalizedPath('/careers')} passHref>
               Career
@@ -58,6 +71,16 @@ function Navbar() {
         </S.NavList>
       </S.Navbar>
     </S.NavbarWrapper>
+
+    {isHovered && (
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <ProductHover />
+        </div>
+      )}
+    </>
   );
 }
 
