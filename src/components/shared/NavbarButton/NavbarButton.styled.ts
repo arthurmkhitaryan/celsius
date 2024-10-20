@@ -23,17 +23,31 @@ export const Button = styled.button<{
   max-height: 100%;
   padding: ${({ $px, $py }) => `${$py}px ${$px}px`};
   ${typographyPreset1};
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 185px;
-  border: 1px solid white !important;
+  max-width: 210px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+
+  img {
+    position: relative;
+    left: 10px;
+  }
 
   &:hover {
-    background-color: transparent;
-    color: white;
-    img {
-       filter: brightness(0) invert(1) !important;
-    }
+    top: -2px;
+      img {
+        left: 12px;
+      }
+
+    ${({ $btnStyle }) =>
+      $btnStyle === 'filled' &&
+      `
+      background-color: #0044ccf5;
+      border: 2px solid #0044ccf5;
+    `}
   }
 `;

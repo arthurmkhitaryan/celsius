@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import * as S from './Slider.styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { ArrowRight } from 'lucide-react';
+import arrowRightMain from '@/public/images/arrow-right.svg';
 import slider from '@/public/images/home/slider/slider.png';
 import arrowLeft from '@/public/images/arrow-l.svg';
 import arrowRight from '@/public/images/arrow-r.svg';
+import Image from 'next/image';
+import Button from '../shared/Button';
 
 const slides = [
   {
@@ -78,7 +80,7 @@ function Slider() {
           <S.SlideContent>{slide.content}</S.SlideContent>
           <S.ButtonWrapper>
             <S.CalculatorButton>
-              Go to calculator <ArrowRight size={12} />
+              Go to calculator <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

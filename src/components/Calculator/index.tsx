@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 
 // components
-import { ArrowRight } from 'lucide-react';
+import arrowRightMain from '@/public/images/arrow-right.svg';
 import Button from '@/components/shared/Button';
 import CalculatorForm from '@/components/Calculator/forms/CalculatorForm';
 
 // styles
 import * as S from './Calculator.styled';
+import Image from 'next/image';
 
 function Calculator() {
   const [toggleCalculator, setToggleCalculator] = useState<boolean>(false);
@@ -29,7 +30,7 @@ function Calculator() {
           </S.CalculatorDescription>
           <S.CalculatorButtonWrapper>
             <Button onClick={handleToggleCalculator} style={{ maxWidth: '165px' }}>
-              Get started <ArrowRight size={12} />
+              Get started <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>
           </S.CalculatorButtonWrapper>
         </S.CalculatorContent>

@@ -10,7 +10,7 @@ import Logo from '@/public/images/logo.svg';
 import BasketLogo from '@/public/images/basket.svg';
 import HamburgerIcon from '@/public/images/hamburger-icon.svg';
 import CrossIcon from '@/public/images/cross-icon.svg';
-import { ArrowRight } from 'lucide-react';
+import arrowRight from '@/public/images/arrow-right.svg';
 
 // components
 import Button from '@/components/shared/Button';
@@ -23,6 +23,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { closeFilterMenu } from '@/features/header/header.slice';
 import Filter from '../Products/Filter';
 import { setFilters } from '@/features/filters/filters.slice';
+import NavbarButton from '../shared/NavbarButton';
 
 function Header({ user }: any) {
   const isFilterMenuVisible = useAppSelector((state: any) => state.header.isFilterMenuVisible);
@@ -93,9 +94,10 @@ function Header({ user }: any) {
         ) : (
           <S.HeaderRightSide>
             <Language locale={locale as string} />
-            <Button btnStyle="bordered" px={32} py={16} width={208}>
-              {'Business Partner >'}
-            </Button>
+            <NavbarButton btnStyle="bordered" px={32} py={16} width={208}>
+              Become a partner
+              <Image src={arrowRight} width={12} alt="arrow right" />
+            </NavbarButton>
             <S.SignInWrapper>
               {user ? (
                 <Button
@@ -108,7 +110,7 @@ function Header({ user }: any) {
                   {`${user?.firstName} ${user?.lastName}`}
                 </Button>
               ) : (
-                <Button
+                <NavbarButton
                   className="sign-in"
                   btnStyle="filled"
                   onClick={handleOpenLoginForm}
@@ -116,8 +118,8 @@ function Header({ user }: any) {
                   py={16}
                   width={110}
                 >
-                  {'Sign In'}
-                </Button>
+                  Sign In
+                </NavbarButton>
               )}
 
               <LoginForm
@@ -139,8 +141,8 @@ function Header({ user }: any) {
         <S.TabletButtonWrapper>
           <S.FullWidthButton>
             <Button btnStyle="bordered" px={32} py={16}>
-              {'Become a partner'}
-              <ArrowRight size={16} fontWeight={600} />
+              Become a partner
+              <Image src={arrowRight} width={16} alt="arrow right" />
             </Button>
           </S.FullWidthButton>
           <S.FullWidthButton>

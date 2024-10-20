@@ -87,10 +87,6 @@ export const CalculatorButtonWrapper = styled.div`
     padding: 16px 32px;
     gap: 10px;
     border: none;
-
-    &:hover {
-      background: #e9e9e9;
-    }
   }
 
   @media (max-width: 768px) {

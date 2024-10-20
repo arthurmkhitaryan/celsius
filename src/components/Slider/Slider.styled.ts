@@ -82,8 +82,4 @@ export const CustomNavigationButton = styled.div<{
     cursor: pointer;
     transform: translateY(-50%);
     ${(props) => (props.$left ? 'left: 50px;' : 'right: 50px;')}
-
-    &:hover {
-        transition: all 0.2s ease-in;
-    }
 `;

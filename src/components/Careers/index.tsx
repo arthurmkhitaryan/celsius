@@ -2,13 +2,14 @@
 
 import React from 'react';
 import Button from '@/components/shared/Button';
-import { ArrowRight } from 'lucide-react';
+import arrowRightMain from '@/public/images/arrow-right.svg';
 
 //styles & images
 import * as S from './Careers.styled';
 import BackgroundImage from '@/public/images/home/careers/bg.png';
 import PuzzleMobile from '@/public/images/career/puzzle-mobile.png';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import Image from 'next/image';
 
 function Careers() {
   const isTablet = useClientMediaQuery('(max-width: 768px)');
@@ -27,7 +28,7 @@ function Careers() {
           <S.CareersButtonWrapper>
             <Button>
               Join Our Team
-              <ArrowRight size={12} />
+              <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>
           </S.CareersButtonWrapper>
         </S.CareersSectionContent>
