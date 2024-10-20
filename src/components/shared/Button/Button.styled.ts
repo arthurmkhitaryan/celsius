@@ -10,7 +10,7 @@ export const Button = styled.button<{
   $px?: number;
 }>`
   position: relative;
-  border: ${({ theme }) => `2px solid ${theme.palette.common.mainBlue}`};
+  border: ${({ theme }) => `1px solid ${theme.palette.common.mainBlue}`};
   background-color: ${({ $btnStyle, theme }) =>
     $btnStyle === 'bordered' ? 'transparent' : theme.palette.common.mainBlue};
   color: ${({ $btnStyle, theme }) =>
@@ -31,8 +31,13 @@ export const Button = styled.button<{
   &:hover {
     background-color: transparent;
     color: white;
+     border: 1px solid white;
     img {
        filter: brightness(0) invert(1) !important;
     }
+  }
+
+  @media (max-width: 768px) {
+    pointer-events: none;
   }
 `;
