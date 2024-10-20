@@ -39,13 +39,14 @@ export default function LoginForm({
       dispatch(setToken(response.access_token));
 
       setCookie('access_token', response.access_token, {
-        maxAge: rememberMe ? 7 * 24 * 60 * 60 : undefined, // 7 days if rememberMe, otherwise session cookie
+        maxAge: rememberMe ? 7 * 24 * 60 * 60 : undefined,
         path: '/',
-        secure: process.env.NODE_ENV === 'production', // Ensure it's only secure in production
         sameSite: 'strict',
       });
 
-      router.push('/profile'); // Redirect after login
+      onChangeVisibility(false);
+
+      router.push('/profile');
     } catch (error) {
       console.error(error);
     }

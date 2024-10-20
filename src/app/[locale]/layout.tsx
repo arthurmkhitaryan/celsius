@@ -42,7 +42,7 @@ export default async function RootLayout({
           <Providers>
             <GlobalStyles />
             <div style={{ position: 'fixed', width: '100%', zIndex: 999, background: '#fff', top: 0 }}>
-              <Header user={user} />
+              <Header />
               <Navbar />
             </div>
             <div style={{ paddingTop: '150px' }} />

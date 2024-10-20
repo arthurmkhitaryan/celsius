@@ -25,8 +25,9 @@ import Filter from '../Products/Filter';
 import { setFilters } from '@/features/filters/filters.slice';
 import NavbarButton from '../shared/NavbarButton';
 
-function Header({ user }: any) {
+function Header() {
   const isFilterMenuVisible = useAppSelector((state: any) => state.header.isFilterMenuVisible);
+  const user = useAppSelector((state: any) => state.auth.user) as any;
   const [formVisible, setFormVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const router = useRouter();
@@ -100,7 +101,7 @@ function Header({ user }: any) {
             </NavbarButton>
             <S.SignInWrapper>
               {user ? (
-                <Button
+                <NavbarButton
                   className="sign-in"
                   btnStyle="filled"
                   onClick={handleRedirectProfilePage}
@@ -108,7 +109,7 @@ function Header({ user }: any) {
                   py={16}
                 >
                   {`${user?.firstName} ${user?.lastName}`}
-                </Button>
+                </NavbarButton>
               ) : (
                 <NavbarButton
                   className="sign-in"
