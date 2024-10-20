@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as S from './MobileNavbar.styled';
 import { useLocale } from 'use-intl';
 import { ChevronRight } from 'lucide-react';
+import ProductsNavbar from './ProductsNavbar';
 
 interface IProps {
   changeToggleMenu: () => void;
@@ -14,6 +15,12 @@ interface IProps {
 function MobileNavbar({ changeToggleMenu }: IProps) {
   const locale = useLocale();
   const pathname = usePathname();
+
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+
+  const toggleProducts = () => {
+    setIsProductsOpen((prev) => !prev);
+  };
 
   const getLocalizedPath = (path: string) => {
     if (pathname === '/') {
@@ -31,12 +38,17 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
     <S.NavbarWrapper>
       <S.Navbar>
         <S.NavList>
-          <S.NavListItem>
-            <Link onClick={changeToggleMenu} href={getLocalizedPath('/products')} passHref>
+          <S.NavListItem onClick={toggleProducts}>
+            <Link href="">
               Products
             </Link>
-            <ChevronRight size={18} />
+            <S.Chevron isOpen={isProductsOpen}>
+              <ChevronRight size={18} />
+            </S.Chevron>
           </S.NavListItem>
+
+          {isProductsOpen && <ProductsNavbar />}
+
           <S.NavListItem>
             <Link onClick={changeToggleMenu} href={getLocalizedPath('/careers')} passHref>
               Career

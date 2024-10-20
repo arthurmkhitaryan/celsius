@@ -27,7 +27,6 @@ export const Button = styled.button<{
   align-items: center;
   justify-content: center;
   max-width: 185px;
-  border: 1px solid white !important;
 
   &:hover {
     background-color: transparent;

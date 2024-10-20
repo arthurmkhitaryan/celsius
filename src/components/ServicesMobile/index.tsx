@@ -36,7 +36,7 @@ import VentilationAnimateIconTwo from '@/public/images/home/services/icons-mobil
 import ShopMain from '@/public/images/home/services/4.jpg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons-mobile/shop-1.svg';
 import { useParams, useRouter } from 'next/navigation';
-import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
+import ShopIcon from '@/public/images/home/services/icons-mobile/shop-icon-blue.svg';
 
 const services = [
     {
@@ -106,7 +106,7 @@ const services = [
 ];
 
 const ServicesMobile = () => {
-  const [activeService, setActiveService] = useState(1); // Default to first service
+  const [activeService, setActiveService] = useState(1);
   const router = useRouter();
   const { locale } = useParams();
 
