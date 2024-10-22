@@ -11,11 +11,18 @@ import FacebookLogo from '@/public/images/footer/facebook-logo.svg';
 import InstagramLogo from '@/public/images/footer/instagram.svg';
 import LinkedinLogo from '@/public/images/footer/linkedin-logo.svg';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import { useParams, useRouter } from 'next/navigation';
 
 // components
 
 function Footer() {
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+  const { locale } = useParams();
+  const router = useRouter();
+
+  const handleRedirect = (route: string) => {
+    router.push(`/${locale}/${route}`)
+  }
 
   return (
     <S.FooterWrapper>
@@ -116,19 +123,19 @@ function Footer() {
             <S.FooterSection className="middle">
               <S.FooterSectionContent>
                 <S.FooterSectionTitle>Categories</S.FooterSectionTitle>
-                <S.FooterSectionItem>Heating & Cooling</S.FooterSectionItem>
-                <S.FooterSectionItem>HVAC</S.FooterSectionItem>
-                <S.FooterSectionItem>Ventilation</S.FooterSectionItem>
-                <S.FooterSectionItem>Shop</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('category/1')}>Heating & Cooling</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('category/2')}>HVAC</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('category/3')}>Ventilation</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('category/4')}>Shop</S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>
             <S.FooterSection className="last">
               <S.FooterSectionContent>
                 <S.FooterSectionTitle>Useful links</S.FooterSectionTitle>
-                <S.FooterSectionItem>Career</S.FooterSectionItem>
-                <S.FooterSectionItem>About Us</S.FooterSectionItem>
-                <S.FooterSectionItem>Newsroom</S.FooterSectionItem>
-                <S.FooterSectionItem>Contac Us</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('careers')}>Career</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('about-us')}>About Us</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('newsroom')}>Newsroom</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('contact-us')}>Contac Us</S.FooterSectionItem>
                 <S.FooterSectionItem>Calculator</S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>

@@ -10,9 +10,17 @@ import BackgroundImage from '@/public/images/home/careers/bg.png';
 import PuzzleMobile from '@/public/images/career/puzzle-mobile.png';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import Image from 'next/image';
+import { useParams, useRouter } from 'next/navigation';
 
 function Careers() {
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+
+  const { locale } = useParams();
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push(`/${locale}/careers`)
+  }
 
   return (
     <S.CareersSectionWrapper $backgroundImage={isTablet ? PuzzleMobile.src : BackgroundImage.src}>
@@ -26,7 +34,7 @@ function Careers() {
             }
           </S.CareersDescription>
           <S.CareersButtonWrapper>
-            <Button>
+            <Button onClick={handleRedirect}>
               Join Our Team
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>

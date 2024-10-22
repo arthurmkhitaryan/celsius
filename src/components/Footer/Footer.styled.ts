@@ -202,4 +202,5 @@ export const FooterSectionItem = styled.div`
   align-items: center;
   gap: 15px;
   color: #d9d9d9;
+  cursor: pointer;
 `;

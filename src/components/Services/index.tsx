@@ -71,13 +71,8 @@ function Services() {
             height:serviceSingleShow ? "auto" : 0,
             visibility: serviceSingleShow? "visible": "hidden",
             transition:"all 0.5s ease-in",
-          }}><ServiceSingle  /></div>
-          {!serviceSingleShow && <div style={{
-            width: serviceSingleShow ? "0" : "auto",
-            height:serviceSingleShow ? "0" : "auto",
-            visibility: serviceSingleShow? "hidden": "visible",
-            transition:"all 0.5s ease-in"
-          }}>                      <S.ServiceIconWrapper>
+          }}><ServiceSingle /></div>
+          {!serviceSingleShow && <div><S.ServiceIconWrapper>
           <Image className="icon-wrapper" src={IconWrapper} alt={'Icon Wrapper'} />
           <Image className="animate-hvac-icon-one" src={HvacAnimateIconOne} alt="icon" />
           <Image className="animate-hvac-icon-two" src={HvacAnimateIconTwo} alt="icon" />
