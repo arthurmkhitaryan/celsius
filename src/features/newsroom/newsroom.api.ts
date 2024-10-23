@@ -38,7 +38,20 @@ export const newsroomApi = createApi({
         };
       },
     }),
+
+    getNewsById: builder.query<News, { id: number; locale: string }>({
+      query: ({ id, locale }) => ({
+        url: `/news/${id}?populate=smallImage&populate=largeImage&populate=category&locale=${strapiLanguageAdapter(locale)}`,
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+        },
+      }),
+      transformResponse: (response: { data: any }) => ({
+        id: response.data.id,
+        ...response.data.attributes,
+      }),
+    }),
   }),
 });
 
-export const { useGetNewsQuery, useGetNewsWithBannerQuery } = newsroomApi;
+export const { useGetNewsQuery, useGetNewsWithBannerQuery, useGetNewsByIdQuery } = newsroomApi;

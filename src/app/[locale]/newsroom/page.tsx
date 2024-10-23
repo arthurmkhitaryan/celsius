@@ -67,7 +67,7 @@ export default function Newsroom() {
           ))}
         </S.Tabs>
         {newsData?.data?.map(itm => (
-          <NewsroomItem key={itm.id} author={itm.author} image={itm.smallImage} smallDescription={itm.smallDescription} title={itm.title} date={itm.createdAt} />
+          <NewsroomItem key={itm.id} id={itm.id} author={itm.author} image={itm.smallImage} smallDescription={itm.smallDescription} title={itm.title} date={itm.createdAt} />
         ))}
         <S.PaginationWrapper>
           <Pagination currentPage={currentPage} onPageChange={handlePageChange} totalPages={Math.ceil((newsData?.totalCount || 0) / PAGE_SIZE)} />
