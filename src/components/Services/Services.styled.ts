@@ -3,7 +3,7 @@ import { typographyPreset3 } from '@/styles';
 
 export const ServicesWrapper = styled.div`
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
     margin: 72px 0 0;
     position: relative;
     max-width: 1140px;
