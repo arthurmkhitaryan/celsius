@@ -20,6 +20,7 @@ export const productApi = createApi({
           'populate[fullSpecification][populate][details]': 'true',
           'populate[portfolio][populate][images]': 'true',
           'populate[faqs]': 'true',
+          'populate[generalParams][populate][image]': 'true',
           'filters[slug][$eq]': id,
           'locale': strapiLanguageAdapter(locale)
         }
@@ -27,6 +28,7 @@ export const productApi = createApi({
       transformResponse: (response: { data: any[] },  meta, arg) => {
         const { role } = arg;
 
+        console.log(1223, response.data[0]);
         return response.data.map((item) => ({
           id: item.id,
           name: item.attributes.name,
@@ -41,7 +43,14 @@ export const productApi = createApi({
           portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
           faqs: item.attributes.faqs,
           code: item.attributes.code,
-          mainProductName: item.attributes.mainProductName
+          mainProductName: item.attributes.mainProductName,
+          params: item.attributes.params,
+          ...(item.attributes.generalParams && {
+            generalParams: item.attributes.generalParams.map((generalParam: any) => ({
+              title: generalParam.title,
+              image: getImageUrl(generalParam.image),
+            })),
+          }),
         }))[0];
       },
     }),

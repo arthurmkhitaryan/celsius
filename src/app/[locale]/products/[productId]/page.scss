@@ -129,10 +129,10 @@
         }
         &_activity {
            display: flex;
-           justify-content: space-between;
            flex-wrap: nowrap;
            text-align: center;
            margin: 20px 0 30px 0;
+           gap: 30px;
            .activity_name {
                 font-size: 14px;
                 font-weight: 400;

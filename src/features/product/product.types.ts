@@ -18,6 +18,12 @@ interface Faqs {
   value: string;
 }
 
+interface GeneralParam {
+  id: number;
+  title: string;
+  image: string;
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -30,6 +36,8 @@ export interface Product {
   faqs: Faqs[];
   code: string;
   mainProductName: string;
+  params: string;
+  generalParams: GeneralParam[];
 }
 
 export interface ProductState {

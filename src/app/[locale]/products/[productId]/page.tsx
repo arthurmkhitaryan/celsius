@@ -1,8 +1,6 @@
 "use client"
 
-import Image from "next/image";
 import React, { useRef, useState, useEffect } from "react";
-import ArrowWind from '@/public/images/product/arrow_wind.png';
 import '../../../../components/styles/main.scss';
 import './page.scss';
 import { tabs } from './mock';
@@ -199,33 +197,20 @@ const renderTabContent = () => {
                               <div className="product_desc">{data.description}
                               </div>
                               <div className="product_power">
-                                  12000(4500~14900) Btu/h
-                                  220-240V,1Ph,50Hz
-                                  940x193x325mm
-                                  16~23m2
+                                  {data.params}
                               </div>
                               <div className="product_activity">
-                                  <div className="product_active">
-                                      <Image
-                                        src={ArrowWind}
-                                        alt=""
-                                      />
-                                      <div className="activity_name">Long Dist</div>
-                                  </div>
-                                  <div className="product_active">
-                                      <Image
-                                        src={ArrowWind}
-                                        alt=""
-                                      />
-                                      <div className="activity_name">Long district dist. windblast</div>
-                                  </div>
-                                  <div className="product_active">
-                                      <Image
-                                        src={ArrowWind}
-                                        alt=""
-                                      />
-                                      <div className="activity_name">Long Dist</div>
-                                  </div>
+                                {(data.generalParams || []).map(param => {
+                                    return <div className="product_active">
+                                        <img
+                                        src={param.image}
+                                        alt="param image"
+                                        width={50}
+                                        height={50}
+                                        />
+                                    <div className="activity_name">{param.title}</div>
+                                </div>
+                                })}
                               </div>
                               <div className="product_counter">
                                   <button onClick={handleDecrement}>-</button>

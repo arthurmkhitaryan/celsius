@@ -8,6 +8,7 @@ interface Product {
   description: string;
   price: number;
   liter: number;
+  params: string;
 }
 
 export const productsApi = createApi({
@@ -65,6 +66,7 @@ export const productsApi = createApi({
           portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
           faqs: item.attributes.faqs,
           liter: item.attributes.liter,
+          params: item.attributes.params,
         }));
       },
     }),
