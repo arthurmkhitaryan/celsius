@@ -2,12 +2,12 @@
 
 import React, { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { useGetNewsQuery } from '@/features/newsroom/newsroom.api';
 import MainLayout from '@/components/Layout';
 
 // styles & images
 import * as S from './NewsRoomItem.styled';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     image: string;
@@ -15,10 +15,12 @@ interface Props {
     smallDescription: string;
     author: string;
     date: Date;
+    id: string | number;
 }
 
-export default function NewsroomItem({ image, title, smallDescription, author, date }: Props) {
+export default function NewsroomItem({ id, image, title, smallDescription, author, date }: Props) {
   const t = useTranslations('Newsroom');
+  const router = useRouter()
 
   const formattedDate = new Intl.DateTimeFormat('en-GB', {
     day: '2-digit',
@@ -38,7 +40,7 @@ export default function NewsroomItem({ image, title, smallDescription, author, d
             </S.BannerDescription>
             <S.ReadFullButtonWrapper>
             <S.PostAuthor>{author} | {formattedDate}</S.PostAuthor>
-            <S.ReadFullButton>{t('read_full_story')} {">>"}</S.ReadFullButton>
+            <S.ReadFullButton onClick={() => router.push(`/newsroom/${id}`)}>{t('read_full_story')} {">>"}</S.ReadFullButton>
           </S.ReadFullButtonWrapper>
           </S.BannerContent>
         </S.BannerWrapper>
