@@ -28,7 +28,7 @@ export const ContactsSections = styled.div`
     color: ${({ theme }) => theme.palette.common.mainBlue};
 
     &:hover {
-      background-color: ${({ theme }) => theme.palette.common.hoverBlueLight};
+      background-color: transperant;
     }
   }
 `;
