@@ -44,8 +44,13 @@ function Header() {
     setFormVisible(!formVisible);
   };
 
+  const handleBecomeAPartner = () => {
+    console.log({ mtav: true })
+    router.push('/contact-us')
+  }
+
   const handleRedirectProfilePage = () => {
-    router.push(`/${locale}/profile`);
+    router.push(`/profile`);
   };
 
   const toggleMenu = () => {
@@ -95,7 +100,7 @@ function Header() {
         ) : (
           <S.HeaderRightSide>
             <Language locale={locale as string} />
-            <NavbarButton btnStyle="bordered" px={32} py={16} width={208}>
+            <NavbarButton btnStyle="bordered" px={32} py={16} width={208} onClick={handleBecomeAPartner}>
               Become a partner
               <Image src={arrowRight} width={12} alt="arrow right" />
             </NavbarButton>
@@ -141,7 +146,7 @@ function Header() {
       {isTablet && (
         <S.TabletButtonWrapper>
           <S.FullWidthButton>
-            <Button btnStyle="bordered" px={32} py={16}>
+            <Button btnStyle="bordered" px={32} py={16} onClick={handleBecomeAPartner}>
               Become a partner
               <Image src={arrowRight} width={16} alt="arrow right" />
             </Button>

@@ -8,28 +8,32 @@ import slider from '@/public/images/home/slider/slider.png';
 import arrowLeft from '@/public/images/arrow-l.svg';
 import arrowRight from '@/public/images/arrow-r.svg';
 import Image from 'next/image';
-import Button from '../shared/Button';
+import { useRouter } from 'next/navigation';
 
 const slides = [
   {
+    link: '/category/1',
     backgroundPosition: '0% 0%',
     title: 'VRF Systems',
     content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
     translateX: 10,
   },
   {
+    link: '/category/2',
     backgroundPosition: '30% 0%',
     title: 'R290 M thermal',
     content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
     translateX: 40,
   },
   {
+    link: '/category/3',
     backgroundPosition: '63% 0%',
     title: 'Chiller',
     content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
     translateX: 40,
   },
   {
+    link: '/category/4',
     backgroundPosition: '100% 0%',
     title: 'BreezeleSS+',
     content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
@@ -38,13 +42,20 @@ const slides = [
 ];
 
 function Slider() {
+  const router = useRouter()
+  const [categoryLink, setCategoryLink] = useState<string>('/category/1');
   const [activeIndex, setActiveIndex] = useState(0);
   const [translateX, setTranslateX] = useState(slides[0].translateX);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
     setTranslateX(slides[swiper.activeIndex].translateX);
+    setCategoryLink(slides[swiper.activeIndex].link)
   };
+
+  const handleNavigate = () => {
+    router.push(categoryLink)
+  }
 
   return (
     <S.SliderWrapper>
@@ -79,8 +90,8 @@ function Slider() {
           <S.SlideTitle>{slide.title}</S.SlideTitle>
           <S.SlideContent>{slide.content}</S.SlideContent>
           <S.ButtonWrapper>
-            <S.CalculatorButton>
-              Go to calculator <Image src={arrowRightMain} width={12} alt="arrow-right" />
+            <S.CalculatorButton onClick={handleNavigate}>
+              Go to category <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

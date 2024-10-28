@@ -54,7 +54,7 @@ export default function LoginForm({
 
   const handleRedirecToSignUp = () => {
     if (!pathname.includes(`${locale}/sign-up`)) {
-      router.replace(`${locale}/sign-up`);
+      router.push(`/sign-up`);
     }
     onChangeVisibility(false);
   };

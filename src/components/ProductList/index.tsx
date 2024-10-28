@@ -9,6 +9,7 @@ import ImageArrow from '@/public/images/product/arrow.png';
 import React from 'react';
 import './styles.scss';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import { useRouter } from 'next/navigation';
 
 const products = [
   {
@@ -18,6 +19,7 @@ const products = [
     iconAlt: 'heating',
     mainImage: ImageHeating,
     img: CoolingIcon,
+    link: '/category/1'
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ const products = [
     iconAlt: 'hvac',
     mainImage: ImageHvac,
     img: HvacIcon,
+    link: '/category/2'
   },
   {
     id: 3,
@@ -34,11 +37,17 @@ const products = [
     iconAlt: 'ventilation',
     mainImage: ImageVentilation,
     img: VentilationIcon,
+    link: '/category/3'
   },
 ];
 
 const ProductList = () => {
+  const router = useRouter()
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+  
+  const handleClickViewMore = (link: string) => {
+    router.push(link)
+  }
 
   return (
     <div className="products_block">
@@ -76,7 +85,7 @@ const ProductList = () => {
             </div>
             <div className="product_title">{product.title}</div>
             </>}
-            <div className="view_more_btn">
+            <button className="view_more_btn" onClick={() => handleClickViewMore(product.link)}>
               View More
               <Image
                 src={ImageArrow}
@@ -85,7 +94,7 @@ const ProductList = () => {
                 width={10}
                 height={10}
               />
-            </div>
+            </button>
           </div>
         </div>
       ))}
