@@ -10,8 +10,10 @@ import CalculatorForm from '@/components/Calculator/forms/CalculatorForm';
 // styles
 import * as S from './Calculator.styled';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 function Calculator() {
+  const t = useTranslations("Home")
   const [toggleCalculator, setToggleCalculator] = useState<boolean>(false);
 
   const handleToggleCalculator = () => {
@@ -26,7 +28,7 @@ function Calculator() {
         <S.CalculatorContent>
           <S.CalculatorTitle>Calculator</S.CalculatorTitle>
           <S.CalculatorDescription>
-            {`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of.`}
+            {t("calculator.title")}
           </S.CalculatorDescription>
           <S.CalculatorButtonWrapper>
             <Button onClick={handleToggleCalculator} style={{ maxWidth: '165px' }}>

@@ -10,8 +10,11 @@ import ShopAnimateIconOne from '@/public/images/home/services/icons/shop-1.svg';
 import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
 import ImageArrow from '@/public/images/product/arrow.png';
 import { useParams, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const ServiceSingleShop = () => {
+  const t = useTranslations('Home')
+
   const router = useRouter();
   const { locale } = useParams();
 
@@ -24,25 +27,25 @@ const ServiceSingleShop = () => {
         <S.ServiceFooter>
           <S.TextContainer>
           <Image src={CoolingIcon} alt="Celsius Service Icon" />
-          <S.ServiceTitle>Heating & Cooling</S.ServiceTitle>
+          <S.ServiceTitle>{t('categories.heating_cooling.title')}</S.ServiceTitle>
           </S.TextContainer>
         </S.ServiceFooter>
         <S.ServiceFooter>
           <S.TextContainer>
             <Image src={HvacIcon} alt="HVAC Service" priority />
-            <S.ServiceTitle>HVAC</S.ServiceTitle>
+            <S.ServiceTitle>{t('categories.hvac.title')}</S.ServiceTitle>
           </S.TextContainer>
         </S.ServiceFooter>
         <S.ServiceFooter>
           <S.TextContainer>
             <Image src={VentilationIcon} alt="Celsius Service Icon" />
-            <S.ServiceTitle>Ventilation</S.ServiceTitle>
+            <S.ServiceTitle>{t('categories.ventilation.title')}</S.ServiceTitle>
           </S.TextContainer>
         </S.ServiceFooter>
         <S.ServiceFooter>
           <S.TextContainer>
             <Image src={ShopIcon} alt="Celsius Service Icon" />
-            <S.ServiceTitle>Shop</S.ServiceTitle>
+            <S.ServiceTitle>{t('categories.shop.title')}</S.ServiceTitle>
           </S.TextContainer>
           <S.ServiceIconWrapper>
             <Image
@@ -61,8 +64,7 @@ const ServiceSingleShop = () => {
           </S.ServiceIconWrapper>
           <S.ServiceAdditionalContentWrapper>
             <S.ServiceAdditionalContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              Lorem Ipsum
+            {t('categories.shop.description')}
             </S.ServiceAdditionalContent>
             <S.ServiceAdditionalButton onClick={handleRedirect}>
               View More

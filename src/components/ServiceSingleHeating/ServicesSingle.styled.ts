@@ -37,7 +37,7 @@ export const ServiceAdditionalContentWrapper = styled.div`
 
 export const ServiceAdditionalContent = styled.span`
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   font-weight: 400;
   margin-bottom: 20px;

@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 // styles
 import * as S from './CalculatorForm.styled';
+import { useTranslations } from 'next-intl';
 
 type CalculatorFormValues = {
   surfaceArea: number;
@@ -17,6 +18,7 @@ type CalculatorFormValues = {
 };
 
 function CalculatorForm() {
+  const t = useTranslations('Home')
   const {
     register,
     handleSubmit,
@@ -47,11 +49,11 @@ function CalculatorForm() {
 
     if (!value) setValue('ceilingHeight', parseFloat('00.0'));
   };
-
+  
   return (
     <S.CalculatorForm onSubmit={handleSubmit(onSubmit)}>
       <S.CalculatorFormDetail>
-        <S.CalculatorFormLabel>Surface Of The Area</S.CalculatorFormLabel>
+        <S.CalculatorFormLabel>{t('calculator.fields.area')}</S.CalculatorFormLabel>
         <S.InputWrapper>
           <S.CalculatorFormInput
             className={'surface-input'}
@@ -68,7 +70,7 @@ function CalculatorForm() {
         )}
       </S.CalculatorFormDetail>
       <S.CalculatorFormDetail>
-        <S.CalculatorFormLabel>Ceiling Height</S.CalculatorFormLabel>
+        <S.CalculatorFormLabel>{t('calculator.fields.height')}</S.CalculatorFormLabel>
         <S.InputWrapper>
           <S.CalculatorFormInput
             type="text"
@@ -85,7 +87,7 @@ function CalculatorForm() {
         )}
       </S.CalculatorFormDetail>
       <S.CalculatorFormDetail>
-        <S.CalculatorFormLabel>Brightness</S.CalculatorFormLabel>
+        <S.CalculatorFormLabel>{t('calculator.fields.brightness')}</S.CalculatorFormLabel>
         <S.CalculatorFormSelect {...register('brightness', { required: true })}>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
@@ -97,7 +99,7 @@ function CalculatorForm() {
       </S.CalculatorFormDetail>
       <S.CalculatorFormDetail>
         <S.CalculatorFormLabel>
-          Average Number Of People Using The Space All The Time
+        {t('calculator.fields.avg')}e
         </S.CalculatorFormLabel>
         <S.CalculatorFormInput
           type="text"
@@ -112,7 +114,7 @@ function CalculatorForm() {
       <S.CalculatorFormDetailUserData>
         <S.CalculatorFormDetailUser>
           <S.CalculatorFormLabel className="label">
-            Name<S.RequiredSign>*</S.RequiredSign>
+          {t('calculator.fields.name')}<S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <S.CalculatorFormInput
             type="text"
@@ -127,7 +129,7 @@ function CalculatorForm() {
         </S.CalculatorFormDetailUser>
         <S.CalculatorFormDetailUser>
           <S.CalculatorFormLabel className="label">
-            Phone Number<S.RequiredSign>*</S.RequiredSign>
+          {t('calculator.fields.phone')}<S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <S.CalculatorFormInput
             type="tel"
@@ -141,7 +143,7 @@ function CalculatorForm() {
           )}
         </S.CalculatorFormDetailUser>
       </S.CalculatorFormDetailUserData>
-      <Button type="submit">Get a quote</Button>
+      <Button type="submit">{t('calculator.fields.quote')}</Button>
     </S.CalculatorForm>
   );
 }

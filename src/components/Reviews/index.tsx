@@ -10,16 +10,19 @@ import review1 from '@/public/images/home/reviews/review1.jpg';
 
 const reviews = [
   {
+    id: 1,
     logo: review1.src,
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo nec elit varius efficitur. Vestibulum euismod cursus cursus. Praesent aliquam libero vitae turpis volutpat vestibulum.',
     company: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
+    id: 2,
     logo: review1.src,
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo nec elit varius efficitur. Vestibulum euismod cursus cursus. Praesent aliquam libero vitae turpis volutpat vestibulum.',
     company: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
+    id: 3,
     logo: review1.src,
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at justo nec elit varius efficitur. Vestibulum euismod cursus cursus. Praesent aliquam libero vitae turpis volutpat vestibulum.',
     company: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',

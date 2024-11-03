@@ -1,4 +1,57 @@
 {
+  "Home": {
+    "slider": {
+      "1": "The VRF V8 allows for simultaneous control of temperatures in different zones, creating an ideal atmosphere with personalized settings. The VRF V8 system is used in commercial buildings, offices, and beyond. This system delivers high efficiency and energy savings while providing a comfortable environment without unnecessary costs.",
+      "2": "The new generation of Midea heat pumps is a reliable and efficient solution for regulating airflow and controlling the climate of your space, regardless of external temperatures. This technology operates effectively in both hot and cold conditions, ensuring energy efficiency and stable performance throughout the year.",
+      "3": "Air conditioning systems are an excellent solution for reducing temperature and removing excess heat and humidity in indoor spaces. These systems are particularly effective in large commercial areas such as wineries, shopping centers, warehouses, and other similar facilities where maintaining a stable climate is crucial.\n Thanks to cutting-edge technology, Midea air conditioning systems not only provide clean and fresh air but also improve energy efficiency, reducing costs and enhancing operational productivity.",
+      "4": "Choosing the right and energy-efficient cooling and heating system will help you control your home’s temperature, no matter the weather outside. Celsius offers a wide range of air conditioners, from affordable and efficient models to decorative, high-end options that combine functionality with style. \n Whether you’re looking for a budget-friendly option or a more aesthetic solution, we have you covered. Our air conditioners help to save money and enjoy a comfortable environment all year round."
+    },
+    "benefits": {
+      "1": {
+        "title": "2-Year Warranty",
+        "description": "Long-term quality and trust."
+      },
+      "2": {
+        "title": "15000+ Sales",
+        "description": "Hundreds of satisfied customers have already chosen Celsius."
+      },
+      "3": {
+        "title": "5000+ Projects",
+        "description": "A huge number of successful projects that help us make your business unique as well."
+      }
+    },
+    "categories": {
+      "hvac": {
+        "title": "HVAC",
+        "description": "Comprehensive heating, ventilation, and air conditioning solutions designed for optimal comfort and energy efficiency."
+      },
+      "heating_cooling": {
+        "title": "Heating and Cooling",
+        "description": "Reliable systems that maintain the perfect temperature year-round, ensuring a cozy environment regardless of the weather."
+      },
+      "ventilation": {
+        "title": "Ventilation",
+        "description": "Advanced ventilation solutions that enhance air quality and promote a healthier indoor environment."
+      },
+      "shop": {
+        "title": "Shop",
+        "description": "See all the products."
+      }
+    },
+    "info": "Celsius is the leading supplier of Midea brand ventilation and climate solutions in Armenia, offering high-quality and modern air conditioning systems, VRF systems, as well as cooling, heating, and ventilation systems. Our company specializes in designing, installing, and selling air conditioning systems tailored to each customer, creating personalized and energy-efficient solutions. We provide professional services for the installation and design of ventilation systems, as well as a wide range of sales options, including high-end systems. The professional team at Celsius is specialized in the design and installation of ventilation systems for both industrial and public spaces. We ensure the highest quality by using advanced technologies and offering cooling and refrigeration systems that meet all your needs.",
+    "calculator": {
+      "title": "By filling out this form, our specialists will contact you and offer the best solutions tailored to your commercial or residential space.",
+      "fields": {
+        "area": "Surface Of The Area",
+        "height": "Ceiling Height",
+        "brightness": "Brightness",
+        "avg": "Average Number Of People Using The Space All The Time",
+        "name": "Name",
+        "phone": "Phone Number",
+        "quote": "Get a quote"
+      }
+    }
+  },
   "Careers": {
     "career_banner_title": "JOIN OUR TEAM",
     "career_banner_sub_title": "Elevate your career at Celsius.",

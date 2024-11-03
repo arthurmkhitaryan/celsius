@@ -27,8 +27,10 @@ import ServiceSingleHeating from '@/components/ServiceSingleHeating';
 import ServiceSingleVentilation from '@/components/ServiceSingleVentilation';
 import ServiceSingleShop from '@/components/ServiceSingleShop';
 import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
+import { useTranslations } from 'next-intl';
 
 function Services() {
+  const t = useTranslations('Home')
   const [serviceSingleShow, setServiceSingleShow] = useState<string>('');
   const [hideOthers, setHideOthers] = useState(false);
 
@@ -68,7 +70,7 @@ function Services() {
           </S.ServiceIconWrapper>
           <S.ServiceFooter>
             <Image src={CoolingIcon} alt="Celsius Service Icon" />
-            <S.ServiceTitle>Heating & Cooling</S.ServiceTitle>
+            <S.ServiceTitle>{t('categories.heating_cooling.title')}</S.ServiceTitle>
           </S.ServiceFooter></>}
         </S.ServiceItem>}
 
@@ -89,7 +91,7 @@ function Services() {
         </S.ServiceIconWrapper>
         <S.ServiceFooter>
           <Image src={HvacIcon} alt="HVAC Service Icon" />
-          <S.ServiceTitle>HVAC</S.ServiceTitle>
+          <S.ServiceTitle>{t('categories.hvac.title')}</S.ServiceTitle>
         </S.ServiceFooter>
         </>}
         </S.ServiceItem>}
@@ -111,7 +113,7 @@ function Services() {
             </S.ServiceIconWrapper>
             <S.ServiceFooter>
               <Image src={VentilationIcon} alt="Ventilation Service Icon" />
-              <S.ServiceTitle>Ventilation</S.ServiceTitle>
+              <S.ServiceTitle>{t('categories.ventilation.title')}</S.ServiceTitle>
             </S.ServiceFooter></>}
           </S.ServiceItem>}
 
@@ -131,7 +133,7 @@ function Services() {
             </S.ServiceIconWrapper>
             <S.ServiceFooter>
               <Image src={ShopIcon} alt="Shop Service Icon" />
-              <S.ServiceTitle>Shop</S.ServiceTitle>
+              <S.ServiceTitle>{t('categories.shop.title')}</S.ServiceTitle>
             </S.ServiceFooter></>}
           </S.ServiceItem> }
 

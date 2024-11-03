@@ -9,39 +9,45 @@ import arrowLeft from '@/public/images/arrow-l.svg';
 import arrowRight from '@/public/images/arrow-r.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const slides = [
   {
+    id: 1,
     link: '/category/1',
     backgroundPosition: '0% 0%',
     title: 'VRF Systems',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
+    content: 1,
     translateX: 10,
   },
   {
+    id: 2,
     link: '/category/2',
     backgroundPosition: '30% 0%',
     title: 'R290 M thermal',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
+    content: 2,
     translateX: 40,
   },
   {
+    id: 3,
     link: '/category/3',
     backgroundPosition: '63% 0%',
     title: 'Chiller',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
+    content: 3,
     translateX: 40,
   },
   {
+    id: 4,
     link: '/category/4',
     backgroundPosition: '100% 0%',
     title: 'BreezeleSS+',
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic.',
+    content: 4,
     translateX: 75,
   },
 ];
 
 function Slider() {
+  const t = useTranslations('Home')
   const router = useRouter()
   const [categoryLink, setCategoryLink] = useState<string>('/category/1');
   const [activeIndex, setActiveIndex] = useState(0);
@@ -88,7 +94,7 @@ function Slider() {
           isActive={activeIndex === index}
         >
           <S.SlideTitle>{slide.title}</S.SlideTitle>
-          <S.SlideContent>{slide.content}</S.SlideContent>
+          <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>
           <S.ButtonWrapper>
             <S.CalculatorButton onClick={handleNavigate}>
               Go to category <Image src={arrowRightMain} width={12} alt="arrow-right" />
