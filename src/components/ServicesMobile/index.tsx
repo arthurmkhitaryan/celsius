@@ -3,18 +3,18 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { 
-    ServicesWrapper,
-    ServiceItem, 
-    ServiceHeader, 
-    ImageWrapper,
-    FooterMenuWrapper,
-    FooterMenuItem,
-    ImageContent,
-    ContentTitle,
-    ContentDescription,
-    ViewMoreButton,
-    ServiceIconWrapper,
+import {
+  ServicesWrapper,
+  ServiceItem,
+  ServiceHeader,
+  ImageWrapper,
+  FooterMenuWrapper,
+  FooterMenuItem,
+  ImageContent,
+  ContentTitle,
+  ContentDescription,
+  ViewMoreButton,
+  ServiceIconWrapper,
 } from './ServicesMobile.styled';
 
 import IconWrapper from '@/public/images/home/services/icon-wrapper.svg';
@@ -39,70 +39,74 @@ import { useParams, useRouter } from 'next/navigation';
 import ShopIcon from '@/public/images/home/services/icons-mobile/shop-icon-blue.svg';
 
 const services = [
-    {
-      id: 1,
-      title: 'Heating & Cooling',
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum",
-      image: CoolingMain,
-      icon: CoolingIcon,
-      animateIcons: [
-        {
-            icon: CoolingAnimateIconOne,
-            class: 'animate-cooling-icon-one',
-        },
-        {
-            icon: CoolingAnimateIconTwo,
-            class: 'animate-cooling-icon-two',
-        }
-      ],
-    },
-    {
-      id: 2,
-      title: 'HVAC',
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum",
-      image: HvacMain,
-      icon: HvacIcon,
-      animateIcons: [
-        {
-            icon: HvacAnimateIconOne,
-            class: 'animate-hvac-icon-one',
-        },
-        {
-            icon: HvacAnimateIconTwo,
-            class: 'animate-hvac-icon-two',
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Ventilation',
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum",
-      image: VentilationMain,
-      icon: VentilationIcon,
-      animateIcons: [
-        {
-            icon: VentilationAnimateIconOne,
-            class: 'animate-ventilation-icon-one',
-        },
-        {
-            icon: VentilationAnimateIconTwo,
-            class: 'animate-ventilation-icon-two',
-        },
+  {
+    id: 1,
+    title: 'Heating & Cooling',
+    description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    image: CoolingMain,
+    icon: CoolingIcon,
+    animateIcons: [
+      {
+        icon: CoolingAnimateIconOne,
+        class: 'animate-cooling-icon-one',
+      },
+      {
+        icon: CoolingAnimateIconTwo,
+        class: 'animate-cooling-icon-two',
+      },
     ],
-    },
-    {
-      id: 4,
-      title: 'Shop',
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum",
-      image: ShopMain,
-      icon: ShopIcon,
-      animateIcons: [
-        {
-            icon: ShopAnimateIconOne,
-            class: 'animate-shop-icon-one',
-        },
+  },
+  {
+    id: 2,
+    title: 'HVAC',
+    description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    image: HvacMain,
+    icon: HvacIcon,
+    animateIcons: [
+      {
+        icon: HvacAnimateIconOne,
+        class: 'animate-hvac-icon-one',
+      },
+      {
+        icon: HvacAnimateIconTwo,
+        class: 'animate-hvac-icon-two',
+      },
     ],
-    }
+  },
+  {
+    id: 3,
+    title: 'Ventilation',
+    description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    image: VentilationMain,
+    icon: VentilationIcon,
+    animateIcons: [
+      {
+        icon: VentilationAnimateIconOne,
+        class: 'animate-ventilation-icon-one',
+      },
+      {
+        icon: VentilationAnimateIconTwo,
+        class: 'animate-ventilation-icon-two',
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Shop',
+    description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    image: ShopMain,
+    icon: ShopIcon,
+    animateIcons: [
+      {
+        icon: ShopAnimateIconOne,
+        class: 'animate-shop-icon-one',
+      },
+    ],
+  },
 ];
 
 const ServicesMobile = () => {
@@ -111,8 +115,9 @@ const ServicesMobile = () => {
   const { locale } = useParams();
 
   const handleRedirect = (id: number): void => {
+    if (id === 4) return router.push(`/${locale}/products`);
     router.push(`/${locale}/category/${id}`);
-  }
+  };
 
   const handleFooterClick = (id: number) => {
     setActiveService(id);
@@ -120,56 +125,48 @@ const ServicesMobile = () => {
 
   return (
     <ServicesWrapper>
-      {services.map(service => (
-        activeService === service.id && (
-          <ServiceItem key={service.id}>
-            <ServiceHeader>
-              <ImageWrapper>
-                <Image
-                  src={service.image} 
-                  alt={service.title} 
-                  fill
-                />
-                <ImageContent>
-                   <Image
-                        src={service.icon} 
-                        alt={service.title} 
-                    />
-                    <ContentTitle>
-                        {service.title}
-                    </ContentTitle>
+      {services.map(
+        (service) =>
+          activeService === service.id && (
+            <ServiceItem key={service.id}>
+              <ServiceHeader>
+                <ImageWrapper>
+                  <Image src={service.image} alt={service.title} fill />
+                  <ImageContent>
+                    <Image src={service.icon} alt={service.title} />
+                    <ContentTitle>{service.title}</ContentTitle>
 
                     <ContentDescription>
-                        {service.description}
+                      {service.description}
                     </ContentDescription>
                     <ViewMoreButton onClick={() => handleRedirect(service.id)}>
-                        View More <ArrowRight size={18} />
+                      View More <ArrowRight size={18} />
                     </ViewMoreButton>
                     <ServiceIconWrapper>
-                    <Image
+                      <Image
                         className="icon-wrapper"
                         src={IconWrapper}
                         alt={'Icon Wrapper'}
-                    />
-                    {service.animateIcons.map(animateIcons => (
+                      />
+                      {service.animateIcons.map((animateIcons) => (
                         <>
-                         <Image
+                          <Image
                             className={animateIcons.class}
                             src={animateIcons.icon}
                             alt="icon"
-                        />
+                          />
                         </>
-                    ))}
+                      ))}
                     </ServiceIconWrapper>
-                </ImageContent>
-              </ImageWrapper>
-            </ServiceHeader>
-          </ServiceItem>
-        )
-      ))}
+                  </ImageContent>
+                </ImageWrapper>
+              </ServiceHeader>
+            </ServiceItem>
+          ),
+      )}
 
       <FooterMenuWrapper>
-        {services.map(service => (
+        {services.map((service) => (
           <FooterMenuItem
             key={service.id}
             isActive={activeService === service.id}

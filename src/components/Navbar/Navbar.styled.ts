@@ -18,8 +18,13 @@ export const Navbar = styled.nav`
 
 export const NavList = styled.ul`
   display: flex;
+  align-items: center;
   list-style-type: none;
   gap: 66px;
+
+  .category-list {
+    margin-bottom: -3px;
+  }
 `;
 
 export const NavListItem = styled.li`

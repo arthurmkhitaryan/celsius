@@ -7,7 +7,6 @@ export const CalculatorForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: -10px;
 
   button {
     color: ${({ theme }) => theme.palette.common.white};
@@ -40,6 +39,7 @@ export const CalculatorFormDetail = styled.div`
 
 export const CalculatorFormLabel = styled.label`
   ${typographyPreset8};
+  max-width: 250px;
 `;
 
 export const InputWrapper = styled.div`
@@ -88,13 +88,13 @@ export const Unit = styled.span`
 `;
 
 export const CalculatorFormSelect = styled.select`
-  padding: 12px 56px 12px 35px;
+  padding: 12px 26px 12px 35px;
   margin-top: 4px;
   border: 1px solid ${({ theme }) => theme.palette.common.gray5};
   background: ${({ theme }) => theme.palette.common.gray6};
   border-radius: 10px;
   ${typographyPreset8};
-  max-width: 170px;
+  max-width: 230px;
   text-align: center;
   width: 100%;
 `;
@@ -105,10 +105,34 @@ export const CalculatorFormError = styled.span`
 `;
 
 export const CalculatorFormDetailUserData = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 48px;
+
+  border-bottom: 1px solid #d9d9d9;
 
   &:last-child {
     border-bottom: none;
+  }
+`;
+
+export const CalculatorFormDetailSelectUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 40px 40px 0;
+
+  input {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 23px;
+    text-align: left;
+    font-size: 18px;
+
+    &::placeholder {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -117,7 +141,7 @@ export const CalculatorFormDetailUser = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  padding: 40px 40px 40px;
+  padding: 40px 40px 0;
 
   input {
     width: 100%;

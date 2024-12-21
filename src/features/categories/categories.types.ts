@@ -3,6 +3,7 @@ interface Product {
   name: string;
   description: string;
   image: any;
+  slug: string;
 }
 
 interface Categories {

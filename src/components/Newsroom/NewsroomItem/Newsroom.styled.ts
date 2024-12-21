@@ -20,7 +20,9 @@ export const NewsroomItemWrapper = styled.div`
   }
 `;
 
-export const NewsroomItemImage = styled.img``;
+export const NewsroomItemImage = styled.img`
+  max-height: 200px;
+`;
 
 export const NewsroomItemContent = styled.div`
   display: flex;

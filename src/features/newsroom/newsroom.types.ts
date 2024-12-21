@@ -8,7 +8,7 @@ interface News {
   largeImage: any;
   content: string;
   category: NewsCategory;
-  createdAt: Date;
+  publishedAt: Date;
 }
 
 interface NewsCategory {

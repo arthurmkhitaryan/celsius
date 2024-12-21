@@ -8,8 +8,8 @@ export const ServiceHeader = styled.div`
 export const ImageWrapper = styled.div`
   width: 100%;
   img {
-      width: 100%;
-      height: 480px;
+    width: 100%;
+    height: 480px;
   }
 `;
 
@@ -24,16 +24,16 @@ export const ServiceFooter = styled.div`
 `;
 
 export const TextContainer = styled.div`
-    display: flex;
-    gap: 15px;
-    flex-direction: column;
-    align-items: center;
-`
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const ServiceAdditionalContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const ServiceAdditionalContent = styled.span`
   color: white;
@@ -41,11 +41,11 @@ export const ServiceAdditionalContent = styled.span`
   line-height: 24px;
   font-weight: 400;
   margin-bottom: 20px;
-`
+`;
 
 export const ServiceAdditionalButton = styled.button`
   background: white;
-  color: #0044CC;
+  color: #0044cc;
   padding: 16px 32px 16px 32px;
   border-radius: 4px;
   font-weight: 600;
@@ -54,7 +54,7 @@ export const ServiceAdditionalButton = styled.button`
   align-items: center;
   align-self: baseline;
   z-index: 1;
-`
+`;
 
 export const ServiceIconWrapper = styled.div`
   position: relative;
@@ -70,17 +70,17 @@ export const ServiceIconWrapper = styled.div`
   }
 
   & > .animate-hvac-icon-first {
-    bottom: -100%;
-    left: 0;
+    bottom: -80%;
+    left: -18%;
     position: absolute;
-    min-width: 130px;
+    min-width: 240px;
     min-height: 194px;
   }
 
   & > .animate-hvac-icon-second {
     position: absolute;
-    right: 0;
-    min-width: 146px;
+    right: -10%;
+    min-width: 220px;
     min-height: 165px;
     top: -100%;
   }
@@ -95,4 +95,4 @@ export const ServiceTitle = styled.h3`
 export const BottomWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;

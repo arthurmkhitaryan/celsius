@@ -10,7 +10,7 @@ import { theme } from '@/styles';
 interface NewsroomItemProps {
   image: string;
   description: string;
-  date: string;
+  date: Date;
 }
 
 function NewsroomItem({ date, image, description }: NewsroomItemProps) {
@@ -24,7 +24,15 @@ function NewsroomItem({ date, image, description }: NewsroomItemProps) {
         <S.NewsroomItemRightSide>
           <S.NewsroomItemDate>
             <Calendar size={18} color={theme.palette.common.secondaryBlue} />
-            <S.NewsroomItemDateNumber>{date}</S.NewsroomItemDateNumber>
+            <S.NewsroomItemDateNumber>
+              {new Date(date)
+                .toLocaleDateString('en-GB', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                })
+                .replace(/\//g, ',')}
+            </S.NewsroomItemDateNumber>
           </S.NewsroomItemDate>
         </S.NewsroomItemRightSide>
       </S.NewsroomItemContent>

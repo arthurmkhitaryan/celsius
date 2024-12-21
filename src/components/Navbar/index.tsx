@@ -32,47 +32,48 @@ function Navbar() {
 
   return (
     <>
-    <S.NavbarWrapper onMouseLeave={() => setIsHovered(false)}>
-      <S.Navbar>
-        <S.NavList>
-          <S.NavListItem
-            onMouseEnter={() => setIsHovered(true)}
-          >
-            <Link
-              style={{ display: 'flex', gap: '5px', alignItems: 'center' }}
-              href={getLocalizedPath('/products')}
-              passHref
+      <S.NavbarWrapper onMouseLeave={() => setIsHovered(false)}>
+        <S.Navbar>
+          <S.NavList>
+            <S.NavListItem
+              className="category-list"
+              onMouseEnter={() => setIsHovered(true)}
             >
-              Products
-              <Image alt="arrow-down" src={ArrowDown} width={8} height={4} />
-            </Link>
-          </S.NavListItem>
+              <Link
+                style={{ display: 'flex', gap: '5px', alignItems: 'center' }}
+                href={getLocalizedPath('/products')}
+                passHref
+              >
+                Categories
+                <Image alt="arrow-down" src={ArrowDown} width={8} height={4} />
+              </Link>
+            </S.NavListItem>
 
-          <S.NavListItem>
-            <Link href={getLocalizedPath('/careers')} passHref>
-              Career
-            </Link>
-          </S.NavListItem>
-          <S.NavListItem>
-            <Link href={getLocalizedPath('/newsroom')} passHref>
-              Newsroom
-            </Link>
-          </S.NavListItem>
-          <S.NavListItem>
-            <Link href={getLocalizedPath('/about-us')} passHref>
-              About Us
-            </Link>
-          </S.NavListItem>
-          <S.NavListItem>
-            <Link href={getLocalizedPath('/contact-us')} passHref>
-              Contact Us
-            </Link>
-          </S.NavListItem>
-        </S.NavList>
-      </S.Navbar>
-    </S.NavbarWrapper>
+            <S.NavListItem>
+              <Link href={getLocalizedPath('/careers')} passHref>
+                Career
+              </Link>
+            </S.NavListItem>
+            <S.NavListItem>
+              <Link href={getLocalizedPath('/newsroom')} passHref>
+                Newsroom
+              </Link>
+            </S.NavListItem>
+            <S.NavListItem>
+              <Link href={getLocalizedPath('/about-us')} passHref>
+                About Us
+              </Link>
+            </S.NavListItem>
+            <S.NavListItem>
+              <Link href={getLocalizedPath('/contact-us')} passHref>
+                Contact Us
+              </Link>
+            </S.NavListItem>
+          </S.NavList>
+        </S.Navbar>
+      </S.NavbarWrapper>
 
-    {isHovered && (
+      {isHovered && (
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

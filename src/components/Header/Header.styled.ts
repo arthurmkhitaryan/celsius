@@ -3,79 +3,79 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0 20px 0;
 
-    @media (max-width: 768px) {
-        justify-content: space-between;
-        flex-direction: column;
-        padding: 20px;
-        width: 100%;
-    }
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+  }
 
-    .sign-in:hover {
-        color: white;
-    }
+  .sign-in:hover {
+    color: white;
+  }
 `;
 
 export const HeaderLeftSide = styled.div`
-    img {
-        cursor: pointer;
-    }
+  img {
+    cursor: pointer;
+  }
 `;
 
 export const HeaderRightSide = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
 
-    @media (max-width: 768px) {
-        display: none; // Hide the desktop header on mobile
-    }
+  @media (max-width: 768px) {
+    display: none; // Hide the desktop header on mobile
+  }
 `;
 
 export const MobileMenu = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 80px);
-    background-color: white;
-    z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: white;
+  z-index: 1000;
 `;
 
 export const MainWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 20px;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-around;
 
-    @media (max-width: 768px) {
-        justify-content: space-between;
-    }
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 export const TabletButtonWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
 `;
 
 export const FullWidthButton = styled.div`
   width: 100%;
   font-weight: 600;
-    
+
   button {
-      width: 100%;
-      gap: 10px;
+    width: 100%;
+    gap: 10px;
   }
 `;
 
@@ -91,12 +91,12 @@ export const HamburgerWrapper = styled.div`
     align-items: center;
     gap: 20px;
     cursor: pointer;
-      
+
     :nth-child(3) {
-        border-left: 1px solid #F2F6FD;
-        padding-left: 10px;
-        display: block;
-        width: 100%;
+      border-left: 1px solid #f2f6fd;
+      padding-left: 10px;
+      display: block;
+      width: 100%;
     }
   }
 `;

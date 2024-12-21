@@ -38,16 +38,15 @@ export const Button = styled.button<{
   }
 
   &:hover {
-    top: -2px;
-      img {
-        left: 12px;
-      }
+    img {
+      left: 12px;
+    }
 
     ${({ $btnStyle }) =>
       $btnStyle === 'filled' &&
       `
-      background-color: #0044ccf5;
-      border: 2px solid #0044ccf5;
+      background-color: #0044cc;
+      border: 2px solid #0044cc;
     `}
   }
 `;

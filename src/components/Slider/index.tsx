@@ -1,10 +1,14 @@
-'use client'
+'use client';
+
 import React, { useState } from 'react';
 import * as S from './Slider.styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import arrowRightMain from '@/public/images/arrow-right.svg';
-import slider from '@/public/images/home/slider/slider.png';
+import slider1 from '@/public/images/home/slider/1.jpg';
+import slider2 from '@/public/images/home/slider/2.jpg';
+import slider3 from '@/public/images/home/slider/3.jpg';
+import slider4 from '@/public/images/home/slider/4.jpg';
 import arrowLeft from '@/public/images/arrow-l.svg';
 import arrowRight from '@/public/images/arrow-r.svg';
 import Image from 'next/image';
@@ -16,7 +20,8 @@ const slides = [
     id: 1,
     link: '/category/1',
     backgroundPosition: '0% 0%',
-    title: 'VRF Systems',
+    backgroundImage: slider1.src,
+    title: 'V8',
     content: 1,
     translateX: 10,
   },
@@ -24,6 +29,7 @@ const slides = [
     id: 2,
     link: '/category/2',
     backgroundPosition: '30% 0%',
+    backgroundImage: slider2.src,
     title: 'R290 M thermal',
     content: 2,
     translateX: 40,
@@ -32,6 +38,7 @@ const slides = [
     id: 3,
     link: '/category/3',
     backgroundPosition: '63% 0%',
+    backgroundImage: slider3.src,
     title: 'Chiller',
     content: 3,
     translateX: 40,
@@ -40,6 +47,7 @@ const slides = [
     id: 4,
     link: '/category/4',
     backgroundPosition: '100% 0%',
+    backgroundImage: slider4.src,
     title: 'BreezeleSS+',
     content: 4,
     translateX: 75,
@@ -47,8 +55,8 @@ const slides = [
 ];
 
 function Slider() {
-  const t = useTranslations('Home')
-  const router = useRouter()
+  const t = useTranslations('Home');
+  const router = useRouter();
   const [categoryLink, setCategoryLink] = useState<string>('/category/1');
   const [activeIndex, setActiveIndex] = useState(0);
   const [translateX, setTranslateX] = useState(slides[0].translateX);
@@ -56,12 +64,12 @@ function Slider() {
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
     setTranslateX(slides[swiper.activeIndex].translateX);
-    setCategoryLink(slides[swiper.activeIndex].link)
+    setCategoryLink(slides[swiper.activeIndex].link);
   };
 
   const handleNavigate = () => {
-    router.push(categoryLink)
-  }
+    router.push(categoryLink);
+  };
 
   return (
     <S.SliderWrapper>
@@ -81,7 +89,7 @@ function Slider() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <S.Slide
-              $backgroundImage={slider.src}
+              $backgroundImage={slide.backgroundImage}
               $backgroundPosition={slide.backgroundPosition}
             />
           </SwiperSlide>
@@ -97,7 +105,8 @@ function Slider() {
           <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>
           <S.ButtonWrapper>
             <S.CalculatorButton onClick={handleNavigate}>
-              Go to category <Image src={arrowRightMain} width={12} alt="arrow-right" />
+              Go to category{' '}
+              <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

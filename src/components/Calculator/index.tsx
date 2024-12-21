@@ -13,7 +13,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 function Calculator() {
-  const t = useTranslations("Home")
+  const t = useTranslations('Home');
   const [toggleCalculator, setToggleCalculator] = useState<boolean>(false);
 
   const handleToggleCalculator = () => {
@@ -26,13 +26,17 @@ function Calculator() {
     <S.CalculatorWrapper>
       <S.CalculatorContainer>
         <S.CalculatorContent>
-          <S.CalculatorTitle>Calculator</S.CalculatorTitle>
+          <S.CalculatorTitle>Gnaharcum</S.CalculatorTitle>
           <S.CalculatorDescription>
-            {t("calculator.title")}
+            {t('calculator.title')}
           </S.CalculatorDescription>
           <S.CalculatorButtonWrapper>
-            <Button onClick={handleToggleCalculator} style={{ maxWidth: '165px' }}>
-              Get started <Image src={arrowRightMain} width={12} alt="arrow-right" />
+            <Button
+              onClick={handleToggleCalculator}
+              style={{ maxWidth: '165px' }}
+            >
+              Get started{' '}
+              <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>
           </S.CalculatorButtonWrapper>
         </S.CalculatorContent>

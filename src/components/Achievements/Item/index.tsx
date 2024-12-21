@@ -21,7 +21,6 @@ function AchievementItem({ title, description, image }: AchievementItemProps) {
         </div>
       </S.AchievementItemIconWrapper>
       <S.AchievementItemTitle>{title}</S.AchievementItemTitle>
-      <S.AchievementItemDescription>{description}</S.AchievementItemDescription>
     </S.AchievementItemWrapper>
   );
 }

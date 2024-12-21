@@ -55,7 +55,7 @@ export const CalculatorTitle = styled.h2`
   ${typographyPreset5};
   color: ${({ theme }) => theme.palette.common.white};
 
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 24px;
     align-self: flex-start;
   }
@@ -67,7 +67,7 @@ export const CalculatorDescription = styled.p`
   font-weight: 200;
   color: ${({ theme }) => theme.palette.common.white};
 
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
     padding-right: 0;
     font-size: 12px;
     font-weight: 400;
@@ -105,4 +105,5 @@ export const Calculator = styled.div`
   border-image: linear-gradient(84.68deg, #1f94d2 16.99%, #0044cc 100.33%);
   border-image-slice: 1;
   border-radius: 10px;
+  margin-top: -20px;
 `;

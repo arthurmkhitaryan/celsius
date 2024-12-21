@@ -22,7 +22,7 @@
     },
     "categories": {
       "hvac": {
-        "title": "HVAC",
+        "title": "Ventilation Systems",
         "description": "Comprehensive heating, ventilation, and air conditioning solutions designed for optimal comfort and energy efficiency."
       },
       "heating_cooling": {
@@ -30,7 +30,7 @@
         "description": "Reliable systems that maintain the perfect temperature year-round, ensuring a cozy environment regardless of the weather."
       },
       "ventilation": {
-        "title": "Ventilation",
+        "title": "Only Heating",
         "description": "Advanced ventilation solutions that enhance air quality and promote a healthier indoor environment."
       },
       "shop": {
@@ -48,7 +48,8 @@
         "avg": "Average Number Of People Using The Space All The Time",
         "name": "Name",
         "phone": "Phone Number",
-        "quote": "Get a quote"
+        "quote": "Get a quote",
+        "email": "Email"
       }
     }
   },
