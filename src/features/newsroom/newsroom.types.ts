@@ -9,6 +9,7 @@ interface News {
   content: string;
   category: NewsCategory;
   publishedAt: Date;
+  createdAt?: Date;
 }
 
 interface NewsCategory {
