@@ -8,11 +8,11 @@ import * as S from './Newsroom.styled';
 import blogImg1 from '@/public/images/home/newsroom/blog-img-1.jpg';
 import blogImg2 from '@/public/images/home/newsroom/blog-img-2.jpg';
 import blogImg3 from '@/public/images/home/newsroom/blog-img-3.jpg';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Router } from 'lucide-react';
 import { useGetNewsQuery } from '@/features/newsroom/newsroom.api';
 import { useParams } from 'next/navigation';
-import { Locale } from '@/i18n.config';
 import { getImageUrl } from '@/utils/getImageFullUrl';
+import { useRouter } from 'next/navigation';
 
 const newsroomData = [
   {
@@ -40,9 +40,18 @@ const newsroomData = [
 
 function Newsroom() {
   const { locale } = useParams();
+  const router = useRouter();
 
-  const { data } = useGetNewsQuery({ locale: 'en', page: 1, pageSize: 3 });
-  console.log({ data });
+  const { data } = useGetNewsQuery({
+    locale: locale.toString(),
+    page: 1,
+    pageSize: 3,
+  });
+
+  const handleClickItem = (itemId: string | number) => {
+    router.push(`/newsroom/${itemId}`);
+  };
+
   return (
     <S.NewsroomWrapper>
       <S.NewsroomTitle>Newsroom</S.NewsroomTitle>
@@ -50,6 +59,7 @@ function Newsroom() {
         <S.NewsroomList>
           {data?.data.map((item) => (
             <NewsroomItem
+              onClick={() => handleClickItem(item.id)}
               key={item.id}
               date={item.publishedAt}
               image={getImageUrl(item.smallImage)}

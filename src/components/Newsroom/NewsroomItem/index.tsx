@@ -11,11 +11,17 @@ interface NewsroomItemProps {
   image: string;
   description: string;
   date: Date;
+  onClick?: () => void;
 }
 
-function NewsroomItem({ date, image, description }: NewsroomItemProps) {
+function NewsroomItem({
+  date,
+  image,
+  description,
+  onClick,
+}: NewsroomItemProps) {
   return (
-    <S.NewsroomItemWrapper>
+    <S.NewsroomItemWrapper onClick={onClick}>
       <S.NewsroomItemImage src={image} alt="Newsroom item image" />
       <S.NewsroomItemContent>
         <S.NewsroomItemLeftSide>
@@ -31,7 +37,7 @@ function NewsroomItem({ date, image, description }: NewsroomItemProps) {
                   month: '2-digit',
                   year: 'numeric',
                 })
-                .replace(/\//g, ',')}
+                .replace(/\//g, '.')}
             </S.NewsroomItemDateNumber>
           </S.NewsroomItemDate>
         </S.NewsroomItemRightSide>
