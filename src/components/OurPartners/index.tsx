@@ -4,18 +4,19 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/autoplay';
 
 // styles & images
 import * as S from './OurPartners.styled';
 import { useGetOurPartnersQuery } from '@/features/our-partners/partners.api';
 
 function OurPartners() {
-  const { data, isLoading } = useGetOurPartnersQuery({});
+  const { data: partnersData, isLoading } = useGetOurPartnersQuery({});
 
   return (
     <S.OurPartnersWrapper>
       <S.OurPartnersTitle>Our Partners</S.OurPartnersTitle>
-      {!isLoading && (
+      {!isLoading && partnersData && (
         <S.OurPartnersContent>
           <Swiper
             modules={[Autoplay]}
@@ -23,11 +24,10 @@ function OurPartners() {
             spaceBetween={30}
             autoplay={{
               delay: 2000,
-              disableOnInteraction: true,
             }}
-            loopFillGroupWithBlank={true}
+            loop={true}
           >
-            {data?.data.map((item: any) => (
+            {partnersData.data.map((item: any) => (
               <SwiperSlide
                 key={item.id}
                 style={{

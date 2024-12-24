@@ -14,7 +14,9 @@ export const partnersApi = createApi({
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
       }),
-      transformResponse: (response: { data: any }) => {
+      transformResponse: (response: {
+        data: { id: number; logo: string }[];
+      }) => {
         console.log('API Response:', response);
         return {
           data: response.data.map((item: any) => ({
