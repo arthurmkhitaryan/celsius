@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useGetAboutContentQuery } from '@/features/about/about.api';
 import MainLayout from '@/components/Layout';
@@ -18,6 +18,16 @@ import { useParams } from 'next/navigation';
 export default function About() {
   const { locale } = useParams();
   const t = useTranslations('About');
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    const video = document.getElementById('about-video') as HTMLVideoElement;
+    if (video) {
+      video.play();
+      setIsPlaying(true);
+    }
+  };
+
   const { data, isLoading } = useGetAboutContentQuery({
     locale: locale as string,
   });
@@ -27,9 +37,22 @@ export default function About() {
   return (
     <S.AboutWrapper>
       <S.VideoWrapper>
+        {!isPlaying && (
+          <S.VideoThumbnailWrapper>
+            <S.VideoThumbnail
+              src="/images/video-thumbnail.jpg"
+              alt="Video Thumbnail"
+            />
+            <S.PlayButton onClick={handlePlay}>▶</S.PlayButton>
+          </S.VideoThumbnailWrapper>
+        )}
         <S.Video
-          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.banner.data.attributes.url}`}
-          controls
+          id="about-video"
+          src="/video/about.mp4"
+          controls={isPlaying}
+          style={{
+            display: isPlaying ? 'block' : 'none',
+          }}
         />
       </S.VideoWrapper>
       <S.OurTeam>

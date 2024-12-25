@@ -9,11 +9,6 @@ export const AboutWrapper = styled.div`
   align-items: center;
 `;
 
-export const VideoWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
 export const OurStores = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,6 +60,53 @@ export const OurStoresItemInfo = styled.p`
   font-weight: 600;
   line-height: 36px;
   color: #0d2427;
+`;
+
+export const VideoWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-height: 800px;
+  margin: 0 auto;
+`;
+
+export const VideoThumbnailWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+`;
+
+export const VideoThumbnail = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+`;
+
+export const PlayButton = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 50px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 export const Video = styled.video`
@@ -155,7 +197,7 @@ export const WhoWeAre = styled.div`
   gap: 48px;
 `;
 
-export const WhoWeAreImage  = styled.img`
+export const WhoWeAreImage = styled.img`
   max-width: 480px;
   width: 100%;
 `;
@@ -179,7 +221,7 @@ export const WhoWeAreDescription = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 30px;
-    color: #1C1C1C;
+    color: #1c1c1c;
   }
 
   & > h4 {
@@ -195,6 +237,6 @@ export const WhoWeAreDescription = styled.div`
     font-size: 20px;
     font-weight: 400;
     line-height: 36px;
-    color: #1C1C1C;
+    color: #1c1c1c;
   }
 `;
