@@ -9,7 +9,7 @@ import AchievementItem from '@/components/Achievements/Item';
 import { useTranslations } from 'next-intl';
 
 function Achievements() {
-  const t = useTranslations("Home");
+  const t = useTranslations('Home');
 
   return (
     <S.AchievementsWrapper>

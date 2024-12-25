@@ -13,7 +13,7 @@ export const OurStores = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 80px 0 120px;
+  padding: 80px 0 20px;
 `;
 
 export const OurStoresTitle = styled.h2`

@@ -7,6 +7,7 @@ export const LayoutWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const ContentWrapper = styled.div`

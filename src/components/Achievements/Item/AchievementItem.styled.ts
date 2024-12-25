@@ -7,11 +7,11 @@ export const AchievementItemWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 380px;
 
-    @media (max-width: 768px) {
-        align-items: center;
-    }
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const AchievementItemIconWrapper = styled.div`
