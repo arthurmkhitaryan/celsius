@@ -44,12 +44,16 @@ export const OurStoresItem = styled.div`
 `;
 
 export const OurStoresItemImage = styled.img`
-  border-radius: 15px;
-  max-width: 554px;
+  max-width: 550px;
+  height: 360px;
+  object-fit: cover;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   width: 100%;
 `;
 
 export const OurStoresItemContent = styled.div`
+  margin-top: -5px;
   display: flex;
   flex-direction: column;
   padding: 24px;
