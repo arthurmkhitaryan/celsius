@@ -118,9 +118,6 @@ export default function About() {
         <Achievements />
       </MainLayout>
       <Reviews classNameTitle="reviews" />
-      <MainLayout>
-        <Newsroom />
-      </MainLayout>
     </S.AboutWrapper>
   );
 }
