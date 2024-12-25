@@ -21,12 +21,12 @@ function Footer() {
   const router = useRouter();
 
   const handleRedirect = (route: string) => {
-    router.push(`/${locale}/${route}`)
-  }
+    router.push(`/${locale}/${route}`);
+  };
 
   return (
     <S.FooterWrapper>
-      <S.LetsStayInTouch>
+      {/* <S.LetsStayInTouch>
         <S.LetsStayInTouchContentWrapper>
           <S.LetsStayInTouchContent>
             <S.LetsStayInTouchContentTItle>
@@ -46,7 +46,7 @@ function Footer() {
             </S.LetsStayInTouchContentButton>
           </S.LetsStayInTouchForm>
         </S.LetsStayInTouchContentWrapper>
-      </S.LetsStayInTouch>
+      </S.LetsStayInTouch> */}
       <S.FooterContent>
         <S.FooterContentWrapper>
           <S.FooterContentHeader>
@@ -98,68 +98,98 @@ function Footer() {
                     <span>Sat. / 10:00 - 18:00</span>
                   </div>
                 </S.FooterSectionItem>
-                {isTablet && <S.FooterContentFooter isTablet>
-                  <Image
-                    src={FacebookLogo.src}
-                    alt={'celsius-facebook'}
-                    width={26}
-                    height={26}
-                  />
-                  <Image
-                    src={InstagramLogo.src}
-                    alt={'celsius-instagram'}
-                    width={26}
-                    height={26}
-                  />
-                  <Image
-                    src={LinkedinLogo.src}
-                    alt={'celsius-linkedin'}
-                    width={26}
-                    height={26}
-                  />
-                </S.FooterContentFooter>}
+                {isTablet && (
+                  <S.FooterContentFooter isTablet>
+                    <Image
+                      src={FacebookLogo.src}
+                      alt={'celsius-facebook'}
+                      width={26}
+                      height={26}
+                    />
+                    <Image
+                      src={InstagramLogo.src}
+                      alt={'celsius-instagram'}
+                      width={26}
+                      height={26}
+                    />
+                    <Image
+                      src={LinkedinLogo.src}
+                      alt={'celsius-linkedin'}
+                      width={26}
+                      height={26}
+                    />
+                  </S.FooterContentFooter>
+                )}
               </S.FooterSectionContent>
             </S.FooterSection>
             <S.FooterSection className="middle">
               <S.FooterSectionContent>
                 <S.FooterSectionTitle>Categories</S.FooterSectionTitle>
-                <S.FooterSectionItem onClick={() => handleRedirect('category/1')}>Heating & Cooling</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('category/2')}>HVAC</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('category/3')}>Ventilation</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('category/4')}>Shop</S.FooterSectionItem>
+                <S.FooterSectionItem
+                  onClick={() => handleRedirect('category/1')}
+                >
+                  Heating & Cooling
+                </S.FooterSectionItem>
+                <S.FooterSectionItem
+                  onClick={() => handleRedirect('category/2')}
+                >
+                  HVAC
+                </S.FooterSectionItem>
+                <S.FooterSectionItem
+                  onClick={() => handleRedirect('category/3')}
+                >
+                  Ventilation
+                </S.FooterSectionItem>
+                <S.FooterSectionItem
+                  onClick={() => handleRedirect('category/4')}
+                >
+                  Shop
+                </S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>
             <S.FooterSection className="last">
               <S.FooterSectionContent>
                 <S.FooterSectionTitle>Useful links</S.FooterSectionTitle>
-                <S.FooterSectionItem onClick={() => handleRedirect('careers')}>Career</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('about-us')}>About Us</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('newsroom')}>Newsroom</S.FooterSectionItem>
-                <S.FooterSectionItem onClick={() => handleRedirect('contact-us')}>Contac Us</S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('careers')}>
+                  Career
+                </S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('about-us')}>
+                  About Us
+                </S.FooterSectionItem>
+                <S.FooterSectionItem onClick={() => handleRedirect('newsroom')}>
+                  Newsroom
+                </S.FooterSectionItem>
+                <S.FooterSectionItem
+                  onClick={() => handleRedirect('contact-us')}
+                >
+                  Contac Us
+                </S.FooterSectionItem>
                 <S.FooterSectionItem>Calculator</S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>
           </S.FooterContentSections>
-          {!isTablet && <S.FooterContentFooter>
-            <Image
-              src={FacebookLogo.src}
-              alt={'celsius-facebook'}
-              width={26}
-              height={26}
-            />
-            <Image
-              src={InstagramLogo.src}
-              alt={'celsius-instagram'}
-              width={26}
-              height={26}
-            />
-            <Image
-              src={LinkedinLogo.src}
-              alt={'celsius-linkedin'}
-              width={26}
-              height={26}
-            />
-          </S.FooterContentFooter>}
+          {!isTablet && (
+            <S.FooterContentFooter>
+              <Image
+                src={FacebookLogo.src}
+                alt={'celsius-facebook'}
+                width={26}
+                height={26}
+              />
+              <Image
+                src={InstagramLogo.src}
+                alt={'celsius-instagram'}
+                width={26}
+                height={26}
+              />
+              <Image
+                src={LinkedinLogo.src}
+                alt={'celsius-linkedin'}
+                width={26}
+                height={26}
+              />
+            </S.FooterContentFooter>
+          )}
         </S.FooterContentWrapper>
       </S.FooterContent>
     </S.FooterWrapper>
