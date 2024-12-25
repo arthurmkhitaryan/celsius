@@ -29,10 +29,10 @@ const reviews = [
   },
 ];
 
-function Reviews({ className }: { className?: string }) {
+function Reviews({ classNameTitle }: { classNameTitle?: string }) {
   return (
-    <S.ReviewsWrapper className={className}>
-      <S.ReviewsTitle>Reviews</S.ReviewsTitle>
+    <S.ReviewsWrapper>
+      <S.ReviewsTitle className={classNameTitle}>Reviews</S.ReviewsTitle>
       <Swiper
         modules={[Navigation, Pagination]}
         navigation

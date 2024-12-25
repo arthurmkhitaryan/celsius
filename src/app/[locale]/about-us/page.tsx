@@ -117,7 +117,7 @@ export default function About() {
       <MainLayout>
         <Achievements />
       </MainLayout>
-      <Reviews />
+      <Reviews classNameTitle="reviews" />
       <MainLayout>
         <Newsroom />
       </MainLayout>

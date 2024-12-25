@@ -8,7 +8,7 @@ export const AboutWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  .reviews > h2 {
+  .reviews {
     margin-top: 0;
   }
 `;
