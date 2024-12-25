@@ -114,9 +114,11 @@ export default function About() {
           </S.OurStoresItems>
         </S.OurStores>
       </MainLayout>
-      <Reviews />
       <MainLayout>
         <Achievements />
+      </MainLayout>
+      <Reviews />
+      <MainLayout>
         <Newsroom />
       </MainLayout>
     </S.AboutWrapper>

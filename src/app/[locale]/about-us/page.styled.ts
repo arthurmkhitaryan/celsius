@@ -156,7 +156,7 @@ export const OurTeam = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 0;
+  padding: 100px 0;
 `;
 
 export const OurTeamWrapper = styled.div`
