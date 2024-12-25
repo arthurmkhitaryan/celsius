@@ -43,7 +43,10 @@ export const OurStoresItem = styled.div`
   border-top-right-radius: 15px;
 `;
 
-export const OurStoresItemImage = styled.img``;
+export const OurStoresItemImage = styled.img`
+  max-width: 554px;
+  width: 100%;
+`;
 
 export const OurStoresItemContent = styled.div`
   display: flex;
@@ -189,7 +192,10 @@ export const OurTeamDescription = styled.div`
   color: #797979;
 `;
 
-export const OurTeamImage = styled.img``;
+export const OurTeamImage = styled.img`
+  max-width: 554px;
+  width: 100%;
+`;
 
 export const WhoWeAre = styled.div`
   margin: 80px 0;

@@ -71,7 +71,7 @@ export default function About() {
         </S.OurTeamWrapper>
       </S.OurTeam>
       <MainLayout>
-        <S.WhoWeAre>
+        {/* <S.WhoWeAre>
           <S.WhoWeAreImage src={getImageUrl(data?.whoWeAre.image)} />
           <S.WhoWeAreContent>
             <S.WhoWeAreTitle>{data?.whoWeAre.title}</S.WhoWeAreTitle>
@@ -79,7 +79,7 @@ export default function About() {
               dangerouslySetInnerHTML={{ __html: data?.whoWeAre.content || '' }}
             />
           </S.WhoWeAreContent>
-        </S.WhoWeAre>
+        </S.WhoWeAre> */}
         <S.InfoBlock>
           <S.InfoTitle>{t('about_info_title')}</S.InfoTitle>
           <S.InfoBlockContent>
