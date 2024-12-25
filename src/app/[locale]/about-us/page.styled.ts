@@ -44,6 +44,7 @@ export const OurStoresItem = styled.div`
 `;
 
 export const OurStoresItemImage = styled.img`
+  border-radius: 15px;
   max-width: 554px;
   width: 100%;
 `;
@@ -193,6 +194,7 @@ export const OurTeamDescription = styled.div`
 `;
 
 export const OurTeamImage = styled.img`
+  border-radius: 15px;
   max-width: 554px;
   width: 100%;
 `;
