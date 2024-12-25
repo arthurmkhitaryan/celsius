@@ -7,6 +7,10 @@ export const AboutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .reviews > h2 {
+    margin-top: 0;
+  }
 `;
 
 export const OurStores = styled.div`

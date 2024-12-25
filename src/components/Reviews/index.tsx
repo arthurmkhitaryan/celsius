@@ -29,9 +29,9 @@ const reviews = [
   },
 ];
 
-function Reviews() {
+function Reviews({ className }: { className?: string }) {
   return (
-    <S.ReviewsWrapper>
+    <S.ReviewsWrapper className={className}>
       <S.ReviewsTitle>Reviews</S.ReviewsTitle>
       <Swiper
         modules={[Navigation, Pagination]}
