@@ -65,18 +65,14 @@ export default function About() {
                   dangerouslySetInnerHTML={{ __html: item.description || '' }}
                 />
               </S.OurTeamContent>
-              <S.OurTeamImage
-                src={getImageUrl(item.image.data.attributes.url)}
-              />
+              <S.OurTeamImage src={getImageUrl(item.image)} />
             </S.OurTeamItem>
           ))}
         </S.OurTeamWrapper>
       </S.OurTeam>
       <MainLayout>
         <S.WhoWeAre>
-          <S.WhoWeAreImage
-            src={getImageUrl(data?.whoWeAre.image.data.attributes.url)}
-          />
+          <S.WhoWeAreImage src={getImageUrl(data?.whoWeAre.image)} />
           <S.WhoWeAreContent>
             <S.WhoWeAreTitle>{data?.whoWeAre.title}</S.WhoWeAreTitle>
             <S.WhoWeAreDescription
@@ -104,7 +100,7 @@ export default function About() {
             {data?.ourStores.OurStoresItem.map((item) => (
               <S.OurStoresItem key={item.id}>
                 <S.OurStoresItemImage
-                  src={getImageUrl(item.image.data.attributes.url)}
+                  src={getImageUrl(item.image)}
                   alt={'store'}
                 />
                 <S.OurStoresItemContent>
