@@ -22,11 +22,13 @@ const ProductHover = () => {
               />
               <h4>{category.name}</h4>
             </S.ContentHeader>
-            {category.products.map((product) => (
-              <S.ContentInfo href={`/products/${product.slug}`}>
-                {product.name}
-              </S.ContentInfo>
-            ))}
+            <S.ContentBody>
+              {category.products.map((product) => (
+                <S.ContentInfo href={`/products/${product.slug}`}>
+                  {product.name}
+                </S.ContentInfo>
+              ))}
+            </S.ContentBody>
           </S.HoverContainer>
         ))}
       </S.HoverContent>

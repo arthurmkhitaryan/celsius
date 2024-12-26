@@ -18,7 +18,7 @@ import { useTranslations } from 'next-intl';
 const slides = [
   {
     id: 1,
-    link: '/category/1',
+    link: '/products/1',
     backgroundPosition: '0% 0%',
     backgroundImage: slider1.src,
     title: 'V8',
@@ -27,7 +27,7 @@ const slides = [
   },
   {
     id: 2,
-    link: '/category/2',
+    link: '/products/2',
     backgroundPosition: '30% 0%',
     backgroundImage: slider2.src,
     title: 'R290 M thermal',
@@ -36,7 +36,7 @@ const slides = [
   },
   {
     id: 3,
-    link: '/category/3',
+    link: '/products/3',
     backgroundPosition: '63% 0%',
     backgroundImage: slider3.src,
     title: 'Chiller',
@@ -45,7 +45,7 @@ const slides = [
   },
   {
     id: 4,
-    link: '/category/4',
+    link: '/products/4',
     backgroundPosition: '100% 0%',
     backgroundImage: slider4.src,
     title: 'BreezeleSS+',
@@ -57,7 +57,7 @@ const slides = [
 function Slider() {
   const t = useTranslations('Home');
   const router = useRouter();
-  const [categoryLink, setCategoryLink] = useState<string>('/category/1');
+  const [categoryLink, setCategoryLink] = useState<string>('/products/1');
   const [activeIndex, setActiveIndex] = useState(0);
   const [translateX, setTranslateX] = useState(slides[0].translateX);
 
@@ -98,6 +98,7 @@ function Slider() {
       {slides.map((slide, index) => (
         <S.SlideContentWrapper
           key={index}
+          first={slide.id === 1}
           translateX={translateX}
           isActive={activeIndex === index}
         >
@@ -105,7 +106,7 @@ function Slider() {
           <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>
           <S.ButtonWrapper>
             <S.CalculatorButton onClick={handleNavigate}>
-              Go to category{' '}
+              Go to product{' '}
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>

@@ -77,7 +77,6 @@ export const OurStoresItemInfo = styled.p`
 export const VideoWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-height: 800px;
   margin: 0 auto;
 `;
 

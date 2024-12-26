@@ -41,8 +41,7 @@ function Navbar() {
             >
               <Link
                 style={{ display: 'flex', gap: '5px', alignItems: 'center' }}
-                href={getLocalizedPath('/products')}
-                passHref
+                href={'#'}
               >
                 Categories
                 <Image alt="arrow-down" src={ArrowDown} width={8} height={4} />

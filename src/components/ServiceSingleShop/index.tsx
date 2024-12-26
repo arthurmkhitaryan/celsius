@@ -7,6 +7,7 @@ import HvacIcon from '@/public/images/home/services/icons/hvac.svg';
 import VentilationIcon from '@/public/images/home/services/icons/ventilation.svg';
 import IconWrapper from '@/public/images/home/services/icon-wrapper.svg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons/shop-1.svg';
+import ShopAnimateIconTwo from '@/public/images/home/services/icons/shop-2.png';
 import ShopIcon from '@/public/images/home/services/icons/shop-icon.svg';
 import ImageArrow from '@/public/images/product/arrow.png';
 import { useParams, useRouter } from 'next/navigation';
@@ -61,6 +62,14 @@ const ServiceSingleShop = () => {
             width={240}
             height={130}
             style={{ transform: 'rotate(-14deg)' }}
+            alt="icon"
+          />
+          <Image
+            className="animate-hvac-icon-two"
+            src={ShopAnimateIconTwo}
+            width={90}
+            height={250}
+            style={{ transform: 'rotate(8deg)' }}
             alt="icon"
           />
         </S.ServiceIconWrapper>

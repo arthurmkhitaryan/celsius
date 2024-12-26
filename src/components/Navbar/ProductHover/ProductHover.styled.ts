@@ -22,12 +22,17 @@ export const HoverContent = styled.div`
   justify-content: space-around;
 `;
 
+export const ContentBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
 export const ContentInfo = styled(Link)`
   color: #828282;
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
-  padding-bottom: 15px;
   text-decoration: none;
   cursor: pointer;
 `;

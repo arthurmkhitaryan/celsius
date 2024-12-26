@@ -37,23 +37,7 @@ export default function About() {
   return (
     <S.AboutWrapper>
       <S.VideoWrapper>
-        {!isPlaying && (
-          <S.VideoThumbnailWrapper>
-            <S.VideoThumbnail
-              src="/images/video-thumbnail.jpg"
-              alt="Video Thumbnail"
-            />
-            <S.PlayButton onClick={handlePlay}>▶</S.PlayButton>
-          </S.VideoThumbnailWrapper>
-        )}
-        <S.Video
-          id="about-video"
-          src="/video/about.mp4"
-          controls={isPlaying}
-          style={{
-            display: isPlaying ? 'block' : 'none',
-          }}
-        />
+        <S.Video id="about-video" src="/video/about.mp4" autoPlay />
       </S.VideoWrapper>
       <S.OurTeam>
         <S.OurTeamWrapper>

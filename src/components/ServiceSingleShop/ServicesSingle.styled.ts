@@ -54,6 +54,7 @@ export const ServiceAdditionalButton = styled.button`
   align-items: center;
   align-self: baseline;
   z-index: 1;
+  white-space: nowrap;
 `;
 
 export const ServiceIconWrapper = styled.div`
@@ -72,6 +73,12 @@ export const ServiceIconWrapper = styled.div`
   & > .animate-hvac-icon-first {
     bottom: -40%;
     left: -12%;
+    position: absolute;
+  }
+
+  & > .animate-hvac-icon-two {
+    bottom: -100%;
+    left: 55%;
     position: absolute;
   }
 `;
