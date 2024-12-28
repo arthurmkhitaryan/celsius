@@ -133,12 +133,12 @@ function Footer() {
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/2')}
                 >
-                  HVAC
+                  Ventilation Systems
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/3')}
                 >
-                  Ventilation
+                  Only Heating
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/4')}
