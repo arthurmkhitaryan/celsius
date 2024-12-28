@@ -239,7 +239,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
         </div>
       </MainLayout>
       <img className="banner-image" src={data.banner} alt="Banner" />
-      <div className="products_block">
+      <div className="productssss_block">
         <h3>You May Also Like</h3>
         <div className="product_block">{renderProducts()}</div>
       </div>
