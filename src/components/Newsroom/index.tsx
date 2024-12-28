@@ -48,6 +48,10 @@ function Newsroom() {
     pageSize: 3,
   });
 
+  const handleNavigateToNewsroom = () => {
+    router.push('/newsroom');
+  };
+
   const handleClickItem = (itemId: string | number) => {
     router.push(`/newsroom/${itemId}`);
   };
@@ -68,7 +72,7 @@ function Newsroom() {
           ))}
         </S.NewsroomList>
       </S.NewsroomContent>
-      <S.SeeAllButton>
+      <S.SeeAllButton onClick={handleNavigateToNewsroom}>
         See All <ChevronRight size={24} />
       </S.SeeAllButton>
     </S.NewsroomWrapper>

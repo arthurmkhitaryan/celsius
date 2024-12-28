@@ -19,51 +19,53 @@ const products = [
     iconAlt: 'heating',
     mainImage: ImageHeating,
     img: CoolingIcon,
-    link: '/category/1'
+    link: '/category/1',
   },
   {
     id: 2,
-    title: 'HVAC',
+    title: 'Ventilation Systems',
     imgAlt: 'hvac',
     iconAlt: 'hvac',
     mainImage: ImageHvac,
     img: HvacIcon,
-    link: '/category/2'
+    link: '/category/2',
   },
   {
     id: 3,
-    title: 'Ventilation',
+    title: 'Only Heating',
     imgAlt: 'ventilation',
     iconAlt: 'ventilation',
     mainImage: ImageVentilation,
     img: VentilationIcon,
-    link: '/category/3'
+    link: '/category/3',
   },
 ];
 
 const ProductList = () => {
-  const router = useRouter()
+  const router = useRouter();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
-  
+
   const handleClickViewMore = (link: string) => {
-    router.push(link)
-  }
+    router.push(link);
+  };
 
   return (
     <div className="products_block">
       {products.map((product) => (
-        <div className="product_block" key={product.id}>
-          {isTablet && <div className="product_info">
-            <div className="product_icon">
-              <Image
-                src={product.img}
-                alt={product.iconAlt}
-                width={100}
-                height={100}
-              />
+        <div className="product_blockss" key={product.id}>
+          {isTablet && (
+            <div className="product_info">
+              <div className="product_icon">
+                <Image
+                  src={product.img}
+                  alt={product.iconAlt}
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <div className="product_title">{product.title}</div>
             </div>
-            <div className="product_title">{product.title}</div>
-          </div>}
+          )}
           <div className="product_img">
             <Image
               src={product.mainImage}
@@ -73,27 +75,25 @@ const ProductList = () => {
             />
           </div>
           <div className="product_info">
-            {!isTablet && 
-            <>
-            <div className="product_icon">
-              <Image
-                src={product.img}
-                alt={product.iconAlt}
-                width={100}
-                height={100}
-              />
-            </div>
-            <div className="product_title">{product.title}</div>
-            </>}
-            <button className="view_more_btn" onClick={() => handleClickViewMore(product.link)}>
+            {!isTablet && (
+              <>
+                <div className="product_icon">
+                  <Image
+                    src={product.img}
+                    alt={product.iconAlt}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <div className="product_title">{product.title}</div>
+              </>
+            )}
+            <button
+              className="view_more_btn"
+              onClick={() => handleClickViewMore(product.link)}
+            >
               View More
-              <Image
-                src={ImageArrow}
-                alt=""
-                title=""
-                width={10}
-                height={10}
-              />
+              <Image src={ImageArrow} alt="" title="" width={10} height={10} />
             </button>
           </div>
         </div>

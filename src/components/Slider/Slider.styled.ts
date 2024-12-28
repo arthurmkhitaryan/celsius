@@ -61,7 +61,7 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const CalculatorButton = styled.button`
+export const CalculatorButton = styled.button<{ second: boolean }>`
   background: #ffff;
   font-weight: 600;
   color: #0044cc;
@@ -71,6 +71,7 @@ export const CalculatorButton = styled.button`
   align-items: center;
   gap: 10px;
   font-size: 20px;
+  margin-top: ${({ second }) => (second ? '55px' : '')};
 `;
 
 export const CustomNavigationButton = styled.div<{

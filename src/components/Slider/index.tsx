@@ -105,8 +105,11 @@ function Slider() {
           <S.SlideTitle>{slide.title}</S.SlideTitle>
           <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>
           <S.ButtonWrapper>
-            <S.CalculatorButton onClick={handleNavigate}>
-              Go to product{' '}
+            <S.CalculatorButton
+              onClick={handleNavigate}
+              second={slide.id === 2}
+            >
+              Go to product
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>

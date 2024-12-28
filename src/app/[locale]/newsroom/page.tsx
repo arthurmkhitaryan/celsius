@@ -12,14 +12,15 @@ import NewsroomItem from '@/components/NewsRoomItem';
 import Pagination from '@/components/Pagination';
 import * as S from './page.styled';
 import ProductList from '@/components/ProductList';
-import { useParams } from 'next/navigation';
 import { useGetNewsCategoriesQuery } from '@/features/newsCategories/newsCategories.api';
+import { useParams, useRouter } from 'next/navigation';
 
 const PAGE_SIZE = 5;
 
 export default function Newsroom() {
   const { locale } = useParams();
   const t = useTranslations('Newsroom');
+  const router = useRouter();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState(0);
@@ -70,7 +71,9 @@ export default function Newsroom() {
                 {bannerPost?.author} | {formattedDate}
               </S.PostAuthor>
               <S.ReadFullButtonWrapper>
-                <S.ReadFullButton>
+                <S.ReadFullButton
+                  onClick={() => router.push(`newsroom/${bannerPost.id}`)}
+                >
                   {t('read_full_story')} {'>>'}
                 </S.ReadFullButton>
               </S.ReadFullButtonWrapper>
