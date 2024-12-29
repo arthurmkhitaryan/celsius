@@ -27,6 +27,10 @@ const styles = css`
       cursor: default;
     }
   }
+
+  .custom {
+    margin: 0;
+  }
 `;
 
 const GlobalStyles = createGlobalStyle`

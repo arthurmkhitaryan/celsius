@@ -47,8 +47,8 @@ export default function NewsSingle({ params }: Props) {
             </S.AuthorName>
           </S.InfoWrapper>
           <S.MainWrapper>
-            <Achievements />
-            <Newsroom />
+            <Achievements className="custom" />
+            <Newsroom className="custom" />
           </S.MainWrapper>
         </S.ContentWrapper>
       </S.NewsSingleWrapper>

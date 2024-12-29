@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 
@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <S.HomeWrapper>
-      {isTablet ? <SliderMobile /> : <Slider /> }
+      {isTablet ? <SliderMobile /> : <Slider />}
       <MainLayout>
         <Achievements />
         {isTablet ? <ServicesMobile /> : <Services />}

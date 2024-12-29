@@ -15,8 +15,8 @@ export const NewsroomTitle = styled.h2`
   color: ${({ theme }) => theme.palette.common.textDefault};
 
   @media (max-width: 768px) {
-      font-size: 24px;
-      margin: 20px 20px 0 20px;
+    font-size: 24px;
+    margin: 20px 20px 0 20px;
   }
 `;
 
@@ -40,8 +40,8 @@ export const NewsroomList = styled.div`
   margin-top: 48px;
 
   @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 20px;
-      margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
   }
 `;
