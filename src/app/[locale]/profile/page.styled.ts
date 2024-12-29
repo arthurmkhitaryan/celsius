@@ -3,11 +3,12 @@
 import styled from 'styled-components';
 
 export const ProfileWrapper = styled.div`
-  margin: 80px 0;
+  margin: 80px 0 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 120px;
 `;
 
 export const ProfileContainer = styled.div`
