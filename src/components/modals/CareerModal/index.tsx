@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import * as S from './CareerModal.styled';
 import { Dot } from 'lucide-react';
@@ -14,6 +14,21 @@ interface CareerModalProps {
 }
 
 function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      const body = document.querySelector('body');
+      if (body) {
+        body.style.overflow = 'hidden';
+      }
+    } else {
+      const body = document.querySelector('body');
+
+      if (body) {
+        body.style.overflow = 'auto';
+      }
+    }
+  }, [isOpen]);
+
   return (
     <Modal
       isOpen={isOpen}
