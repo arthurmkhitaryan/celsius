@@ -44,6 +44,7 @@ export const Content = styled.div`
     max-width: 1130px;
     width: 100%;
     border-radius: 15px;
+    max-height: 420px;
   }
 `;
 
