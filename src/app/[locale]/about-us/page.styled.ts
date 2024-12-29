@@ -18,6 +18,7 @@ export const OurStores = styled.div`
   flex-direction: column;
   gap: 32px;
   padding: 80px 0 20px;
+  margin-bottom: 120px;
 `;
 
 export const OurStoresTitle = styled.h2`

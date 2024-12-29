@@ -12,6 +12,10 @@ export const ReviewsWrapper = styled.div`
   max-width: 1260px;
   width: 100%;
 
+  .top {
+    margin-top: 120px;
+  }
+
   .swiper-pagination-bullet {
     width: 60px;
     height: 4px;
@@ -37,15 +41,15 @@ export const ReviewsWrapper = styled.div`
       font-size: 24px;
     }
   }
-    
-  @media (max-width: 768px) {
-      .swiper-button-prev {
-          display: none;
-      }
 
-      .swiper-button-next {
-          display: none;
-      }
+  @media (max-width: 768px) {
+    .swiper-button-prev {
+      display: none;
+    }
+
+    .swiper-button-next {
+      display: none;
+    }
   }
 `;
 
@@ -65,9 +69,9 @@ export const ReviewCard = styled.div`
   padding: 20px 29px;
   background-color: white;
   border-radius: 8px;
-   
+
   @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 `;
 

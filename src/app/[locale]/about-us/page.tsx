@@ -37,7 +37,7 @@ export default function About() {
   return (
     <S.AboutWrapper>
       <S.VideoWrapper>
-        <S.Video id="about-video" src="/video/about.mp4" autoPlay />
+        <S.Video id="about-video" src="/video/about.mp4" autoPlay={true} />
       </S.VideoWrapper>
       <S.OurTeam>
         <S.OurTeamWrapper>
@@ -101,7 +101,7 @@ export default function About() {
       <MainLayout>
         <Achievements />
       </MainLayout>
-      <Reviews classNameTitle="reviews" />
+      <Reviews classNameTitle="reviews top" />
     </S.AboutWrapper>
   );
 }
