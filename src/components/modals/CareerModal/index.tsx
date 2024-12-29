@@ -30,9 +30,11 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
           justifyContent: 'center',
           alignItems: 'center',
           overflow: 'hidden', // Ensure the overlay itself does not scroll
+          zIndex: 10000,
         },
         content: {
           position: 'relative',
+          zIndex: '1000',
           top: 'auto',
           left: 'auto',
           right: 'auto',
