@@ -48,6 +48,8 @@ export default function Career() {
             PageMaker including versions of Lorem Ipsum.
           </S.TextDescription>
         </S.TextContent>
+      </MainLayout>
+      <MainLayout>
         <S.BackgroundLogo>
           <CareersCV />
           <S.CareerList>
