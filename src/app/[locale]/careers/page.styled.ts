@@ -82,6 +82,7 @@ export const CareerList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 120px;
 `;
 
 export const BackgroundLogo = styled.div``;
