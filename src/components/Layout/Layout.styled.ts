@@ -13,4 +13,7 @@ export const LayoutWrapper = styled.div`
 export const ContentWrapper = styled.div`
   max-width: 1140px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
 `;

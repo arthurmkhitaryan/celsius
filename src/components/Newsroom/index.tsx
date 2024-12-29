@@ -38,7 +38,7 @@ const newsroomData = [
   },
 ];
 
-function Newsroom({ className }: { className?: string }) {
+function Newsroom() {
   const { locale } = useParams();
   const router = useRouter();
 
@@ -57,7 +57,7 @@ function Newsroom({ className }: { className?: string }) {
   };
 
   return (
-    <S.NewsroomWrapper className={className}>
+    <S.NewsroomWrapper>
       <S.NewsroomTitle>Newsroom</S.NewsroomTitle>
       <S.NewsroomContent>
         <S.NewsroomList>

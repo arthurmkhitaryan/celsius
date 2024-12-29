@@ -29,7 +29,7 @@ const styles = css`
   }
 
   .custom {
-    margin: 0;
+    margin: 0 !important;
   }
 `;
 

@@ -7,7 +7,6 @@ export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-top: 120px;
 
   @media (max-width: 768px) {
     padding: 0 30px;

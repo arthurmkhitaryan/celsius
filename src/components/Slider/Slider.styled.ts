@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 export const SliderWrapper = styled.div`
   width: 100%;
+  margin-bottom: 120px;
 `;
 
 export const SlideContentWrapper = styled.div<{

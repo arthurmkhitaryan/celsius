@@ -8,11 +8,11 @@ import { achievements } from '@/components/Achievements/mock/achievements';
 import AchievementItem from '@/components/Achievements/Item';
 import { useTranslations } from 'next-intl';
 
-function Achievements({ className }: { className?: string }) {
+function Achievements() {
   const t = useTranslations('Home');
 
   return (
-    <S.AchievementsWrapper className={className}>
+    <S.AchievementsWrapper>
       {achievements.map((achievement) => (
         <AchievementItem
           key={achievement.id}

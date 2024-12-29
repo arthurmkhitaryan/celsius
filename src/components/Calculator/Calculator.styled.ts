@@ -9,7 +9,6 @@ import BgCalc from '@/public/images/home/calculator/calc-bg.png';
 export const CalculatorWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 72px;
 
   @media (max-width: 768px) {
     margin: 72px 10px 0 10px;

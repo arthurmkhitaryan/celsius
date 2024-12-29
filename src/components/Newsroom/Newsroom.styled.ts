@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { typographyPreset3, typographyPreset5 } from '@/styles';
 
 export const NewsroomWrapper = styled.div`
-  margin: 120px 0;
+  margin-bottom: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
