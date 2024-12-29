@@ -13,7 +13,7 @@ export const ReviewsWrapper = styled.div`
   width: 100%;
 
   .top {
-    margin-top: 120px;
+    margin-top: 120px !important;
   }
 
   .swiper-pagination-bullet {
