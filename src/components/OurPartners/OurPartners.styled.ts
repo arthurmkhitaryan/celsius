@@ -4,23 +4,14 @@ import styled from 'styled-components';
 import { typographyPreset5 } from '@/styles';
 
 export const OurPartnersWrapper = styled.div`
-  .swiper-slide {
-    display: flex;
-    align-items: center !important;
-    flex-shrink: 0;
-    margin-left: 60px;
-    min-width: 100px;
-    width: auto !important; /* Prevent issues with slide width */
-  }
-
-  .swiper-wrapper {
-    display: flex;
-  }
+  position: relative;
+  max-width: 1260px;
 `;
 
 export const OurPartnersTitle = styled.h2`
   ${typographyPreset5};
   color: ${({ theme }) => theme.palette.common.textDefault};
+  margin-bottom: 50px;
 
   @media (max-width: 768px) {
     font-size: 36px;
@@ -29,15 +20,38 @@ export const OurPartnersTitle = styled.h2`
   }
 `;
 
-export const OurPartnersContent = styled.div`
+export const OuterWrapper = styled.div`
+  position: relative;
+`;
+
+export const InnerWrapper = styled.div`
+  overflow: hidden; /* Keeps the slider content confined */
+  border-radius: 8px; /* Optional: Add a border radius for aesthetic */
+`;
+
+export const NavigationButton = styled.div`
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 48px;
-  height: 190px;
+  justify-content: center;
+  top: 60%;
 
-  @media (max-width: 768px) {
-    justify-content: center;
+  &.swiper-button-prev {
+    left: -70px;
+  }
+
+  &.swiper-button-next {
+    right: -70px;
+  }
+
+  &::after {
+    font-size: 24px;
+    color: #1c1c1c;
   }
 `;
 

@@ -19,7 +19,7 @@ export const productsApi = createApi({
       query: ({ limit, excludeId, productTypes, locale }) => {
         const params = new URLSearchParams();
         if (limit) {
-          params.append('limit', limit.toString());
+          params.append('pagination[limit]', limit.toString());
           params.append('pagination[start]', "0");
         }
         if (excludeId) {

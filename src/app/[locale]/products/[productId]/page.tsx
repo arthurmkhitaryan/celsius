@@ -11,7 +11,7 @@ import { useGetProductQuery } from '@/features/product';
 import { dotingPrice } from '@/utils/doting-price';
 import { useGetProductsQuery } from '@/features';
 import { useAppSelector } from '@/store/hooks';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 interface ProductParamProps {
   productId: string;
@@ -19,7 +19,9 @@ interface ProductParamProps {
 
 export default function Product({ params }: { params: ProductParamProps }) {
   const { locale } = useParams();
+  const router = useRouter();
   const [activeThumbnail, setActiveThumbnail] = useState(1);
+
   const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>(
     {},
   ); // State to manage FAQ open/close
@@ -125,6 +127,11 @@ export default function Product({ params }: { params: ProductParamProps }) {
     }));
   };
 
+  const redirectToCheckout = () => {
+    localStorage.setItem('paymentProduct', params.productId);
+    router.push(`/${locale}/checkout`);
+  }
+
   const renderTabContent = () => {
     switch (activeTab) {
       case tabs[0].id:
@@ -228,7 +235,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
                   <button onClick={handleIncrement}>+</button>
                 </div>
                 <button className="add_to_cart_btn">Add to Cart</button>
-                <button className="buy_it_now_btn">Buy It Now</button>
+                <button className="buy_it_now_btn" onClick={redirectToCheckout}>Buy It Now</button>
               </div>
             </div>
             <div className="product_tabs_block">
