@@ -5,11 +5,10 @@ import React from 'react';
 // styled
 import * as S from './page.styled';
 import { useGetNewsByIdQuery } from '@/features/newsroom/newsroom.api';
-import Image from 'next/image';
 import { getImageUrl } from '@/utils/getImageFullUrl';
 import Achievements from '@/components/Achievements';
-import { MainWrapper } from '@/components/Header/Header.styled';
 import Newsroom from '@/components/Newsroom';
+import OEmbedRenderer from '@/components/OEmbedRenderer';
 
 interface Props {
   params: {
@@ -39,7 +38,7 @@ export default function NewsSingle({ params }: Props) {
           alt={'News Banner'}
         />
         <S.ContentWrapper>
-          <S.Content dangerouslySetInnerHTML={{ __html: data?.content }} />
+          <OEmbedRenderer content={data?.content} />
           <S.Devider />
           <S.InfoWrapper>
             <S.AuthorName>

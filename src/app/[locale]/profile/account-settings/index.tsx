@@ -34,6 +34,8 @@ const AccountSettings = () => {
       return null;
     }
 
+    console.log(111, user);
+
     await UserService.updateUser(user.id, formData, token);
   };
 
