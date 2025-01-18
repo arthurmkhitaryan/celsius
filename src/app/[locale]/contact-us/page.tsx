@@ -1,7 +1,7 @@
 'use client';
 
 import * as S from './page.styled';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Contact from '@/public/images/contact-us/contact.jpeg';
 import Achievements from '@/components/Achievements';
 import { useCreateContactUsMutation } from '@/features/contact-us/contact-us.api';
@@ -12,35 +12,28 @@ import FacebookLogo from '@/public/images/facebook-filled.svg';
 import InstagramLogo from '@/public/images/instagram-filled.svg';
 import LinkedinLogo from '@/public/images/linkedin-filled.svg';
 
+
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+  const [errors, setErrors] = useState<any>({});
+  const [isSended, setIsSended] = useState(false);
+  const [mainError, setMainError] = useState(false);
   const isTablet = useClientMediaQuery('(max-width: 768px)');
-
-  const [createContactUs] = useCreateContactUsMutation();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required.';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required.';
-    if (!formData.companyName.trim()) newErrors.companyName = 'Company Name is required.';
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Valid Email is required.';
-    }
-    if (!formData.phoneNumber.trim() || !/^\+?\d{7,15}$/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Valid Phone Number is required.';
-    }
-    if (!formData.city.trim()) newErrors.city = 'City is required.';
-    if (!formData.postCode.trim()) newErrors.postCode = 'Postcode is required.';
-    if (!formData.address.trim()) newErrors.address = 'Address is required.';
-    if (!formData.comment.trim()) newErrors.comment = 'Comments is required.';
-    if (!formData.employess.trim()) newErrors.employess = 'Employess is required.';
-
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.email.trim()) newErrors.email = 'Email is required.';
+    if (!formData.message.trim()) newErrors.message = 'Message is required.';
+  
     return newErrors;
   };
+
+  const [createContactUs] = useCreateContactUsMutation();
 
   const handleInputChange = (e: any) => {
     const { id, value } = e.target;
@@ -69,12 +62,14 @@ export default function ContactUs() {
         message: formData.message,
       }).unwrap();
 
-      window.location.reload();
+      setIsSended(true);
+      setMainError(false);
     } catch (error) {
       console.error('Error submitting form:', error);
       setMainError(true);
     }
   };
+
 
   useEffect(() => {
     return (() => {
@@ -86,7 +81,7 @@ export default function ContactUs() {
   const message = useMemo(() => {
     if (mainError) return "Error please contact";
     if (isSended) return "Sent Successfully";
-    return "Become a partner";
+    return "Send Message";
   }, [isSended, mainError]);
 
   return (
@@ -109,7 +104,7 @@ export default function ContactUs() {
                   value={formData.name}
                   onChange={handleInputChange}
                 />
-                {errors.firstName && <S.Error>{errors.firstName}</S.Error>}
+                {errors.name && <S.Error>{errors.name}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="email">Email*</label>
@@ -130,10 +125,10 @@ export default function ContactUs() {
                 value={formData.message}
                 onChange={handleInputChange}
               />
-              {errors.comment && <S.Error>{errors.comment}</S.Error>}
+              {errors.message && <S.Error>{errors.message}</S.Error>}
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button type="submit">Send Message</S.Button>
+              <S.Button type="submit">{message}</S.Button>
             </S.ButtonContainer>
           </S.Form>
           <S.FooterSectionContent>
