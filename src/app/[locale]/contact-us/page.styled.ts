@@ -9,6 +9,13 @@ export const ContactUsWrapper = styled.div`
     margin: 40px auto;
 `;
 
+export const Error = styled.p`
+  color: red;
+  font-size: 14px;
+  padding-top: 8px;
+  margin-left: 25px;
+`;
+
 export const Header = styled.header`
     margin: 10px 0;
     h1 {
@@ -111,6 +118,12 @@ export const Button = styled.button`
 
     &:hover {
         background-color: #0056b3;
+    }
+
+      &:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
     }
 `;
 
