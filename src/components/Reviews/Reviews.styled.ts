@@ -79,6 +79,11 @@ export const ReviewLogo = styled.img`
   margin: 120px 0;
   max-width: 320px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    margin: 40px 0;
+    max-width: 240px;
+  }
 `;
 
 export const ReviewContent = styled.div`
@@ -91,6 +96,13 @@ export const ReviewText = styled.p`
   margin-bottom: 10px;
   max-width: 700px;
   ${typographyPreset10};
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #1c1c1c;
+  }
 `;
 
 export const CompanyName = styled.p`
@@ -102,5 +114,19 @@ export const CompanyName = styled.p`
 
   span {
     ${typographyPreset11};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1c1c1c;
+    line-height: 24px;
+
+    span {
+      font-size: 14px;
+      color: #1c1c1c;
+      line-height: 24px;
+      font-weight: 600;
+    }
   }
 `;
