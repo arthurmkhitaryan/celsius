@@ -25,6 +25,20 @@ function OurPartners() {
             autoplay={{
               delay: 2000,
             }}
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                // For screens equal to or larger than 768px
+                slidesPerView: 3,
+              },
+              1024: {
+                // For screens equal to or larger than 1024px
+                slidesPerView: 5,
+              },
+            }}
             loop={true}
           >
             {partnersData.data.map((item: any) => (

@@ -7,6 +7,14 @@ export const OurPartnersWrapper = styled.div`
   .swiper-slide {
     display: flex;
     align-items: center !important;
+    flex-shrink: 0;
+    margin-left: 60px;
+    min-width: 100px;
+    width: auto !important; /* Prevent issues with slide width */
+  }
+
+  .swiper-wrapper {
+    display: flex;
   }
 `;
 
@@ -30,14 +38,6 @@ export const OurPartnersContent = styled.div`
 
   @media (max-width: 768px) {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    & > * {
-      flex: 1 1 45%;
-      max-width: 45%;
-      margin: 10px;
-    }
   }
 `;
 

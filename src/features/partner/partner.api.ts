@@ -1,24 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const contactUsApi = createApi({
-  reducerPath: 'contactUsApi',
+export const partnerApi = createApi({
+  reducerPath: 'partnerApi',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_API_URL,
   }),
   endpoints: (builder) => ({
-    createContactUs: builder.mutation<ContactUs, ContactUs>({
-      query: (contactUsData) => ({
-        url: '/contacts',
+    createPartner: builder.mutation<Partner, Partner>({
+      query: (partnerData) => ({
+        url: '/partner',
         method: 'POST',
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
           'Content-Type': 'application/json',
         },
-        body: contactUsData,
+        body: partnerData,
       }),
       transformResponse: (response: { data: any }) => response.data.attributes,
     }),
   }),
 });
 
-export const { useCreateContactUsMutation } = contactUsApi;
+export const { useCreatePartnerMutation } = partnerApi;

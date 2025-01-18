@@ -16,4 +16,8 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 120px;
+
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
 `;

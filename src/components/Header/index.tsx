@@ -26,7 +26,9 @@ import { setFilters } from '@/features/filters/filters.slice';
 import NavbarButton from '../shared/NavbarButton';
 
 function Header() {
-  const isFilterMenuVisible = useAppSelector((state: any) => state.header.isFilterMenuVisible);
+  const isFilterMenuVisible = useAppSelector(
+    (state: any) => state.header.isFilterMenuVisible,
+  );
   const user = useAppSelector((state: any) => state.auth.user) as any;
   const [formVisible, setFormVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
@@ -45,9 +47,9 @@ function Header() {
   };
 
   const handleBecomeAPartner = () => {
-    console.log({ mtav: true })
-    router.push('/contact-us')
-  }
+    console.log({ mtav: true });
+    router.push('/sign-up-partner');
+  };
 
   const handleRedirectProfilePage = () => {
     router.push(`/profile`);
@@ -56,13 +58,13 @@ function Header() {
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
     if (menuVisible) {
-      dispatch(closeFilterMenu())
+      dispatch(closeFilterMenu());
     }
   };
 
   useEffect(() => {
-    setMenuVisible(isFilterMenuVisible)
-  }, [isFilterMenuVisible])
+    setMenuVisible(isFilterMenuVisible);
+  }, [isFilterMenuVisible]);
 
   return (
     <S.HeaderWrapper>
@@ -83,24 +85,34 @@ function Header() {
           <S.HamburgerWrapper>
             <Language locale={locale as string} />
             <Image src={BasketLogo} alt="Basket Logo" priority />
-            {!menuVisible ? <Image
-              src={HamburgerIcon}
-              alt="Hamburger Icon"
-              width={30}
-              height={30}
-              onClick={toggleMenu}
-            /> : <Image
-              src={CrossIcon}
-              alt="Cross Icon"
-              width={30}
-              height={30}
-              onClick={toggleMenu}
-            />}
+            {!menuVisible ? (
+              <Image
+                src={HamburgerIcon}
+                alt="Hamburger Icon"
+                width={30}
+                height={30}
+                onClick={toggleMenu}
+              />
+            ) : (
+              <Image
+                src={CrossIcon}
+                alt="Cross Icon"
+                width={30}
+                height={30}
+                onClick={toggleMenu}
+              />
+            )}
           </S.HamburgerWrapper>
         ) : (
           <S.HeaderRightSide>
             <Language locale={locale as string} />
-            <NavbarButton btnStyle="bordered" px={32} py={16} width={208} onClick={handleBecomeAPartner}>
+            <NavbarButton
+              btnStyle="bordered"
+              px={32}
+              py={16}
+              width={208}
+              onClick={handleBecomeAPartner}
+            >
               Become a partner
               <Image src={arrowRight} width={12} alt="arrow right" />
             </NavbarButton>
@@ -139,14 +151,23 @@ function Header() {
 
         {isTablet && menuVisible && (
           <S.MobileMenu>
-            {isFilterMenuVisible ? <Filter onFilterChange={handleChangeCategories} /> : <MobileNavbar changeToggleMenu={toggleMenu} />}
+            {isFilterMenuVisible ? (
+              <Filter onFilterChange={handleChangeCategories} />
+            ) : (
+              <MobileNavbar changeToggleMenu={toggleMenu} />
+            )}
           </S.MobileMenu>
         )}
       </S.MainWrapper>
       {isTablet && (
         <S.TabletButtonWrapper>
           <S.FullWidthButton>
-            <Button btnStyle="bordered" px={32} py={16} onClick={handleBecomeAPartner}>
+            <Button
+              btnStyle="bordered"
+              px={32}
+              py={16}
+              onClick={handleBecomeAPartner}
+            >
               Become a partner
               <Image src={arrowRight} width={16} alt="arrow right" />
             </Button>

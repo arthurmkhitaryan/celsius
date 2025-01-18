@@ -1,29 +1,24 @@
 'use client';
 
 import * as S from './page.styled';
-import React, { useEffect, useMemo, useState } from 'react';
-import Banner from '@/public/images/contact-us/banner.jpeg';
-import Main from '@/public/images/contact-us/main.jpeg';
-import Image from 'next/image';
+import React, { useState } from 'react';
+import Contact from '@/public/images/contact-us/contact.jpeg';
 import Achievements from '@/components/Achievements';
 import { useCreateContactUsMutation } from '@/features/contact-us/contact-us.api';
+import { Clock5, Mail, MapPin, Phone } from 'lucide-react';
+import Image from 'next/image';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import FacebookLogo from '@/public/images/facebook-filled.svg';
+import InstagramLogo from '@/public/images/instagram-filled.svg';
+import LinkedinLogo from '@/public/images/linkedin-filled.svg';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    companyName: '',
+    name: '',
     email: '',
-    phoneNumber: '',
-    city: '',
-    postCode: '',
-    address: '',
-    employess: '',
-    comment: ''
+    message: '',
   });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSended, setIsSended] = useState(false);
-  const [mainError, setMainError] = useState(false);
+  const isTablet = useClientMediaQuery('(max-width: 768px)');
 
   const [createContactUs] = useCreateContactUsMutation();
 
@@ -51,7 +46,7 @@ export default function ContactUs() {
     const { id, value } = e.target;
     setFormData({
       ...formData,
-      [id]: value
+      [id]: value,
     });
     setErrors({
       ...errors,
@@ -69,21 +64,12 @@ export default function ContactUs() {
 
     try {
       await createContactUs({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        companyName: formData.companyName,
+        name: formData.name,
         email: formData.email,
-        phoneNumber: formData.phoneNumber,
-        city: formData.city,
-        postCode: formData.postCode,
-        address: formData.address,
-        employess: +formData.employess,
-        comment: formData.comment,
+        message: formData.message,
       }).unwrap();
 
-      setIsSended(true);
-      setMainError(false);
-
+      window.location.reload();
     } catch (error) {
       console.error('Error submitting form:', error);
       setMainError(true);
@@ -105,89 +91,26 @@ export default function ContactUs() {
 
   return (
     <>
-      <S.HeaderImage>
-        <Image src={Main} alt="main" />
+      <S.HeaderImage $backgroundImage={Contact.src}>
         <S.HeaderText>
-          <p>Lorem Ipsum is simply dummy text of the</p>
-          <h1>BECOME A PARTNER</h1>
-          <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and </span>
+          <h1>CONTACT US</h1>
         </S.HeaderText>
       </S.HeaderImage>
-      <S.InfoSection>
-        <S.InfoBlock>
-          <S.InfoTitle>Lorem ipsum dolor set</S.InfoTitle>
-        <S.InfoText>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </S.InfoText>
-        <S.InfoText>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standaronly five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-        </S.InfoText>
-        </S.InfoBlock>
-        <S.CardContainer>
-          <S.InfoCard>
-            <h3>Technical Support</h3>
-            <p>1.1 Provide a wealth of technical information and training courses related to installation and maintenance</p>
-            <p>1.2. Through various professional skill training methods, meet the needs of technical ability improvement</p>
-          </S.InfoCard>
-          <S.InfoCard>
-            <h3>Spare Parts Supply</h3>
-            <p>Provide spare parts supply for at least 6 years to ensure that users can obtain high-quality spare parts from the original factory in time when there is an abnormality in the users equipment</p>
-          </S.InfoCard>
-          <S.InfoCard>
-            <h3>Service Channel</h3>
-            <p>Provide professional and comprehensive user access channels, including but not limited to hotline, email, social media, service outlets, etc.</p>
-          </S.InfoCard>
-        </S.CardContainer>
-      </S.InfoSection>
-      <S.BannerImage>
-        <Image src={Banner} alt="banner" />
-      </S.BannerImage>
-
       <S.ContactUsWrapper>
-        <S.Header>
-          <h1>Contact us</h1>
-        </S.Header>
-        <S.Header>
-          <h2>Join Our Team</h2>
-        </S.Header>
         <S.MainContent>
           <S.Form onSubmit={handleSubmit}>
             <S.TwoColumnRow>
               <S.InputGroup>
-                <label htmlFor="firstName">First Name*</label>
+                <label htmlFor="firstName">Your Name*</label>
                 <input
-                  id="firstName"
+                  id="name"
                   type="text"
-                  placeholder="Enter your first name"
-                  value={formData.firstName}
+                  placeholder="Enter your name"
+                  value={formData.name}
                   onChange={handleInputChange}
                 />
                 {errors.firstName && <S.Error>{errors.firstName}</S.Error>}
               </S.InputGroup>
-              <S.InputGroup>
-                <label htmlFor="lastName">Last Name*</label>
-                <input
-                  id="lastName"
-                  type="text"
-                  placeholder="Enter your last name"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                />
-                {errors.lastName && <S.Error>{errors.lastName}</S.Error>}
-              </S.InputGroup>
-            </S.TwoColumnRow>
-            <S.InputGroup>
-              <label htmlFor="companyName">Company Name*</label>
-              <input
-                id="companyName"
-                type="text"
-                placeholder="Enter your company name"
-                value={formData.companyName}
-                onChange={handleInputChange}
-              />
-              {errors.companyName && <S.Error>{errors.companyName}</S.Error>}
-            </S.InputGroup>
-            <S.TwoColumnRow>
               <S.InputGroup>
                 <label htmlFor="email">Email*</label>
                 <input
@@ -199,80 +122,84 @@ export default function ContactUs() {
                 />
                 {errors.email && <S.Error>{errors.email}</S.Error>}
               </S.InputGroup>
-              <S.InputGroup>
-                <label htmlFor="phoneNumber">Phone Number*</label>
-                <input
-                  id="phoneNumber"
-                  type="text"
-                  placeholder="Enter your phone number"
-                  value={formData.phoneNumber}
-                  onChange={handleInputChange}
-                />
-                {errors.phoneNumber && <S.Error>{errors.phoneNumber}</S.Error>}
-              </S.InputGroup>
-            </S.TwoColumnRow>
-            <S.TwoColumnRow>
-              <S.InputGroup>
-                <label htmlFor="city">City*</label>
-                <input
-                  id="city"
-                  type="text"
-                  placeholder="Enter your city"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                />
-                {errors.city && <S.Error>{errors.city}</S.Error>}
-              </S.InputGroup>
-              <S.InputGroup>
-                <label htmlFor="postCode">Postcode*</label>
-                <input
-                  id="postCode"
-                  type="text"
-                  placeholder="Enter your postcode"
-                  value={formData.postCode}
-                  onChange={handleInputChange}
-                />
-                {errors.postCode && <S.Error>{errors.postCode}</S.Error>}
-              </S.InputGroup>
-            </S.TwoColumnRow>
-            <S.TwoColumnRow>
-              <S.InputGroup>
-                <label htmlFor="address">Address*</label>
-                <input
-                  id="address"
-                  type="text"
-                  placeholder="Enter your house/flat N"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                />
-                {errors.address && <S.Error>{errors.address}</S.Error>}
-              </S.InputGroup>
-              <S.InputGroup>
-                <label htmlFor="employess">Number of Employees*</label>
-                <input
-                  id="employess"
-                  type="number"
-                  placeholder="001"
-                  value={formData.employess}
-                  onChange={handleInputChange}
-                />
-                {errors.employess && <S.Error>{errors.employess}</S.Error>}
-              </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
-              <label htmlFor="comment">Comments*</label>
+              <label htmlFor="message">Message*</label>
               <textarea
-                id="comment"
-                placeholder="Your comments"
-                value={formData.comment}
+                id="message"
+                value={formData.message}
                 onChange={handleInputChange}
               />
               {errors.comment && <S.Error>{errors.comment}</S.Error>}
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button disabled={isSended} type="submit">{message}</S.Button>
+              <S.Button type="submit">Send Message</S.Button>
             </S.ButtonContainer>
           </S.Form>
+          <S.FooterSectionContent>
+            <S.TitleContact>Celsius LLC</S.TitleContact>
+            <S.FooterSectionTitle isTablet={isTablet}>
+              Contacts
+            </S.FooterSectionTitle>
+            <S.FooterSectionItem>
+              <MapPin size={18} color="#0044CC" />
+              <div>
+                <span>
+                  Yerevan, Rubinyants 2/10 <br />
+                </span>
+                <span>Yerevan, Vratsyan 73/1</span>
+              </div>
+            </S.FooterSectionItem>
+            <S.FooterSectionItem>
+              <Phone size={18} color="#0044CC" />
+              <div>
+                <span>
+                  +374(43)120100 <br />
+                </span>
+                <span>+374(33)160100</span>
+              </div>
+            </S.FooterSectionItem>
+            <S.FooterSectionItem>
+              <Mail size={18} color="#0044CC" />
+              <div>
+                <span>
+                  celsiusarmenia@mail.ru <br />
+                </span>
+              </div>
+            </S.FooterSectionItem>
+            <S.FooterContentFooter isTablet>
+              <Image
+                src={FacebookLogo.src}
+                alt={'celsius-facebook'}
+                width={40}
+                height={40}
+              />
+              <Image
+                src={InstagramLogo.src}
+                alt={'celsius-instagram'}
+                width={40}
+                height={40}
+              />
+              <Image
+                src={LinkedinLogo.src}
+                alt={'celsius-linkedin'}
+                width={40}
+                height={40}
+              />
+            </S.FooterContentFooter>
+            <S.FooterSectionTitle isTablet={isTablet}>
+              Working hours
+            </S.FooterSectionTitle>
+            <S.FooterSectionItem>
+              <Clock5 size={18} color="#0044CC" />
+              <div>
+                <span>
+                  Mon - Fri / 10:00 - 19:00 <br />
+                </span>
+                <span>Sat. / 10:00 - 18:00</span>
+              </div>
+            </S.FooterSectionItem>
+          </S.FooterSectionContent>
         </S.MainContent>
         <Achievements />
       </S.ContactUsWrapper>
