@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as S from './Navbar.styled';
@@ -15,6 +15,13 @@ function Navbar() {
   const pathname = usePathname();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const [isHovered, setIsHovered] = useState(false);
+
+  const [isActiveLink, setIsActiveLink] = useState('');
+
+  useEffect(() => {
+    console.log({ pathname, splited: pathname.split('/')[2] });
+    setIsActiveLink(pathname.split('/')[2]);
+  }, [pathname]);
 
   if (isTablet) return null;
 
@@ -48,28 +55,28 @@ function Navbar() {
               </Link>
             </S.NavListItem>
 
-            <S.NavListItem>
-              <Link style={{ color: "#0044CC", borderBottom: '2px solid #0044CC' }} href={getLocalizedPath('/products')} passHref>
+            <S.NavListItem $isActiveLink={isActiveLink === 'products'}>
+              <Link href={getLocalizedPath('/products')} passHref>
                 Shop
               </Link>
             </S.NavListItem>
 
-            <S.NavListItem>
+            <S.NavListItem $isActiveLink={isActiveLink === 'careers'}>
               <Link href={getLocalizedPath('/careers')} passHref>
                 Career
               </Link>
             </S.NavListItem>
-            <S.NavListItem>
+            <S.NavListItem $isActiveLink={isActiveLink === 'newsroom'}>
               <Link href={getLocalizedPath('/newsroom')} passHref>
                 Newsroom
               </Link>
             </S.NavListItem>
-            <S.NavListItem>
+            <S.NavListItem $isActiveLink={isActiveLink === 'about-us'}>
               <Link href={getLocalizedPath('/about-us')} passHref>
                 About Us
               </Link>
             </S.NavListItem>
-            <S.NavListItem>
+            <S.NavListItem $isActiveLink={isActiveLink === 'contact-us'}>
               <Link href={getLocalizedPath('/contact-us')} passHref>
                 Contact Us
               </Link>

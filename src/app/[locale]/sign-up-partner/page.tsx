@@ -1,14 +1,14 @@
 'use client';
 
 import * as S from './page.styled';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Banner from '@/public/images/contact-us/banner.jpeg';
 import Main from '@/public/images/contact-us/main.jpeg';
 import Image from 'next/image';
 import Achievements from '@/components/Achievements';
 import { useCreatePartnerMutation } from '@/features/partner/partner.api';
 
-export default function BecomeAPartner() {
+export default function ContactUs() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,8 +21,38 @@ export default function BecomeAPartner() {
     employess: '',
     comment: '',
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSended, setIsSended] = useState(false);
+  const [mainError, setMainError] = useState(false);
 
   const [createPartner] = useCreatePartnerMutation();
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.firstName.trim())
+      newErrors.firstName = 'First Name is required.';
+    if (!formData.lastName.trim())
+      newErrors.lastName = 'Last Name is required.';
+    if (!formData.companyName.trim())
+      newErrors.companyName = 'Company Name is required.';
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Valid Email is required.';
+    }
+    if (
+      !formData.phoneNumber.trim() ||
+      !/^\+?\d{7,15}$/.test(formData.phoneNumber)
+    ) {
+      newErrors.phoneNumber = 'Valid Phone Number is required.';
+    }
+    if (!formData.city.trim()) newErrors.city = 'City is required.';
+    if (!formData.postCode.trim()) newErrors.postCode = 'Postcode is required.';
+    if (!formData.address.trim()) newErrors.address = 'Address is required.';
+    if (!formData.comment.trim()) newErrors.comment = 'Comments is required.';
+    if (!formData.employess.trim())
+      newErrors.employess = 'Employess is required.';
+
+    return newErrors;
+  };
 
   const handleInputChange = (e: any) => {
     const { id, value } = e.target;
@@ -30,10 +60,20 @@ export default function BecomeAPartner() {
       ...formData,
       [id]: value,
     });
+    setErrors({
+      ...errors,
+      [id]: '',
+    });
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     try {
       await createPartner({
         firstName: formData.firstName,
@@ -48,11 +88,26 @@ export default function BecomeAPartner() {
         comment: formData.comment,
       }).unwrap();
 
-      window.location.reload();
+      setIsSended(true);
+      setMainError(false);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setMainError(true);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      setIsSended(false);
+      setMainError(false);
+    };
+  }, []);
+
+  const message = useMemo(() => {
+    if (mainError) return 'Error please contact';
+    if (isSended) return 'Sent Successfully';
+    return 'Become a partner';
+  }, [isSended, mainError]);
 
   return (
     <>
@@ -126,7 +181,6 @@ export default function BecomeAPartner() {
       <S.BannerImage>
         <Image src={Banner} alt="banner" />
       </S.BannerImage>
-
       <S.ContactUsWrapper>
         <S.Header>
           <h1>Contact us</h1>
@@ -146,6 +200,7 @@ export default function BecomeAPartner() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                 />
+                {errors.firstName && <S.Error>{errors.firstName}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="lastName">Last Name*</label>
@@ -156,6 +211,7 @@ export default function BecomeAPartner() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                 />
+                {errors.lastName && <S.Error>{errors.lastName}</S.Error>}
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
@@ -167,6 +223,7 @@ export default function BecomeAPartner() {
                 value={formData.companyName}
                 onChange={handleInputChange}
               />
+              {errors.companyName && <S.Error>{errors.companyName}</S.Error>}
             </S.InputGroup>
             <S.TwoColumnRow>
               <S.InputGroup>
@@ -178,6 +235,7 @@ export default function BecomeAPartner() {
                   value={formData.email}
                   onChange={handleInputChange}
                 />
+                {errors.email && <S.Error>{errors.email}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="phoneNumber">Phone Number*</label>
@@ -188,6 +246,7 @@ export default function BecomeAPartner() {
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                 />
+                {errors.phoneNumber && <S.Error>{errors.phoneNumber}</S.Error>}
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.TwoColumnRow>
@@ -200,6 +259,7 @@ export default function BecomeAPartner() {
                   value={formData.city}
                   onChange={handleInputChange}
                 />
+                {errors.city && <S.Error>{errors.city}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="postCode">Postcode*</label>
@@ -210,6 +270,7 @@ export default function BecomeAPartner() {
                   value={formData.postCode}
                   onChange={handleInputChange}
                 />
+                {errors.postCode && <S.Error>{errors.postCode}</S.Error>}
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.TwoColumnRow>
@@ -222,9 +283,10 @@ export default function BecomeAPartner() {
                   value={formData.address}
                   onChange={handleInputChange}
                 />
+                {errors.address && <S.Error>{errors.address}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="employess">Number of Employees</label>
+                <label htmlFor="employess">Number of Employees*</label>
                 <input
                   id="employess"
                   type="number"
@@ -232,19 +294,23 @@ export default function BecomeAPartner() {
                   value={formData.employess}
                   onChange={handleInputChange}
                 />
+                {errors.employess && <S.Error>{errors.employess}</S.Error>}
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
-              <label htmlFor="comment">Comments</label>
+              <label htmlFor="comment">Comments*</label>
               <textarea
                 id="comment"
                 placeholder="Your comments"
                 value={formData.comment}
                 onChange={handleInputChange}
               />
+              {errors.comment && <S.Error>{errors.comment}</S.Error>}
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button type="submit">Become a partner</S.Button>
+              <S.Button disabled={isSended} type="submit">
+                {message}
+              </S.Button>
             </S.ButtonContainer>
           </S.Form>
         </S.MainContent>

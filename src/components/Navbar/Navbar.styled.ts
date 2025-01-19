@@ -27,12 +27,15 @@ export const NavList = styled.ul`
   }
 `;
 
-export const NavListItem = styled.li`
+export const NavListItem = styled.li<{ $isActiveLink?: boolean }>`
   a {
     font-family: Inter, sans-serif;
     ${typographyPreset1};
     text-decoration: none;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.palette.common.graySecondary};
+    color: ${({ theme, $isActiveLink }) =>
+      $isActiveLink ? '#0044CC' : theme.palette.common.graySecondary};
+    border-bottom: ${({ $isActiveLink }) =>
+      $isActiveLink ? '2px solid #0044CC' : 'none'};
   }
 `;
