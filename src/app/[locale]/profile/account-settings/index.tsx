@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import * as S from "./account-settings.styled";
+import React, { useState } from 'react';
+import * as S from './account-settings.styled';
 import { useAppSelector } from '@/store/hooks';
 import { User } from '@/features';
 import { UserService } from '@/services/userService';
 import { getCookie } from 'cookies-next';
 
 const AccountSettings = () => {
-  const user = useAppSelector((state) => state.auth.user) as User || {};
+  const user = (useAppSelector((state) => state.auth.user) as User) || {};
   const [formData, setFormData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
@@ -34,9 +34,9 @@ const AccountSettings = () => {
       return null;
     }
 
-    console.log(111, user);
-
     await UserService.updateUser(user.id, formData, token);
+
+    window.location.reload();
   };
 
   return (

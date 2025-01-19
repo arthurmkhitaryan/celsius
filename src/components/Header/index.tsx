@@ -24,6 +24,7 @@ import { closeFilterMenu } from '@/features/header/header.slice';
 import Filter from '../Products/Filter';
 import { setFilters } from '@/features/filters/filters.slice';
 import NavbarButton from '../shared/NavbarButton';
+import ProfileModal from '../ProfileModal';
 
 function Header() {
   const isFilterMenuVisible = useAppSelector(
@@ -31,6 +32,7 @@ function Header() {
   );
   const user = useAppSelector((state: any) => state.auth.user) as any;
   const [formVisible, setFormVisible] = useState(false);
+  const [profileModalVisible, setProfileModalVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -44,6 +46,10 @@ function Header() {
 
   const handleOpenLoginForm = () => {
     setFormVisible(!formVisible);
+  };
+
+  const handleOpenProfileModal = () => {
+    setProfileModalVisible(!profileModalVisible);
   };
 
   const handleBecomeAPartner = () => {
@@ -121,7 +127,7 @@ function Header() {
                 <NavbarButton
                   className="sign-in"
                   btnStyle="filled"
-                  onClick={handleRedirectProfilePage}
+                  onClick={handleOpenProfileModal}
                   px={32}
                   py={16}
                 >
@@ -139,7 +145,13 @@ function Header() {
                   Sign In
                 </NavbarButton>
               )}
-
+              {user && (
+                <ProfileModal
+                  userName={`${user?.firstName} ${user?.lastName}`}
+                  visible={profileModalVisible}
+                  onChangeVisibility={setProfileModalVisible}
+                />
+              )}
               <LoginForm
                 visible={formVisible}
                 onChangeVisibility={setFormVisible}

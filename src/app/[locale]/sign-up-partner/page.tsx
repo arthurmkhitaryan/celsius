@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Achievements from '@/components/Achievements';
 import { useCreatePartnerMutation } from '@/features/partner/partner.api';
 
-export default function ContactUs() {
+export default function BecomeAPartner() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
