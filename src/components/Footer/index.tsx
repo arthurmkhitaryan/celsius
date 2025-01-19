@@ -100,24 +100,45 @@ function Footer() {
                 </S.FooterSectionItem>
                 {isTablet && (
                   <S.FooterContentFooter isTablet>
-                    <Image
-                      src={FacebookLogo.src}
-                      alt={'celsius-facebook'}
-                      width={26}
-                      height={26}
-                    />
-                    <Image
-                      src={InstagramLogo.src}
-                      alt={'celsius-instagram'}
-                      width={26}
-                      height={26}
-                    />
-                    <Image
-                      src={LinkedinLogo.src}
-                      alt={'celsius-linkedin'}
-                      width={26}
-                      height={26}
-                    />
+                    <a
+                      href="https://www.facebook.com/Celsiusarmenia"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Image
+                        src={FacebookLogo.src}
+                        alt="celsius-facebook"
+                        width={26}
+                        height={26}
+                      />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/celsius_llc/?hl=en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Image
+                        src={InstagramLogo.src}
+                        alt="celsius-instagram"
+                        width={26}
+                        height={26}
+                      />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/celsiusllc/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Image
+                        src={LinkedinLogo.src}
+                        alt="celsius-linkedin"
+                        width={26}
+                        height={26}
+                      />
+                    </a>
                   </S.FooterContentFooter>
                 )}
               </S.FooterSectionContent>
@@ -170,24 +191,45 @@ function Footer() {
           </S.FooterContentSections>
           {!isTablet && (
             <S.FooterContentFooter>
-              <Image
-                src={FacebookLogo.src}
-                alt={'celsius-facebook'}
-                width={26}
-                height={26}
-              />
-              <Image
-                src={InstagramLogo.src}
-                alt={'celsius-instagram'}
-                width={26}
-                height={26}
-              />
-              <Image
-                src={LinkedinLogo.src}
-                alt={'celsius-linkedin'}
-                width={26}
-                height={26}
-              />
+              <a
+                href="https://www.facebook.com/Celsiusarmenia"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ cursor: 'pointer' }}
+              >
+                <Image
+                  src={FacebookLogo.src}
+                  alt="celsius-facebook"
+                  width={26}
+                  height={26}
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/celsius_llc/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ cursor: 'pointer' }}
+              >
+                <Image
+                  src={InstagramLogo.src}
+                  alt="celsius-instagram"
+                  width={26}
+                  height={26}
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/celsiusllc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ cursor: 'pointer' }}
+              >
+                <Image
+                  src={LinkedinLogo.src}
+                  alt="celsius-linkedin"
+                  width={26}
+                  height={26}
+                />
+              </a>
             </S.FooterContentFooter>
           )}
         </S.FooterContentWrapper>

@@ -46,7 +46,7 @@ function CareersCV() {
           style={{ display: 'none' }}
           onChange={handleFileChange}
         />
-        <Button width={178} disabled={cvSent} onClick={handleButtonClick}>{cvSent ? 'CV Sent' : 'Send CV'}</Button>
+        <Button width={178} disabled={cvSent} onClick={handleButtonClick}>{cvSent ? 'CV sent successfully' : 'Send CV'}</Button>
       </S.ContactsSections>
     </S.Container>
   );

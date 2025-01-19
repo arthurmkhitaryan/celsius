@@ -49,6 +49,12 @@ function Navbar() {
             </S.NavListItem>
 
             <S.NavListItem>
+              <Link style={{ color: "#0044CC", borderBottom: '2px solid #0044CC' }} href={getLocalizedPath('/products')} passHref>
+                Shop
+              </Link>
+            </S.NavListItem>
+
+            <S.NavListItem>
               <Link href={getLocalizedPath('/careers')} passHref>
                 Career
               </Link>

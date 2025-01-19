@@ -1,7 +1,7 @@
 'use client';
 
 import * as S from './page.styled';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Contact from '@/public/images/contact-us/contact.jpeg';
 import Achievements from '@/components/Achievements';
 import { useCreateContactUsMutation } from '@/features/contact-us/contact-us.api';
@@ -12,13 +12,26 @@ import FacebookLogo from '@/public/images/facebook-filled.svg';
 import InstagramLogo from '@/public/images/instagram-filled.svg';
 import LinkedinLogo from '@/public/images/linkedin-filled.svg';
 
+
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+  const [errors, setErrors] = useState<any>({});
+  const [isSended, setIsSended] = useState(false);
+  const [mainError, setMainError] = useState(false);
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.email.trim()) newErrors.email = 'Email is required.';
+    if (!formData.message.trim()) newErrors.message = 'Message is required.';
+  
+    return newErrors;
+  };
 
   const [createContactUs] = useCreateContactUsMutation();
 
@@ -28,10 +41,20 @@ export default function ContactUs() {
       ...formData,
       [id]: value,
     });
+    setErrors({
+      ...errors,
+      [id]: '',
+    });
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     try {
       await createContactUs({
         name: formData.name,
@@ -39,11 +62,27 @@ export default function ContactUs() {
         message: formData.message,
       }).unwrap();
 
-      window.location.reload();
+      setIsSended(true);
+      setMainError(false);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setMainError(true);
     }
   };
+
+
+  useEffect(() => {
+    return (() => {
+      setIsSended(false);
+      setMainError(false);
+    })
+  }, []);
+
+  const message = useMemo(() => {
+    if (mainError) return "Error please contact";
+    if (isSended) return "Sent Successfully";
+    return "Send Message";
+  }, [isSended, mainError]);
 
   return (
     <>
@@ -65,6 +104,7 @@ export default function ContactUs() {
                   value={formData.name}
                   onChange={handleInputChange}
                 />
+                {errors.name && <S.Error>{errors.name}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
                 <label htmlFor="email">Email*</label>
@@ -75,6 +115,7 @@ export default function ContactUs() {
                   value={formData.email}
                   onChange={handleInputChange}
                 />
+                {errors.email && <S.Error>{errors.email}</S.Error>}
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
@@ -84,9 +125,10 @@ export default function ContactUs() {
                 value={formData.message}
                 onChange={handleInputChange}
               />
+              {errors.message && <S.Error>{errors.message}</S.Error>}
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button type="submit">Send Message</S.Button>
+              <S.Button type="submit">{message}</S.Button>
             </S.ButtonContainer>
           </S.Form>
           <S.FooterSectionContent>
