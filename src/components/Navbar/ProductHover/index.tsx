@@ -8,12 +8,13 @@ import { useParams } from 'next/navigation';
 const ProductHover = () => {
   const { locale } = useParams();
   const { data } = useGetAllCategoriesQuery({ locale: locale.toString() });
+  console.log({ data });
   return (
     <S.HoverComponent>
       <S.HoverContent>
         {data?.map((category) => (
           <S.HoverContainer>
-            <S.ContentHeader>
+            <S.ContentHeader href={`/category/${category.slug}`}>
               <Image
                 src={category.icon}
                 width={34}
@@ -23,9 +24,11 @@ const ProductHover = () => {
               <h4>{category.name}</h4>
             </S.ContentHeader>
             <S.ContentBody>
-              {category.products.map((product) => (
-                <S.ContentInfo href={`/products/${product.slug}`}>
-                  {product.name}
+              {category.subCategories.map((subCategory) => (
+                <S.ContentInfo
+                  href={`/products/?subCategory=${subCategory.id}`}
+                >
+                  {subCategory.name}
                 </S.ContentInfo>
               ))}
             </S.ContentBody>

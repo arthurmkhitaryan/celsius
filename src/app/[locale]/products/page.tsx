@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect } from 'react';
 import '../../../components/styles/main.scss';
@@ -26,9 +26,25 @@ export default function Products() {
   const [triggerGetProducts, { data: products }] = useLazyGetProductsQuery();
 
   const handleChangeCategories = (filters: string[]) => {
-    const productTypes = filters.length ? filters : undefined;
+    const productTypes = filters
+      .filter((item) => {
+        return item.split(':')[0] === 'productType';
+      })
+      .map((item) => item.split(':')[1]);
 
-    triggerGetProducts({ limit: 14, productTypes, role: user?.role, locale: locale as string });
+    const subCategories = filters
+      .filter((item) => {
+        return item.split(':')[0] === 'sub_category';
+      })
+      .map((item) => item.split(':')[1]);
+
+    triggerGetProducts({
+      limit: 14,
+      productTypes,
+      subCategories,
+      role: user?.role,
+      locale: locale as string,
+    });
   };
 
   const renderProducts = () => {
@@ -39,34 +55,53 @@ export default function Products() {
   };
 
   useEffect(() => {
-    triggerGetProducts({ limit: 14, role: user?.role, productTypes: filters.length ? filters : undefined, locale: locale as string });
+    triggerGetProducts({
+      limit: 14,
+      role: user?.role,
+      productTypes: filters.length ? filters : undefined,
+      locale: locale as string,
+    });
   }, [triggerGetProducts, user?.role, filters]);
 
   const openFilterMobile = () => {
-    dispatch(toggleFilterMenu())
-  }
+    dispatch(toggleFilterMenu());
+  };
 
   return (
     <div className="product_page">
-        <div className="inner_container">
-            <ProductList />
-            {isTablet && <button className="filter-button" onClick={openFilterMobile}>
-              <Image src={FilterOptionsIcon.src} alt="filter options" width={18} height={18} />
-              <span>FILTER</span>
-              </button>}
-            <div className="product_sell_container">
-                <div className="filters_block">
-                    <Filter onFilterChange={handleChangeCategories} />
-                </div>
-                <div className="product_block">{renderProducts()}</div>
-            </div>
-            {isTablet && <button className="filter-button" onClick={openFilterMobile}>
-              <Image src={FilterOptionsIcon.src} alt="filter options" width={18} height={18} />
-              <span>FILTER</span>
-              </button>}
-              <Achievements />
-            <Newsroom />
+      <div className="inner_container">
+        <ProductList />
+        {isTablet && (
+          <button className="filter-button" onClick={openFilterMobile}>
+            <Image
+              src={FilterOptionsIcon.src}
+              alt="filter options"
+              width={18}
+              height={18}
+            />
+            <span>FILTER</span>
+          </button>
+        )}
+        <div className="product_sell_container">
+          <div className="filters_block">
+            <Filter onFilterChange={handleChangeCategories} />
+          </div>
+          <div className="product_block">{renderProducts()}</div>
+        </div>
+        {isTablet && (
+          <button className="filter-button" onClick={openFilterMobile}>
+            <Image
+              src={FilterOptionsIcon.src}
+              alt="filter options"
+              width={18}
+              height={18}
+            />
+            <span>FILTER</span>
+          </button>
+        )}
+        <Achievements />
+        <Newsroom />
       </div>
     </div>
   );
-};
+}

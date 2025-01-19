@@ -1,13 +1,16 @@
-"use client";
+'use client';
 
-import React, { useState } from 'react';
-import './Products.scss'
+import React, { useEffect, useMemo, useState } from 'react';
+import './Products.scss';
 import { ChevronDown } from 'lucide-react';
+import { useGetAllCategoriesQuery } from '@/features/categories';
+import { useParams } from 'next/navigation';
 
 const mockData = [
   {
     category: 'BRAND',
-    types: ['Midea', 'Carrier']
+    types: ['Midea', 'Carrier'],
+    filterType: 'productType',
   },
   {
     category: 'HORSEPOWER',
@@ -20,16 +23,19 @@ const mockData = [
       '3 ~ 30 Ton',
       '8 to 45 Kw',
       '800 ~ 2000 cfm',
-      '8 to 50'
-    ]
+      '8 to 50',
+    ],
+    filterType: 'productType',
   },
   {
     category: 'PLACEMENT',
-    types: ['Indoor', 'Outdoor']
+    types: ['Indoor', 'Outdoor'],
+    filterType: 'productType',
   },
   {
-    category: 'CATEGORY',
-    types: ['Residential', 'Commercial', 'Industrial']
+    category: 'AREA FUNCTION',
+    types: ['Residential', 'Commercial', 'Industrial'],
+    filterType: 'productType',
   },
 ];
 
@@ -39,10 +45,42 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
   const [openCategories, setOpenCategories] = useState<{ [key: string]: any }>(
-      mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {})
-    );
+    mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {}),
+  );
+  const { locale } = useParams();
 
-  const [_, setSelectedTypes] = useState<string[]>([]);
+  const [_, setSelectedTypes] = useState<
+    { type: string; filterType: string }[]
+  >([]);
+
+  const { data } = useGetAllCategoriesQuery({ locale: locale.toString() });
+
+  const filters = useMemo(() => {
+    if (data) {
+      const filterData = data.map((item) => {
+        return {
+          category: item.name,
+          types: item.subCategories.map((subCategory) => subCategory.name),
+          filterType: 'sub_category',
+        };
+      });
+      const first = mockData.splice(0, 1);
+      const last = mockData.splice(0, mockData.length);
+
+      return [...first, ...filterData, ...last];
+    }
+  }, [data]);
+
+  useEffect(() => {
+    setOpenCategories((prevState) =>
+      filters
+        ? filters.reduce(
+            (acc, { category }) => ({ ...acc, [category]: true }),
+            {},
+          )
+        : prevState,
+    );
+  }, [filters]);
 
   const handleCategoryClick = (category: string) => {
     setOpenCategories((prevState) => ({
@@ -51,20 +89,29 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
     }));
   };
 
-  const handleTypeChange = (type: string) => {
+  const handleTypeChange = (type: string, filterType: string) => {
     setSelectedTypes((prevState) => {
-      const updated = prevState.includes(type)
-        ? prevState.filter((selectedType) => selectedType !== type)
-        : [...prevState, type];
+      const isAlreadySelected = prevState.some(
+        (selected) => selected.type === type,
+      );
 
-      onFilterChange(updated);
+      let updated;
+      if (isAlreadySelected) {
+        updated = prevState.filter((selected) => selected.type !== type);
+      } else {
+        updated = [...prevState, { type, filterType }];
+      }
+
+      console.log({ updated });
+
+      onFilterChange(updated.map((item) => `${item.filterType}:${item.type}`));
       return updated;
     });
   };
 
   return (
     <div className="filter-container">
-      {mockData.map(({ category, types }) => (
+      {filters?.map(({ category, types, filterType }) => (
         <div key={category} className="filter_block">
           <div
             className="category-header"
@@ -72,17 +119,17 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
           >
             {category}
             <span className={`arrow ${openCategories[category] ? 'open' : ''}`}>
-                <ChevronDown />
+              <ChevronDown />
             </span>
           </div>
           {openCategories[category] && (
             <div className="types">
-              {types.map(type => (
+              {types.map((type) => (
                 <div key={type} className="type">
                   <input
                     type="checkbox"
                     id={`${category}-${type}`}
-                    onChange={() => handleTypeChange(type)}
+                    onChange={() => handleTypeChange(type, filterType)}
                   />
                   <label htmlFor={`${category}-${type}`}>{type}</label>
                 </div>

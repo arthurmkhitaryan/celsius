@@ -42,13 +42,16 @@ export const HoverContainer = styled.div`
   padding-bottom: 15px;
 `;
 
-export const ContentHeader = styled.div`
+export const ContentHeader = styled.a`
   display: flex;
   gap: 10px;
   border-bottom: 1px solid #d9d9d9;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  text-decoration: none;
+
   h4 {
+    text-decoration: none;
     font-size: 24px;
     font-weight: 500;
     color: #1c1c1c;
