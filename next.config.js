@@ -7,6 +7,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ['localhost'],
+  },
 };
 
 module.exports = withNextIntl(nextConfig);

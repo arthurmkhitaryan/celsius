@@ -10,6 +10,7 @@ import { categoriesApi } from '@/features/categories';
 import { productApi } from '@/features/product';
 import { contactUsApi } from '@/features/contact-us/contact-us.api';
 import headerReducer from '@/features/header/header.slice';
+import cartReducer from '@/features/cart/cart.slice';
 import filtersReducer from '@/features/filters/filters.slice';
 import { newsCategoriesApi } from '@/features/newsCategories/newsCategories.api';
 import { partnersApi } from '@/features/our-partners/partners.api';
@@ -32,6 +33,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [contactUsApi.reducerPath]: contactUsApi.reducer,
     header: headerReducer,
+    cart: cartReducer,
     filters: filtersReducer,
     [newsCategoriesApi.reducerPath]: newsCategoriesApi.reducer,
     [partnersApi.reducerPath]: partnersApi.reducer,

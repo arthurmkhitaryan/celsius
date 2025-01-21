@@ -14,30 +14,48 @@ import MideaLogo from '@/public/images/about/midea.png';
 import ClivetLogo from '@/public/images/about/clivet.png';
 import { getImageUrl } from '@/utils/getImageFullUrl';
 import { useParams } from 'next/navigation';
+import { Volume2, VolumeX } from 'lucide-react';
 
 export default function About() {
   const { locale } = useParams();
   const t = useTranslations('About');
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlay = () => {
-    const video = document.getElementById('about-video') as HTMLVideoElement;
-    if (video) {
-      video.play();
-      setIsPlaying(true);
-    }
-  };
+  const [isMuted, setIsMuted] = useState<boolean>(false);
 
   const { data, isLoading } = useGetAboutContentQuery({
     locale: locale as string,
   });
+
+  const handleToggleMute = () => {
+    setIsMuted(!isMuted);
+  };
 
   if (isLoading) return;
 
   return (
     <S.AboutWrapper>
       <S.VideoWrapper>
-        <S.Video id="about-video" src="/video/about.mp4" autoPlay={true} />
+        <S.Video
+          id="about-video"
+          src="/video/about.mp4"
+          autoPlay={true}
+          muted={isMuted}
+          loop
+        />
+        {isMuted ? (
+          <VolumeX
+            onClick={handleToggleMute}
+            color="#fff"
+            size={40}
+            className="icon"
+          />
+        ) : (
+          <Volume2
+            onClick={handleToggleMute}
+            color="#fff"
+            size={40}
+            className="icon"
+          />
+        )}
       </S.VideoWrapper>
       <S.OurTeam>
         <S.OurTeamWrapper>

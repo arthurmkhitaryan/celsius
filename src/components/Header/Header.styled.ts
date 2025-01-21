@@ -26,6 +26,28 @@ export const HeaderLeftSide = styled.div`
   }
 `;
 
+export const CartButton = styled.button`
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+
+  span {
+    position: absolute;
+    background: #0044cc;
+    width: 22px;
+    height: 21px;
+    padding: 2px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    top: -10px;
+    right: -12px;
+  }
+`;
+
 export const HeaderRightSide = styled.div`
   display: flex;
   align-items: center;

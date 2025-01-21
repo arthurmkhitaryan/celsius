@@ -10,8 +10,9 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useGetProductQuery } from '@/features/product';
 import { dotingPrice } from '@/utils/doting-price';
 import { useGetProductsQuery } from '@/features';
-import { useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useParams, useRouter } from 'next/navigation';
+import { addToCart } from '@/features/cart/cart.slice';
 
 interface ProductParamProps {
   productId: string;
@@ -21,6 +22,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
   const { locale } = useParams();
   const router = useRouter();
   const [activeThumbnail, setActiveThumbnail] = useState(1);
+  const dispatch = useAppDispatch();
 
   const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>(
     {},
@@ -128,9 +130,13 @@ export default function Product({ params }: { params: ProductParamProps }) {
   };
 
   const redirectToCheckout = () => {
+    if (!user) {
+      router.push('/sign-up');
+      return;
+    }
     localStorage.setItem('paymentProduct', params.productId);
     router.push(`/${locale}/checkout`);
-  }
+  };
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -183,12 +189,22 @@ export default function Product({ params }: { params: ProductParamProps }) {
     }
   };
   const renderProducts = () => {
-    console.log({ products });
-
     if (!products?.length) return;
     return products.map((product) => {
       return <ProductItem product={product} />;
     });
+  };
+
+  const handleAddToCard = (productId: string | number) => {
+    dispatch(
+      addToCart({
+        id: productId,
+        name: data.name,
+        price: data.price,
+        quantity: count,
+        image: data.images[0],
+      }),
+    );
   };
 
   return (
@@ -234,8 +250,15 @@ export default function Product({ params }: { params: ProductParamProps }) {
                   />
                   <button onClick={handleIncrement}>+</button>
                 </div>
-                <button className="add_to_cart_btn">Add to Cart</button>
-                <button className="buy_it_now_btn" onClick={redirectToCheckout}>Buy It Now</button>
+                <button
+                  className="add_to_cart_btn"
+                  onClick={() => handleAddToCard(data.id)}
+                >
+                  Add to Cart
+                </button>
+                <button className="buy_it_now_btn" onClick={redirectToCheckout}>
+                  Buy It Now
+                </button>
               </div>
             </div>
             <div className="product_tabs_block">

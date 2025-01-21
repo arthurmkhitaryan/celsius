@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 const ProductHover = () => {
   const { locale } = useParams();
   const { data } = useGetAllCategoriesQuery({ locale: locale.toString() });
-  console.log({ data });
+
   return (
     <S.HoverComponent>
       <S.HoverContent>
@@ -26,7 +26,7 @@ const ProductHover = () => {
             <S.ContentBody>
               {category.subCategories.map((subCategory) => (
                 <S.ContentInfo
-                  href={`/products/?subCategory=${subCategory.id}`}
+                  href={`/products/?category=${category.id}&subCategory=${subCategory.id}`}
                 >
                   {subCategory.name}
                 </S.ContentInfo>

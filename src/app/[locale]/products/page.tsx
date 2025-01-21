@@ -20,7 +20,6 @@ export default function Products() {
   const { locale } = useParams();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();
-
   const user = useAppSelector((state: any) => state.auth.user) as any;
   const filters = useAppSelector((state: any) => state.filters.filters);
   const [triggerGetProducts, { data: products }] = useLazyGetProductsQuery();

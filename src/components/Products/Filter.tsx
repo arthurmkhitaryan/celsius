@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './Products.scss';
 import { ChevronDown } from 'lucide-react';
 import { useGetAllCategoriesQuery } from '@/features/categories';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 
 const mockData = [
   {
@@ -48,8 +48,9 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
     mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {}),
   );
   const { locale } = useParams();
+  const searchParams = useSearchParams();
 
-  const [_, setSelectedTypes] = useState<
+  const [selectedTypes, setSelectedTypes] = useState<
     { type: string; filterType: string }[]
   >([]);
 
@@ -70,6 +71,45 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       return [...first, ...filterData, ...last];
     }
   }, [data]);
+
+  useEffect(() => {
+    const categoryId = searchParams.get('category');
+    const subCategoryId = searchParams.get('subCategory');
+
+    if (categoryId && subCategoryId && data) {
+      const matchedCategory = data.find(
+        (category) => category.id === +categoryId,
+      );
+      const matchedSubCategory = matchedCategory?.subCategories.find(
+        (subCategory) => subCategory.id === +subCategoryId,
+      );
+      if (matchedSubCategory) {
+        setSelectedTypes((prevState) => {
+          const isAlreadySelected = prevState.some(
+            (selected) => selected.type === matchedSubCategory.name,
+          );
+
+          let updated;
+          if (isAlreadySelected) {
+            updated = prevState.filter(
+              (selected) => selected.type !== matchedSubCategory.name,
+            );
+          } else {
+            updated = [
+              ...prevState,
+              { type: matchedSubCategory.name, filterType: 'sub_category' },
+            ];
+          }
+
+          onFilterChange(
+            updated.map((item) => `${item.filterType}:${item.type}`),
+          );
+
+          return updated;
+        });
+      }
+    }
+  }, [searchParams, data]);
 
   useEffect(() => {
     setOpenCategories((prevState) =>
@@ -102,8 +142,6 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
         updated = [...prevState, { type, filterType }];
       }
 
-      console.log({ updated });
-
       onFilterChange(updated.map((item) => `${item.filterType}:${item.type}`));
       return updated;
     });
@@ -129,6 +167,9 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
                   <input
                     type="checkbox"
                     id={`${category}-${type}`}
+                    checked={selectedTypes.some(
+                      (selected) => selected.type === type,
+                    )}
                     onChange={() => handleTypeChange(type, filterType)}
                   />
                   <label htmlFor={`${category}-${type}`}>{type}</label>

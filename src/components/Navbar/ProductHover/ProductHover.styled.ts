@@ -28,7 +28,7 @@ export const ContentBody = styled.div`
   gap: 12px;
 `;
 
-export const ContentInfo = styled(Link)`
+export const ContentInfo = styled.a`
   color: #828282;
   font-size: 16px;
   line-height: 20px;

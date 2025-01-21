@@ -25,12 +25,32 @@ import Filter from '../Products/Filter';
 import { setFilters } from '@/features/filters/filters.slice';
 import NavbarButton from '../shared/NavbarButton';
 import ProfileModal from '../ProfileModal';
+import Drawer from './Drawer';
 
 function Header() {
   const isFilterMenuVisible = useAppSelector(
     (state: any) => state.header.isFilterMenuVisible,
   );
   const user = useAppSelector((state: any) => state.auth.user) as any;
+
+  // Get cart items count from Redux store
+  const cartItemsCount = useAppSelector(
+    (state: any) => state.cart.productCount,
+  );
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // Retrieve cart items from Redux
+  const cartItems = useAppSelector((state) => state.cart.items);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen((prev) => !prev);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
   const [formVisible, setFormVisible] = useState(false);
   const [profileModalVisible, setProfileModalVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
@@ -90,7 +110,15 @@ function Header() {
         {isTablet ? (
           <S.HamburgerWrapper>
             <Language locale={locale as string} />
-            <Image src={BasketLogo} alt="Basket Logo" priority />
+            <S.CartButton>
+              <Image
+                src={BasketLogo}
+                alt="Basket Logo"
+                priority
+                className="basket"
+              />
+              {cartItemsCount > 0 && <span>{cartItemsCount}</span>}
+            </S.CartButton>
             {!menuVisible ? (
               <Image
                 src={HamburgerIcon}
@@ -157,9 +185,67 @@ function Header() {
                 onChangeVisibility={setFormVisible}
               />
             </S.SignInWrapper>
-            <Image src={BasketLogo} alt="Basket Logo" priority />
+            <S.CartButton onClick={toggleDrawer}>
+              <Image
+                src={BasketLogo}
+                alt="Basket Logo"
+                priority
+                className="basket"
+              />
+              {cartItemsCount > 0 && <span>{cartItemsCount}</span>}
+            </S.CartButton>
           </S.HeaderRightSide>
         )}
+
+        {/* Drawer */}
+        <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+          <h2>Cart</h2>
+          {cartItems.length > 0 ? (
+            <div>
+              {cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  style={{ display: 'flex', marginBottom: '20px' }}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={80}
+                    height={80}
+                    style={{ marginRight: '10px' }}
+                  />
+                  <div>
+                    <p style={{ fontWeight: 'bold' }}>{item.name}</p>
+                    <p>Price: {item.price.toLocaleString()} ֏</p>
+                    <p>Quantity: {item.quantity}</p>
+                  </div>
+                </div>
+              ))}
+              <div style={{ fontWeight: 'bold', marginTop: '20px' }}>
+                Total:{' '}
+                {cartItems
+                  .reduce((sum, item) => sum + item.price * item.quantity, 0)
+                  .toLocaleString()}{' '}
+                ֏
+              </div>
+              <button
+                style={{
+                  marginTop: '20px',
+                  background: '#0044cc',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                }}
+              >
+                Checkout
+              </button>
+            </div>
+          ) : (
+            <p>Your cart is empty.</p>
+          )}
+        </Drawer>
 
         {isTablet && menuVisible && (
           <S.MobileMenu>

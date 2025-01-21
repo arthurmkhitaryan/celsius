@@ -19,7 +19,6 @@ function Navbar() {
   const [isActiveLink, setIsActiveLink] = useState('');
 
   useEffect(() => {
-    console.log({ pathname, splited: pathname.split('/')[2] });
     setIsActiveLink(pathname.split('/')[2]);
   }, [pathname]);
 

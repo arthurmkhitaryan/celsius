@@ -79,6 +79,13 @@ export const VideoWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
+
+  .icon {
+    right: 40px;
+    position: absolute;
+    bottom: 35px;
+    cursor: pointer;
+  }
 `;
 
 export const VideoThumbnailWrapper = styled.div`
