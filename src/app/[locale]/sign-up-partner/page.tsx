@@ -7,6 +7,8 @@ import Main from '@/public/images/contact-us/main.jpeg';
 import Image from 'next/image';
 import Achievements from '@/components/Achievements';
 import { useCreatePartnerMutation } from '@/features/partner/partner.api';
+import { FormState } from '@/components/FormState';
+import Modal from '@/components/shared/Modal';
 
 export default function BecomeAPartner() {
   const [formData, setFormData] = useState({
@@ -24,6 +26,7 @@ export default function BecomeAPartner() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSended, setIsSended] = useState(false);
   const [mainError, setMainError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [createPartner] = useCreatePartnerMutation();
 
@@ -92,8 +95,12 @@ export default function BecomeAPartner() {
       setMainError(false);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setIsSended(false);
       setMainError(true);
     }
+
+    setIsModalOpen(true); // Show modal after submission
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -102,6 +109,10 @@ export default function BecomeAPartner() {
       setMainError(false);
     };
   }, []);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const message = useMemo(() => {
     if (mainError) return 'Error please contact';
@@ -313,6 +324,14 @@ export default function BecomeAPartner() {
               </S.Button>
             </S.ButtonContainer>
           </S.Form>
+          {/* Modal with FormState */}
+          <Modal isOpen={isModalOpen}>
+            <FormState
+              isError={mainError}
+              withSuccessText={true}
+              closeModal={closeModal}
+            />
+          </Modal>
         </S.MainContent>
         <Achievements />
       </S.ContactUsWrapper>

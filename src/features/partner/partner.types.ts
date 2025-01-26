@@ -1,4 +1,4 @@
-interface ContactUs {
+interface Partner {
   firstName: string;
   lastName: string;
   companyName: string;

@@ -2,42 +2,45 @@ import React, { useState } from 'react';
 import * as S from './order-history.styled';
 import OrderHistoryImage from '@/public/images/order-history.png';
 import Image from 'next/image';
+// @ts-ignore
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const OrderHistory = () => {
-  const [fromDate, setFromDate] = useState('');
-  const [toDate, setToDate] = useState('');
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
 
   const handleSearch = () => {
-    // Implement your search logic here
+    console.log('Searching from:', fromDate, 'to:', toDate);
   };
 
   const handleClear = () => {
-    setFromDate('');
-    setToDate('');
+    setFromDate(null);
+    setToDate(null);
   };
 
-  const orders = [
-    {
-      id: 1,
-      pic: OrderHistoryImage,
-      date: '08.06.2024',
-      quantity: 3,
-      total: '$860',
-    },
-    {
-      id: 2,
-      pic: OrderHistoryImage,
-      date: '08.06.2024',
-      quantity: 1,
-      total: '$2400',
-    },
-    {
-      id: 3,
-      pic: OrderHistoryImage,
-      date: '24.05.2024',
-      quantity: 3,
-      total: '$860',
-    },
+  const orders: any[] = [
+    // {
+    //   id: 1,
+    //   pic: OrderHistoryImage,
+    //   date: '08.06.2024',
+    //   quantity: 3,
+    //   total: '$860',
+    // },
+    // {
+    //   id: 2,
+    //   pic: OrderHistoryImage,
+    //   date: '08.06.2024',
+    //   quantity: 1,
+    //   total: '$2400',
+    // },
+    // {
+    //   id: 3,
+    //   pic: OrderHistoryImage,
+    //   date: '24.05.2024',
+    //   quantity: 3,
+    //   total: '$860',
+    // },
   ];
 
   return (
@@ -47,25 +50,25 @@ const OrderHistory = () => {
         <S.FilterGroup>
           <S.FilterLabel>From Date</S.FilterLabel>
           <S.DateSelectWrapper>
-            <S.DateSelect
-              value={fromDate}
-              onChange={(e) => setFromDate(e.target.value)}
-            >
-              <option value="">Select Date</option>
-            </S.DateSelect>
-            <S.SelectIcon />
+            <DatePicker
+              selected={fromDate}
+              onChange={(date: any) => setFromDate(date)}
+              placeholderText="Select Date"
+              dateFormat="dd.MM.yyyy"
+              className="custom-date-picker"
+            />
           </S.DateSelectWrapper>
         </S.FilterGroup>
         <S.FilterGroup>
           <S.FilterLabel>To Date</S.FilterLabel>
           <S.DateSelectWrapper>
-            <S.DateSelect
-              value={toDate}
-              onChange={(e) => setToDate(e.target.value)}
-            >
-              <option value="">Select Date</option>
-            </S.DateSelect>
-            <S.SelectIcon />
+            <DatePicker
+              selected={toDate}
+              onChange={(date: any) => setToDate(date)}
+              placeholderText="Select Date"
+              dateFormat="dd.MM.yyyy"
+              className="custom-date-picker"
+            />
           </S.DateSelectWrapper>
         </S.FilterGroup>
         <S.ClearButton onClick={handleClear}>CLEAR</S.ClearButton>
@@ -81,7 +84,7 @@ const OrderHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {orders?.map((order) => (
+          {orders.map((order) => (
             <tr key={order.id}>
               <S.TableCell>
                 <S.OrderImage>
@@ -92,7 +95,7 @@ const OrderHistory = () => {
               <S.TableCell>{order.quantity}</S.TableCell>
               <S.TableCell>{order.total}</S.TableCell>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </S.OrderTable>
     </S.OrderHistory>

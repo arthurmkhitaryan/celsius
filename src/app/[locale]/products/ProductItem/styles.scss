@@ -16,6 +16,14 @@
     flex-grow: 1; /* Ensures it takes up available space */
   }
 
+  .card_price {
+    span {
+      font-size: 17px;
+      font-weight: 600;
+      margin-left: -3px;
+    }
+  }
+
   .add_to_cart_btn {
     font-family: 'Inter', sans-serif;
     font-size: 14px;

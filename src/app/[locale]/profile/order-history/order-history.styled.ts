@@ -105,6 +105,27 @@ export const OrderTable = styled.table`
   min-height: 100px;
 `;
 
+export const DatePickerStyles = `
+  .custom-date-picker {
+    width: 100%;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 20px;
+    background-color: #f2f6fd;
+    color: #1c1c1c;
+    border: 1px solid #ccc;
+  }
+
+  .react-datepicker__input-container {
+    font-size: 18px;
+  }
+
+  .custom-date-picker:focus {
+    border-color: #0044cc;
+    outline: none;
+  }
+`;
+
 export const TableHeader = styled.th`
   font-size: 18px;
   color: #1c1c1c;

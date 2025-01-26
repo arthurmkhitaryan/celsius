@@ -25,7 +25,12 @@ export const ModalHeader = styled.div`
     font-family: 'Inter', sans-serif;
   }
 `;
-
+export const Error = styled.p`
+  color: red;
+  font-size: 14px;
+  padding-top: 8px;
+  margin-left: 25px;
+`;
 export const CareerItemInfo = styled.div`
   display: flex;
   align-items: center;

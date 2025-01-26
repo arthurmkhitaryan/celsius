@@ -219,7 +219,10 @@ export default function Product({ params }: { params: ProductParamProps }) {
               </div>
               <div className="add_to_cart_block">
                 <div className="product_title">{data.name}</div>
-                <div className="product_price">{dotingPrice(data.price)}</div>
+                <div className="product_price">
+                  {dotingPrice(data.price)}
+                  <span>֏</span>
+                </div>
                 <span className="devider"></span>
                 <div className="product_code">{data.code}</div>
                 <div className="product_fullName">{data.mainProductName}</div>

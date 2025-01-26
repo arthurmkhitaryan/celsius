@@ -7,6 +7,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  slug: number;
   liter: number;
   params: string;
 }
@@ -91,6 +92,7 @@ export const productsApi = createApi({
           id: item.id,
           name: item.attributes.name,
           description: item.attributes.description,
+          slug: item.attributes.slug,
           price:
             role === 'Partner' && item.attributes.partnerPrice
               ? item.attributes.partnerPrice

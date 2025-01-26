@@ -11,7 +11,7 @@ import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import FacebookLogo from '@/public/images/facebook-filled.svg';
 import InstagramLogo from '@/public/images/instagram-filled.svg';
 import LinkedinLogo from '@/public/images/linkedin-filled.svg';
-
+import Link from 'next/link';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ export default function ContactUs() {
     if (!formData.name.trim()) newErrors.name = 'Name is required.';
     if (!formData.email.trim()) newErrors.email = 'Email is required.';
     if (!formData.message.trim()) newErrors.message = 'Message is required.';
-  
+
     return newErrors;
   };
 
@@ -60,7 +60,7 @@ export default function ContactUs() {
         name: formData.name,
         email: formData.email,
         message: formData.message,
-      }).unwrap();
+      } as ContactUs).unwrap();
 
       setIsSended(true);
       setMainError(false);
@@ -70,18 +70,17 @@ export default function ContactUs() {
     }
   };
 
-
   useEffect(() => {
-    return (() => {
+    return () => {
       setIsSended(false);
       setMainError(false);
-    })
+    };
   }, []);
 
   const message = useMemo(() => {
-    if (mainError) return "Error please contact";
-    if (isSended) return "Sent Successfully";
-    return "Send Message";
+    if (mainError) return 'Error please contact';
+    if (isSended) return 'Sent Successfully';
+    return 'Send Message';
   }, [isSended, mainError]);
 
   return (
@@ -163,24 +162,39 @@ export default function ContactUs() {
               </div>
             </S.FooterSectionItem>
             <S.FooterContentFooter isTablet>
-              <Image
-                src={FacebookLogo.src}
-                alt={'celsius-facebook'}
-                width={40}
-                height={40}
-              />
-              <Image
-                src={InstagramLogo.src}
-                alt={'celsius-instagram'}
-                width={40}
-                height={40}
-              />
-              <Image
-                src={LinkedinLogo.src}
-                alt={'celsius-linkedin'}
-                width={40}
-                height={40}
-              />
+              <Link
+                href={'https://www.facebook.com/Celsiusarmenia'}
+                target="_blank"
+              >
+                <Image
+                  src={FacebookLogo.src}
+                  alt={'celsius-facebook'}
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link
+                href={'https://www.instagram.com/celsius_llc/?hl=en'}
+                target="_blank"
+              >
+                <Image
+                  src={InstagramLogo.src}
+                  alt={'celsius-instagram'}
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link
+                href={'https://www.linkedin.com/company/celsiusllc/'}
+                target="_blank"
+              >
+                <Image
+                  src={LinkedinLogo.src}
+                  alt={'celsius-linkedin'}
+                  width={40}
+                  height={40}
+                />
+              </Link>
             </S.FooterContentFooter>
             <S.FooterSectionTitle isTablet={isTablet}>
               Working hours

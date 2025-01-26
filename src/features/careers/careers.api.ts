@@ -4,6 +4,18 @@ export const careersApi = createApi({
   reducerPath: 'careersApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
   endpoints: (builder) => ({
+    createCareer: builder.mutation<any, FormData>({
+      query: (formData) => ({
+        url: '/careers',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+          // Content-Type is omitted because `FormData` sets it automatically
+        },
+        body: formData,
+      }),
+      transformResponse: (response: { data: any }) => response.data,
+    }),
     getCareers: builder.query<Career[], void>({
       query: () => 'careers',
       transformResponse: (response: { data: any[] }) =>
@@ -16,7 +28,7 @@ export const careersApi = createApi({
       query: (attachment) => {
         const formData = new FormData();
         formData.append('attachment', attachment);
-    
+
         return {
           url: '/careers/send-cv',
           method: 'POST',
@@ -31,4 +43,8 @@ export const careersApi = createApi({
   }),
 });
 
-export const { useGetCareersQuery, useSendCVMutation } = careersApi;
+export const {
+  useGetCareersQuery,
+  useSendCVMutation,
+  useCreateCareerMutation,
+} = careersApi;

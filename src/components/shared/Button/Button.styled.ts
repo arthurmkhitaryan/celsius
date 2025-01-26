@@ -31,10 +31,17 @@ export const Button = styled.button<{
   &:hover {
     background-color: transparent;
     color: white;
-     border: 1px solid white;
+    border: 1px solid white;
     img {
-       filter: brightness(0) invert(1) !important;
+      filter: brightness(0) invert(1) !important;
     }
+  }
+
+  &:disabled {
+    background-color: #d9d9d9;
+    cursor: not-allowed; /* Show not-allowed cursor */
+    opacity: 0.6; /* Optional: Reduce opacity */
+    border: none;
   }
 
   @media (max-width: 768px) {

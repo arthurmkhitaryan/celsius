@@ -44,10 +44,16 @@ export default function ProfileModal({
       <S.Container>
         <S.Text>{userName}</S.Text>
         <S.List>
-          <S.ListItem href="/profile?section=account-settings">
+          <S.ListItem
+            href="/profile?section=account-settings"
+            onClick={handleClose}
+          >
             My Account
           </S.ListItem>
-          <S.ListItem href="/profile?section=order-history">
+          <S.ListItem
+            href="/profile?section=order-history"
+            onClick={handleClose}
+          >
             View Orders
           </S.ListItem>
           <S.ListItem href="#" onClick={handleLogOut}>

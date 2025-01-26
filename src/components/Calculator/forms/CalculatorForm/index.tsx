@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@/components/shared/Button';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as S from './CalculatorForm.styled';
@@ -10,8 +10,8 @@ type CalculatorFormValues = {
   name: string;
   phoneNumber: string;
   email: string;
-  option1: string; // Новое поле для первого селекта
-  option2: string; // Новое поле для второго селекта
+  option1: string;
+  option2: string;
 };
 
 function CalculatorForm() {
@@ -21,7 +21,21 @@ function CalculatorForm() {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<CalculatorFormValues>();
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  // Watch all form values
+  const formValues = watch();
+
+  // Check if all fields are filled
+  useEffect(() => {
+    const allFieldsFilled = Object.values(formValues).every(
+      (value) => value && value !== '',
+    );
+    setIsButtonDisabled(!allFieldsFilled);
+  }, [formValues]);
 
   const onSubmit: SubmitHandler<CalculatorFormValues> = (data) => {
     console.log(data);
@@ -72,7 +86,7 @@ function CalculatorForm() {
             placeholder="Enter your email"
             {...register('email', { required: true })}
           />
-          {errors.phoneNumber && (
+          {errors.email && (
             <S.CalculatorFormError>
               This field is required
             </S.CalculatorFormError>
@@ -80,11 +94,11 @@ function CalculatorForm() {
         </S.CalculatorFormDetailUser>
       </S.CalculatorFormDetailUserData>
 
-      {/* Добавление селектов */}
+      {/* Select Fields */}
       <S.CalculatorFormDetailUserData>
         <S.CalculatorFormDetailSelectUser>
           <S.CalculatorFormLabel className="label">
-            Yntrel Taratsashrjany<S.RequiredSign>*</S.RequiredSign>
+            Select The Region<S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <Controller
             name="option1"
@@ -93,7 +107,9 @@ function CalculatorForm() {
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <S.CalculatorFormSelect {...field}>
-                <option value="">Aragatsotn</option>
+                <option value="" disabled>
+                  Select
+                </option>
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
@@ -108,7 +124,7 @@ function CalculatorForm() {
         </S.CalculatorFormDetailSelectUser>
         <S.CalculatorFormDetailSelectUser>
           <S.CalculatorFormLabel className="label">
-            Yntrel taracqi gorcaruyty<S.RequiredSign>*</S.RequiredSign>
+            Select Area Function<S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <Controller
             name="option2"
@@ -117,7 +133,9 @@ function CalculatorForm() {
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <S.CalculatorFormSelect {...field}>
-                <option value="">Bnakaranayin</option>
+                <option value="" disabled>
+                  Select
+                </option>
                 <option value="optionA">Option A</option>
                 <option value="optionB">Option B</option>
                 <option value="optionC">Option C</option>
@@ -132,7 +150,12 @@ function CalculatorForm() {
         </S.CalculatorFormDetailSelectUser>
       </S.CalculatorFormDetailUserData>
 
-      <Button style={{ marginTop: '40px' }} type="submit">
+      <Button
+        id="btn"
+        style={{ marginTop: '40px' }}
+        type="submit"
+        disabled={isButtonDisabled}
+      >
         {t('calculator.fields.quote')}
       </Button>
     </S.CalculatorForm>

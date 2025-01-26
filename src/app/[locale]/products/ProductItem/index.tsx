@@ -11,7 +11,8 @@ const renderProductDesc = (desc: any[]) => {
   return desc.map((item, index) => {
     return (
       <div key={index} className="card_desc_item">
-        <ChevronRight size={12} color='#1F94D2'/><p>{item.title}</p>
+        <ChevronRight size={12} color="#1F94D2" />
+        <p>{item.title}</p>
       </div>
     );
   });
@@ -23,7 +24,7 @@ const ProductItem = ({ product }: IProductItemProps) => {
 
   const handleRedirect = (id: number): void => {
     router.push(`/${locale}/products/${id}`);
-  }
+  };
 
   return (
     <div key={product.id} className="product_card">
@@ -40,12 +41,21 @@ const ProductItem = ({ product }: IProductItemProps) => {
         <div className="card_title">{product.name}</div>
         <div className="card_param">{product.description}</div>
         <div className="card_size">{product.liter}L</div>
-        <div className="card_desc">{renderProductDesc(product.fullSpecification.general)}</div>
+        <div className="card_desc">
+          {renderProductDesc(product.fullSpecification.general)}
+        </div>
       </div>
-      <div className="card_price">{product.price} ֏</div>
-      <div className="add_to_cart_btn" onClick={() => handleRedirect(product.id)}>BUY IT NOW</div>
+      <div className="card_price">
+        {product.price} <span>֏</span>
+      </div>
+      <div
+        className="add_to_cart_btn"
+        onClick={() => handleRedirect(product.slug)}
+      >
+        BUY IT NOW
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductItem;

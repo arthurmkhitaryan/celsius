@@ -34,12 +34,12 @@ const DrawerContent = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 296px;
   max-width: 100%;
   height: 100%;
   background: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 60px 0;
   overflow-y: auto;
   z-index: 15;
 `;

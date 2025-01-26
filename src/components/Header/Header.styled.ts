@@ -59,6 +59,61 @@ export const HeaderRightSide = styled.div`
   }
 `;
 
+export const DrawerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 36px;
+`;
+
+export const TotalPrice = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 56px;
+
+  p {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #1c1c1c;
+  }
+`;
+
+export const Price = styled.span`
+  color: #0044cc;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+
+  span {
+    margin-left: 2px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+`;
+
+export const OrderButton = styled.button`
+  padding: 16px 46px;
+  margin-top: 18px;
+  background: #0044cc;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow:
+    0px 5px 15px rgba(37, 44, 97, 0.15),
+    /* First shadow */ 0px 2px 4px rgba(136, 144, 194, 0.2); /* Second shadow */
+`;
+
 export const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;

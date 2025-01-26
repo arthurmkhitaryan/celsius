@@ -26,7 +26,7 @@ function Calculator() {
     <S.CalculatorWrapper>
       <S.CalculatorContainer>
         <S.CalculatorContent>
-          <S.CalculatorTitle>Gnaharcum</S.CalculatorTitle>
+          <S.CalculatorTitle>Price inquiry</S.CalculatorTitle>
           <S.CalculatorDescription>
             {t('calculator.title')}
           </S.CalculatorDescription>

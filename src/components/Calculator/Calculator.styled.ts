@@ -104,5 +104,6 @@ export const Calculator = styled.div`
   border-image: linear-gradient(84.68deg, #1f94d2 16.99%, #0044cc 100.33%);
   border-image-slice: 1;
   border-radius: 10px;
+  border-image-repeat: stretch;
   margin-top: -20px;
 `;

@@ -88,7 +88,7 @@ export const Unit = styled.span`
 `;
 
 export const CalculatorFormSelect = styled.select`
-  padding: 12px 26px 12px 35px;
+  padding: 12px 35px 12px 24px;
   margin-top: 4px;
   border: 1px solid ${({ theme }) => theme.palette.common.gray5};
   background: ${({ theme }) => theme.palette.common.gray6};
@@ -97,6 +97,22 @@ export const CalculatorFormSelect = styled.select`
   max-width: 230px;
   text-align: center;
   width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: #f2f2f2
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M7.99997 9.56023C7.71322 9.56023 7.4265 9.45074 7.20788 9.23222L0.328227 2.3525C-0.109409 1.91486 -0.109409 1.20531 0.328227 0.767852C0.765686 0.330394 1.4751 0.330394 1.91277 0.767852L7.99997 6.85541L14.0872 0.768065C14.5249 0.330606 15.2342 0.330606 15.6716 0.768065C16.1095 1.20552 16.1095 1.91508 15.6716 2.35271L8.79207 9.23244C8.57334 9.45099 8.28662 9.56023 7.99997 9.56023Z" fill="%231C1C1C"/></svg>')
+    no-repeat right 10px center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+
+  /* Add styles for placeholder option */
+  option[value=''][disabled] {
+    color: #bdbdbd; /* Set placeholder text color */
+  }
 `;
 
 export const CalculatorFormError = styled.span`

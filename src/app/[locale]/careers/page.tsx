@@ -18,8 +18,8 @@ import CareerListItem from '@/components/CareerItem';
 
 export default function Career() {
   const t = useTranslations('Careers');
-  const { data, isLoading } = useGetCareersQuery();
-  console.log({ data });
+  const { data } = useGetCareersQuery();
+
   return (
     <S.CareerWrapper>
       <S.CareerBanner $backgroundImage={BannerImage.src}>

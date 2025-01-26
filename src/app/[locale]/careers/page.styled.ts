@@ -12,6 +12,13 @@ export const CareerWrapper = styled.div`
   padding: 20px 0;
 `;
 
+export const Error = styled.p`
+  color: red;
+  font-size: 14px;
+  padding-top: 8px;
+  margin-left: 25px;
+`;
+
 export const CareerBanner = styled.div<{ $backgroundImage: string }>`
   width: 100%;
   background-image: linear-gradient(

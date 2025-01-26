@@ -26,6 +26,7 @@ import { setFilters } from '@/features/filters/filters.slice';
 import NavbarButton from '../shared/NavbarButton';
 import ProfileModal from '../ProfileModal';
 import Drawer from './Drawer';
+import { CardItem } from '../CardItem';
 
 function Header() {
   const isFilterMenuVisible = useAppSelector(
@@ -86,6 +87,12 @@ function Header() {
     if (menuVisible) {
       dispatch(closeFilterMenu());
     }
+  };
+
+  const handleOrderNow = () => {
+    setIsDrawerOpen(false);
+    router.push('/checkout');
+    setIsDrawerOpen(false);
   };
 
   useEffect(() => {
@@ -199,49 +206,31 @@ function Header() {
 
         {/* Drawer */}
         <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-          <h2>Cart</h2>
           {cartItems.length > 0 ? (
-            <div>
+            <S.DrawerContent>
               {cartItems.map((item) => (
-                <div
+                <CardItem
                   key={item.id}
-                  style={{ display: 'flex', marginBottom: '20px' }}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={80}
-                    height={80}
-                    style={{ marginRight: '10px' }}
-                  />
-                  <div>
-                    <p style={{ fontWeight: 'bold' }}>{item.name}</p>
-                    <p>Price: {item.price.toLocaleString()} ֏</p>
-                    <p>Quantity: {item.quantity}</p>
-                  </div>
-                </div>
+                  id={item.id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
               ))}
-              <div style={{ fontWeight: 'bold', marginTop: '20px' }}>
-                Total:{' '}
-                {cartItems
-                  .reduce((sum, item) => sum + item.price * item.quantity, 0)
-                  .toLocaleString()}{' '}
-                ֏
-              </div>
-              <button
-                style={{
-                  marginTop: '20px',
-                  background: '#0044cc',
-                  color: '#fff',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                Checkout
-              </button>
-            </div>
+              <S.TotalPrice style={{ fontWeight: 'bold', marginTop: '20px' }}>
+                <p>Total Price:</p>
+                <S.Price>
+                  {cartItems
+                    .reduce((sum, item) => sum + item.price * item.quantity, 0)
+                    .toLocaleString()}
+                  <span>֏</span>
+                </S.Price>
+                <S.OrderButton onClick={handleOrderNow}>
+                  Order Now
+                </S.OrderButton>
+              </S.TotalPrice>
+            </S.DrawerContent>
           ) : (
             <p>Your cart is empty.</p>
           )}
