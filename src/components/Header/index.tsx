@@ -16,7 +16,7 @@ import arrowRight from '@/public/images/arrow-right.svg';
 import Button from '@/components/shared/Button';
 import Language from '@/components/Language';
 import LoginForm from '../forms/LoginForm';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import MobileNavbar from '@/components/MobileNavbar';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -117,7 +117,7 @@ function Header() {
         {isTablet ? (
           <S.HamburgerWrapper>
             <Language locale={locale as string} />
-            <S.CartButton>
+            <S.CartButton onClick={toggleDrawer}>
               <Image
                 src={BasketLogo}
                 alt="Basket Logo"

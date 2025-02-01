@@ -28,15 +28,6 @@ export const Button = styled.button<{
   justify-content: center;
   max-width: 185px;
 
-  &:hover {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    img {
-      filter: brightness(0) invert(1) !important;
-    }
-  }
-
   &:disabled {
     background-color: #d9d9d9;
     cursor: not-allowed; /* Show not-allowed cursor */
@@ -45,6 +36,17 @@ export const Button = styled.button<{
   }
 
   @media (max-width: 768px) {
-    pointer-events: none;
+    /* pointer-events: none; */
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      img {
+        filter: brightness(0) invert(1) !important;
+      }
+    }
   }
 `;

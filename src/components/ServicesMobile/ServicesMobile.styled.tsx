@@ -41,33 +41,42 @@ export const ImageContent = styled.div`
     width: 53px;
     height: 53px;
   }
-`
+`;
 
 export const ContentTitle = styled.h2`
-  color: #0044CC;
+  color: #0044cc;
   width: 50%;
-`
+`;
 
 export const ContentDescription = styled.p`
-  color: #1C1C1C;
+  color: #1c1c1c;
   width: 50%;
   font-size: 12px;
   line-height: 18px;
   margin-bottom: 10px;
-`
+`;
 
 export const ViewMoreButton = styled.button`
   padding: 12px 36px 12px 36px;
   background: #fff;
-  color: #0044CC;
+  color: #0044cc;
   display: flex;
   max-width: 160px;
   border-radius: 4px;
   align-items: center;
   gap: 10px;
   font-size: 12px;
-}
-`
+`;
+
+export const ServiceImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-position: 0 3%;
+`;
 
 export const ServiceFooter = styled.div`
   display: flex;
@@ -97,7 +106,7 @@ export const FooterMenuItem = styled.div<{ isActive: boolean }>`
   padding: 10px;
   cursor: pointer;
   color: #fff;
-  background-color: ${props => (props.isActive ? '#1F94D2' : '#0044CC')};
+  background-color: ${(props) => (props.isActive ? '#1F94D2' : '#0044CC')};
   border-bottom: 2px solid #fff;
   padding: 16px 10px 16px 10px;
   font-size: 16px;
@@ -115,40 +124,44 @@ export const ServiceIconWrapper = styled.div`
   & > .animate-hvac-icon-one {
     position: absolute;
     bottom: 25%;
-    right: 29%;
+    right: 31%;
   }
 
   & > .animate-cooling-icon-one {
     position: absolute;
     bottom: 25%;
     right: 29%;
+    width: 80px;
   }
 
-    & > .animate-ventilation-icon-one {
+  & > .animate-ventilation-icon-one {
     position: absolute;
     bottom: 25%;
-    right: 29%;
-    height: 80px;
+    right: 23%;
+    width: 121px;
   }
 
   & > .animate-cooling-icon-two {
     position: absolute;
-    bottom: 0%;
-    right: 10%;
+    bottom: -10px;
+    right: 16%;
+    width: 80px;
   }
 
   & > .animate-hvac-icon-two {
     position: absolute;
-    bottom: 20%;
-    right: 16%;
-    height: 90px
+    bottom: -9px;
+    right: 15%;
+    height: 86px;
+    transform: rotateZ(-176deg);
   }
 
   & > .animate-ventilation-icon-two {
     position: absolute;
     bottom: 20%;
     right: 10%;
-    height: 160px;
+    height: 105px;
+    width: 126px;
   }
 
   & > .animate-shop-icon-one {
@@ -157,9 +170,15 @@ export const ServiceIconWrapper = styled.div`
     right: 25%;
   }
 
+  .animate-shop-icon-two {
+    position: absolute;
+    bottom: 29.5%;
+    right: 20%;
+    width: 42px;
+  }
+
   img {
     width: 100px;
     height: 100px;
   }
 `;
-

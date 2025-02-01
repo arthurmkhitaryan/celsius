@@ -8,6 +8,11 @@ export const ContactUsWrapper = styled.div`
   max-width: 1140px;
   margin: 40px auto;
   margin-bottom: 120px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export const Error = styled.p`
@@ -37,6 +42,12 @@ export const MainContent = styled.div`
   grid-template-columns: 3fr 1fr;
   gap: 40px;
   margin-bottom: 120px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
 `;
 
 export const Form = styled.form`
@@ -44,6 +55,10 @@ export const Form = styled.form`
   padding: 40px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 export const InputGroup = styled.div`
@@ -58,6 +73,10 @@ export const InputGroup = styled.div`
     font-weight: 500;
     color: #0d2427;
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
 
   input {
@@ -116,15 +135,20 @@ export const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+  }
+
   &:hover {
     background-color: #0056b3;
   }
 
-      &:disabled {
-        background-color: #cccccc;
-        color: #666666;
-        cursor: not-allowed;
-    }
+  &:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
 `;
 
 export const TwoColumnRow = styled.div`
@@ -135,6 +159,16 @@ export const TwoColumnRow = styled.div`
 
   & > div {
     width: 48%;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    & > div {
+      width: 100%;
+    }
   }
 `;
 
@@ -150,6 +184,10 @@ export const HeaderImage = styled.div<{ $backgroundImage: string }>`
   background-size: cover;
   background-position: -725px;
   background-blend-mode: multiply;
+
+  @media (max-width: 768px) {
+    background-position: -950px;
+  }
 
   &::before {
     content: '';
@@ -190,6 +228,12 @@ export const HeaderText = styled.div`
     font-weight: 400;
     color: #f2f2f2;
     width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 36px;
+    }
   }
 `;
 
@@ -267,6 +311,11 @@ export const FooterSectionContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const TitleContact = styled.h2`
@@ -289,6 +338,10 @@ export const FooterSectionTitle = styled.div<{ isTablet?: boolean }>`
   text-align: left;
   color: #0044cc;
   margin-bottom: 12px;
+
+  @media (max-width: 768px) {
+    left: -20px;
+  }
 
   ${({ isTablet }) =>
     isTablet &&

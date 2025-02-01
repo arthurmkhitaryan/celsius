@@ -19,6 +19,12 @@ export const OurStores = styled.div`
   gap: 32px;
   padding: 80px 0 20px;
   margin-bottom: 120px;
+
+  @media (max-width: 768px) {
+    gap: 24px;
+    padding: 40px 30px 10px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const OurStoresTitle = styled.h2`
@@ -39,6 +45,10 @@ export const OurStoresItems = styled.div`
   display: flex;
   margin-top: 24px;
   gap: 28px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const OurStoresItem = styled.div`
@@ -66,6 +76,11 @@ export const OurStoresItemContent = styled.div`
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    padding: 18px;
+    gap: 0;
+  }
 `;
 
 export const OurStoresItemInfo = styled.p`
@@ -73,6 +88,10 @@ export const OurStoresItemInfo = styled.p`
   font-weight: 600;
   line-height: 36px;
   color: #0d2427;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const VideoWrapper = styled.div`
@@ -85,6 +104,12 @@ export const VideoWrapper = styled.div`
     position: absolute;
     bottom: 35px;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .icon {
+      width: 30px;
+    }
   }
 `;
 
@@ -150,6 +175,12 @@ export const InfoTitle = styled.h3`
   padding: 0 80px;
   text-align: center;
   color: ${({ theme }) => theme.palette.common.mainBlue};
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    line-height: 30px;
+    padding: 0 20px;
+  }
 `;
 
 export const InfoBlockContent = styled.div`
@@ -157,9 +188,21 @@ export const InfoBlockContent = styled.div`
   gap: 80px;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
 `;
 
-export const InfoBlockItemImage = styled.img``;
+export const InfoBlockItemImage = styled.img`
+  @media (max-width: 768px) {
+    max-width: 280px;
+  }
+`;
 
 export const OurTeam = styled.div`
   width: 100%;
@@ -168,24 +211,42 @@ export const OurTeam = styled.div`
   justify-content: center;
   align-items: center;
   padding: 100px 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 30px;
+    gap: 24px;
+  }
 `;
 
 export const OurTeamWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 48px;
   max-width: 1140px;
   gap: 48px;
 
   & > :last-child {
     flex-direction: row-reverse;
   }
+
+  @media (max-width: 768px) {
+    gap: 24px;
+    max-width: 100%;
+    & > :last-child {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const OurTeamItem = styled.div`
   display: flex;
   gap: 48px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 24px;
+  }
 `;
 
 export const OurTeamContent = styled.div`
@@ -218,6 +279,12 @@ export const WhoWeAre = styled.div`
   margin: 80px 0;
   display: flex;
   gap: 48px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+    margin: 40px 0;
+  }
 `;
 
 export const WhoWeAreImage = styled.img`

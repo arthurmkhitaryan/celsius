@@ -15,28 +15,31 @@ import {
   ContentDescription,
   ViewMoreButton,
   ServiceIconWrapper,
+  ServiceImage,
 } from './ServicesMobile.styled';
 
 import IconWrapper from '@/public/images/home/services/icon-wrapper.svg';
 import CoolingMain from '@/public/images/home/services/1.jpg';
 import CoolingIcon from '@/public/images/home/services/icons-mobile/cooling.svg';
-import CoolingAnimateIconOne from '@/public/images/home/services/icons-mobile/cooling-1.svg';
-import CoolingAnimateIconTwo from '@/public/images/home/services/icons-mobile/cooling-2.svg';
+import CoolingAnimateIconOne from '@/public/images/home/services/icons/cooling-1.png';
+import CoolingAnimateIconTwo from '@/public/images/home/services/icons/cooling-2.png';
 
 import HvacMain from '@/public/images/home/services/2.jpg';
 import HvacIcon from '@/public/images/home/services/icons-mobile/hvac.svg';
-import HvacAnimateIconOne from '@/public/images/home/services/icons-mobile/hvac-1.svg';
-import HvacAnimateIconTwo from '@/public/images/home/services/icons-mobile/hvac-2.svg';
+import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.png';
+import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.png';
 
 import VentilationMain from '@/public/images/home/services/3.jpg';
 import VentilationIcon from '@/public/images/home/services/icons-mobile/ventilation.svg';
-import VentilationAnimateIconOne from '@/public/images/home/services/icons-mobile/ventilation-1.svg';
-import VentilationAnimateIconTwo from '@/public/images/home/services/icons-mobile/ventilaton-2.svg';
+import VentilationAnimateIconOne from '@/public/images/home/services/icons/heating-1.png';
+import VentilationAnimateIconTwo from '@/public/images/home/services/icons/heating-2.png';
 
 import ShopMain from '@/public/images/home/services/4.jpg';
-import ShopAnimateIconOne from '@/public/images/home/services/icons-mobile/shop-1.svg';
-import { useParams, useRouter } from 'next/navigation';
+import ShopAnimateIconOne from '@/public/images/home/services/icons/shop-1.svg';
+import ShopAnimateIconTwo from '@/public/images/home/services/icons/shop-2.png';
 import ShopIcon from '@/public/images/home/services/icons-mobile/shop-icon-blue.svg';
+
+import { useParams, useRouter } from 'next/navigation';
 
 const services = [
   {
@@ -59,7 +62,7 @@ const services = [
   },
   {
     id: 2,
-    title: 'HVAC',
+    title: 'Vemtilation Systems',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
     image: HvacMain,
@@ -77,7 +80,7 @@ const services = [
   },
   {
     id: 3,
-    title: 'Ventilation',
+    title: 'Only Heating',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
     image: VentilationMain,
@@ -105,6 +108,10 @@ const services = [
         icon: ShopAnimateIconOne,
         class: 'animate-shop-icon-one',
       },
+      {
+        icon: ShopAnimateIconTwo,
+        class: 'animate-shop-icon-two',
+      },
     ],
   },
 ];
@@ -126,12 +133,12 @@ const ServicesMobile = () => {
   return (
     <ServicesWrapper>
       {services.map(
-        (service) =>
+        (service, index) =>
           activeService === service.id && (
-            <ServiceItem key={service.id}>
+            <ServiceItem key={service.id + index}>
               <ServiceHeader>
                 <ImageWrapper>
-                  <Image src={service.image} alt={service.title} fill />
+                  <ServiceImage src={service.image.src} alt={service.title} />
                   <ImageContent>
                     <Image src={service.icon} alt={service.title} />
                     <ContentTitle>{service.title}</ContentTitle>

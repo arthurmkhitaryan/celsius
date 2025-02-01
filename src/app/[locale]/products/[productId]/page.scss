@@ -6,11 +6,31 @@
   }
 }
 
+.product_info {
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product_active {
+  @media (max-width: 768px) {
+    img {
+      width: 100%;
+    }
+  }
+}
+
 .prodcut_slider_block {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin: 50px 0;
+
+    @media (max-width: 768px) {
+      margin: 20px 0;
+      flex-direction: column-reverse;
+    }
   }
 
   .fixed_block {
@@ -23,20 +43,44 @@
     position: sticky;
     top: 170px; /* Adjust as needed */
     align-self: flex-start;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .add_to_cart_block {
     position: sticky;
     top: 170px; /* Adjust as needed */
     align-self: flex-start;
+
+    @media (max-width: 768px) {
+      position: static;
+      top: 0;
+      align-self: auto;
+    }
   }
 
   .main_product_images {
-    padding:0 120px;
+    padding: 0 120px;
     flex: 1;
     overflow-y: auto;
+
     img{
         margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 20px;
+      display: flex;
+      overflow-x: scroll;
+      flex-direction: column;
+
+      img{
+       max-width: 300px;
+       object-fit: cover;
+       height: 100%;
+     }
     }
   }
 
@@ -47,6 +91,11 @@
         height: 100%;
         width: 100%;
     }
+
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+    }
   }
   .thumbnail_image{
     margin-bottom: 10px;
@@ -55,6 +104,10 @@
 
 .product_inner_page{
     margin-top: 50px;
+
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
 
     .add_to_cart_btn {
         font-size: 14px;
@@ -89,6 +142,10 @@
     }
     .add_to_cart_block{
         max-width: 300px;
+
+        @media (max-width: 768px) {
+          max-width: 100%;
+        }
     }
     .active_thumbnail{
         border: 1px solid #1F94D2;
@@ -236,6 +293,10 @@
     font-size: 16px;
     height: 44px;
 
+    @media (max-width: 768px) {
+      align-self: center;
+    }
+
     button {
       background-color: transparent;
       border: none;
@@ -328,10 +389,20 @@
   .product_block {
     display: flex;
     gap: 20px;
+
+    @media (max-width: 768px) {
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   @media (max-width: 768px) {
     padding: initial;
+
+    h3 {
+      font-size: 32px;
+      text-align: center;
+    }
   }
 }
 

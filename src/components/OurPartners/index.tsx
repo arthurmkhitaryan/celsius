@@ -19,8 +19,8 @@ function OurPartners() {
       {!isLoading && partnersData && (
         <S.OuterWrapper>
           <S.InnerWrapper>
-          <S.NavigationButton className="swiper-button-prev" />
-          <S.NavigationButton className="swiper-button-next" />
+            <S.NavigationButton className="swiper-button-prev" />
+            <S.NavigationButton className="swiper-button-next" />
             <Swiper
               navigation={{
                 nextEl: '.swiper-button-next',

@@ -13,6 +13,7 @@ import { useGetProductsQuery } from '@/features';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useParams, useRouter } from 'next/navigation';
 import { addToCart } from '@/features/cart/cart.slice';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 
 interface ProductParamProps {
   productId: string;
@@ -23,7 +24,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
   const router = useRouter();
   const [activeThumbnail, setActiveThumbnail] = useState(1);
   const dispatch = useAppDispatch();
-
+  const isMobile = useClientMediaQuery('(max-width: 768px)');
   const [faqOpenState, setFaqOpenState] = useState<{ [key: number]: boolean }>(
     {},
   ); // State to manage FAQ open/close
@@ -214,6 +215,32 @@ export default function Product({ params }: { params: ProductParamProps }) {
           <div className="inner_container">
             <div className="prodcut_slider_block">
               <div className="slider_images">{renderThumbnails()}</div>
+              {isMobile && (
+                <>
+                  <button
+                    className="add_to_cart_btn"
+                    onClick={() => handleAddToCard(data.id)}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    className="buy_it_now_btn"
+                    onClick={redirectToCheckout}
+                  >
+                    Buy It Now
+                  </button>
+                  <div className="product_counter">
+                    <button onClick={handleDecrement}>-</button>
+                    <input
+                      type="number"
+                      value={count}
+                      onChange={handleChange}
+                      min="0"
+                    />
+                    <button onClick={handleIncrement}>+</button>
+                  </div>
+                </>
+              )}
               <div className="main_product_images">
                 {renderMainBlockImages()}
               </div>
@@ -224,10 +251,12 @@ export default function Product({ params }: { params: ProductParamProps }) {
                   <span>֏</span>
                 </div>
                 <span className="devider"></span>
-                <div className="product_code">{data.code}</div>
-                <div className="product_fullName">{data.mainProductName}</div>
-                <div className="product_desc">{data.description}</div>
-                <div className="product_power">{data.params}</div>
+                <div className="product_info">
+                  <div className="product_code">{data.code}</div>
+                  <div className="product_fullName">{data.mainProductName}</div>
+                  <div className="product_desc">{data.description}</div>
+                  <div className="product_power">{data.params}</div>
+                </div>
                 <div className="product_activity">
                   {(data.generalParams || []).map((param) => {
                     return (
@@ -243,25 +272,32 @@ export default function Product({ params }: { params: ProductParamProps }) {
                     );
                   })}
                 </div>
-                <div className="product_counter">
-                  <button onClick={handleDecrement}>-</button>
-                  <input
-                    type="number"
-                    value={count}
-                    onChange={handleChange}
-                    min="0"
-                  />
-                  <button onClick={handleIncrement}>+</button>
-                </div>
-                <button
-                  className="add_to_cart_btn"
-                  onClick={() => handleAddToCard(data.id)}
-                >
-                  Add to Cart
-                </button>
-                <button className="buy_it_now_btn" onClick={redirectToCheckout}>
-                  Buy It Now
-                </button>
+                {!isMobile && (
+                  <>
+                    <div className="product_counter">
+                      <button onClick={handleDecrement}>-</button>
+                      <input
+                        type="number"
+                        value={count}
+                        onChange={handleChange}
+                        min="0"
+                      />
+                      <button onClick={handleIncrement}>+</button>
+                    </div>
+                    <button
+                      className="add_to_cart_btn"
+                      onClick={() => handleAddToCard(data.id)}
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                      className="buy_it_now_btn"
+                      onClick={redirectToCheckout}
+                    >
+                      Buy It Now
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className="product_tabs_block">

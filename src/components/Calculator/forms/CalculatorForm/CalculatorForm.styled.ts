@@ -40,6 +40,10 @@ export const CalculatorFormDetail = styled.div`
 export const CalculatorFormLabel = styled.label`
   ${typographyPreset8};
   max-width: 250px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -75,6 +79,12 @@ export const CalculatorFormInput = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.palette.common.gray4};
     ${typographyPreset8};
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
   }
 `;
 
@@ -130,6 +140,11 @@ export const CalculatorFormDetailUserData = styled.div`
   &:last-child {
     border-bottom: none;
   }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const CalculatorFormDetailSelectUser = styled.div`
@@ -148,6 +163,16 @@ export const CalculatorFormDetailSelectUser = styled.div`
 
     &::placeholder {
       font-size: 18px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 20px 0;
+
+    input {
+      font-size: 16px;
     }
   }
 `;
@@ -173,6 +198,20 @@ export const CalculatorFormDetailUser = styled.div`
 
   label {
     margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    label {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    input {
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
   }
 `;
 

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import * as S from './SliderMobile.styled';
@@ -12,28 +12,29 @@ import mobileSliderFour from '@/public/images/home/slider-mobile/mobile-slider-4
 import arrowLeft from '@/public/images/home/slider-mobile/arrow-l.svg';
 import arrowRight from '@/public/images/home/slider-mobile/arrow-r.svg';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 const slides = [
   {
-    link: '/category/1',
+    link: '/products/1',
     image: mobileSliderOne,
-    title: 'VRF Systems',
+    title: 'V8',
     content: 1,
   },
   {
-    link: '/category/2',
+    link: '/products/2',
     image: mobileSliderTwo,
     title: 'R290 M thermal',
     content: 2,
   },
   {
-    link: '/category/3',
+    link: '/products/3',
     image: mobileSliderThree,
     title: 'Chiller',
     content: 3,
   },
   {
-    link: '/category/4',
+    link: '/products/4',
     image: mobileSliderFour,
     title: 'BreezeleSS+',
     content: 4,
@@ -41,11 +42,17 @@ const slides = [
 ];
 
 function SliderMobile() {
-  const t = useTranslations('Home')
+  const t = useTranslations('Home');
   const [activeIndex, setActiveIndex] = useState(0);
+  const router = useRouter();
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex);
+  };
+
+  const handleNavigateProduct = (link: string) => {
+    console.log({ link });
+    router.push(link);
   };
 
   return (
@@ -64,22 +71,19 @@ function SliderMobile() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <S.Slide
-              $backgroundImage={slide.image.src}
-            />
+            <S.Slide $backgroundImage={slide.image.src} />
           </SwiperSlide>
         ))}
       </Swiper>
       {slides.map((slide, index) => (
-        <S.SlideContentWrapper
-          key={index}
-          isActive={activeIndex === index}
-        >
+        <S.SlideContentWrapper key={index} isActive={activeIndex === index}>
           <S.SlideTitle>{slide.title}</S.SlideTitle>
           <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>
           <S.ButtonWrapper>
-            <S.CalculatorButton>
-              Go to category <ArrowRight size={18} />
+            <S.CalculatorButton
+              onClick={() => handleNavigateProduct(slide.link)}
+            >
+              Go to product <ArrowRight size={18} />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

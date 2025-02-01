@@ -7,6 +7,11 @@ export const ContactUsWrapper = styled.div`
   flex-direction: column;
   max-width: 1140px;
   margin: 40px auto;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 20px;
+  }
 `;
 
 export const Header = styled.header`
@@ -21,6 +26,18 @@ export const Header = styled.header`
     font-size: 32px;
     color: #0044cc;
     font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #0044cc;
+      font-weight: 700;
+    }
   }
 `;
 
@@ -116,6 +133,11 @@ export const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 16px;
+  }
+
   &:hover {
     background-color: #0056b3;
   }
@@ -129,6 +151,13 @@ export const TwoColumnRow = styled.div`
 
   & > div {
     width: 48%;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    & > div {
+      width: 100%;
+    }
   }
 `;
 
@@ -181,6 +210,26 @@ export const HeaderText = styled.div`
     font-weight: 400;
     color: #f2f2f2;
     width: 700px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0 21px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 21px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #0044cc;
+      font-weight: 700;
+    }
   }
 `;
 
@@ -192,6 +241,9 @@ export const BannerImage = styled.div`
     max-height: 620px;
     object-fit: cover;
   }
+
+  @media (max-width: 768px) {
+  }
 `;
 
 export const InfoSection = styled.section`
@@ -201,11 +253,20 @@ export const InfoSection = styled.section`
   flex-direction: column;
   align-items: center;
   padding: 20px 0 150px 0;
+
+  @media (max-width: 768px) {
+    max-height: fit-content;
+    padding-bottom: 40px;
+  }
 `;
 
 export const InfoBlock = styled.div`
   display: block;
   padding: 60px 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 export const InfoTitle = styled.h2`
@@ -214,6 +275,11 @@ export const InfoTitle = styled.h2`
   color: #1c1c1c;
   margin-bottom: 20px;
   align-self: flex-start;
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+    padding: 0 20px;
+  }
 `;
 
 export const InfoText = styled.p`
@@ -222,12 +288,22 @@ export const InfoText = styled.p`
   max-width: 1150px;
   margin: 20px 0;
   line-height: 30px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    line-height: 24px;
+  }
 `;
 
 export const CardContainer = styled.div`
   display: flex;
   gap: 20px;
   max-width: 1150px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 20px;
+  }
 `;
 
 export const InfoCard = styled.div`
@@ -250,5 +326,11 @@ export const InfoCard = styled.div`
     color: #1c1c1c;
     line-height: 30px;
     margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 32px;
+    }
   }
 `;

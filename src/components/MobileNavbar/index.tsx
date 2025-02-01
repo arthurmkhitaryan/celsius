@@ -39,9 +39,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
       <S.Navbar>
         <S.NavList>
           <S.NavListItem onClick={toggleProducts}>
-            <Link href="">
-              Products
-            </Link>
+            <Link href="">Categories</Link>
             <S.Chevron isOpen={isProductsOpen}>
               <ChevronRight size={18} />
             </S.Chevron>
@@ -50,25 +48,41 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
           {isProductsOpen && <ProductsNavbar />}
 
           <S.NavListItem>
-            <Link onClick={changeToggleMenu} href={getLocalizedPath('/careers')} passHref>
+            <Link
+              onClick={changeToggleMenu}
+              href={getLocalizedPath('/careers')}
+              passHref
+            >
               Career
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link onClick={changeToggleMenu} href={getLocalizedPath('/newsroom')} passHref>
+            <Link
+              onClick={changeToggleMenu}
+              href={getLocalizedPath('/newsroom')}
+              passHref
+            >
               Newsroom
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link onClick={changeToggleMenu} href={getLocalizedPath('/about-us')} passHref>
+            <Link
+              onClick={changeToggleMenu}
+              href={getLocalizedPath('/about-us')}
+              passHref
+            >
               About Us
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
           <S.NavListItem>
-            <Link onClick={changeToggleMenu} href={getLocalizedPath('/contact-us')} passHref>
+            <Link
+              onClick={changeToggleMenu}
+              href={getLocalizedPath('/contact-us')}
+              passHref
+            >
               Contact Us
             </Link>
             <ChevronRight size={18} />

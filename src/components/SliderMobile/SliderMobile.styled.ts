@@ -15,6 +15,7 @@ export const SlideContentWrapper = styled.div<{ isActive: boolean }>`
   width: 80%;
   z-index: 10;
   opacity: ${(props) => (props.isActive ? 1 : 0)};
+  display: ${(props) => (props.isActive ? 'block' : 'none')};
   transition: opacity 0.3s ease;
 `;
 
@@ -32,26 +33,25 @@ export const Slide = styled.div<{
 `;
 
 export const SlideTitle = styled.h2`
-  color: #D9D9D9;
+  color: #d9d9d9;
   font-size: 32px;
   font-weight: 600;
 `;
 
 export const SlideContent = styled.div`
-  color: #D9D9D9;
+  color: #d9d9d9;
   line-height: 16px;
   margin: 10px 0 20px 0;
   font-size: 12px;
   font-weight: 600;
 `;
 
-export const ButtonWrapper = styled.div`
-`;
+export const ButtonWrapper = styled.div``;
 
 export const CalculatorButton = styled.button`
   background: #ffffff;
   font-weight: 600;
-  color: #0044CC;
+  color: #0044cc;
   padding: 12px 24px;
   border-radius: 4px;
   display: flex;

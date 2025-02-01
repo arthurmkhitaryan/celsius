@@ -87,17 +87,6 @@ export default function Products() {
           </div>
           <div className="product_block">{renderProducts()}</div>
         </div>
-        {isTablet && (
-          <button className="filter-button" onClick={openFilterMobile}>
-            <Image
-              src={FilterOptionsIcon.src}
-              alt="filter options"
-              width={18}
-              height={18}
-            />
-            <span>FILTER</span>
-          </button>
-        )}
         <Achievements />
         <Newsroom />
       </div>

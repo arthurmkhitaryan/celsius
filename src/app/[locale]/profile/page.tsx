@@ -33,7 +33,9 @@ export default function Profile() {
       <S.ProfileWrapper>
         <S.ProfileContainer>
           <S.Sidebar>
-            <S.Username>Username</S.Username>
+            <S.Username>
+              {user.firstName} {user.lastName}
+            </S.Username>
             <S.MenuItem
               active={activeMenu === 'account-settings'}
               onClick={() => setActiveMenu('account-settings')}

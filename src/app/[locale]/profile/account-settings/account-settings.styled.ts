@@ -1,9 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SettingsForm = styled.div`
   flex: 0 0 75%;
   max-width: 75%;
   padding-left: 20px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0;
+  }
 `;
 
 export const FormTitle = styled.h3`
@@ -26,6 +31,14 @@ export const InputWrapper = styled.div`
   max-width: 48%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    flex: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
 `;
 
 export const Label = styled.label`
@@ -38,6 +51,10 @@ export const Label = styled.label`
     content: '*';
     color: #0044cc;
     margin-left: 5px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 `;
 
@@ -53,6 +70,12 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-content: center;
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -65,6 +88,10 @@ export const CancelButton = styled.button`
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+
+  @media (max-width: 768px) {
+    padding: 16px 50px 16px 50px;
+  }
 `;
 
 export const SaveButton = styled.button`

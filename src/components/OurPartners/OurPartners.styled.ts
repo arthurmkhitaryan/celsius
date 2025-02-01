@@ -43,10 +43,18 @@ export const NavigationButton = styled.div`
 
   &.swiper-button-prev {
     left: -70px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &.swiper-button-next {
     right: -70px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &::after {

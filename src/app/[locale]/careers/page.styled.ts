@@ -2,7 +2,6 @@
 
 import styled from 'styled-components';
 import { typographyPreset12 } from '@/styles';
-import React from 'react';
 
 export const CareerWrapper = styled.div`
   width: 100%;
@@ -50,12 +49,20 @@ export const CareerBannerContent = styled.div`
 
 export const CareerBannerSubTitle = styled.h3`
   ${typographyPreset12};
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const CareerBannerTitle = styled.h1`
   font-size: 60px;
   font-weight: 700;
   line-height: 38.4px;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const CareerBannerDescription = styled.p`
@@ -63,6 +70,9 @@ export const CareerBannerDescription = styled.p`
   font-weight: 400;
   line-height: 30px;
   max-width: 704px;
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 export const TextContent = styled.div`
@@ -70,12 +80,21 @@ export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
 `;
 
 export const TextTitle = styled.h2`
   font-size: 48px;
   font-weight: 600;
   line-height: 38.4px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    padding: 0 16px;
+  }
 `;
 
 export const TextDescription = styled.h3`
@@ -83,6 +102,10 @@ export const TextDescription = styled.h3`
   font-weight: 400;
   line-height: 30px;
   color: rgba(79, 79, 79, 1);
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 export const CareerList = styled.div`
@@ -90,6 +113,10 @@ export const CareerList = styled.div`
   flex-direction: column;
   gap: 24px;
   margin-bottom: 120px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const BackgroundLogo = styled.div``;

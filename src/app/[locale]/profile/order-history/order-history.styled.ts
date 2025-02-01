@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const DateSelectWrapper = styled.div`
   position: relative;
   width: 100%;
+
+  .react-datepicker__input-container {
+    max-width: 90px;
+  }
 `;
 
 export const DateSelect = styled.select`
@@ -42,6 +46,11 @@ export const OrderHistory = styled.div`
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    flex: auto;
+  }
 `;
 
 export const OrderTitle = styled.h3`
@@ -51,12 +60,28 @@ export const OrderTitle = styled.h3`
   border-bottom: 1px solid #f2f6fd;
   font-weight: 400;
   color: #1c1c1c;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const FilterWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `;
 
 export const FilterGroup = styled.div`
@@ -81,6 +106,10 @@ export const ClearButton = styled.button`
   margin-right: 20px;
   border: none;
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -103,6 +132,12 @@ export const OrderTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   min-height: 100px;
+
+  @media (max-width: 768px) {
+    th {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const DatePickerStyles = `

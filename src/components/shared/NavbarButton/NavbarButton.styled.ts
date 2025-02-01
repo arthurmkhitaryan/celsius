@@ -12,7 +12,7 @@ export const Button = styled.button<{
   position: relative;
   border: ${({ theme }) => `2px solid ${theme.palette.common.mainBlue}`};
   background-color: ${({ $btnStyle, theme }) =>
-    $btnStyle === 'bordered' ? 'transparent' : theme.palette.common.mainBlue};
+    $btnStyle === 'bordered' ? theme.palette.common.mainBlue : 'transparent'};
   color: ${({ $btnStyle, theme }) =>
     $btnStyle === 'bordered' ? theme.palette.common.mainBlue : 'white'};
   width: ${({ $width }) => ($width ? `${$width}px` : '100%')};
@@ -37,16 +37,18 @@ export const Button = styled.button<{
     left: 10px;
   }
 
-  &:hover {
-    img {
-      left: 12px;
-    }
+  @media (min-width: 768px) {
+    &:hover {
+      img {
+        left: 12px;
+      }
 
-    ${({ $btnStyle }) =>
-      $btnStyle === 'filled' &&
-      `
+      ${({ $btnStyle }) =>
+        $btnStyle === 'filled' &&
+        `
       background-color: #0044cc;
       border: 2px solid #0044cc;
     `}
+    }
   }
 `;

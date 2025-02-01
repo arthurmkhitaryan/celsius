@@ -19,5 +19,6 @@ export const ContentWrapper = styled.div`
 
   @media (max-width: 768px) {
     gap: 40px;
+    max-width: 100%;
   }
 `;

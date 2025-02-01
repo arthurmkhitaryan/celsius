@@ -6,7 +6,12 @@ export const AchievementsWrapper = styled.div`
   gap: 20px;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    width: 100%;
   }
 `;

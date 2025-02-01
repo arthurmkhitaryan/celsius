@@ -14,6 +14,10 @@
     max-width: 240px;
     margin: 0 auto;
     flex-grow: 1; /* Ensures it takes up available space */
+
+    @media (max-width: 768px) {
+      margin: 20px 0;
+    }
   }
 
   .card_price {
@@ -21,6 +25,16 @@
       font-size: 17px;
       font-weight: 600;
       margin-left: -3px;
+    }
+
+    @media (max-width: 768px) {
+      margin: 20px 0;
+    }
+  }
+
+  .product_card_info {
+    @media (max-width: 768px) {
+      margin: 0;
     }
   }
 
@@ -85,6 +99,10 @@
       text-align: left;
       color: #0044CC;
       margin: 20px 40px;
+
+      @media (max-width: 768px) {
+        margin: 20px 0;
+      }
     }
     &_desc {
       display: flex;

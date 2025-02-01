@@ -17,6 +17,10 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 export const Content = styled.div`
@@ -46,6 +50,32 @@ export const Content = styled.div`
     border-radius: 15px;
     max-height: 420px;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 30px;
+    margin: 30px 0;
+
+    h1,
+    h2,
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 28.4px;
+      color: #1c1c1c;
+    }
+
+    img {
+      object-fit: contain;
+      object-position: center;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 30px;
+      color: #666666;
+    }
+  }
 `;
 
 export const Devider = styled.div`
@@ -63,6 +93,10 @@ export const InfoWrapper = styled.div`
   margin-top: 32px;
   margin-bottom: 120px;
   gap: 2px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const AuthorName = styled.p`
@@ -80,4 +114,8 @@ export const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 120px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 `;

@@ -42,6 +42,10 @@ const DrawerContent = styled.div`
   padding: 60px 0;
   overflow-y: auto;
   z-index: 15;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -53,6 +57,12 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 40px;
+    right: 40px;
+    font-size: 42px;
+  }
 `;
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children }) => {

@@ -47,32 +47,37 @@ const OrderHistory = () => {
     <S.OrderHistory>
       <S.OrderTitle>Order History</S.OrderTitle>
       <S.FilterWrapper>
-        <S.FilterGroup>
-          <S.FilterLabel>From Date</S.FilterLabel>
-          <S.DateSelectWrapper>
-            <DatePicker
-              selected={fromDate}
-              onChange={(date: any) => setFromDate(date)}
-              placeholderText="Select Date"
-              dateFormat="dd.MM.yyyy"
-              className="custom-date-picker"
-            />
-          </S.DateSelectWrapper>
-        </S.FilterGroup>
-        <S.FilterGroup>
-          <S.FilterLabel>To Date</S.FilterLabel>
-          <S.DateSelectWrapper>
-            <DatePicker
-              selected={toDate}
-              onChange={(date: any) => setToDate(date)}
-              placeholderText="Select Date"
-              dateFormat="dd.MM.yyyy"
-              className="custom-date-picker"
-            />
-          </S.DateSelectWrapper>
-        </S.FilterGroup>
-        <S.ClearButton onClick={handleClear}>CLEAR</S.ClearButton>
-        <S.SearchButton onClick={handleSearch}>SEARCH</S.SearchButton>
+        <div>
+          <S.FilterGroup>
+            <S.FilterLabel>From Date</S.FilterLabel>
+            <S.DateSelectWrapper>
+              <DatePicker
+                selected={fromDate}
+                onChange={(date: any) => setFromDate(date)}
+                placeholderText="Select Date"
+                dateFormat="dd.MM.yyyy"
+                className="custom-date-picker"
+              />
+            </S.DateSelectWrapper>
+          </S.FilterGroup>
+
+          <S.FilterGroup>
+            <S.FilterLabel>To Date</S.FilterLabel>
+            <S.DateSelectWrapper>
+              <DatePicker
+                selected={toDate}
+                onChange={(date: any) => setToDate(date)}
+                placeholderText="Select Date"
+                dateFormat="dd.MM.yyyy"
+                className="custom-date-picker"
+              />
+            </S.DateSelectWrapper>
+          </S.FilterGroup>
+        </div>
+        <div>
+          <S.ClearButton onClick={handleClear}>CLEAR</S.ClearButton>
+          <S.SearchButton onClick={handleSearch}>SEARCH</S.SearchButton>
+        </div>
       </S.FilterWrapper>
       <S.OrderTable>
         <thead>

@@ -17,7 +17,8 @@ function Calculator() {
   const [toggleCalculator, setToggleCalculator] = useState<boolean>(false);
 
   const handleToggleCalculator = () => {
-    setToggleCalculator(!toggleCalculator);
+    console.log({ mtav: true });
+    setToggleCalculator((prev) => !prev);
   };
 
   console.log({ toggleCalculator });
@@ -35,7 +36,7 @@ function Calculator() {
               onClick={handleToggleCalculator}
               style={{ maxWidth: '165px' }}
             >
-              Get started{' '}
+              Get started
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>
           </S.CalculatorButtonWrapper>
