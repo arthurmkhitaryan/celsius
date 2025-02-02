@@ -12,7 +12,7 @@ export const Button = styled.button<{
   position: relative;
   border: ${({ theme }) => `2px solid ${theme.palette.common.mainBlue}`};
   background-color: ${({ $btnStyle, theme }) =>
-    $btnStyle === 'bordered' ? theme.palette.common.mainBlue : 'transparent'};
+    $btnStyle === 'bordered' ? 'transparent' : theme.palette.common.mainBlue};
   color: ${({ $btnStyle, theme }) =>
     $btnStyle === 'bordered' ? theme.palette.common.mainBlue : 'white'};
   width: ${({ $width }) => ($width ? `${$width}px` : '100%')};

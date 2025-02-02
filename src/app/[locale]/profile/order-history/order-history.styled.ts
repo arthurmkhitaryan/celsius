@@ -71,6 +71,10 @@ export const FilterWrapper = styled.div`
   align-items: flex-end;
   margin-bottom: 20px;
 
+  & > div {
+    display: flex;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -153,6 +157,7 @@ export const DatePickerStyles = `
 
   .react-datepicker__input-container {
     font-size: 18px;
+    border: 1px solid black;
   }
 
   .custom-date-picker:focus {
