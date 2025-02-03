@@ -112,15 +112,36 @@
   },
   "Careers": {
     "career_banner_title": "JOIN OUR TEAM",
-    "career_banner_sub_title": "Elevate your career at Celsius.",
-    "career_banner_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has \u2028been the industry's standard dummy text ever since the 1500s, when an unknown printer\u2028took a galley of type and",
-    "career_title": "Lorem ipsum dolor set",
-    "career_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n"
+    "career_banner_sub_title": "Join the Celsius team and unlock your potential in the HVAC industry!",
+    "career_banner_description": "Explore our available positions and take the next step in your journey with us. Together, let’s create a comfortable and sustainable future!",
+    "career_title": "We always have a good offer for you",
+    "career_description": "We are always on the lookout for talented specialists to join our team. If you're looking to build a successful career and grow professionally, we offer the ideal environment and opportunities to support your goals. Here, you’ll work in a collaborative setting where you can bring your ideas to life and hone your skills. Join us to become a leader in your field and gain valuable experience along the way. Open positions are regularly posted on our website, so stay updated and find the perfect role for you. We're committed to supporting you on your career journey.",
+    "career_cv_title": "We are always ready to welcome new professionals to our team!",
+    "contact_to": "Contact to manager",
+    "email": "E-mail",
+    "phone": "Phone",
+    "send": "Send CV"
+  },
+  "NewsroomComponent": {
+    "title": "Newsroom",
+    "see_all": "See All"
+  },
+  "Our_Partners": {
+    "title": "Our Partners"
   },
   "About": {
-    "about_info_title": "Our company is the official representative of global brands Midea and Clivet in the Republic of Armenia."
+    "about_title": "Our company is the official representative of global brands Midea and Clivet in the Republic of Armenia."
   },
   "Newsroom": {
-    "read_full_story": "Read Full Article"
+    "read": "Read Full Article",
+    "all_topics": "All Topics",
+    "1": "Heating & Cooling",
+    "2": "Ventilation Systems",
+    "3": "Only Heating",
+    "view_more": "View More"
+  },
+  "Pagination": {
+    "next": "Next",
+    "previous": "Previous"
   }
 }

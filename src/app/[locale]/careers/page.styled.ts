@@ -87,7 +87,7 @@ export const TextContent = styled.div`
 `;
 
 export const TextTitle = styled.h2`
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 600;
   line-height: 38.4px;
 

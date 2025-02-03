@@ -83,7 +83,7 @@ export default function About() {
           </S.WhoWeAreContent>
         </S.WhoWeAre> */}
         <S.InfoBlock>
-          <S.InfoTitle>{t('about_info_title')}</S.InfoTitle>
+          <S.InfoTitle>{t('about_title')}</S.InfoTitle>
           <S.InfoBlockContent>
             <S.InfoBlockItemImage src={MideaLogo.src} alt={'midea'} />
             <S.InfoBlockItemImage src={ClivetLogo.src} alt={'clivet'} />

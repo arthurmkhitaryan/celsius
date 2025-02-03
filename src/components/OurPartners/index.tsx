@@ -9,13 +9,15 @@ import 'swiper/css/autoplay';
 // styles & images
 import * as S from './OurPartners.styled';
 import { useGetOurPartnersQuery } from '@/features/our-partners/partners.api';
+import { useTranslations } from 'next-intl';
 
 function OurPartners() {
+  const t = useTranslations('Our_Partners');
   const { data: partnersData, isLoading } = useGetOurPartnersQuery({});
 
   return (
     <S.OurPartnersWrapper>
-      <S.OurPartnersTitle>Our Partners</S.OurPartnersTitle>
+      <S.OurPartnersTitle>{t('title')}</S.OurPartnersTitle>
       {!isLoading && partnersData && (
         <S.OuterWrapper>
           <S.InnerWrapper>
