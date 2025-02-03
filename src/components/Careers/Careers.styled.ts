@@ -39,9 +39,9 @@ export const CareersSectionContainer = styled.div`
 
 export const CareersSectionContent = styled.div`
   color: ${({ theme }) => theme.palette.common.white};
-  max-width: 348px;
+  max-width: 488px;
   margin-right: 188px;
-  padding: 155px 0 70px;
+  padding: 105px 0 70px;
 
   @media (max-width: 768px) {
     display: flex;
@@ -92,6 +92,7 @@ export const CareersButtonWrapper = styled.div`
     padding: 16px 32px;
     gap: 10px;
     border: none;
+    max-width: 60%;
   }
 
   @media (max-width: 768px) {

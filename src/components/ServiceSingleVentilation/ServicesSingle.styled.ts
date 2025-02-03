@@ -37,8 +37,7 @@ export const ServiceAdditionalContentWrapper = styled.div`
 
 export const ServiceAdditionalContent = styled.span`
   color: white;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 11px;
   font-weight: 400;
   margin-bottom: 20px;
 `;
@@ -59,8 +58,7 @@ export const ServiceAdditionalButton = styled.button`
 export const ServiceIconWrapper = styled.div`
   position: relative;
   height: 40%;
-  padding: 0 45px;
-  margin: 0 45px;
+  margin: 0 30px;
 
   & > .icon-wrapper {
     position: relative;
@@ -71,7 +69,7 @@ export const ServiceIconWrapper = styled.div`
 
   & > .animate-hvac-icon-first {
     bottom: -80%;
-    left: -18%;
+    left: -40%;
     position: absolute;
     min-width: 240px;
     min-height: 194px;
@@ -79,7 +77,7 @@ export const ServiceIconWrapper = styled.div`
 
   & > .animate-hvac-icon-second {
     position: absolute;
-    right: -10%;
+    right: -40%;
     min-width: 220px;
     min-height: 165px;
     top: -100%;

@@ -1,10 +1,23 @@
 {
+  "Header": {
+    "partner": "Become a partner",
+    "sign": "Sign In"
+  },
+  "Navbar": {
+    "categories": "Categories",
+    "shop": "Shop",
+    "career": "Career",
+    "news": "Newsroom",
+    "about": "About us",
+    "contact": "Contact us"
+  },
   "Home": {
     "slider": {
       "1": "The VRF V8 allows for simultaneous control of temperatures in different zones, creating an ideal atmosphere with personalized settings. The VRF V8 system is used in commercial buildings, offices, and beyond. This system delivers high efficiency and energy savings while providing a comfortable environment without unnecessary costs.",
       "2": "The new generation of Midea heat pumps is a reliable and efficient solution for regulating airflow and controlling the climate of your space, regardless of external temperatures. This technology operates effectively in both hot and cold conditions, ensuring energy efficiency and stable performance throughout the year.",
       "3": "Air conditioning systems are an excellent solution for reducing temperature and removing excess heat and humidity in indoor spaces. These systems are particularly effective in large commercial areas such as wineries, shopping centers, warehouses, and other similar facilities where maintaining a stable climate is crucial.\n Thanks to cutting-edge technology, Midea air conditioning systems not only provide clean and fresh air but also improve energy efficiency, reducing costs and enhancing operational productivity.",
-      "4": "Choosing the right and energy-efficient cooling and heating system will help you control your home’s temperature, no matter the weather outside. Celsius offers a wide range of air conditioners, from affordable and efficient models to decorative, high-end options that combine functionality with style. \n Whether you’re looking for a budget-friendly option or a more aesthetic solution, we have you covered. Our air conditioners help to save money and enjoy a comfortable environment all year round."
+      "4": "Choosing the right and energy-efficient cooling and heating system will help you control your home’s temperature, no matter the weather outside. Celsius offers a wide range of air conditioners, from affordable and efficient models to decorative, high-end options that combine functionality with style. \n Whether you’re looking for a budget-friendly option or a more aesthetic solution, we have you covered. Our air conditioners help to save money and enjoy a comfortable environment all year round.",
+      "product": "Go to product"
     },
     "benefits": {
       "1": {
@@ -23,7 +36,7 @@
     "categories": {
       "hvac": {
         "title": "Ventilation Systems",
-        "description": "Comprehensive heating, ventilation, and air conditioning solutions designed for optimal comfort and energy efficiency."
+        "description": "Advanced ventilation solutions that enhance air quality and promote a healthier indoor environment."
       },
       "heating_cooling": {
         "title": "Heating and Cooling",
@@ -31,16 +44,20 @@
       },
       "ventilation": {
         "title": "Only Heating",
-        "description": "Advanced ventilation solutions that enhance air quality and promote a healthier indoor environment."
+        "description": "Only heating systems maintain a consistent and comfortable indoor temperature, improving overall comfort during cold weather."
       },
       "shop": {
         "title": "Shop",
         "description": "See all the products."
-      }
+      },
+      "view": "View More"
     },
+    "info_title": "Important to know",
     "info": "Celsius is the leading supplier of Midea brand ventilation and climate solutions in Armenia, offering high-quality and modern air conditioning systems, VRF systems, as well as cooling, heating, and ventilation systems. Our company specializes in designing, installing, and selling air conditioning systems tailored to each customer, creating personalized and energy-efficient solutions. We provide professional services for the installation and design of ventilation systems, as well as a wide range of sales options, including high-end systems. The professional team at Celsius is specialized in the design and installation of ventilation systems for both industrial and public spaces. We ensure the highest quality by using advanced technologies and offering cooling and refrigeration systems that meet all your needs.",
     "calculator": {
-      "title": "By filling out this form, our specialists will contact you and offer the best solutions tailored to your commercial or residential space.",
+      "title": "Price inquiry",
+      "start": "Get Started",
+      "description": "Fill out this form and our specialists will contact you and offer the best solutions tailored to your commercial or residential space.",
       "fields": {
         "area": "Surface Of The Area",
         "height": "Ceiling Height",
@@ -49,8 +66,48 @@
         "name": "Name",
         "phone": "Phone Number",
         "quote": "Get a quote",
-        "email": "Email"
+        "email": "Email",
+        "region": "Select The Region",
+        "area_function": "Select Area Function",
+        "region_options": {
+          "select": "Select",
+          "Yerevan": "Yerevan",
+          "Aragatsotn": "Aragatsotn",
+          "Ararat": "Ararat",
+          "Armavir": "Armavir",
+          "Gegharkunik": "Gegharkunik",
+          "Kotayk": "Kotayk",
+          "Lori": "Lori",
+          "Shirak": "Shirak",
+          "Syunik": "Syunik",
+          "Tavush": "Tavush",
+          "Vayots_dzor": "Vayots Dzor"
+        },
+        "area_options": {
+          "Commercial": "Commercial",
+          "Residential": "Residential",
+          "Manufacturing": "Manufacturing",
+          "Warehouse": "Warehouse"
+        }
       }
+    },
+    "reviews": {
+      "title": "Reviews",
+      "acba": {
+        "name": "ACBA",
+        "description": "Celsius transformed our office environment! Their team was professional, and the installation was seamless. We couldn't be happier with the comfort and efficiency!"
+      },
+      "vivaro": {
+        "name": "VBet",
+        "description": "From consultation to installation, our dedicated engineer did everything smoothly and efficiently. Our office has never felt more comfortable!"
+      }
+    },
+    "careers": {
+      "title": "Careers",
+      "sub_title": "Elevate your career at Celsius.",
+      "description": "Join the Celsius team and unlock your potential in the HVAC industry!",
+      "description2": "Explore our available positions and take the next step in your journey with us. Together, let’s create a comfortable and sustainable future!",
+      "join": "Join Our Team"
     }
   },
   "Careers": {

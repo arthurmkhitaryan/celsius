@@ -10,7 +10,7 @@ function Description() {
   const t = useTranslations('Home');
   return (
     <S.DescriptionWrapper>
-      <S.DescriptionTitle>Lorem ipsum dolor set</S.DescriptionTitle>
+      <S.DescriptionTitle>{t('info_title')}</S.DescriptionTitle>
       <S.Description>{t('info')}</S.Description>
     </S.DescriptionWrapper>
   );

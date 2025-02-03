@@ -7,12 +7,14 @@ import * as S from './MobileNavbar.styled';
 import { useLocale } from 'use-intl';
 import { ChevronRight } from 'lucide-react';
 import ProductsNavbar from './ProductsNavbar';
+import { useTranslations } from 'next-intl';
 
 interface IProps {
   changeToggleMenu: () => void;
 }
 
 function MobileNavbar({ changeToggleMenu }: IProps) {
+  const t = useTranslations('Navbar');
   const locale = useLocale();
   const pathname = usePathname();
 
@@ -39,13 +41,23 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
       <S.Navbar>
         <S.NavList>
           <S.NavListItem onClick={toggleProducts}>
-            <Link href="">Categories</Link>
+            <Link href="">{t('categories')}</Link>
             <S.Chevron isOpen={isProductsOpen}>
               <ChevronRight size={18} />
             </S.Chevron>
           </S.NavListItem>
 
           {isProductsOpen && <ProductsNavbar />}
+          <S.NavListItem>
+            <Link
+              onClick={changeToggleMenu}
+              href={getLocalizedPath('/products')}
+              passHref
+            >
+              {t('shop')}
+            </Link>
+            <ChevronRight size={18} />
+          </S.NavListItem>
 
           <S.NavListItem>
             <Link
@@ -53,7 +65,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
               href={getLocalizedPath('/careers')}
               passHref
             >
-              Career
+              {t('career')}
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
@@ -63,7 +75,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
               href={getLocalizedPath('/newsroom')}
               passHref
             >
-              Newsroom
+              {t('news')}
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
@@ -73,7 +85,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
               href={getLocalizedPath('/about-us')}
               passHref
             >
-              About Us
+              {t('about')}
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>
@@ -83,7 +95,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
               href={getLocalizedPath('/contact-us')}
               passHref
             >
-              Contact Us
+              {t('contact')}
             </Link>
             <ChevronRight size={18} />
           </S.NavListItem>

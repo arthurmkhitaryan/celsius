@@ -21,22 +21,20 @@ function Calculator() {
     setToggleCalculator((prev) => !prev);
   };
 
-  console.log({ toggleCalculator });
-
   return (
     <S.CalculatorWrapper>
       <S.CalculatorContainer>
         <S.CalculatorContent>
-          <S.CalculatorTitle>Price inquiry</S.CalculatorTitle>
+          <S.CalculatorTitle> {t('calculator.title')}</S.CalculatorTitle>
           <S.CalculatorDescription>
-            {t('calculator.title')}
+            {t('calculator.description')}
           </S.CalculatorDescription>
           <S.CalculatorButtonWrapper>
             <Button
               onClick={handleToggleCalculator}
               style={{ maxWidth: '165px' }}
             >
-              Get started
+              {t('calculator.start')}
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>
           </S.CalculatorButtonWrapper>

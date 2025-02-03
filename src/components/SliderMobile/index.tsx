@@ -83,7 +83,8 @@ function SliderMobile() {
             <S.CalculatorButton
               onClick={() => handleNavigateProduct(slide.link)}
             >
-              Go to product <ArrowRight size={18} />
+              {t('slider.product')}
+              <ArrowRight size={18} />
             </S.CalculatorButton>
           </S.ButtonWrapper>
         </S.SlideContentWrapper>

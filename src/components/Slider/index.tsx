@@ -109,7 +109,7 @@ function Slider() {
               onClick={handleNavigate}
               second={slide.id === 2}
             >
-              Go to product
+              {t('slider.product')}
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </S.CalculatorButton>
           </S.ButtonWrapper>

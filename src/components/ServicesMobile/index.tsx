@@ -40,6 +40,7 @@ import ShopAnimateIconTwo from '@/public/images/home/services/icons/shop-2.png';
 import ShopIcon from '@/public/images/home/services/icons-mobile/shop-icon-blue.svg';
 
 import { useParams, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const services = [
   {
@@ -117,6 +118,7 @@ const services = [
 ];
 
 const ServicesMobile = () => {
+  const t = useTranslations('Home');
   const [activeService, setActiveService] = useState(1);
   const router = useRouter();
   const { locale } = useParams();
@@ -147,7 +149,8 @@ const ServicesMobile = () => {
                       {service.description}
                     </ContentDescription>
                     <ViewMoreButton onClick={() => handleRedirect(service.id)}>
-                      View More <ArrowRight size={18} />
+                      {t('categories.view')}
+                      <ArrowRight size={18} />
                     </ViewMoreButton>
                     <ServiceIconWrapper>
                       <Image

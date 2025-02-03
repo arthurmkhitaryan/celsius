@@ -89,6 +89,7 @@ export const ReviewLogo = styled.img`
 export const ReviewContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 export const ReviewText = styled.p`

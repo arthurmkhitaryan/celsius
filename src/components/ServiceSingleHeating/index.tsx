@@ -55,7 +55,7 @@ const ServiceSingleHeating = () => {
             {t('categories.heating_cooling.description')}
           </S.ServiceAdditionalContent>
           <S.ServiceAdditionalButton onClick={handleRedirect}>
-            View More
+            {t('categories.view')}
             <Image src={ImageArrow} alt="" title="" width={10} height={10} />
           </S.ServiceAdditionalButton>
         </S.ServiceAdditionalContentWrapper>

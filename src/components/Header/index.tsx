@@ -27,8 +27,10 @@ import NavbarButton from '../shared/NavbarButton';
 import ProfileModal from '../ProfileModal';
 import Drawer from './Drawer';
 import { CardItem } from '../CardItem';
+import { useTranslations } from 'next-intl';
 
 function Header() {
+  const t = useTranslations('Header');
   const isFilterMenuVisible = useAppSelector(
     (state: any) => state.header.isFilterMenuVisible,
   );
@@ -154,7 +156,7 @@ function Header() {
               width={208}
               onClick={handleBecomeAPartner}
             >
-              Become a partner
+              {t('partner')}
               <Image src={arrowRight} width={12} alt="arrow right" />
             </NavbarButton>
             <S.SignInWrapper>
@@ -177,7 +179,7 @@ function Header() {
                   py={16}
                   width={110}
                 >
-                  Sign In
+                  {t('sign')}
                 </NavbarButton>
               )}
               {user && (
@@ -255,7 +257,7 @@ function Header() {
               py={16}
               onClick={handleBecomeAPartner}
             >
-              Become a partner
+              {t('partner')}
               <Image src={arrowRight} width={16} alt="arrow right" />
             </Button>
           </S.FullWidthButton>
@@ -279,7 +281,7 @@ function Header() {
                   px={32}
                   py={16}
                 >
-                  {'Sign In'}
+                  {t('sign')}
                 </Button>
               )}
 

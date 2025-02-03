@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as S from './Navbar.styled';
-import { useLocale } from 'use-intl';
+import { useLocale, useTranslations } from 'use-intl';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import ArrowDown from '@/public/images/arrow-down.svg';
 import Image from 'next/image';
 import ProductHover from './ProductHover';
 
 function Navbar() {
+  const t = useTranslations('Navbar');
   const locale = useLocale();
   const pathname = usePathname();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
@@ -49,35 +50,35 @@ function Navbar() {
                 style={{ display: 'flex', gap: '5px', alignItems: 'center' }}
                 href={'#'}
               >
-                Categories
+                {t('categories')}
                 <Image alt="arrow-down" src={ArrowDown} width={8} height={4} />
               </Link>
             </S.NavListItem>
 
             <S.NavListItem $isActiveLink={isActiveLink === 'products'}>
               <Link href={getLocalizedPath('/products')} passHref>
-                Shop
+                {t('shop')}
               </Link>
             </S.NavListItem>
 
             <S.NavListItem $isActiveLink={isActiveLink === 'careers'}>
               <Link href={getLocalizedPath('/careers')} passHref>
-                Career
+                {t('career')}
               </Link>
             </S.NavListItem>
             <S.NavListItem $isActiveLink={isActiveLink === 'newsroom'}>
               <Link href={getLocalizedPath('/newsroom')} passHref>
-                Newsroom
+                {t('news')}
               </Link>
             </S.NavListItem>
             <S.NavListItem $isActiveLink={isActiveLink === 'about-us'}>
               <Link href={getLocalizedPath('/about-us')} passHref>
-                About Us
+                {t('about')}
               </Link>
             </S.NavListItem>
             <S.NavListItem $isActiveLink={isActiveLink === 'contact-us'}>
               <Link href={getLocalizedPath('/contact-us')} passHref>
-                Contact Us
+                {t('contact')}
               </Link>
             </S.NavListItem>
           </S.NavList>

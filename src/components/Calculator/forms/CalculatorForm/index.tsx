@@ -10,8 +10,8 @@ type CalculatorFormValues = {
   name: string;
   phoneNumber: string;
   email: string;
-  option1: string;
-  option2: string;
+  region: string;
+  area_function: string;
 };
 
 function CalculatorForm() {
@@ -98,53 +98,94 @@ function CalculatorForm() {
       <S.CalculatorFormDetailUserData>
         <S.CalculatorFormDetailSelectUser>
           <S.CalculatorFormLabel className="label">
-            Select The Region<S.RequiredSign>*</S.RequiredSign>
+            {t('calculator.fields.region')}
+            <S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <Controller
-            name="option1"
+            name="region"
             control={control}
             defaultValue=""
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <S.CalculatorFormSelect {...field}>
                 <option value="" disabled>
-                  Select
+                  {t('calculator.fields.region_options.select')}
                 </option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="yerevan">
+                  {t('calculator.fields.region_options.Yerevan')}
+                </option>
+                <option value="aragatsotn">
+                  {t('calculator.fields.region_options.Aragatsotn')}
+                </option>
+                <option value="ararat">
+                  {t('calculator.fields.region_options.Ararat')}
+                </option>
+                <option value="armavir">
+                  {t('calculator.fields.region_options.Armavir')}
+                </option>
+                <option value="gegharkunik">
+                  {t('calculator.fields.region_options.Gegharkunik')}
+                </option>
+                <option value="kotayk">
+                  {t('calculator.fields.region_options.Kotayk')}
+                </option>
+                <option value="lori">
+                  {t('calculator.fields.region_options.Lori')}
+                </option>
+                <option value="shirak">
+                  {t('calculator.fields.region_options.Shirak')}
+                </option>
+                <option value="syunik">
+                  {t('calculator.fields.region_options.Syunik')}
+                </option>
+                <option value="tavush">
+                  {t('calculator.fields.region_options.Tavush')}
+                </option>
+                <option value="vayots_dzor">
+                  {t('calculator.fields.region_options.Vayots_dzor')}
+                </option>
               </S.CalculatorFormSelect>
             )}
           />
-          {errors.option1 && (
+          {errors.region && (
             <S.CalculatorFormError>
-              {errors.option1.message}
+              {errors.region.message}
             </S.CalculatorFormError>
           )}
         </S.CalculatorFormDetailSelectUser>
         <S.CalculatorFormDetailSelectUser>
           <S.CalculatorFormLabel className="label">
-            Select Area Function<S.RequiredSign>*</S.RequiredSign>
+            {t('calculator.fields.area_function')}
+            <S.RequiredSign>*</S.RequiredSign>
           </S.CalculatorFormLabel>
           <Controller
-            name="option2"
+            name="area_function"
             control={control}
             defaultValue=""
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <S.CalculatorFormSelect {...field}>
                 <option value="" disabled>
-                  Select
+                  {t('calculator.fields.region_options.select')}
                 </option>
-                <option value="optionA">Option A</option>
-                <option value="optionB">Option B</option>
-                <option value="optionC">Option C</option>
+                <option value="commercial">
+                  {t('calculator.fields.area_options.Commercial')}
+                </option>
+                <option value="residential">
+                  {t('calculator.fields.area_options.Residential')}
+                </option>
+                <option value="manufacturing">
+                  {t('calculator.fields.area_options.Manufacturing')}
+                </option>
+                <option value="warehouse">
+                  {t('calculator.fields.area_options.Warehouse')}
+                </option>
               </S.CalculatorFormSelect>
             )}
           />
-          {errors.option2 && (
+          {errors.area_function && (
             <S.CalculatorFormError>
-              {errors.option2.message}
+              {errors.area_function.message}
             </S.CalculatorFormError>
           )}
         </S.CalculatorFormDetailSelectUser>
