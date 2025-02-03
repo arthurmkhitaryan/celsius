@@ -12,11 +12,11 @@ import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import { useRouter } from 'next/navigation';
 import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.png';
 import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.png';
+import { useTranslations } from 'next-intl';
 
 const products = [
   {
     id: 1,
-    title: 'Heating & Cooling',
     imgAlt: 'heating',
     iconAlt: 'heating',
     mainImage: ImageHvac,
@@ -25,7 +25,6 @@ const products = [
   },
   {
     id: 2,
-    title: 'Ventilation Systems',
     imgAlt: 'hvac',
     iconAlt: 'hvac',
     mainImage: ImageHvac,
@@ -34,7 +33,6 @@ const products = [
   },
   {
     id: 3,
-    title: 'Only Heating',
     imgAlt: 'ventilation',
     iconAlt: 'ventilation',
     mainImage: ImageVentilation,
@@ -44,6 +42,7 @@ const products = [
 ];
 
 const ProductList = () => {
+  const t = useTranslations('Newsroom')
   const router = useRouter();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
 
@@ -65,7 +64,7 @@ const ProductList = () => {
                   height={100}
                 />
               </div>
-              <div className="product_title">{product.title}</div>
+              <div className="product_title">{t(`${product.id}`)}</div>
             </div>
           )}
           <div className="product_img">
@@ -87,7 +86,7 @@ const ProductList = () => {
                     height={100}
                   />
                 </div>
-                <div className="product_title">{product.title}</div>
+                <div className="product_title">{t(`${product.id}`)}</div>
               </>
             )}
             <button

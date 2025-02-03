@@ -74,7 +74,7 @@ export default function Newsroom() {
                 <S.ReadFullButton
                   onClick={() => router.push(`newsroom/${bannerPost.id}`)}
                 >
-                  {t('read_full_story')} {'>>'}
+                  {t('read')} {'>>'}
                 </S.ReadFullButton>
               </S.ReadFullButtonWrapper>
             </S.BannerContent>
@@ -86,7 +86,7 @@ export default function Newsroom() {
             key={'all'}
             onClick={() => handleCategoryChange(0)}
           >
-            All Topics
+            {t('all_topics')}
           </S.Tab>
           {!isLoadingCategories &&
             categories?.map((item) => (

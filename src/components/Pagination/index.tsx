@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import * as S from './Pagination.styled';
+import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
 interface IProps {
   currentPage: number;
@@ -9,6 +11,7 @@ interface IProps {
 }
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
+  const t = useTranslations('Pagination');
   const handleClick = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
@@ -61,11 +64,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
   return (
     <S.PaginationWrapper>
       <S.PageLink onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
-        &laquo; Previous
+        &laquo; {t('previous')}
       </S.PageLink>
       {renderPageNumbers()}
       <S.PageLink onClick={() => handleClick(currentPage + 1)} disabled={currentPage === totalPages}>
-        Next &raquo;
+        {t('next')} &raquo;
       </S.PageLink>
     </S.PaginationWrapper>
   );

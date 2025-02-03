@@ -74,5 +74,17 @@
   },
   "About": {
     "about_title": "Our company is the official representative of global brands Midea and Clivet in the Republic of Armenia."
+  },
+  "Newsroom": {
+    "read": "Read Full Article",
+    "all_topics": "All Topics",
+    "1": "Heating & Cooling",
+    "2": "Ventilation Systems",
+    "3": "Only Heating",
+    "view_more": "View More"
+  },
+  "Pagination": {
+    "next": "Next",
+    "previous": "Previous"
   }
 }
