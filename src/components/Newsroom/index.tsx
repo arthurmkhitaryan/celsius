@@ -13,6 +13,7 @@ import { useGetNewsQuery } from '@/features/newsroom/newsroom.api';
 import { useParams } from 'next/navigation';
 import { getImageUrl } from '@/utils/getImageFullUrl';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const newsroomData = [
   {
@@ -39,6 +40,8 @@ const newsroomData = [
 ];
 
 function Newsroom() {
+  const t = useTranslations('NewsroomComponent');
+
   const { locale } = useParams();
   const router = useRouter();
 
@@ -58,7 +61,7 @@ function Newsroom() {
 
   return (
     <S.NewsroomWrapper>
-      <S.NewsroomTitle>Newsroom</S.NewsroomTitle>
+      <S.NewsroomTitle>{t('title')}</S.NewsroomTitle>
       <S.NewsroomContent>
         <S.NewsroomList>
           {data?.data.map((item) => (
@@ -73,7 +76,7 @@ function Newsroom() {
         </S.NewsroomList>
       </S.NewsroomContent>
       <S.SeeAllButton onClick={handleNavigateToNewsroom}>
-        See All <ChevronRight size={24} />
+        {t('see_all')} <ChevronRight size={24} />
       </S.SeeAllButton>
     </S.NewsroomWrapper>
   );

@@ -63,5 +63,12 @@
     "email": "Эл. почта",
     "phone": "Телефон",
     "send": "Отправить резюме"
+  },
+  "NewsroomComponent": {
+    "title": "Новости",
+    "see_all": "Смотреть все"
+  },
+  "Our_Partners": {
+    "title": "Наши партнеры"
   }
 }

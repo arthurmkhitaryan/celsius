@@ -63,5 +63,12 @@
     "email": "Էլ․ հասցե",
     "phone": "Հեռ.",
     "send": "Ուղարկել CV"
+  },
+  "NewsroomComponent": {
+    "title": "Նորություններ",
+    "see_all": "Տեսնել բոլորը"
+  },
+  "Our_Partners": {
+    "title": "Մեր գործընկերները"
   }
 }
