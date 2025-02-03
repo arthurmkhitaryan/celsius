@@ -4,8 +4,10 @@ import { ChangeEvent, useRef, useState } from 'react';
 import * as S from './CareersCV.styled';
 import Button from '@/components/shared/Button';
 import { useSendCVMutation } from '@/features';
+import { useTranslations } from 'next-intl';
 
 function CareersCV() {
+  const t = useTranslations('Careers')
   const [sendCV] = useSendCVMutation();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [cvSent, setCvSent] = useState(false);
@@ -25,19 +27,18 @@ function CareersCV() {
   return (
     <S.Container>
       <S.Title>
-        We are always ready to welcome new professioanls to our team!
+        {t('career_cv_title')}
       </S.Title>
       <S.ContactsSections>
         <S.ContactsSection>
-          <S.ContactSectionValue>Contact to</S.ContactSectionValue>
-          <S.ContactSectionValue>Jon Owen</S.ContactSectionValue>
+          <S.ContactSectionValue>{t('contact_to')}</S.ContactSectionValue>
         </S.ContactsSection>
         <S.ContactsSection>
-          <S.ContactSectionValue>E-mail</S.ContactSectionValue>
+          <S.ContactSectionValue>{t('email')}</S.ContactSectionValue>
           <S.ContactSectionValue>celsiusarmenia@mail.ru</S.ContactSectionValue>
         </S.ContactsSection>
         <S.ContactsSection>
-          <S.ContactSectionValue>Phone</S.ContactSectionValue>
+          <S.ContactSectionValue>{t('phone')}</S.ContactSectionValue>
           <S.ContactSectionValue>374(43)120100</S.ContactSectionValue>
         </S.ContactsSection>
         <input
@@ -46,7 +47,7 @@ function CareersCV() {
           style={{ display: 'none' }}
           onChange={handleFileChange}
         />
-        <Button width={178} disabled={cvSent} onClick={handleButtonClick}>{cvSent ? 'CV sent successfully' : 'Send CV'}</Button>
+        <Button width={178} disabled={cvSent} onClick={handleButtonClick}>{cvSent ? 'CV sent successfully' : t('send')}</Button>
       </S.ContactsSections>
     </S.Container>
   );

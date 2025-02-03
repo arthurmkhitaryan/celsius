@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3432435-5029-480e-b858-a50f973f906b" name="Changes" comment="fix relation for category and add get from admin instead of mock for products">
-      <change afterPath="$PROJECT_DIR$/src/components/ServiceSingle/ServicesSingle.styled.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ServiceSingle/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/profile/account-settings/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/profile/account-settings/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Services/Services.styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services/Services.styled.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Services/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Slider/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slider/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/am.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/am.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +16,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "arthurmkhitaryan"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/arthurmkhitaryan/celsius.git",
+    "accountId": "b77a49ea-9e6e-49c6-b911-22dfd28047fd"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2ljf0rKwnbEZ6NAn5vw5h8b423x" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,14 +39,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/armen/Documents/Projects/celsius/celsius/src/features/contact-us",
+    "last_opened_file_path": "C:/Users/Artur.Mkhitaryan/Desktop/celsius-web/celsius",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "/Users/armen/Documents/Projects/celsius/celsius/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\Artur.Mkhitaryan\\Desktop\\celsius-web\\celsius\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -51,7 +59,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -64,6 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1725698186494</updated>
       <workItem from="1725698187649" duration="13946000" />
+      <workItem from="1737457791309" duration="1444000" />
+      <workItem from="1738579650618" duration="1825000" />
     </task>
     <task id="LOCAL-00001" summary="contact us functionallity">
       <option name="closed" value="true" />
