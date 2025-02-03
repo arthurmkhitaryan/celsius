@@ -31,6 +31,7 @@ import { useTranslations } from 'next-intl';
 
 function Header() {
   const t = useTranslations('Header');
+  const tCart = useTranslations('Cart');
   const isFilterMenuVisible = useAppSelector(
     (state: any) => state.header.isFilterMenuVisible,
   );
@@ -221,7 +222,7 @@ function Header() {
                 />
               ))}
               <S.TotalPrice style={{ fontWeight: 'bold', marginTop: '20px' }}>
-                <p>Total Price:</p>
+                <p>{tCart('total')}:</p>
                 <S.Price>
                   {cartItems
                     .reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -229,7 +230,7 @@ function Header() {
                   <span>֏</span>
                 </S.Price>
                 <S.OrderButton onClick={handleOrderNow}>
-                  Order Now
+                  {tCart('order_now')}
                 </S.OrderButton>
               </S.TotalPrice>
             </S.DrawerContent>

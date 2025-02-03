@@ -10,6 +10,7 @@ import ArrowUpLogin from '@/public/images/login/arrow-up.png';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { setCookie } from 'cookies-next';
+import { useTranslations } from 'next-intl';
 
 interface LoginFormProps {
   visible: boolean;
@@ -25,6 +26,7 @@ export default function LoginForm({
     handleSubmit,
     formState: { errors },
   } = useForm<Login>();
+  const t = useTranslations('Login');
   const [loginUser, { isLoading }] = useLoginMutation();
   const dispatch = useAppDispatch();
   const [rememberMe, setRememberMe] = useState(false);
@@ -66,14 +68,14 @@ export default function LoginForm({
   return (
     <S.LoginFormWrapper $visible={visible}>
       <S.Title>
-        Sign In
+        {t('sign')}
         <S.ArrowUp src={ArrowUpLogin.src} />
         <X className="close-button" size={24} onClick={handleClose} />
       </S.Title>
-      <S.Description>Use Your email address & password to login</S.Description>
+      <S.Description> {t('text')}</S.Description>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.InputWrapper>
-          <S.Label>Email</S.Label>
+          <S.Label> {t('email')}</S.Label>
           <S.Input
             placeholder="YourEmail@gmail.com"
             type="email"
@@ -82,7 +84,7 @@ export default function LoginForm({
           {errors.email && <S.Error>This field is required</S.Error>}
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Password</S.Label>
+          <S.Label> {t('password')}</S.Label>
           <S.Input
             placeholder="**********"
             type="password"
@@ -96,15 +98,14 @@ export default function LoginForm({
             checked={rememberMe}
             onChange={(e) => setRememberMe(e.target.checked)}
           />
-          <S.RememberMeLabel>Remember Me</S.RememberMeLabel>
+          <S.RememberMeLabel> {t('remember')}</S.RememberMeLabel>
         </S.RememberMeWrapper>
         <S.SubmitButton type="submit" disabled={isLoading}>
-          Sign In
+          {t('sign')}
         </S.SubmitButton>
-        <S.ForgetLink href="/forget">Forgot Username or Password?</S.ForgetLink>
-        <S.NewHereText>New Here?</S.NewHereText>
+        <S.NewHereText> {t('new')}</S.NewHereText>
         <S.GoToRegister type="button" onClick={handleRedirecToSignUp}>
-          Become a customer
+          {t('become_customer')}
         </S.GoToRegister>
       </S.Form>
     </S.LoginFormWrapper>

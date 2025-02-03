@@ -106,7 +106,6 @@ export const ReadFullButtonWrapper = styled.div`
 `;
 
 export const ReadFullButton = styled.button`
-  max-width: 170px;
   width: 100%;
   color: #0044cc;
   font-size: 18px;

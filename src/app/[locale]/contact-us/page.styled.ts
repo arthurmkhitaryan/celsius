@@ -125,7 +125,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 240px;
   padding: 16px 48px;
   background-color: #0044cc;
   color: white;

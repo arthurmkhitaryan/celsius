@@ -3,6 +3,9 @@
     width: 1130px;
     margin: 0 auto;
     padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 
     @media (max-width: 768px) {
         width: initial;

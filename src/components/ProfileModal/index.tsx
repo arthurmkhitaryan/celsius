@@ -7,6 +7,7 @@ import { X } from 'lucide-react';
 import { useAppDispatch } from '@/store/hooks';
 import { logout } from '@/features';
 import { setCookie } from 'cookies-next';
+import { useTranslations } from 'next-intl';
 
 interface ModalProps {
   userName: string;
@@ -19,6 +20,7 @@ export default function ProfileModal({
   visible = false,
   onChangeVisibility,
 }: ModalProps) {
+  const t = useTranslations('Profile');
   const dispatch = useAppDispatch();
   const handleClose = () => {
     onChangeVisibility(false);
@@ -48,16 +50,16 @@ export default function ProfileModal({
             href="/profile?section=account-settings"
             onClick={handleClose}
           >
-            My Account
+            {t('modal.account')}
           </S.ListItem>
           <S.ListItem
             href="/profile?section=order-history"
             onClick={handleClose}
           >
-            View Orders
+            {t('modal.orders')}
           </S.ListItem>
           <S.ListItem href="#" onClick={handleLogOut}>
-            Log Out
+            {t('modal.log_out')}
           </S.ListItem>
         </S.List>
       </S.Container>

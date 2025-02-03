@@ -5,45 +5,46 @@ import './Products.scss';
 import { ChevronDown } from 'lucide-react';
 import { useGetAllCategoriesQuery } from '@/features/categories';
 import { useParams, useSearchParams } from 'next/navigation';
-
-const mockData = [
-  {
-    category: 'BRAND',
-    types: ['Midea', 'Carrier'],
-    filterType: 'productType',
-  },
-  {
-    category: 'HORSEPOWER',
-    types: [
-      '12K (1.5HP)',
-      '18K (2.25HP)',
-      '24K (3HP)',
-      '30K (4HP)',
-      '36K (4.5HP)',
-      '3 ~ 30 Ton',
-      '8 to 45 Kw',
-      '800 ~ 2000 cfm',
-      '8 to 50',
-    ],
-    filterType: 'productType',
-  },
-  {
-    category: 'PLACEMENT',
-    types: ['Indoor', 'Outdoor'],
-    filterType: 'productType',
-  },
-  {
-    category: 'AREA FUNCTION',
-    types: ['Residential', 'Commercial', 'Industrial'],
-    filterType: 'productType',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 interface FilterProps {
   onFilterChange: (filters: string[]) => void;
 }
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
+  const t = useTranslations('Shop');
+
+  const mockData = [
+    {
+      category: t('categories.brand'),
+      types: ['Midea', 'Carrier'],
+      filterType: 'productType',
+    },
+    {
+      category: t('categories.horses.name'),
+      types: [
+        ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) =>
+          t(`categories.horses.items.${item}`),
+        ),
+      ],
+      filterType: 'productType',
+    },
+    {
+      category: t('categories.placement.name'),
+      types: [...[1, 2].map((item) => t(`categories.placement.items.${item}`))],
+      filterType: 'productType',
+    },
+    {
+      category: t('categories.area_function.name'),
+      types: [
+        ...[1, 2, 3, 4].map((item) =>
+          t(`categories.area_function.items.${item}`),
+        ),
+      ],
+      filterType: 'productType',
+    },
+  ];
+
   const [openCategories, setOpenCategories] = useState<{ [key: string]: any }>(
     mockData.reduce((acc, { category }) => ({ ...acc, [category]: true }), {}),
   );

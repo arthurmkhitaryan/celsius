@@ -12,8 +12,10 @@ import FacebookLogo from '@/public/images/facebook-filled.svg';
 import InstagramLogo from '@/public/images/instagram-filled.svg';
 import LinkedinLogo from '@/public/images/linkedin-filled.svg';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function ContactUs() {
+  const t = useTranslations('Contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,7 +89,7 @@ export default function ContactUs() {
     <>
       <S.HeaderImage $backgroundImage={Contact.src}>
         <S.HeaderText>
-          <h1>CONTACT US</h1>
+          <h1>{t('title')}</h1>
         </S.HeaderText>
       </S.HeaderImage>
       <S.ContactUsWrapper>
@@ -95,22 +97,20 @@ export default function ContactUs() {
           <S.Form onSubmit={handleSubmit}>
             <S.TwoColumnRow>
               <S.InputGroup>
-                <label htmlFor="firstName">Your Name*</label>
+                <label htmlFor="firstName">{t('inputs.name')}*</label>
                 <input
                   id="name"
                   type="text"
-                  placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleInputChange}
                 />
                 {errors.name && <S.Error>{errors.name}</S.Error>}
               </S.InputGroup>
               <S.InputGroup>
-                <label htmlFor="email">Email*</label>
+                <label htmlFor="email">{t('inputs.email')}*</label>
                 <input
                   id="email"
                   type="text"
-                  placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
@@ -118,7 +118,7 @@ export default function ContactUs() {
               </S.InputGroup>
             </S.TwoColumnRow>
             <S.InputGroup>
-              <label htmlFor="message">Message*</label>
+              <label htmlFor="message">{t('inputs.message')}*</label>
               <textarea
                 id="message"
                 value={formData.message}
@@ -127,21 +127,21 @@ export default function ContactUs() {
               {errors.message && <S.Error>{errors.message}</S.Error>}
             </S.InputGroup>
             <S.ButtonContainer>
-              <S.Button type="submit">{message}</S.Button>
+              <S.Button type="submit">{t('inputs.send')}</S.Button>
             </S.ButtonContainer>
           </S.Form>
           <S.FooterSectionContent>
-            <S.TitleContact>Celsius LLC</S.TitleContact>
+            <S.TitleContact>{t('info.name')}</S.TitleContact>
             <S.FooterSectionTitle isTablet={isTablet}>
-              Contacts
+              {t('info.contacts')}
             </S.FooterSectionTitle>
             <S.FooterSectionItem>
               <MapPin size={18} color="#0044CC" />
               <div>
                 <span>
-                  Yerevan, Rubinyants 2/10 <br />
+                  {t('info.address_one')} <br />
                 </span>
-                <span>Yerevan, Vratsyan 73/1</span>
+                <span>{t('info.address_two')}</span>
               </div>
             </S.FooterSectionItem>
             <S.FooterSectionItem>
@@ -197,15 +197,15 @@ export default function ContactUs() {
               </Link>
             </S.FooterContentFooter>
             <S.FooterSectionTitle isTablet={isTablet}>
-              Working hours
+              {t('info.working_hours')}
             </S.FooterSectionTitle>
             <S.FooterSectionItem>
               <Clock5 size={18} color="#0044CC" />
               <div>
                 <span>
-                  Mon - Fri / 10:00 - 19:00 <br />
+                  {t('info.days_one')} <br />
                 </span>
-                <span>Sat. / 10:00 - 18:00</span>
+                <span>{t('info.days_two')}</span>
               </div>
             </S.FooterSectionItem>
           </S.FooterSectionContent>

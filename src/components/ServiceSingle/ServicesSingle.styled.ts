@@ -77,7 +77,7 @@ export const ServiceIconWrapper = styled.div`
 
   & > .animate-hvac-icon-second {
     position: absolute;
-    right: 10px;
+    right: 0;
     min-width: 160px;
     min-height: 160px;
     transform: rotate(185deg);

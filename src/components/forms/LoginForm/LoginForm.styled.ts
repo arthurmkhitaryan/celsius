@@ -39,12 +39,12 @@ export const Title = styled.h1`
 `;
 
 export const Description = styled.p`
-  white-space: nowrap;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: #969696;
   margin-bottom: 12px;
+  text-align: center;
 `;
 
 export const Form = styled.form`
@@ -167,6 +167,7 @@ export const ForgetLink = styled(Link)`
 
 export const NewHereText = styled.p`
   font-size: 16px;
+  margin-top: 16px;
   font-weight: 500;
   line-height: 22px;
   color: #0d2427;

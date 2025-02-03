@@ -4,6 +4,7 @@ import React from 'react';
 import * as S from './CardItem.styled';
 import { useAppDispatch } from '@/store/hooks';
 import { updateQuantity, removeFromCart } from '@/features/cart/cart.slice';
+import { useTranslations } from 'next-intl';
 
 interface ICardItemProps {
   id: string | number;
@@ -20,6 +21,7 @@ export const CardItem = ({
   price,
   quantity,
 }: ICardItemProps) => {
+  const t = useTranslations('Cart');
   const dispatch = useAppDispatch();
 
   const handleIncrement = () => {
@@ -39,7 +41,7 @@ export const CardItem = ({
       <S.Image src={image} alt={name} />
       <S.ProductName>{name}</S.ProductName>
       <S.ProductQuantity>
-        <span>QTY:</span>
+        <span>{t('qty')}:</span>
         <S.Counter>
           <button onClick={handleDecrement}>-</button>
           <span>{quantity}</span>

@@ -15,8 +15,10 @@ import FilterOptionsIcon from '@/public/images/product/filter-options.svg';
 import { toggleFilterMenu } from '@/features/header/header.slice';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function Products() {
+  const t = useTranslations('Shop');
   const { locale } = useParams();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();

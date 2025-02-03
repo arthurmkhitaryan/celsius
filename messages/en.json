@@ -134,6 +134,7 @@
   },
   "Newsroom": {
     "read": "Read Full Article",
+    "read_full_story": "Read Full Article",
     "all_topics": "All Topics",
     "1": "Heating & Cooling",
     "2": "Ventilation Systems",
@@ -143,5 +144,85 @@
   "Pagination": {
     "next": "Next",
     "previous": "Previous"
+  },
+  "Contact": {
+    "title": "Contact us",
+    "inputs": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Message",
+      "send": "Send Message"
+    },
+    "info": {
+      "name": "Celsius LLC",
+      "contacts": "Contacts",
+      "address_one": "Yerevan, Rubinyants st. 2/10",
+      "address_two": "Yerevan, Vratsyan st. 73/1",
+      "working_hours": "Working Hours",
+      "days_one": "Mon - Fri / 10:00 - 19:00",
+      "days_two": "Sat. / 10:00 - 18:00"
+    }
+  },
+  "Profile": {
+    "modal": {
+      "account": "My Account",
+      "orders": "My Orders",
+      "log_out": "Log Out"
+    }
+  },
+  "Cart": {
+    "qty": "QTY",
+    "total": "Total Price",
+    "order_now": "Order Now"
+  },
+  "Shop": {
+    "categories": {
+      "brand": "Brand",
+      "horses": {
+        "name": "HorsePower",
+        "items": {
+          "1":"12K   (1.5HP)",
+          "2":"18K   (2.25HP)",
+          "3":"24K   (3HP)",
+          "4":"30K   (4HP)",
+          "5":"36K   (4.5HP)",
+          "6":"3 ~ 30 Ton ",
+          "7":"8 to 45 Kw",
+          "8":"800 ~ 2000 cfm",
+          "9":"8 to 50"
+        }
+      },
+      "placement": {
+        "name": "Placement",
+        "items": {
+          "1": "Indoor",
+          "2": "Outdoor"
+        }
+      },
+      "area_function": {
+        "name": "Area Function",
+        "items": {
+          "1": "Commercial",
+          "2": "Residential",
+          "3": "Manufacturing",
+          "4": "Warehouse"
+        }
+      }
+    }
+  },
+  "Login": {
+    "sign": "Sign In",
+    "text": "Use Your email address & password to login",
+    "email": "Email",
+    "password": "Password",
+    "remember": "Remember Me",
+    "sign_in": "Sign In",
+    "new": "New Here?",
+    "become_customer": "Become a customer"
+  },
+  "Form": {
+    "text": "Thank you. Your request has been approved. We will contact you within 3 business days.",
+    "try": "Try Again",
+    "continue": "Continue"
   }
 }

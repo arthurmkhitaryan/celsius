@@ -99,6 +99,7 @@ export const OrderButton = styled.button`
   margin-top: 18px;
   background: #0044cc;
   color: white;
+  white-space: nowrap;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;

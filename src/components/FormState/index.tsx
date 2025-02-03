@@ -3,6 +3,7 @@ import React from 'react';
 //styled
 import * as S from './FormState.styled';
 import { CircleCheck, CircleX } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface IFormState {
   isError: boolean;
@@ -15,6 +16,8 @@ export const FormState = ({
   withSuccessText,
   closeModal,
 }: IFormState) => {
+  const t = useTranslations('Form');
+
   return (
     <S.FormStateContainer>
       <S.IconSection $isError={isError}>
@@ -30,12 +33,7 @@ export const FormState = ({
         ) : (
           <S.Title $withText={withSuccessText}>Success!</S.Title>
         )}
-        {withSuccessText && (
-          <S.Description>
-            Thank you. Your request has been approved. We will contact you
-            within 3 business days.
-          </S.Description>
-        )}
+        {withSuccessText && <S.Description>{t('text')}</S.Description>}
         {isError ? (
           <S.Button
             onClick={() => {
@@ -44,7 +42,7 @@ export const FormState = ({
             }}
             $isError={isError}
           >
-            Try Again
+            {t('try')}
           </S.Button>
         ) : (
           <S.Button
@@ -54,7 +52,7 @@ export const FormState = ({
             }}
             $isError={isError}
           >
-            Continue
+            {t('continue')}
           </S.Button>
         )}
       </S.Content>

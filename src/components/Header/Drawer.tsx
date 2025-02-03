@@ -34,7 +34,7 @@ const DrawerContent = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 296px;
+  width: 326px;
   max-width: 100%;
   height: 100%;
   background: white;
