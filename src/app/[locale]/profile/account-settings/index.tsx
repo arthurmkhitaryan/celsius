@@ -4,8 +4,10 @@ import { useAppSelector } from '@/store/hooks';
 import { User } from '@/features';
 import { UserService } from '@/services/userService';
 import { getCookie } from 'cookies-next';
+import { useTranslations } from 'next-intl';
 
 const AccountSettings = () => {
+  const t = useTranslations('Account');
   const user = (useAppSelector((state) => state.auth.user) as User) || {};
   const [formData, setFormData] = useState({
     firstName: user.firstName,
@@ -41,10 +43,10 @@ const AccountSettings = () => {
 
   return (
     <S.SettingsForm onSubmit={handleSubmit}>
-      <S.FormTitle>Account Settings</S.FormTitle>
+      <S.FormTitle>{t('settings.title')}</S.FormTitle>
       <S.Form>
         <S.InputWrapper>
-          <S.Label>First name</S.Label>
+          <S.Label>{t('settings.inputs.first_name')}</S.Label>
           <S.Input
             type="text"
             name="firstName"
@@ -54,7 +56,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Last name</S.Label>
+          <S.Label>{t('settings.inputs.last_name')}</S.Label>
           <S.Input
             type="text"
             name="lastName"
@@ -64,7 +66,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Email</S.Label>
+          <S.Label>{t('settings.inputs.email')}</S.Label>
           <S.Input
             type="email"
             name="email"
@@ -74,7 +76,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Phone number</S.Label>
+          <S.Label>{t('settings.inputs.phone')}</S.Label>
           <S.Input
             type="text"
             name="phoneNumber"
@@ -84,7 +86,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>City</S.Label>
+          <S.Label>{t('settings.inputs.city')}</S.Label>
           <S.Input
             type="text"
             name="city"
@@ -94,7 +96,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Postcode</S.Label>
+          <S.Label>{t('settings.inputs.code')}</S.Label>
           <S.Input
             type="text"
             name="postcode"
@@ -104,7 +106,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>Street Address</S.Label>
+          <S.Label>{t('settings.inputs.street')}</S.Label>
           <S.Input
             type="text"
             name="streetAddress"
@@ -114,7 +116,7 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.Label>House/Flat Number</S.Label>
+          <S.Label>{t('settings.inputs.house')}</S.Label>
           <S.Input
             type="text"
             name="houseFlatNumber"
@@ -124,8 +126,10 @@ const AccountSettings = () => {
           />
         </S.InputWrapper>
         <S.ButtonsWrapper>
-          <S.CancelButton type="button">Cancel</S.CancelButton>
-          <S.SaveButton type="submit">Save Changes</S.SaveButton>
+          <S.CancelButton type="button">
+            {t('settings.inputs.cancel')}
+          </S.CancelButton>
+          <S.SaveButton type="submit">{t('settings.inputs.save')}</S.SaveButton>
         </S.ButtonsWrapper>
       </S.Form>
     </S.SettingsForm>

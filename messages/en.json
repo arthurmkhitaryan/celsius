@@ -224,5 +224,88 @@
     "text": "Thank you. Your request has been approved. We will contact you within 3 business days.",
     "try": "Try Again",
     "continue": "Continue"
+  },
+  "Footer": {
+    "contacts": {
+      "name": "Contacts",
+      "address_one": "Yerevan, Rubinyants st. 2/10",
+      "address_two": "Yerevan, Vratsyan st. 73/1",
+      "days_one":"Mon - Fri / 10:00 - 19:00",
+      "days_two":"Sat. / 10:00 - 18:00"
+    },
+    "categories": {
+      "name": "Categories",
+      "heating_cooling": "Heating & Cooling",
+      "ventilation": "Ventilation Systems",
+      "heating": "Only Heating",
+      "shop": "Shop"
+    },
+    "links": {
+      "name": "Useful links",
+      "career": "Career",
+      "about": "About us",
+      "news": "Newsroom",
+      "contact": "Contact us"
+    }
+  },
+  "Partner": {
+    "title": "Become a Partner",
+    "sub_title": "for new business opportunities",
+    "description": "Celsius LLC is a leading company in the HVAC industry with a solid foundation and high-quality service, offering competent solutions in the field of heating, cooling and ventilation systems.",
+    "info_desc": "We are constantly striving to expand our partner network, creating a basis for new partnerships and mutually beneficial relationships. By becoming a partner of Celsius LLC, you will receive numerous advantages that will help you improve your business.",
+    "info_desc_two": "Our company selects only reliable partners so that together we can further improve the industry.",
+    "blocks": {
+      "prices": {
+        "title": "Partner Prices",
+        "desc": "By becoming a partner, you will receive price advantages that will be another incentive for business development."
+      },
+      "special": {
+        "title": "Specialized Conferences",
+        "desc": "Conferences and forums will help you expand your knowledge and connections."
+      },
+      "trainings": {
+        "title": "Trainings",
+        "desc": "Trainings both in Armenia and abroad will enhance your professional capabilities."
+      }
+    },
+    "contact": "Contact us",
+    "inputs": {
+      "first_name": "First Name *",
+      "last_name": "Last Name *",
+      "company": "Company Name",
+      "email": "Email *",
+      "phone": "Phone Number *",
+      "comments": "Comments",
+      "btn": "Become a Partner"
+    }
+  },
+  "Account": {
+    "settings": {
+      "title": "Account Settings",
+      "inputs": {
+        "first_name": "First Name *",
+        "last_name": "Last Name *",
+        "phone": "Phone Number *",
+        "email": "Email *",
+        "city": "City",
+        "code": "Postcode",
+        "street": "Street Address",
+        "house": "House/Flat Number"
+      }
+    },
+    "orders": {
+      "title": "Order History",
+      "from": "From Date",
+      "to": "To Date",
+      "select": "Select Date",
+      "clear": "CLEAR",
+      "search": "SEARCH",
+      "table": {
+        "pic": "PIC",
+        "date": "DATE",
+        "qty": "QUANTITY",
+        "total": "TOTAL"
+      }
+    }
   }
 }

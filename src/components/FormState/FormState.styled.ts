@@ -7,6 +7,7 @@ export const FormStateContainer = styled.div`
   flex-direction: column;
   border-radius: 20px;
   width: 460px;
+  z-index: 2000;
 `;
 
 export const IconSection = styled.div<{ $isError: boolean }>`

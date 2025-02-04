@@ -12,10 +12,12 @@ import InstagramLogo from '@/public/images/footer/instagram.svg';
 import LinkedinLogo from '@/public/images/footer/linkedin-logo.svg';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import { useParams, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 // components
 
 function Footer() {
+  const t = useTranslations('Footer');
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const { locale } = useParams();
   const router = useRouter();
@@ -61,15 +63,15 @@ function Footer() {
             <S.FooterSection className={isTablet ? 'middle' : ''}>
               <S.FooterSectionContent>
                 <S.FooterSectionTitle isTablet={isTablet}>
-                  Contacts
+                  {t('contacts.name')}
                 </S.FooterSectionTitle>
                 <S.FooterSectionItem>
                   <MapPin size={18} color="#fff" />
                   <div>
                     <span>
-                      Yerevan, Rubinyants 2/10 <br />
+                      {t('contacts.address_one')} <br />
                     </span>
-                    <span>Yerevan, Vratsyan 73/1</span>
+                    <span>{t('contacts.address_two')}</span>
                   </div>
                 </S.FooterSectionItem>
                 <S.FooterSectionItem>
@@ -93,9 +95,9 @@ function Footer() {
                   <Clock5 size={18} color="#fff" />
                   <div>
                     <span>
-                      Mon - Fri / 10:00 - 19:00 <br />
+                      {t('contacts.days_one')} <br />
                     </span>
-                    <span>Sat. / 10:00 - 18:00</span>
+                    <span>{t('contacts.days_two')}</span>
                   </div>
                 </S.FooterSectionItem>
                 {isTablet && (
@@ -145,47 +147,48 @@ function Footer() {
             </S.FooterSection>
             <S.FooterSection className="middle">
               <S.FooterSectionContent>
-                <S.FooterSectionTitle>Categories</S.FooterSectionTitle>
+                <S.FooterSectionTitle>
+                  {t('categories.name')}
+                </S.FooterSectionTitle>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/1')}
                 >
-                  Heating & Cooling
+                  {t('categories.heating_cooling')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/2')}
                 >
-                  Ventilation Systems
+                  {t('categories.ventilation')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/3')}
                 >
-                  Only Heating
+                  {t('categories.heating')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('category/4')}
                 >
-                  Shop
+                  {t('categories.shop')}
                 </S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>
             <S.FooterSection className="last">
               <S.FooterSectionContent>
-                <S.FooterSectionTitle>Useful links</S.FooterSectionTitle>
+                <S.FooterSectionTitle>{t('links.name')}</S.FooterSectionTitle>
                 <S.FooterSectionItem onClick={() => handleRedirect('careers')}>
-                  Career
+                  {t('links.career')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem onClick={() => handleRedirect('about-us')}>
-                  About Us
+                  {t('links.about')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem onClick={() => handleRedirect('newsroom')}>
-                  Newsroom
+                  {t('links.news')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
                   onClick={() => handleRedirect('contact-us')}
                 >
-                  Contac Us
+                  {t('links.contact')}
                 </S.FooterSectionItem>
-                <S.FooterSectionItem>Calculator</S.FooterSectionItem>
               </S.FooterSectionContent>
             </S.FooterSection>
           </S.FooterContentSections>

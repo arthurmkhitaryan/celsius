@@ -10,8 +10,10 @@ import ProductList from '@/components/ProductList';
 import Newsroom from '@/components/Newsroom';
 import Achievements from '@/components/Achievements';
 import { useAppSelector } from '@/store/hooks';
+import { useTranslations } from 'next-intl';
 
 export default function Profile() {
+  const t = useTranslations('Account');
   const [activeMenu, setActiveMenu] = useState('account-settings');
 
   const user = useAppSelector((state) => state.auth.user);
@@ -40,13 +42,13 @@ export default function Profile() {
               active={activeMenu === 'account-settings'}
               onClick={() => setActiveMenu('account-settings')}
             >
-              Account Settings
+              {t('settings.title')}
             </S.MenuItem>
             <S.MenuItem
               active={activeMenu === 'order-history'}
               onClick={() => setActiveMenu('order-history')}
             >
-              Order History
+              {t('orders.title')}
             </S.MenuItem>
           </S.Sidebar>
           {activeMenu === 'account-settings' ? (

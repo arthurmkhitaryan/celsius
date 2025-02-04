@@ -47,11 +47,6 @@ export const Label = styled.label`
   line-height: 30px;
   color: #0d2427;
   font-weight: 400;
-  &::after {
-    content: '*';
-    color: #0044cc;
-    margin-left: 5px;
-  }
 
   @media (max-width: 768px) {
     font-size: 18px;

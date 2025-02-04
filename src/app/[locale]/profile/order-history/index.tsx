@@ -5,8 +5,10 @@ import Image from 'next/image';
 // @ts-ignore
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslations } from 'next-intl';
 
 const OrderHistory = () => {
+  const t = useTranslations('Account');
   const [fromDate, setFromDate] = useState<Date | null>(null);
   const [toDate, setToDate] = useState<Date | null>(null);
 
@@ -45,11 +47,11 @@ const OrderHistory = () => {
 
   return (
     <S.OrderHistory>
-      <S.OrderTitle>Order History</S.OrderTitle>
+      <S.OrderTitle>{t('orders.title')}</S.OrderTitle>
       <S.FilterWrapper>
         <div>
           <S.FilterGroup>
-            <S.FilterLabel>From Date</S.FilterLabel>
+            <S.FilterLabel>{t('orders.from')}</S.FilterLabel>
             <S.DateSelectWrapper>
               <DatePicker
                 selected={fromDate}
@@ -62,7 +64,7 @@ const OrderHistory = () => {
           </S.FilterGroup>
 
           <S.FilterGroup>
-            <S.FilterLabel>To Date</S.FilterLabel>
+            <S.FilterLabel>{t('orders.to')}</S.FilterLabel>
             <S.DateSelectWrapper>
               <DatePicker
                 selected={toDate}
@@ -75,17 +77,21 @@ const OrderHistory = () => {
           </S.FilterGroup>
         </div>
         <div>
-          <S.ClearButton onClick={handleClear}>CLEAR</S.ClearButton>
-          <S.SearchButton onClick={handleSearch}>SEARCH</S.SearchButton>
+          <S.ClearButton onClick={handleClear}>
+            {t('orders.clear')}
+          </S.ClearButton>
+          <S.SearchButton onClick={handleSearch}>
+            {t('orders.search')}
+          </S.SearchButton>
         </div>
       </S.FilterWrapper>
       <S.OrderTable>
         <thead>
           <tr>
-            <S.TableHeader>PIC</S.TableHeader>
-            <S.TableHeader>DATE</S.TableHeader>
-            <S.TableHeader>QUANTITY</S.TableHeader>
-            <S.TableHeader>TOTAL</S.TableHeader>
+            <S.TableHeader>{t('orders.table.pic')}</S.TableHeader>
+            <S.TableHeader>{t('orders.table.date')}</S.TableHeader>
+            <S.TableHeader>{t('orders.table.qty')}</S.TableHeader>
+            <S.TableHeader>{t('orders.table.total')}</S.TableHeader>
           </tr>
         </thead>
         <tbody>

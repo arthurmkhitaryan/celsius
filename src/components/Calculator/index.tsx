@@ -17,7 +17,6 @@ function Calculator() {
   const [toggleCalculator, setToggleCalculator] = useState<boolean>(false);
 
   const handleToggleCalculator = () => {
-    console.log({ mtav: true });
     setToggleCalculator((prev) => !prev);
   };
 

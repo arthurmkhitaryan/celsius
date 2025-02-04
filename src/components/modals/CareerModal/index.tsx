@@ -59,10 +59,13 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
       formDataToSend.append('cv', formData.cv);
 
       // Send to backend
-      const response = await fetch('http://localhost:4000/careers', {
-        method: 'POST',
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/careers`,
+        {
+          method: 'POST',
+          body: formDataToSend,
+        },
+      );
 
       if (!response.ok) {
         throw new Error('Failed to submit application');

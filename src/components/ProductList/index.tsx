@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ImageHeating from '@/public/images/product/product_img.png';
-import ImageHvac from '@/public/images/product/product_img_2.png';
-import ImageVentilation from '@/public/images/product/product_img_3.png';
+import ImageHvac from '@/public/images/home/services/icons/01.png';
+import ImageHvac2 from '@/public/images/home/services/icons/02.png';
+import ImageVentilation from '@/public/images/home/services/icons/03.png';
 import CoolingIcon from '@/public/images/home/services/icons/cooling.svg';
 import HvacIcon from '@/public/images/home/services/icons/hvac.svg';
 import VentilationIcon from '@/public/images/home/services/icons/ventilation.svg';
@@ -10,8 +10,6 @@ import React from 'react';
 import './styles.scss';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import { useRouter } from 'next/navigation';
-import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.png';
-import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.png';
 import { useTranslations } from 'next-intl';
 
 const products = [
@@ -27,7 +25,7 @@ const products = [
     id: 2,
     imgAlt: 'hvac',
     iconAlt: 'hvac',
-    mainImage: ImageHvac,
+    mainImage: ImageHvac2,
     img: HvacIcon,
     link: '/category/2',
   },
@@ -42,7 +40,7 @@ const products = [
 ];
 
 const ProductList = () => {
-  const t = useTranslations('Newsroom')
+  const t = useTranslations('Newsroom');
   const router = useRouter();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
 
@@ -91,6 +89,7 @@ const ProductList = () => {
             )}
             <button
               className="view_more_btn"
+              style={{ whiteSpace: 'nowrap' }}
               onClick={() => handleClickViewMore(product.link)}
             >
               View More
