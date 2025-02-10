@@ -8,7 +8,7 @@ import VrfSvg from '@/public/images/product/vrf.svg';
 import FrameSvg from '@/public/images/product/frame.svg';
 import { useState } from 'react';
 import { useGetAllCategoriesQuery } from '@/features/categories';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 // const PRODUCTS_LIST = [
 //   {
@@ -121,7 +121,7 @@ import { useParams } from 'next/navigation';
 //   },
 // ];
 
-const ProductsNavbar = () => {
+const ProductsNavbar = ({ changeToggleMenu }: {changeToggleMenu: () => void}) => {
   const [openProductId, setOpenProductId] = useState<number | null>(null);
   const { locale } = useParams();
   const { data } = useGetAllCategoriesQuery({ locale: locale.toString() });
@@ -145,7 +145,13 @@ const ProductsNavbar = () => {
                 height={18}
                 alt="Arrow wind"
               />
-              <Link href={`/category/${category.slug}`}>{category.name}</Link>
+              <Link
+                href={`/category/${category.slug}`}
+                onClick={changeToggleMenu}
+                passHref
+              >
+                {category.name}
+              </Link>
             </S.SubMenuFirstItem>
             <S.Chevron isOpen={openProductId === category.id}>
               <ChevronRight

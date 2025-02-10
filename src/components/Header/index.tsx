@@ -77,7 +77,6 @@ function Header() {
   };
 
   const handleBecomeAPartner = () => {
-    console.log({ mtav: true });
     router.push('/sign-up-partner');
   };
 

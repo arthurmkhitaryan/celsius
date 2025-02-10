@@ -47,7 +47,7 @@ function MobileNavbar({ changeToggleMenu }: IProps) {
             </S.Chevron>
           </S.NavListItem>
 
-          {isProductsOpen && <ProductsNavbar />}
+          {isProductsOpen && <ProductsNavbar changeToggleMenu={changeToggleMenu} />}
           <S.NavListItem>
             <Link
               onClick={changeToggleMenu}
