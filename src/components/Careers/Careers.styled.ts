@@ -48,6 +48,7 @@ export const CareersSectionContent = styled.div`
     flex-direction: column;
     align-self: self-end;
     margin-right: initial;
+    padding: 40px 0 20px;
   }
 `;
 
@@ -57,6 +58,7 @@ export const CareersSubTitle = styled.h3`
 
   @media (max-width: 768px) {
     font-size: 14px;
+    margin-bottom: 0;
   }
 `;
 
@@ -66,6 +68,7 @@ export const CareersTitle = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 24px;
+    margin-bottom: 12px;
   }
 `;
 
@@ -76,7 +79,8 @@ export const CareersDescription = styled.p`
 
   @media (max-width: 768px) {
     font-size: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    line-height: 15px;
   }
 `;
 
@@ -92,7 +96,6 @@ export const CareersButtonWrapper = styled.div`
     padding: 16px 32px;
     gap: 10px;
     border: none;
-    max-width: 60%;
   }
 
   @media (max-width: 768px) {

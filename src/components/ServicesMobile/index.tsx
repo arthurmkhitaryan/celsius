@@ -19,22 +19,22 @@ import {
 } from './ServicesMobile.styled';
 
 import IconWrapper from '@/public/images/home/services/icon-wrapper.svg';
-import CoolingMain from '@/public/images/home/services/1.jpg';
+import CoolingMain from '@/public/images/home/services/8.jpeg';
 import CoolingIcon from '@/public/images/home/services/icons-mobile/cooling.svg';
 import CoolingAnimateIconOne from '@/public/images/home/services/icons/cooling-1.png';
 import CoolingAnimateIconTwo from '@/public/images/home/services/icons/cooling-2.png';
 
-import HvacMain from '@/public/images/home/services/2.jpg';
+import HvacMain from '@/public/images/home/services/5.jpeg';
 import HvacIcon from '@/public/images/home/services/icons-mobile/hvac.svg';
 import HvacAnimateIconOne from '@/public/images/home/services/icons/hvac-1.png';
 import HvacAnimateIconTwo from '@/public/images/home/services/icons/hvac-2.png';
 
-import VentilationMain from '@/public/images/home/services/3.jpg';
+import VentilationMain from '@/public/images/home/services/6.jpeg';
 import VentilationIcon from '@/public/images/home/services/icons-mobile/ventilation.svg';
 import VentilationAnimateIconOne from '@/public/images/home/services/icons/heating-1.png';
 import VentilationAnimateIconTwo from '@/public/images/home/services/icons/heating-2.png';
 
-import ShopMain from '@/public/images/home/services/4.jpg';
+import ShopMain from '@/public/images/home/services/7.jpeg';
 import ShopAnimateIconOne from '@/public/images/home/services/icons/shop-1.svg';
 import ShopAnimateIconTwo from '@/public/images/home/services/icons/shop-2.png';
 import ShopIcon from '@/public/images/home/services/icons-mobile/shop-icon-blue.svg';
@@ -63,7 +63,7 @@ const services = [
   },
   {
     id: 2,
-    title: 'Vemtilation Systems',
+    title: 'Ventilation Systems',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
     image: HvacMain,
@@ -140,7 +140,7 @@ const ServicesMobile = () => {
             <ServiceItem key={service.id + index}>
               <ServiceHeader>
                 <ImageWrapper>
-                  <ServiceImage src={service.image.src} alt={service.title} />
+                  <ServiceImage $isReverse={index === 2} src={service.image.src} alt={service.title} />
                   <ImageContent>
                     <Image src={service.icon} alt={service.title} />
                     <ContentTitle>{service.title}</ContentTitle>

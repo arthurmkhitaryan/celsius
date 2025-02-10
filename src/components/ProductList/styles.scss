@@ -16,9 +16,12 @@
     background: linear-gradient(90deg, #1F94D2 0%, #0044CC 100%);
     padding: 20px 40px;
     border-radius: 15px;
+    justify-content: space-between;
+    align-items: center;
 
     @media (max-width: 768px) {
       flex-direction: column;
+      position: relative;
     }
 
     .product_info {
@@ -42,6 +45,8 @@
 
         @media (max-width: 768px) {
           font-size: 17px;
+          height: 40px;
+          margin-bottom: 15px;
         }
       }
       .view_more_btn{
@@ -71,6 +76,9 @@
     .product_img {
       flex: 0 0 50%;
       padding-right: 10px;
+      position: relative;
+      top: -10px;
+      bottom: 0;
       img{
         width: 140px;
         height: 150px;

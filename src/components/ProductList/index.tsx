@@ -92,7 +92,7 @@ const ProductList = () => {
               style={{ whiteSpace: 'nowrap' }}
               onClick={() => handleClickViewMore(product.link)}
             >
-              View More
+              {t('view_more')}
               <Image src={ImageArrow} alt="" title="" width={10} height={10} />
             </button>
           </div>

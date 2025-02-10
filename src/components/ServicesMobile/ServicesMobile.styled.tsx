@@ -35,9 +35,11 @@ export const ImageContent = styled.div`
   flex-direction: column;
   text-align: left;
   gap: 10px;
-  margin: 40px 10px 10px 20px;
+  padding: 40px 10px 10px 20px;
+  background: linear-gradient(261.74deg, rgba(255, 255, 255, 0) 34.69%, rgba(255, 255, 255, 0.8) 69.91%);
 
-  img {
+
+    img {
     width: 53px;
     height: 53px;
   }
@@ -61,21 +63,25 @@ export const ViewMoreButton = styled.button`
   background: #fff;
   color: #0044cc;
   display: flex;
-  max-width: 160px;
   border-radius: 4px;
   align-items: center;
+  white-space: nowrap;
+  max-width: 170px;
   gap: 10px;
   font-size: 12px;
 `;
 
-export const ServiceImage = styled.img`
+export const ServiceImage = styled.img<{ $isReverse: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   position: absolute;
   left: 0;
   top: 0;
-  object-position: 0 3%;
+  transform: rotateZ(${({ $isReverse }) => $isReverse ? '180deg' : 'none'});
+  transform: rotateY(${({ $isReverse }) => $isReverse ? '180deg' : 'none'});
+
 `;
 
 export const ServiceFooter = styled.div`
@@ -103,7 +109,6 @@ export const FooterMenuWrapper = styled.div`
 `;
 
 export const FooterMenuItem = styled.div<{ isActive: boolean }>`
-  padding: 10px;
   cursor: pointer;
   color: #fff;
   background-color: ${(props) => (props.isActive ? '#1F94D2' : '#0044CC')};
@@ -114,7 +119,9 @@ export const FooterMenuItem = styled.div<{ isActive: boolean }>`
 
 export const ServiceIconWrapper = styled.div`
   position: relative;
-
+  bottom: 15%;
+  right: -6%;
+    
   & > .icon-wrapper {
     position: absolute;
     bottom: 26%;
