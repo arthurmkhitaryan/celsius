@@ -145,7 +145,7 @@ const ProductsNavbar = () => {
                 height={18}
                 alt="Arrow wind"
               />
-              <Link href="">{category.name}</Link>
+              <Link href={`/category/${category.slug}`}>{category.name}</Link>
             </S.SubMenuFirstItem>
             <S.Chevron isOpen={openProductId === category.id}>
               <ChevronRight
