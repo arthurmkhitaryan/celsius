@@ -11,6 +11,8 @@ import { useParams, usePathname, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { setCookie } from 'cookies-next';
 import { useTranslations } from 'next-intl';
+import Modal from '@/components/shared/Modal';
+import { FormState } from '@/components/FormState';
 
 interface LoginFormProps {
   visible: boolean;
@@ -33,6 +35,7 @@ export default function LoginForm({
   const router = useRouter();
   const pathname = usePathname();
   const { locale } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSubmit: SubmitHandler<Login> = async (data) => {
     try {
@@ -51,6 +54,7 @@ export default function LoginForm({
       router.push('/profile');
     } catch (error) {
       console.error(error);
+      setIsModalOpen(true);
     }
   };
 
@@ -63,6 +67,10 @@ export default function LoginForm({
 
   const handleClose = () => {
     onChangeVisibility(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -108,6 +116,13 @@ export default function LoginForm({
           {t('become_customer')}
         </S.GoToRegister>
       </S.Form>
+      <Modal isOpen={isModalOpen}>
+        <FormState
+          isError={true}
+          withSuccessText={false}
+          closeModal={closeModal}
+        />
+      </Modal>
     </S.LoginFormWrapper>
   );
 }

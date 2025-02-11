@@ -72,6 +72,7 @@ export default function ContactUs() {
       } as ContactUs).unwrap();
 
       setIsSended(true);
+      setIsModalOpen(true)
       setMainError(false);
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -141,7 +142,7 @@ export default function ContactUs() {
           <Modal isOpen={isModalOpen}>
             <FormState
               isError={mainError}
-              withSuccessText={true}
+              withSuccessText={!mainError}
               closeModal={closeModal}
             />
           </Modal>
