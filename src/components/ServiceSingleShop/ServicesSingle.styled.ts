@@ -33,6 +33,7 @@ export const TextContainer = styled.div`
 export const ServiceAdditionalContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+    margin-top: 20px;
 `;
 
 export const ServiceAdditionalContent = styled.span`
@@ -45,7 +46,7 @@ export const ServiceAdditionalContent = styled.span`
 export const ServiceAdditionalButton = styled.button`
   background: white;
   color: #0044cc;
-  padding: 16px 32px 16px 32px;
+    padding: 16px 32px 16px 20px;
   border-radius: 4px;
   font-weight: 600;
   gap: 10px;
@@ -59,24 +60,24 @@ export const ServiceAdditionalButton = styled.button`
 export const ServiceIconWrapper = styled.div`
   position: relative;
   height: 40%;
-  margin: 0 46px;
+    margin: 0 22px;
 
   & > .icon-wrapper {
     position: relative;
     bottom: 60%;
-    min-width: 180px;
+    min-width: 150px;
     min-height: 180px;
   }
 
   & > .animate-hvac-icon-first {
-    bottom: -40%;
-    left: -12%;
+      bottom: -11%;
+      left: -12%;
     position: absolute;
   }
 
   & > .animate-hvac-icon-two {
-    bottom: -100%;
-    left: 55%;
+      bottom: -72%;
+      left: 52%;
     position: absolute;
   }
 `;

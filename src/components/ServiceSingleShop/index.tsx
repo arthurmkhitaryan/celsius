@@ -59,16 +59,16 @@ const ServiceSingleShop = () => {
           <Image
             className="animate-hvac-icon-first"
             src={ShopAnimateIconOne}
-            width={240}
-            height={130}
+            width={180}
+            height={100}
             style={{ transform: 'rotate(-14deg)' }}
             alt="icon"
           />
           <Image
             className="animate-hvac-icon-two"
             src={ShopAnimateIconTwo}
-            width={90}
-            height={250}
+            width={65}
+            height={200}
             style={{ transform: 'rotate(8deg)' }}
             alt="icon"
           />
