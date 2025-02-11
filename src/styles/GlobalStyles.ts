@@ -31,6 +31,13 @@ const styles = css`
   .custom {
     margin: 0 !important;
   }
+    
+  .wrapper {
+      padding-top: 150px;
+      @media (max-width: 768px) {
+          padding-top: 100px;
+      }
+  }  
 `;
 
 const GlobalStyles = createGlobalStyle`

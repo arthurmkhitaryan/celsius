@@ -37,8 +37,6 @@ const AccountSettings = () => {
     }
 
     await UserService.updateUser(user.id, formData, token);
-
-    window.location.reload();
   };
 
   return (

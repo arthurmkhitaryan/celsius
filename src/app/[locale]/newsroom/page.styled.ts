@@ -35,6 +35,7 @@ export const BannerImage = styled.img`
   height: 420px;
   width: 100%;
   border-radius: 15px;
+  object-fit: cover;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -71,7 +72,8 @@ export const BannerDescription = styled.p`
   font-weight: 400;
   line-height: 30px;
   color: #666666;
-  max-width: 100%;
+  max-width: 10%;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -117,6 +119,8 @@ export const ReadFullButton = styled.button`
 
   @media (max-width: 768px) {
     align-self: start;
+    text-align: left;
+    justify-content: flex-start;  
   }
 `;
 

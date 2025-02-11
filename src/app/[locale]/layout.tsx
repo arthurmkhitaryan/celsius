@@ -45,7 +45,7 @@ export default async function RootLayout({
               <Header />
               <Navbar />
             </div>
-            <div style={{ paddingTop: '150px' }} />
+            <div className={'wrapper'} />
             <ClientWrapper user={user}>
               {children}
             </ClientWrapper>

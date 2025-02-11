@@ -74,6 +74,7 @@ export const Content = styled.div`
       font-weight: 400;
       line-height: 30px;
       color: #666666;
+      overflow: hidden;
     }
   }
 `;

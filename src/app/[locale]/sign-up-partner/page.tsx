@@ -89,7 +89,6 @@ export default function BecomeAPartner() {
     }
 
     setIsModalOpen(true); // Show modal after submission
-    window.location.reload();
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.header`
   @media (max-width: 768px) {
     justify-content: space-between;
     flex-direction: column;
-    padding: 20px;
+    padding: 8px 12px;
     width: 100%;
   }
 
@@ -145,6 +145,13 @@ export const TabletButtonWrapper = styled.div`
   align-items: center;
   gap: 16px;
   margin-top: 30px;
+    
+    @media (max-width: 768px) {
+        margin-top: 20px;  
+        width: 100%;
+        justify-content: space-around;
+        padding: 0 10px;
+    }
 `;
 
 export const FullWidthButton = styled.div`

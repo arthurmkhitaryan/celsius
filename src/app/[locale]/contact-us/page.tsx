@@ -13,6 +13,8 @@ import InstagramLogo from '@/public/images/instagram-filled.svg';
 import LinkedinLogo from '@/public/images/linkedin-filled.svg';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import Modal from '@/components/shared/Modal';
+import { FormState } from '@/components/FormState';
 
 export default function ContactUs() {
   const t = useTranslations('Contact');
@@ -25,6 +27,7 @@ export default function ContactUs() {
   const [isSended, setIsSended] = useState(false);
   const [mainError, setMainError] = useState(false);
   const isTablet = useClientMediaQuery('(max-width: 768px)');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -33,6 +36,10 @@ export default function ContactUs() {
     if (!formData.message.trim()) newErrors.message = 'Message is required.';
 
     return newErrors;
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const [createContactUs] = useCreateContactUsMutation();
@@ -130,6 +137,14 @@ export default function ContactUs() {
               <S.Button type="submit">{t('inputs.send')}</S.Button>
             </S.ButtonContainer>
           </S.Form>
+          {/* Modal with FormState */}
+          <Modal isOpen={isModalOpen}>
+            <FormState
+              isError={mainError}
+              withSuccessText={true}
+              closeModal={closeModal}
+            />
+          </Modal>
           <S.FooterSectionContent>
             <S.TitleContact>{t('info.name')}</S.TitleContact>
             <S.FooterSectionTitle isTablet={isTablet}>

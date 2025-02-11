@@ -64,6 +64,7 @@ export const BannerDescription = styled.p`
   line-height: 30px;
   color: #666666;
   max-width: 100%;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -112,6 +113,7 @@ export const ReadFullButton = styled.button`
 
   @media (max-width: 768px) {
     align-self: flex-start;
+    text-align: left;
     margin-top: 10px;
   }
 `;
