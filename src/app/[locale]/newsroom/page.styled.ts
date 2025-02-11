@@ -72,7 +72,6 @@ export const BannerDescription = styled.p`
   font-weight: 400;
   line-height: 30px;
   color: #666666;
-  max-width: 10%;
   overflow: hidden;
 
   @media (max-width: 768px) {
