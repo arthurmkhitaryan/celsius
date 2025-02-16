@@ -16,6 +16,8 @@ import { getImageUrl } from '@/utils/getImageFullUrl';
 import { useParams } from 'next/navigation';
 import { Volume2, VolumeX } from 'lucide-react';
 
+
+
 export default function About() {
   const { locale } = useParams();
   const t = useTranslations('About');

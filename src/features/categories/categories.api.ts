@@ -52,7 +52,7 @@ export const categoriesApi = createApi({
       { categoryId: string | number; locale: string }
     >({
       query: ({ categoryId, locale }) => ({
-        url: `categories?populate[image]=*&populate[icon]=*&populate[sub_categories][populate][products][populate][images]=*&filters[slug][$eq]=${categoryId}&locale=${strapiLanguageAdapter(locale)}`,
+        url: `categories?populate[image]=*&populate[mobileImage]=*&populate[icon]=*&populate[sub_categories][populate][products][populate][images]=*&filters[slug][$eq]=${categoryId}&locale=${strapiLanguageAdapter(locale)}`,
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
@@ -81,9 +81,10 @@ export const categoriesApi = createApi({
           title: data.attributes.title || null,
           description: data.attributes.description || null,
           image: getImageUrl(data.attributes.image),
+          mobileImage: getImageUrl(data.attributes.mobileImage),
           slug: data.attributes.slug,
           icon: getImageUrl(data.attributes.icon),
-          products: allProducts, // Все продукты в одном массиве
+          products: allProducts,
           subCategories:
             data.attributes.sub_categories?.data.map((subCategory: any) => ({
               id: subCategory.id,

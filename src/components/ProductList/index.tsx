@@ -9,7 +9,7 @@ import ImageArrow from '@/public/images/product/arrow.png';
 import React from 'react';
 import './styles.scss';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 const products = [
@@ -40,6 +40,7 @@ const products = [
 ];
 
 const ProductList = () => {
+  const { locale } = useParams();
   const t = useTranslations('Newsroom');
   const router = useRouter();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
@@ -73,7 +74,7 @@ const ProductList = () => {
               height={100}
             />
           </div>
-          <div className="product_info">
+          <div className="product_info" style={locale === 'ru' ? {  marginLeft: "-35px" } : {}}>
             {!isTablet && (
               <>
                 <div className="product_icon">

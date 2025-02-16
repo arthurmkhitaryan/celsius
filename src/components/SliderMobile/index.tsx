@@ -51,7 +51,6 @@ function SliderMobile() {
   };
 
   const handleNavigateProduct = (link: string) => {
-    console.log({ link });
     router.push(link);
   };
 

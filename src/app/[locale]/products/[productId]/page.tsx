@@ -42,11 +42,6 @@ export default function Product({ params }: { params: ProductParamProps }) {
     role: user?.role,
     locale: locale as string,
   });
-  const { data: products } = useGetProductsQuery({
-    limit: 3,
-    excludeId: params.productId,
-    locale: locale as string,
-  });
 
   useEffect(() => {
     if (data) {
@@ -95,7 +90,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
   };
 
   const renderThumbnails = () => {
-    return data.images.map((item, index) => (
+    return data.images && data.images.map((item, index) => (
       <div
         key={index}
         className={`thumbnail_image ${index === activeThumbnail ? 'active_thumbnail' : ''}`}
@@ -146,13 +141,13 @@ export default function Product({ params }: { params: ProductParamProps }) {
           <div className="tab-content">
             <h3>General Features</h3>
             <div className="general-features">
-              {data.fullSpecification.general.map((generalFeature) => {
+              {data.fullSpecification.general && data.fullSpecification.general.map((generalFeature) => {
                 return <p>{generalFeature.title}</p>;
               })}
             </div>
             <h3>General Details</h3>
             <div className="general-details">
-              {data.fullSpecification.details.map((generalFeature, index) => {
+              {data.fullSpecification.details && data.fullSpecification.details.map((generalFeature, index) => {
                 return (
                   <div className="general-detail" key={index}>
                     <p className="general-detail-key">{generalFeature.key}</p>
@@ -168,7 +163,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
       case tabs[1].id:
         return (
           <div className="portfolio">
-            {data.portfolio.map((img) => (
+            {data.portfolio && data.portfolio.map((img) => (
               <img src={img} alt="Banner" />
             ))}
           </div>
@@ -190,8 +185,8 @@ export default function Product({ params }: { params: ProductParamProps }) {
     }
   };
   const renderProducts = () => {
-    if (!products?.length) return;
-    return products.map((product) => {
+    if (!data.suggestedProducts?.length) return;
+    return data.suggestedProducts.map((product) => {
       return <ProductItem product={product} />;
     });
   };
@@ -245,17 +240,17 @@ export default function Product({ params }: { params: ProductParamProps }) {
                 {renderMainBlockImages()}
               </div>
               <div className="add_to_cart_block">
-                <div className="product_title">{data.name}</div>
-                <div className="product_price">
+                {data.name && <div className="product_title">{data.name}</div>}
+                {data.price && <div className="product_price">
                   {dotingPrice(data.price)}
                   <span>֏</span>
-                </div>
+                </div>}
                 <span className="devider"></span>
                 <div className="product_info">
-                  <div className="product_code">{data.code}</div>
-                  <div className="product_fullName">{data.mainProductName}</div>
-                  <div className="product_desc">{data.description}</div>
-                  <div className="product_power">{data.params}</div>
+                  {data.code && <div className="product_code">{data.code}</div>}
+                  {data.mainProductName && <div className="product_fullName">{data.mainProductName}</div>}
+                  {data.description && <div className="product_desc">{data.description}</div>}
+                  {data.params && <div className="product_power">{data.params}</div>}
                 </div>
                 <div className="product_activity">
                   {(data.generalParams || []).map((param) => {
@@ -307,7 +302,7 @@ export default function Product({ params }: { params: ProductParamProps }) {
           </div>
         </div>
       </MainLayout>
-      <img className="banner-image" src={data.banner} alt="Banner" />
+      {data.banner && <img className="banner-image" src={data.banner} alt="Banner" />}
       <div className="productssss_block">
         <h3>You May Also Like</h3>
         <div className="product_block">{renderProducts()}</div>

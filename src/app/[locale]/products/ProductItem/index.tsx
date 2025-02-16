@@ -8,7 +8,7 @@ interface IProductItemProps {
 }
 
 const renderProductDesc = (desc: any[]) => {
-  return desc.map((item, index) => {
+  return desc?.map((item, index) => {
     return (
       <div key={index} className="card_desc_item">
         <ChevronRight size={12} color="#1F94D2" />
@@ -25,11 +25,9 @@ const ProductItem = ({ product }: IProductItemProps) => {
   const handleRedirect = (id: number): void => {
     router.push(`/${locale}/products/${id}`);
   };
-
   return (
     <div key={product.id} className="product_card">
       <div className="card_image">
-        {' '}
         <img
           src={product.images[0]}
           alt={product.name}

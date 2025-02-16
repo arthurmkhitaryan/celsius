@@ -23,6 +23,10 @@ const slides = [
     backgroundImage: slider1.src,
     title: 'V8',
     content: 1,
+    styles: {
+      top: '72%',
+      left: '72%'
+    },
     translateX: 10,
   },
   {
@@ -31,6 +35,10 @@ const slides = [
     backgroundPosition: '30% 0%',
     backgroundImage: slider2.src,
     title: 'R290 M thermal',
+    styles: {
+      top: '72%',
+      left: '60%'
+    },
     content: 2,
     translateX: 40,
   },
@@ -40,6 +48,10 @@ const slides = [
     backgroundPosition: '63% 0%',
     backgroundImage: slider3.src,
     title: 'Chiller',
+    styles: {
+      top: '72%',
+      left: '50%'
+    },
     content: 3,
     translateX: 40,
   },
@@ -48,6 +60,10 @@ const slides = [
     link: '/products/4',
     backgroundPosition: '100% 0%',
     backgroundImage: slider4.src,
+    styles: {
+      top: '72%',
+      left: '50%'
+    },
     title: 'BreezeleSS+',
     content: 4,
     translateX: 75,
@@ -101,6 +117,7 @@ function Slider() {
           first={slide.id === 1}
           translateX={translateX}
           isActive={activeIndex === index}
+          style={activeIndex !== index ? { display: 'none' } :{ ...slide.styles }}
         >
           <S.SlideTitle>{slide.title}</S.SlideTitle>
           <S.SlideContent>{t(`slider.${slide.content}`)}</S.SlideContent>

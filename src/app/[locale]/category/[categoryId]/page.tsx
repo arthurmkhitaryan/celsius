@@ -7,9 +7,12 @@ import Newsroom from '@/components/Newsroom';
 import Achievements from '@/components/Achievements';
 import { useGetCategoryByIdQuery } from '@/features/categories';
 import { useParams, useRouter } from 'next/navigation';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 
 const Category = ({ params }: { params: { categoryId: number } }) => {
   const { locale } = useParams();
+  const isMobile = useClientMediaQuery('(max-width: 768px)');
+
   const { data } = useGetCategoryByIdQuery({
     categoryId: params.categoryId,
     locale: locale as string,
@@ -27,7 +30,7 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
     <>
       <S.HeaderSection>
         <S.HeaderImage>
-          <img src={data.image} alt="Header Image" />
+          {isMobile ? <img src={data.mobileImage} alt="Header Image" /> : <img src={data.image} alt="Header Image" />}
         </S.HeaderImage>
         {/* <S.SubImage>
           <img src={data.icon} alt="Layer Image" />

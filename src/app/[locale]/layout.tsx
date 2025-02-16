@@ -9,7 +9,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
 import { getUserFromToken } from '@/services/authService';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import ClientWrapper from '@/store/client-wrapper';
 
 const poppins = Inter({
@@ -17,42 +17,66 @@ const poppins = Inter({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'Celsius',
-  description: 'Celsius',
-};
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+export async function generateMetadata({ params }: { params: { locale: string; slug?: string[] } }): Promise<Metadata> {
+  const headersList = headers();
+  const pathname = headersList.get("x-pathname") || "/";
+
+  try {
+    const host = headersList.get('host');
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+
+    const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
+      cache: 'no-store',
+      next: { revalidate: 0 },
+    });
+
+    const { seoData } = await res.json();
+
+    return {
+      title: seoData?.metaTitle || 'Celsius',
+      description: seoData?.metaDescription || 'Celsius',
+      keywords: seoData?.metaKeywords || 'default, keywords',
+      openGraph: {
+        title: seoData?.metaTitle || 'Celsius',
+        description: seoData?.metaDescription || 'Celsius',
+      },
+    };
+  } catch (error) {
+    console.error('❌ Ошибка получения SEO:', error);
+    return {
+      title: 'Celsius',
+      description: 'Celsius',
+    };
+  }
+}
+
+
+// @ts-ignore
+export default async function RootLayout({ children, params: { locale } }) {
   const messages = await getMessages();
-  const cookieStore = cookies()
-  ;
+  const cookieStore = cookies();
   const token = cookieStore.get('access_token')?.value;
   const user = await getUserFromToken(token || '');
 
   return (
     <html lang={locale}>
-      <body className={poppins.className}>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            <GlobalStyles />
-            <div style={{ position: 'fixed', width: '100%', zIndex: 999, background: '#fff', top: 0 }}>
-              <Header />
-              <Navbar />
-            </div>
-            <div className={'wrapper'} />
-            <ClientWrapper user={user}>
-              {children}
-            </ClientWrapper>
-            <Footer />
-          </Providers>
-        </NextIntlClientProvider>
-      </body>
+    <body className={poppins.className}>
+    <NextIntlClientProvider messages={messages}>
+      <Providers>
+        <GlobalStyles />
+        <div style={{ position: 'fixed', width: '100%', zIndex: 999, background: '#fff', top: 0 }}>
+          <Header />
+          <Navbar />
+        </div>
+        <div className={'wrapper'} />
+        <ClientWrapper user={user}>{children}</ClientWrapper>
+        <Footer />
+      </Providers>
+    </NextIntlClientProvider>
+    </body>
     </html>
   );
 }

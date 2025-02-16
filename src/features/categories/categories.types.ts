@@ -18,6 +18,7 @@ interface Categories {
   name: string;
   title: string;
   image: any;
+  mobileImage: any;
   icon: any;
   slug: number;
   description: string;

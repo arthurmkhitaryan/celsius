@@ -1,7 +1,6 @@
 interface About {
   id: number;
   title: string;
-  banner: any;
   ourStores: OurStores;
   ourTeam: OurTeam;
   whoWeAre: WhoWeAre;

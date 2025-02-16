@@ -32,6 +32,11 @@ export const OurStoresTitle = styled.h2`
   font-weight: 600;
   line-height: 38.4px;
   color: #1c1c1c;
+    
+  @media (max-width: 768px) {
+      font-size: 32px;
+      line-height: 48px;
+  }
 `;
 
 export const OurStoresDescription = styled.p`

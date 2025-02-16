@@ -33,6 +33,7 @@ export interface Product {
   banner: string;
   fullSpecification: FullSpecification;
   portfolio: string[];
+  suggestedProducts: Product[];
   faqs: Faqs[];
   code: string;
   mainProductName: string;

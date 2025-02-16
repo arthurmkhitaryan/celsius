@@ -17,7 +17,6 @@ export const partnersApi = createApi({
       transformResponse: (response: {
         data: { id: number; logo: string }[];
       }) => {
-        console.log('API Response:', response);
         return {
           data: response.data.map((item: any) => ({
             id: item.id,

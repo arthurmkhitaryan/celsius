@@ -28,7 +28,7 @@ export const ReviewsWrapper = styled.div`
   }
 
   .swiper-button-prev {
-    left: -2px;
+    left: 5px;
   }
 
   .swiper-button-next {
@@ -42,6 +42,14 @@ export const ReviewsWrapper = styled.div`
     }
   }
 
+  .swiper-button-prev {
+      display: block;
+  }
+
+  .swiper-button-next {
+      display: block;
+  }  
+    
   @media (max-width: 768px) {
     .swiper-button-prev {
       display: none;

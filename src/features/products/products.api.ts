@@ -97,15 +97,15 @@ export const productsApi = createApi({
             role === 'Partner' && item.attributes.partnerPrice
               ? item.attributes.partnerPrice
               : item.attributes.price,
-          images: item.attributes.images.data.map((img: any) =>
+          images: item.attributes?.images?.data.map((img: any) =>
             getImageUrl(img),
           ),
           banner: getImageUrl(item.attributes.banner),
           fullSpecification: {
-            general: item.attributes.fullSpecification.general,
-            details: item.attributes.fullSpecification.details,
+            general: item.attributes?.fullSpecification?.general,
+            details: item.attributes?.fullSpecification?.details,
           },
-          portfolio: item.attributes.portfolio.images.data.map((img: any) =>
+          portfolio: item.attributes?.portfolio?.images.data.map((img: any) =>
             getImageUrl(img),
           ),
           faqs: item.attributes.faqs,

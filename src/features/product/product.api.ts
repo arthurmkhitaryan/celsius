@@ -20,6 +20,7 @@ export const productApi = createApi({
           'populate[fullSpecification][populate][details]': 'true',
           'populate[portfolio][populate][images]': 'true',
           'populate[faqs]': 'true',
+          'populate[suggestedProducts][populate][images]': 'true',
           'populate[generalParams][populate][image]': 'true',
           'filters[slug][$eq]': id,
           'locale': strapiLanguageAdapter(locale)
@@ -28,23 +29,33 @@ export const productApi = createApi({
       transformResponse: (response: { data: any[] },  meta, arg) => {
         const { role } = arg;
 
-        console.log(1223, response.data[0]);
         return response.data.map((item) => ({
-          id: item.id,
-          name: item.attributes.name,
-          description: item.attributes.description,
-          price: role === 'Partner' && item.attributes.partnerPrice ? item.attributes.partnerPrice : item.attributes.price,
-          images: item.attributes.images.data.map((img: any) => getImageUrl(img)),
-          banner: getImageUrl(item.attributes.banner),
+          id: item.id || 0,
+          name: item.attributes.name || '',
+          description: item.attributes.description || '',
+          price: role === 'Partner' && item.attributes.partnerPrice ? item.attributes.partnerPrice : item.attributes.price || 0,
+          images: item.attributes?.images?.data && item.attributes?.images?.data.map((img: any) => getImageUrl(img)) || [],
+          banner: getImageUrl(item.attributes.banner) || '',
+          suggestedProducts: item.attributes?.suggestedProducts?.data.map((product: any) => {
+            return {
+              id: product.id,
+              ...product.attributes,
+              images: product.attributes?.images?.data.map((img: any) => getImageUrl(img)) || [],
+              fullSpecification: {
+                general: product.attributes?.fullSpecification?.general ?? [],
+                details: product.attributes?.fullSpecification?.details ?? [],
+              },
+            }
+          }),
           fullSpecification: {
-            general: item.attributes.fullSpecification.general,
-            details: item.attributes.fullSpecification.details,
+            general: item.attributes?.fullSpecification?.general ?? [],
+            details: item.attributes?.fullSpecification?.details ?? [],
           },
-          portfolio: item.attributes.portfolio.images.data.map((img: any) => getImageUrl(img)),
-          faqs: item.attributes.faqs,
-          code: item.attributes.code,
-          mainProductName: item.attributes.mainProductName,
-          params: item.attributes.params,
+          portfolio: item.attributes?.portfolio?.images?.data.map((img: any) => getImageUrl(img)) || [],
+          faqs: item.attributes?.faqs || null,
+          code: item.attributes?.code || null,
+          mainProductName: item.attributes.mainProductName || '',
+          params: item.attributes.params || null,
           ...(item.attributes.generalParams && {
             generalParams: item.attributes.generalParams.map((generalParam: any) => ({
               title: generalParam.title,

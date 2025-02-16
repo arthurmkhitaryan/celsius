@@ -16,21 +16,22 @@ function Reviews({ classNameTitle }: { classNameTitle?: string }) {
   const reviews = [
     {
       id: 1,
-      logo: review1.src,
-      text: t('reviews.vivaro.description'),
-      company: t('reviews.vivaro.name'),
+      logo: review2.src,
+      text: t('reviews.acba.description'),
+      company: t('reviews.acba.name'),
+
     },
     {
       id: 2,
       logo: review2.src,
-      text: t('reviews.acba.description'),
-      company: t('reviews.acba.name'),
+      text: t('reviews.lion.description'),
+      company: t('reviews.lion.name'),
     },
     {
       id: 3,
-      logo: review2.src,
-      text: t('reviews.acba.description'),
-      company: t('reviews.acba.name'),
+      logo: review1.src,
+      text: t('reviews.vivaro.description'),
+      company: t('reviews.vivaro.name'),
     },
   ];
   return (

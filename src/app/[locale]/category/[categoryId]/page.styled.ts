@@ -17,6 +17,7 @@ export const HeaderImage = styled.div`
 
   img {
     width: 100%;
+    object-fit: cover;
     height: auto;
   }
 

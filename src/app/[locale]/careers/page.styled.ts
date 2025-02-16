@@ -28,6 +28,7 @@ export const CareerBanner = styled.div<{ $backgroundImage: string }>`
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply;
+    object-fit: cover;
   display: flex;
   justify-content: center;
   align-items: center;
