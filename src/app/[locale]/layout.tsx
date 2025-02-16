@@ -18,7 +18,6 @@ const poppins = Inter({
 });
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { locale: string; slug?: string[] } }): Promise<Metadata> {
   const headersList = headers();
@@ -30,7 +29,6 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 
     const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
       cache: 'no-store',
-      next: { revalidate: 0 },
     });
 
     const { seoData } = await res.json();
