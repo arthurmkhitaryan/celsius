@@ -6,8 +6,9 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 // styles & images
 import * as S from './Reviews.styled';
-import review1 from '@/public/images/home/reviews/review1.jpg';
+import review1 from '@/public/images/home/reviews/review1.png';
 import review2 from '@/public/images/home/reviews/review2.png';
+import review3 from '@/public/images/home/reviews/review3.png';
 import { useTranslations } from 'next-intl';
 
 function Reviews({ classNameTitle }: { classNameTitle?: string }) {
@@ -23,7 +24,7 @@ function Reviews({ classNameTitle }: { classNameTitle?: string }) {
     },
     {
       id: 2,
-      logo: review2.src,
+      logo: review3.src,
       text: t('reviews.lion.description'),
       company: t('reviews.lion.name'),
     },

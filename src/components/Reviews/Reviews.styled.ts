@@ -15,8 +15,13 @@ export const ReviewsWrapper = styled.div`
   .top {
     margin-top: 120px !important;
   }
+    
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+    }
 
-  .swiper-pagination-bullet {
+    .swiper-pagination-bullet {
     width: 60px;
     height: 4px;
     background: ${({ theme }) => theme.palette.common.textDefault};
@@ -71,7 +76,6 @@ export const ReviewsTitle = styled.h2`
 export const ReviewCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
-  column-gap: 108px;
 
   justify-items: center;
   padding: 20px 29px;

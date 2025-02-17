@@ -18,7 +18,7 @@ export const Error = styled.p`
   margin-left: 25px;
 `;
 
-export const CareerBanner = styled.div<{ $backgroundImage: string }>`
+export const CareerBanner = styled.div<{ $backgroundImage: string, $isMobile: boolean }>`
   width: 100%;
   background-image: linear-gradient(
       rgba(0, 68, 204, 0.6),
@@ -34,6 +34,18 @@ export const CareerBanner = styled.div<{ $backgroundImage: string }>`
   align-items: center;
   background-repeat: no-repeat;
   max-height: 828px;
+    
+  @media (max-width: 768px) {
+      background-image: linear-gradient(
+              rgba(0, 68, 204, 0.2),
+              rgba(0, 68, 204, 0.2)
+      ),
+      url(${(props) => props.$backgroundImage});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+  }  
 `;
 
 export const CareerBannerContent = styled.div`
@@ -46,6 +58,10 @@ export const CareerBannerContent = styled.div`
   gap: 24px;
   margin-top: 418px;
   margin-bottom: 196px;
+    
+    @media (max-width: 768px) {
+        margin-top: 162px;
+    }
 `;
 
 export const CareerBannerSubTitle = styled.h3`

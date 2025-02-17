@@ -5,6 +5,7 @@ import React from 'react';
 // styles & images
 import * as S from './page.styled';
 import BannerImage from '@/public/images/career/banner.png';
+import BannerMobileImage from '@/public/images/career/banner-mobile.png';
 
 // components
 import MainLayout from '@/components/Layout';
@@ -15,14 +16,17 @@ import CareersCV from '@/components/CareersCV';
 import { useTranslations } from 'next-intl';
 import { useGetCareersQuery } from '@/features/careers';
 import CareerListItem from '@/components/CareerItem';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
+import { useMediaQuery } from '@mui/system';
 
 export default function Career() {
+  const isMobile = useClientMediaQuery('(max-width: 768px)');
   const t = useTranslations('Careers');
   const { data } = useGetCareersQuery();
 
   return (
     <S.CareerWrapper>
-      <S.CareerBanner $backgroundImage={BannerImage.src}>
+      <S.CareerBanner $isMobile={isMobile} $backgroundImage={isMobile ? BannerMobileImage.src : BannerImage.src}>
         <S.CareerBannerContent>
           <S.CareerBannerSubTitle>
             {t('career_banner_sub_title')}
