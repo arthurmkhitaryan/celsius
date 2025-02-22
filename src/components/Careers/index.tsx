@@ -41,7 +41,7 @@ function Careers() {
             {t('careers.description2')}
           </S.CareersDescription>
           <S.CareersButtonWrapper>
-            <Button onClick={handleRedirect}>
+            <Button onClick={handleRedirect} style={{ maxWidth: 'min-content' }}>
               {t('careers.join')}
               <Image src={arrowRightMain} width={12} alt="arrow-right" />
             </Button>

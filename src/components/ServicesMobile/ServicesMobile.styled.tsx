@@ -35,7 +35,7 @@ export const ImageContent = styled.div`
   flex-direction: column;
   text-align: left;
   gap: 10px;
-  padding: 40px 10px 10px 20px;
+  padding: 20px 10px 10px 20px;
   background: linear-gradient(261.74deg, rgba(255, 255, 255, 0) 34.69%, rgba(255, 255, 255, 0.8) 69.91%);
 
 
@@ -53,7 +53,7 @@ export const ContentTitle = styled.h2`
 export const ContentDescription = styled.p`
   color: #1c1c1c;
   width: 50%;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   margin-bottom: 10px;
 `;

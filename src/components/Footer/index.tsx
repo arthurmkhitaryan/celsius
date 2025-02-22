@@ -166,7 +166,7 @@ function Footer() {
                   {t('categories.heating')}
                 </S.FooterSectionItem>
                 <S.FooterSectionItem
-                  onClick={() => handleRedirect('category/4')}
+                  onClick={() => handleRedirect('products')}
                 >
                   {t('categories.shop')}
                 </S.FooterSectionItem>

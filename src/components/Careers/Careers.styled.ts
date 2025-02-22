@@ -68,7 +68,7 @@ export const CareersTitle = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 `;
 
@@ -101,6 +101,7 @@ export const CareersButtonWrapper = styled.div`
   @media (max-width: 768px) {
     align-self: baseline;
     width: auto;
+    margin-top: 2px;
     button {
       font-size: 12px;
     }

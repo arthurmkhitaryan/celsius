@@ -45,9 +45,8 @@ import { useTranslations } from 'next-intl';
 const services = [
   {
     id: 1,
-    title: 'Heating & Cooling',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    title: 'categories.heating_cooling.title',
+    description: 'categories.heating_cooling.description',
     image: CoolingMain,
     icon: CoolingIcon,
     animateIcons: [
@@ -63,9 +62,8 @@ const services = [
   },
   {
     id: 2,
-    title: 'Ventilation Systems',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    title: 'categories.hvac.title',
+    description: 'categories.hvac.description',
     image: HvacMain,
     icon: HvacIcon,
     animateIcons: [
@@ -81,9 +79,8 @@ const services = [
   },
   {
     id: 3,
-    title: 'Only Heating',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    title: 'categories.ventilation.title',
+    description: 'categories.ventilation.description',
     image: VentilationMain,
     icon: VentilationIcon,
     animateIcons: [
@@ -99,9 +96,8 @@ const services = [
   },
   {
     id: 4,
-    title: 'Shop',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum Lorem Ipsum',
+    title: 'categories.shop.title',
+    description: 'categories.shop.description',
     image: ShopMain,
     icon: ShopIcon,
     animateIcons: [
@@ -143,10 +139,10 @@ const ServicesMobile = () => {
                   <ServiceImage $isReverse={index === 2} src={service.image.src} alt={service.title} />
                   <ImageContent>
                     <Image src={service.icon} alt={service.title} />
-                    <ContentTitle>{service.title}</ContentTitle>
+                    <ContentTitle>{t(service.title)}</ContentTitle>
 
                     <ContentDescription>
-                      {service.description}
+                      {t(service.description)}
                     </ContentDescription>
                     <ViewMoreButton onClick={() => handleRedirect(service.id)}>
                       {t('categories.view')}
@@ -182,7 +178,7 @@ const ServicesMobile = () => {
             isActive={activeService === service.id}
             onClick={() => handleFooterClick(service.id)}
           >
-            {service.title}
+            {t(service.title)}
           </FooterMenuItem>
         ))}
       </FooterMenuWrapper>
