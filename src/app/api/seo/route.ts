@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     if (!pathname) {
       return NextResponse.json({ error: "Path is required" }, { status: 400 });
     }
-
+  console.log({ pathname, token: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}` });
     const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?filters[path]=${pathname}&populate=metaImage`;
 
     const res = await axios.get(url, {
