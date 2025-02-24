@@ -19,14 +19,19 @@ const poppins = Inter({
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string; slug?: string[] } }): Promise<Metadata> {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") || "/";
 
   try {
-    const res = await fetch(`/api/seo?path=${pathname}`, {
+    const host = headersList.get('host');
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'http'; //Change only after live
+
+    const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
       cache: 'no-store',
     });
+
+    console.log({ res });
 
     const { seoData } = await res.json();
 
