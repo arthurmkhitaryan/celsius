@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 
     const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
       cache: 'no-store',
-    });
+    }).then(res => res.json());
 
-    console.log({ res: res.body, json: res.json() });
+    console.log({ json: res.json(), res });
 
     const { seoData } = await res.json();
 
