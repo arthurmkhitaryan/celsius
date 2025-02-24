@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
       cache: 'no-store',
     });
 
-    console.log({ res });
+    console.log({ res: res.body, json: res.json() });
 
     const { seoData } = await res.json();
 
