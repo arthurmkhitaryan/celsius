@@ -21,7 +21,6 @@ export async function GET(req: Request) {
     });
 
     const seoData = res.data.data[0].attributes || null;
-    console.log({ seoData, data: res });
     return NextResponse.json({ seoData });
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch SEO data" }, { status: 500 });

@@ -25,13 +25,11 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 
   try {
     const host = headersList.get('host');
-    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'http'; //Change only after live
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
 
     const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
       cache: 'no-store',
-    }).then(res => res.json());
-
-    console.log({ json: res.json(), res });
+    });
 
     const { seoData } = await res.json();
 
