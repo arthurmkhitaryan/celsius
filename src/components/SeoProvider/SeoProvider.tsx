@@ -37,7 +37,6 @@ const SeoProvider = () => {
 
     loadSEO();
   }, [pathname]); // Вызываем при изменении пути
-  console.log(seoData);
   return (
     <Head>
       <title>{seoData?.metaTitle || "Celsius"}</title>

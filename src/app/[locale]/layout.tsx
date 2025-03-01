@@ -19,38 +19,44 @@ const poppins = Inter({
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = params.locale;
   const headersList = headers();
   const pathname = headersList.get("x-pathname") || "/";
 
   try {
-    const host = headersList.get('host');
-    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'http';
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "development" ? "http" : "http";
 
-    const res = await fetch(`${protocol}://${host}/api/seo?path=${pathname}`, {
-      cache: 'no-store',
-    });
+    const res = await fetch(
+      `${protocol}://${host}/${locale}/api/seo?path=${pathname}&locale=${locale}`,
+      { cache: "no-store" }
+    );
 
     const { seoData } = await res.json();
 
     return {
-      title: seoData?.metaTitle || 'Celsius',
-      description: seoData?.metaDescription || 'Celsius',
-      keywords: seoData?.metaKeywords || 'default, keywords',
+      title: seoData?.metaTitle || "Celsius",
+      description: seoData?.metaDescription || "Celsius",
+      keywords: seoData?.metaKeywords || "default, keywords",
       openGraph: {
-        title: seoData?.metaTitle || 'Celsius',
-        description: seoData?.metaDescription || 'Celsius',
+        title: seoData?.metaTitle || "Celsius",
+        description: seoData?.metaDescription || "Celsius",
       },
     };
   } catch (error) {
-    console.error('❌ Ошибка получения SEO:', error);
+    console.error("❌ Ошибка получения SEO:", error);
     return {
-      title: 'Celsius',
-      description: 'Celsius',
+      title: "Celsius",
+      description: "Celsius",
     };
   }
 }
-
 
 // @ts-ignore
 export default async function RootLayout({ children, params: { locale } }) {

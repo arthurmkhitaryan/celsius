@@ -1,18 +1,21 @@
-import { NextResponse } from "next/server";
-import axios from "axios";
+import { NextRequest, NextResponse } from 'next/server';
+import axios from 'axios';
+import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = req.nextUrl;
     const pathname = searchParams.get("path");
+
+    const locale = searchParams.get("locale") || 'en';
 
     if (!pathname) {
       return NextResponse.json({ error: "Path is required" }, { status: 400 });
     }
-  console.log({ pathname, token: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}` });
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?filters[path]=${pathname}&populate=metaImage`;
+
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?filters[path]=${pathname}&populate=metaImage&&locale=${strapiLanguageAdapter(locale)}`;
 
     const res = await axios.get(url, {
       headers: {
