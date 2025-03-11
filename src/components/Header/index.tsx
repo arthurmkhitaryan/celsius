@@ -234,7 +234,7 @@ function Header() {
               </S.TotalPrice>
             </S.DrawerContent>
           ) : (
-            <p>Your cart is empty.</p>
+            <p style={{ paddingLeft: '15px' }}>Your cart is empty.</p>
           )}
         </Drawer>
 
