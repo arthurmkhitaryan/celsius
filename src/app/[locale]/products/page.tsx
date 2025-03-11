@@ -71,7 +71,7 @@ export default function Products() {
   return (
     <div className="product_page">
       {/*<div className="inner_container">*/}
-        <img src={`/images/shop/${locale}.jpg`} alt={"coming-soon"}/>
+        <img src={`/images/shop/${locale}.JPG`} alt={"coming-soon"}/>
       {/*  <ProductList />*/}
       {/*  {isTablet && (*/}
       {/*    <button className="filter-button" onClick={openFilterMobile}>*/}
