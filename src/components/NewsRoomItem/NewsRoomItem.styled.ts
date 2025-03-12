@@ -33,6 +33,7 @@ export const BannerImage = styled.img`
   height: 228px;
   width: 100%;
   border-radius: 15px;
+  object-fit: cover;
 `;
 
 export const BannerContent = styled.div`
