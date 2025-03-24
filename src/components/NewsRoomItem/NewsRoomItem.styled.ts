@@ -40,6 +40,7 @@ export const BannerContent = styled.div`
   flex-direction: column;
   gap: 32px;
   width: 100%;
+  max-width: 706px;
 
   @media (max-width: 768px) {
     gap: 12px;
