@@ -55,10 +55,11 @@ export const newsroomApi = createApi({
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
       }),
-      transformResponse: (response: { data: any }) => ({
-        id: response.data.id,
-        ...response.data.attributes,
-      }),
+      transformResponse: (response: { data: any[] }) =>
+        response.data.map((item: any) => ({
+          id: item.id,
+          ...item.attributes,
+        }))[0]
     }),
   }),
 });
