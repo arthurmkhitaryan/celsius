@@ -45,8 +45,10 @@ export default function NewsroomItem({
         <S.BannerWrapper>
           <S.BannerImage src={getImageUrl(image)} />
           <S.BannerContent>
-            <S.BannerTitle>{title}</S.BannerTitle>
-            <S.BannerDescription>{smallDescription}</S.BannerDescription>
+            <div style={{ width: "100%" }}>
+              <S.BannerTitle>{title}</S.BannerTitle>
+              <S.BannerDescription>{smallDescription}</S.BannerDescription>
+            </div>
             <S.ReadFullButtonWrapper>
               <S.PostAuthor>
                 {author} | {formattedDate}
