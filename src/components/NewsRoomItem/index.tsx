@@ -45,7 +45,7 @@ export default function NewsroomItem({
         <S.BannerWrapper>
           <S.BannerImage src={getImageUrl(image)} />
           <S.BannerContent>
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "25px" }}>
               <S.BannerTitle>{title}</S.BannerTitle>
               <S.BannerDescription>{smallDescription}</S.BannerDescription>
             </div>
