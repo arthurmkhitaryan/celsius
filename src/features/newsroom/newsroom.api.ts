@@ -43,7 +43,14 @@ export const newsroomApi = createApi({
 
     getNewsById: builder.query<News, { id: number; locale: string }>({
       query: ({ id, locale }) => ({
-        url: `/news/${id}?populate=smallImage&populate=largeImage&populate=category&locale=${strapiLanguageAdapter(locale)}`,
+        url: `/news`,
+        params: {
+          'populate[smallImage]': 'true',
+          'populate[largeImage]': 'true',
+          'populate[category]': 'true',
+          'filters[slug][$eq]': id,
+          'locale': strapiLanguageAdapter(locale)
+        },
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
