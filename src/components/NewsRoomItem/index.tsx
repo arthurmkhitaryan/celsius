@@ -15,12 +15,14 @@ interface Props {
   smallDescription: string;
   author: string;
   date: Date;
+  slug: string | number;
   id: string | number;
 }
 
 export default function NewsroomItem({
   id,
   image,
+  slug,
   title,
   smallDescription,
   author,
@@ -49,7 +51,7 @@ export default function NewsroomItem({
               <S.PostAuthor>
                 {author} | {formattedDate}
               </S.PostAuthor>
-              <S.ReadFullButton onClick={() => router.push(`/newsroom/${id}`)}>
+              <S.ReadFullButton onClick={() => router.push(`/newsroom/${slug}`)}>
                 {t('read_full_story')} {'>>'}
               </S.ReadFullButton>
             </S.ReadFullButtonWrapper>

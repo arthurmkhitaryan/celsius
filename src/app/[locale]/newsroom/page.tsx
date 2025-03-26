@@ -72,7 +72,7 @@ export default function Newsroom() {
               </S.PostAuthor>
               <S.ReadFullButtonWrapper>
                 <S.ReadFullButton
-                  onClick={() => router.push(`newsroom/${bannerPost.id}`)}
+                  onClick={() => router.push(`newsroom/${bannerPost.slug}`)}
                 >
                   {t('read')} {'>>'}
                 </S.ReadFullButton>
@@ -103,6 +103,7 @@ export default function Newsroom() {
           <NewsroomItem
             key={itm.id}
             id={itm.id}
+            slug={itm.slug}
             author={itm.author}
             image={itm.smallImage}
             smallDescription={itm.smallDescription}

@@ -17,6 +17,7 @@ export const newsroomApi = createApi({
       transformResponse: (response: { data: any[], meta: { pagination: { total: number } } }) => ({
         data: response.data.map((item) => ({
           id: item.id,
+          slug: item.slug,
           ...item.attributes,
         })),
         totalCount: response.meta.pagination.total,
@@ -34,6 +35,7 @@ export const newsroomApi = createApi({
         const banner = response.data[0];
         return {
           id: banner.id,
+          slug: banner.slug,
           ...banner.attributes,
         };
       },

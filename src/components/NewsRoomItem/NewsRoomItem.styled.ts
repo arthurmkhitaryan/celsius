@@ -33,6 +33,7 @@ export const BannerImage = styled.img`
   height: 228px;
   width: 100%;
   border-radius: 15px;
+  object-fit: cover;
 `;
 
 export const BannerContent = styled.div`
@@ -40,6 +41,7 @@ export const BannerContent = styled.div`
   flex-direction: column;
   gap: 32px;
   width: 100%;
+  max-width: 706px;
 
   @media (max-width: 768px) {
     gap: 12px;
@@ -65,8 +67,9 @@ export const BannerDescription = styled.p`
   color: #666666;
   max-width: 100%;
   overflow: hidden;
+  height: 87px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     font-size: 16px;
     line-height: 24px;
   }
@@ -80,6 +83,8 @@ export const PostAuthor = styled.div`
   display: flex;
   align-items: end;
   width: 100%;
+  align-self: end;
+  height: min-content;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -91,7 +96,7 @@ export const ReadFullButtonWrapper = styled.div`
   display: flex;
   justify-content: end;
   width: 100%;
-  height: 100%;
+  height: min-content;
 
   @media (max-width: 768px) {
     flex-direction: column;
