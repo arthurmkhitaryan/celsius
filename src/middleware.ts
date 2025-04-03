@@ -3,8 +3,8 @@ import createMiddleware from "next-intl/middleware";
 export default function middleware(req: any) {
   const intlMiddleware = createMiddleware({
     locales: ["en", "ru", "am"],
-    defaultLocale: "en",
-    localeDetection: true,
+    defaultLocale: "am",
+    localeDetection: false,
     localePrefix: "always",
   });
 

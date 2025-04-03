@@ -73,6 +73,7 @@ export const BannerDescription = styled.p`
   line-height: 30px;
   color: #666666;
   overflow: hidden;
+  height: 245px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -87,8 +88,8 @@ export const PostAuthor = styled.div`
   line-height: 30px;
   display: flex;
   align-items: end;
-  width: 100%;
-
+  white-space: nowrap;
+    
   @media (max-width: 768px) {
     font-size: 14px;
     line-height: 30.4px;
@@ -114,6 +115,8 @@ export const ReadFullButton = styled.button`
   line-height: 24px;
   text-align: center;
   align-self: flex-end;
+    white-space: nowrap;
+    padding-bottom: 5px;
   background-color: transparent;
 
   @media (max-width: 768px) {

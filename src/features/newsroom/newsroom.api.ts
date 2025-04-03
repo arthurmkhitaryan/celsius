@@ -17,6 +17,7 @@ export const newsroomApi = createApi({
       transformResponse: (response: { data: any[], meta: { pagination: { total: number } } }) => ({
         data: response.data.map((item) => ({
           id: item.id,
+          slug: item.slug,
           ...item.attributes,
         })),
         totalCount: response.meta.pagination.total,
@@ -34,6 +35,7 @@ export const newsroomApi = createApi({
         const banner = response.data[0];
         return {
           id: banner.id,
+          slug: banner.slug,
           ...banner.attributes,
         };
       },
@@ -41,15 +43,23 @@ export const newsroomApi = createApi({
 
     getNewsById: builder.query<News, { id: number; locale: string }>({
       query: ({ id, locale }) => ({
-        url: `/news/${id}?populate=smallImage&populate=largeImage&populate=category&locale=${strapiLanguageAdapter(locale)}`,
+        url: `/news`,
+        params: {
+          'populate[smallImage]': 'true',
+          'populate[largeImage]': 'true',
+          'populate[category]': 'true',
+          'filters[slug][$eq]': id,
+          'locale': strapiLanguageAdapter(locale)
+        },
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
         },
       }),
-      transformResponse: (response: { data: any }) => ({
-        id: response.data.id,
-        ...response.data.attributes,
-      }),
+      transformResponse: (response: { data: any[] }) =>
+        response.data.map((item: any) => ({
+          id: item.id,
+          ...item.attributes,
+        }))[0]
     }),
   }),
 });

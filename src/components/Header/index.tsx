@@ -105,7 +105,7 @@ function Header() {
     <S.HeaderWrapper>
       <S.MainWrapper>
         <S.HeaderLeftSide>
-          <Link href={'/'}>
+          <Link href={`/${locale}`}>
             <Image
               src={Logo}
               alt="Celsius Logo"

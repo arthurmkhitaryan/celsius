@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = req.nextUrl;
     const pathname = searchParams.get("path");
 
-    const locale = searchParams.get("locale") || 'en';
+    const locale = searchParams.get("locale") || 'am';
 
     if (!pathname) {
       return NextResponse.json({ error: "Path is required" }, { status: 400 });

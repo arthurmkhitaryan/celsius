@@ -6,6 +6,7 @@ interface News {
   author: string;
   smallImage: any;
   largeImage: any;
+  slug: number | string;
   content: string;
   category: NewsCategory;
   publishedAt: Date;

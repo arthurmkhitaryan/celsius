@@ -63,20 +63,24 @@ export default function Newsroom() {
           <S.BannerWrapper>
             <S.BannerImage src={getImageUrl(bannerPost?.smallImage)} />
             <S.BannerContent>
-              <S.BannerTitle>{bannerPost?.title}</S.BannerTitle>
-              <S.BannerDescription>
-                {bannerPost?.smallDescription}
-              </S.BannerDescription>
-              <S.PostAuthor>
-                {bannerPost?.author} | {formattedDate}
-              </S.PostAuthor>
-              <S.ReadFullButtonWrapper>
-                <S.ReadFullButton
-                  onClick={() => router.push(`newsroom/${bannerPost.id}`)}
-                >
-                  {t('read')} {'>>'}
-                </S.ReadFullButton>
-              </S.ReadFullButtonWrapper>
+              <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "25px" }}>
+                <S.BannerTitle>{bannerPost?.title}</S.BannerTitle>
+                <S.BannerDescription>
+                  {bannerPost?.smallDescription}
+                </S.BannerDescription>
+              </div>
+              <div style={{ width: "100%", display: "flex", justifyContent: "space-between", gap: "25px" }}>
+                <S.PostAuthor>
+                  {bannerPost?.author} | {formattedDate}
+                </S.PostAuthor>
+                <S.ReadFullButtonWrapper>
+                  <S.ReadFullButton
+                    onClick={() => router.push(`newsroom/${bannerPost.slug}`)}
+                  >
+                    {t('read')} {'>>'}
+                  </S.ReadFullButton>
+                </S.ReadFullButtonWrapper>
+              </div>
             </S.BannerContent>
           </S.BannerWrapper>
         )}
@@ -103,6 +107,7 @@ export default function Newsroom() {
           <NewsroomItem
             key={itm.id}
             id={itm.id}
+            slug={itm.slug}
             author={itm.author}
             image={itm.smallImage}
             smallDescription={itm.smallDescription}

@@ -66,7 +66,7 @@ function Newsroom() {
         <S.NewsroomList>
           {data?.data.map((item) => (
             <NewsroomItem
-              onClick={() => handleClickItem(item.id)}
+              onClick={() => handleClickItem(item.slug)}
               key={item.id}
               date={item.publishedAt}
               image={getImageUrl(item.smallImage)}
