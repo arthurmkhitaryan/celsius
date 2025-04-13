@@ -19,22 +19,18 @@ const poppins = Inter({
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata(
-  {
-    params,
-  }: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const locale = params.locale;
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const headersList = headers();
-  const pathname = headersList.get("x-pathname") || "/";
+  const locale = params.locale;
+  const fullPath = headersList.get('x-pathname') || '/';
+  const pathname = fullPath.replace(new RegExp(`^${locale}/`), "") || "/";
 
   try {
     const host = headersList.get("host");
-    const protocol = process.env.NODE_ENV === "development" ? "http" : "http";
+    const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
     const res = await fetch(
-      `${protocol}://${host}/${locale}/api/seo?path=${pathname}&locale=${locale}`,
+      `${protocol}://${host}/${locale}/api/seo?path=${pathname === locale ? "/" : pathname}&locale=${locale}`,
       { cache: "no-store" }
     );
 
@@ -57,6 +53,7 @@ export async function generateMetadata(
     };
   }
 }
+
 
 // @ts-ignore
 export default async function RootLayout({ children, params: { locale } }) {

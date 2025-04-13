@@ -75,7 +75,6 @@ export default function ContactUs() {
       setIsModalOpen(true)
       setMainError(false);
     } catch (error) {
-      console.error('Error submitting form:', error);
       setMainError(true);
     }
   };

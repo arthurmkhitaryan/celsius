@@ -71,10 +71,8 @@ function CareerModal({ isOpen, onRequestClose, career }: CareerModalProps) {
         throw new Error('Failed to submit application');
       }
 
-      console.log('Application submitted successfully');
       setIsError(false); // Success
     } catch (error) {
-      console.error('Error submitting form:', error);
       setIsError(true); // Error
     }
 

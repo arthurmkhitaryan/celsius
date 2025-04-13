@@ -1,15 +1,23 @@
+// middleware.ts
 import createMiddleware from "next-intl/middleware";
 
 export default function middleware(req: any) {
   const intlMiddleware = createMiddleware({
     locales: ["en", "ru", "am"],
     defaultLocale: "am",
-    localeDetection: false,
+    localeDetection: true,
     localePrefix: "always",
   });
 
   const res = intlMiddleware(req);
-  res.headers.set("x-pathname", req.nextUrl.pathname.split("/")[2] || "/");
+
+  const locale = req.nextUrl.locale;
+  const pathname = req.nextUrl.pathname;
+
+  const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const pathWithoutLocale = normalizedPath.replace(new RegExp(`^/${locale}`), "") || "/";
+  res.headers.set("x-pathname", pathWithoutLocale);
+
   return res;
 }
 

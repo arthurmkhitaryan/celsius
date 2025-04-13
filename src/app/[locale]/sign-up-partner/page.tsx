@@ -83,8 +83,6 @@ export default function BecomeAPartner() {
       setIsSended(true);
       setMainError(false);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setIsSended(false);
       setMainError(true);
     }
 

@@ -311,5 +311,23 @@
         "total": "TOTAL"
       }
     }
+  },
+  "SignUp": {
+    "labels": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "city": "City",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "code": "Postcode",
+      "street": "Street Address",
+      "house": "House/Flat Number",
+      "register": "Register",
+      "already_have": "Already have an Account? ",
+      "sign_in": "Sign In",
+      "create": "Create an account"
+    }
   }
 }

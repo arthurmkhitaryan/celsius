@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormState } from '@/components/FormState';
 import { default as FormStateModal } from '@/components/shared/Modal';
+import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'use-intl';
 
 export default function RegisterForm() {
   const {
@@ -17,10 +19,10 @@ export default function RegisterForm() {
     formState: { errors },
     setError,
   } = useForm<Register>();
+  const t = useTranslations("SignUp");
   const [registerUser, { isLoading }] = useRegisterMutation();
   const [isFormStateOpen, setIsFormStateOpen] = useState(false);
   const [isError, setIsError] = useState(false);
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<Register> = async (data) => {
     try {
@@ -49,17 +51,16 @@ export default function RegisterForm() {
   return (
     <>
       <S.RegisterFormWrapper>
-        <S.Title>Create an account</S.Title>
+        <S.Title>{t("labels.create")}</S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.FormContent>
             {/* First Name */}
             <S.InputWrapper>
               <S.Label>
-                First Name<span>*</span>
+                {t("labels.first_name")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('firstName', { required: true })}
-                placeholder="Enter your first name"
                 error={!!errors.firstName}
               />
               {errors.firstName && <S.Error>This field is required</S.Error>}
@@ -68,11 +69,10 @@ export default function RegisterForm() {
             {/* Last Name */}
             <S.InputWrapper>
               <S.Label>
-                Last Name<span>*</span>
+                {t("labels.last_name")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('lastName', { required: true })}
-                placeholder="Enter your last name"
                 error={!!errors.lastName}
               />
               {errors.lastName && <S.Error>This field is required</S.Error>}
@@ -81,12 +81,11 @@ export default function RegisterForm() {
             {/* Password */}
             <S.InputWrapper>
               <S.Label>
-                Password<span>*</span>
+                {t("labels.password")}<span>*</span>
               </S.Label>
               <S.Input
                 type="password"
                 {...register('password', { required: true })}
-                placeholder="Enter your password"
                 error={!!errors.password}
               />
               {errors.password && <S.Error>This field is required</S.Error>}
@@ -95,12 +94,11 @@ export default function RegisterForm() {
             {/* Repeat Password */}
             <S.InputWrapper>
               <S.Label>
-                Repeat Password<span>*</span>
+                {t("labels.confirm_password")}<span>*</span>
               </S.Label>
               <S.Input
                 type="password"
                 {...register('password', { required: true })}
-                placeholder="Repeat your password"
                 error={!!errors.password}
               />
               {errors.password && <S.Error>This field is required</S.Error>}
@@ -109,12 +107,11 @@ export default function RegisterForm() {
             {/* Email */}
             <S.InputWrapper>
               <S.Label>
-                Email<span>*</span>
+                {t("labels.email")}<span>*</span>
               </S.Label>
               <S.Input
                 type="email"
                 {...register('email', { required: true })}
-                placeholder="Enter your email"
                 error={!!errors.email}
               />
               {errors.email && (
@@ -127,11 +124,10 @@ export default function RegisterForm() {
             {/* Phone Number */}
             <S.InputWrapper>
               <S.Label>
-                Phone Number<span>*</span>
+                {t("labels.phone")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('phoneNumber', { required: true })}
-                placeholder="Enter your phone number"
                 error={!!errors.phoneNumber}
               />
               {errors.phoneNumber && (
@@ -144,11 +140,10 @@ export default function RegisterForm() {
             {/* City */}
             <S.InputWrapper>
               <S.Label>
-                City<span>*</span>
+                {t("labels.city")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('city', { required: true })}
-                placeholder="Enter your city"
                 error={!!errors.city}
               />
               {errors.city && <S.Error>This field is required</S.Error>}
@@ -157,11 +152,10 @@ export default function RegisterForm() {
             {/* Postcode */}
             <S.InputWrapper>
               <S.Label>
-                Postcode<span>*</span>
+                {t("labels.code")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('postcode', { required: true })}
-                placeholder="Enter your postcode"
                 error={!!errors.postcode}
               />
               {errors.postcode && <S.Error>This field is required</S.Error>}
@@ -170,11 +164,10 @@ export default function RegisterForm() {
             {/* Street Address */}
             <S.InputWrapper>
               <S.Label>
-                Street Address<span>*</span>
+                {t("labels.street")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('streetAddress', { required: true })}
-                placeholder="Enter your address"
                 error={!!errors.streetAddress}
               />
               {errors.streetAddress && (
@@ -185,11 +178,10 @@ export default function RegisterForm() {
             {/* House/Flat Number */}
             <S.InputWrapper>
               <S.Label>
-                House/Flat Number<span>*</span>
+                {t("labels.house")}<span>*</span>
               </S.Label>
               <S.Input
                 {...register('houseFlatNumber', { required: true })}
-                placeholder="Enter your house/flat N"
                 error={!!errors.houseFlatNumber}
               />
               {errors.houseFlatNumber && (
@@ -199,11 +191,11 @@ export default function RegisterForm() {
           </S.FormContent>
 
           <S.SubmitButton type="submit" disabled={isLoading}>
-            Register
+            {t("labels.register")}
           </S.SubmitButton>
           <S.AlreadyHaveAccount>
             <S.Text>
-              Already have an Account? <Link href={'/'}>Sign In</Link>
+              {t("labels.already_have")} <Link href={'/'}>{t("labels.sign_in")}</Link>
             </S.Text>
           </S.AlreadyHaveAccount>
         </S.Form>

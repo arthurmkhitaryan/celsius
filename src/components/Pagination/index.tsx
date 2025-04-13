@@ -63,11 +63,17 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
 
   return (
     <S.PaginationWrapper>
-      <S.PageLink onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
+      <S.PageLink
+        onClick={() => handleClick(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
         &laquo; {t('previous')}
       </S.PageLink>
       {renderPageNumbers()}
-      <S.PageLink onClick={() => handleClick(currentPage + 1)} disabled={currentPage === totalPages}>
+      <S.PageLink
+        onClick={() => handleClick(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
         {t('next')} &raquo;
       </S.PageLink>
     </S.PaginationWrapper>
