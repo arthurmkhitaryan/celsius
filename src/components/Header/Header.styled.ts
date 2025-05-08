@@ -21,9 +21,20 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderLeftSide = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    
   img {
     cursor: pointer;
   }
+    
+    @media (max-width: 768px) {
+        position: relative;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 30px;
+    }
 `;
 
 export const CartButton = styled.button`
@@ -65,6 +76,30 @@ export const DrawerContent = styled.div`
   height: 100%;
   width: 100%;
   gap: 36px;
+`;
+
+export const Phones = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 10px;
+    
+    a {
+        text-decoration: none;
+        color: #0044cc;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 68px;
+        left: 40px;
+        display: flex;
+        flex-direction: row;
+        width: 400px;
+        gap: 60px;
+    }
 `;
 
 export const TotalPrice = styled.div`
@@ -131,7 +166,7 @@ export const MainWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 8px;
   width: 100%;
   justify-content: space-around;
 

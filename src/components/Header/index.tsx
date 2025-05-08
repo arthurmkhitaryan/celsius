@@ -114,6 +114,10 @@ function Header() {
               priority
             />
           </Link>
+          <S.Phones>
+            <a href="tel:+37443120100">+374 (43) 120 100</a>
+            <a href="tel:+37433160100">+374 (33) 160 100</a>
+          </S.Phones>
         </S.HeaderLeftSide>
 
         {isTablet ? (
