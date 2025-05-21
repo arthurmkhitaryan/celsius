@@ -70,29 +70,29 @@ export default function Products() {
 
   return (
     <div className="product_page">
-      {/*<div className="inner_container">*/}
-        <img src={`/images/shop/${locale}.JPG`} alt={"coming-soon"}/>
-      {/*  <ProductList />*/}
-      {/*  {isTablet && (*/}
-      {/*    <button className="filter-button" onClick={openFilterMobile}>*/}
-      {/*      <Image*/}
-      {/*        src={FilterOptionsIcon.src}*/}
-      {/*        alt="filter options"*/}
-      {/*        width={18}*/}
-      {/*        height={18}*/}
-      {/*      />*/}
-      {/*      <span>FILTER</span>*/}
-      {/*    </button>*/}
-      {/*  )}*/}
-      {/*  <div className="product_sell_container">*/}
-      {/*    <div className="filters_block">*/}
-      {/*      <Filter onFilterChange={handleChangeCategories} />*/}
-      {/*    </div>*/}
-      {/*    <div className="product_block">{renderProducts()}</div>*/}
-      {/*  </div>*/}
-      {/*  <Achievements />*/}
-      {/*  <Newsroom />*/}
-      {/*</div>*/}
+      <div className="inner_container">
+        {/*<img src={`/images/shop/${locale}.JPG`} alt={"coming-soon"}/>*/}
+        <ProductList />
+        {isTablet && (
+          <button className="filter-button" onClick={openFilterMobile}>
+            <Image
+              src={FilterOptionsIcon.src}
+              alt="filter options"
+              width={18}
+              height={18}
+            />
+            <span>FILTER</span>
+          </button>
+        )}
+        <div className="product_sell_container">
+          <div className="filters_block">
+            <Filter onFilterChange={handleChangeCategories} />
+          </div>
+          <div className="product_block">{renderProducts()}</div>
+        </div>
+        <Achievements />
+        <Newsroom />
+      </div>
     </div>
   );
 }

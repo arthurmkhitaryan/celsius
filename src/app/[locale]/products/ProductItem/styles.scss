@@ -33,6 +33,7 @@
   }
 
   .product_card_info {
+    overflow: hidden;
     @media (max-width: 768px) {
       margin: 0;
     }
