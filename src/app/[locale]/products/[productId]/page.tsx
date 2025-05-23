@@ -139,12 +139,6 @@ export default function Product({ params }: { params: ProductParamProps }) {
       case tabs[0].id:
         return (
           <div className="tab-content">
-            <h3>General Features</h3>
-            <div className="general-features">
-              {data.fullSpecification.general && data.fullSpecification.general.map((generalFeature) => {
-                return <p>{generalFeature.title}</p>;
-              })}
-            </div>
             <h3>General Details</h3>
             <div className="general-details">
               {data.fullSpecification.details && data.fullSpecification.details.map((generalFeature, index) => {
@@ -156,6 +150,12 @@ export default function Product({ params }: { params: ProductParamProps }) {
                     </p>
                   </div>
                 );
+              })}
+            </div>
+            <h3>General Features</h3>
+            <div className="general-features">
+              {data.fullSpecification.general && data.fullSpecification.general.map((generalFeature) => {
+                return <p>{generalFeature.title}</p>;
               })}
             </div>
           </div>

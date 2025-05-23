@@ -199,6 +199,11 @@
 
     img {
         position: absolute;
-        left: 20px; 
+        left: 20px;
     }
   }
+
+.filter-button img {
+    width: 19px !important;
+    height: 22px !important;
+}

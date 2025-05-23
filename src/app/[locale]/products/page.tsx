@@ -78,8 +78,8 @@ export default function Products() {
             <Image
               src={FilterOptionsIcon.src}
               alt="filter options"
-              width={18}
-              height={18}
+              width={20}
+              height={20}
             />
             <span>FILTER</span>
           </button>
