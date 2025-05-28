@@ -3,6 +3,7 @@ import React from 'react';
 import * as S from './Pagination.styled';
 import { useTranslation } from 'next-i18next';
 import { useTranslations } from 'next-intl';
+import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 
 interface IProps {
   currentPage: number;
@@ -11,6 +12,8 @@ interface IProps {
 }
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
+  const isMobile = useClientMediaQuery('(max-width: 768px)');
+
   const t = useTranslations('Pagination');
   const handleClick = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -67,14 +70,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: IProps) => {
         onClick={() => handleClick(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        &laquo; {t('previous')}
+        &laquo;{!isMobile && (<>{t('previous')}</>)}
       </S.PageLink>
       {renderPageNumbers()}
       <S.PageLink
         onClick={() => handleClick(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        {t('next')} &raquo;
+        {!isMobile && (<>{t('next')} </>)} &raquo;
       </S.PageLink>
     </S.PaginationWrapper>
   );

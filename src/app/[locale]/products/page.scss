@@ -182,6 +182,11 @@
     }
 }
 
+.pagination-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .filter-button {
     padding: 8px 20px;
     border: 2px solid #0044CC;

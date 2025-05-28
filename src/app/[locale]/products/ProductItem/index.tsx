@@ -10,12 +10,12 @@ interface IProductItemProps {
 const renderProductDesc = (desc: any[]) => {
   return desc?.map((item, index) => {
     return (
-      <>
-        {item.title && <div key={index} className="card_desc_item">
+      <div key={index}>
+        {item.title && <div className="card_desc_item">
           <ChevronRight size={12} color="#1F94D2" />
           <p>{item.title}</p>
         </div>}
-      </>
+      </div>
     );
   });
 };

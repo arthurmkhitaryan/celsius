@@ -103,7 +103,7 @@ function Header() {
 
   return (
     <S.HeaderWrapper>
-      <S.MainWrapper>
+      <S.MainWrapper isFilterMenuVisible={isFilterMenuVisible}>
         <S.HeaderLeftSide>
           <Link href={`/${locale}`}>
             <Image

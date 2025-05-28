@@ -19,54 +19,37 @@ export const productsApi = createApi({
   }),
   endpoints: (builder) => ({
     getProducts: builder.query<
-      Product[],
+      {
+        data: Product[];
+        totalCount: number;
+      },
       {
         locale: string;
         limit?: number;
+        page?: number;
         excludeId?: number | string;
         subCategories?: string[];
         productTypes?: string[];
         role?: string;
       }
     >({
-      query: ({ limit, excludeId, productTypes, subCategories, locale }) => {
+      query: ({ limit = 14, page = 1, excludeId, productTypes, subCategories, locale }) => {
         const params = new URLSearchParams();
 
-        if (limit) {
-          params.append('pagination[limit]', limit.toString());
-          params.append('pagination[start]', '0');
-        }
+        params.append('pagination[limit]', limit.toString());
+        params.append('pagination[start]', ((page - 1) * limit).toString());
 
         if (excludeId) {
           params.append('filters[slug][$ne]', excludeId.toString());
         }
 
-        if (
-          (productTypes && productTypes.length) ||
-          (subCategories && subCategories.length)
-        ) {
-          let index = 0;
-
-          if (productTypes && productTypes.length) {
-            productTypes.forEach((type) => {
-              params.append(
-                `filters[$or][${index}][productTypes][title][$eq]`,
-                type,
-              );
-              index++;
-            });
-          }
-
-          if (subCategories && subCategories.length) {
-            subCategories.forEach((subcategory: string) => {
-              params.append(
-                `filters[$or][${index}][sub_category][name][$eq]`,
-                subcategory,
-              );
-              index++;
-            });
-          }
-        }
+        let index = 0;
+        productTypes?.forEach((type) =>
+          params.append(`filters[$or][${index++}][productTypes][title][$eq]`, type)
+        );
+        subCategories?.forEach((subcategory) =>
+          params.append(`filters[$or][${index++}][sub_category][name][$eq]`, subcategory)
+        );
 
         return {
           url: `products?${params.toString()}`,
@@ -81,39 +64,38 @@ export const productsApi = createApi({
             'populate[portfolio][populate][images]': 'true',
             'populate[faqs]': 'true',
             locale: strapiLanguageAdapter(locale),
-            ...params,
           },
         };
       },
-      transformResponse: (response: { data: any[] }, meta, arg) => {
+      transformResponse: (response: { data: any[]; meta: any }, meta, arg) => {
         const { role } = arg;
 
-        return response.data.map((item) => ({
-          id: item.id,
-          name: item.attributes.name,
-          description: item.attributes.description,
-          slug: item.attributes.slug,
-          price:
-            role === 'Partner' && item.attributes.partnerPrice
-              ? item.attributes.partnerPrice
-              : item.attributes.price,
-          images: item.attributes?.images?.data.map((img: any) =>
-            getImageUrl(img),
-          ),
-          banner: getImageUrl(item.attributes.banner),
-          fullSpecification: {
-            general: item.attributes?.fullSpecification?.general,
-            details: item.attributes?.fullSpecification?.details,
-          },
-          portfolio: item.attributes?.portfolio?.images.data.map((img: any) =>
-            getImageUrl(img),
-          ),
-          faqs: item.attributes.faqs,
-          liter: item.attributes.liter,
-          params: item.attributes.params,
-        }));
+        return {
+          data: response.data.map((item) => ({
+            id: item.id,
+            name: item.attributes.name,
+            description: item.attributes.description,
+            slug: item.attributes.slug,
+            price:
+              role === 'Partner' && item.attributes.partnerPrice
+                ? item.attributes.partnerPrice
+                : item.attributes.price,
+            images: item.attributes?.images?.data.map(getImageUrl),
+            banner: getImageUrl(item.attributes.banner),
+            fullSpecification: {
+              general: item.attributes?.fullSpecification?.general,
+              details: item.attributes?.fullSpecification?.details,
+            },
+            portfolio: item.attributes?.portfolio?.images.data.map(getImageUrl),
+            faqs: item.attributes.faqs,
+            liter: item.attributes.liter,
+            params: item.attributes.params,
+          })),
+          totalCount: response.meta?.pagination?.total || 0,
+        };
       },
     }),
+
   }),
 });
 

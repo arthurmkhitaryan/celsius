@@ -160,15 +160,17 @@ export const MobileMenu = styled.div`
   height: calc(100vh - 80px);
   background-color: white;
   z-index: 1000;
+  overflow-y: scroll;
 `;
 
-export const MainWrapper = styled.div`
+export const MainWrapper = styled.div<{isFilterMenuVisible?: boolean}>`
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 8px;
   width: 100%;
   justify-content: space-around;
+  overflow: ${({ isFilterMenuVisible }) => (isFilterMenuVisible ? 'hidden' : 'auto')};
 
   @media (max-width: 768px) {
     justify-content: space-between;

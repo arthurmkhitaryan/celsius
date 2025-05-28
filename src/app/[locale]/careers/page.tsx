@@ -17,7 +17,6 @@ import { useTranslations } from 'next-intl';
 import { useGetCareersQuery } from '@/features/careers';
 import CareerListItem from '@/components/CareerItem';
 import { useClientMediaQuery } from '@/store/useClientMediaQuery';
-import { useMediaQuery } from '@mui/system';
 
 export default function Career() {
   const isMobile = useClientMediaQuery('(max-width: 768px)');

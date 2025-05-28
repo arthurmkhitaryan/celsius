@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../components/styles/main.scss';
 import './page.scss';
 import Newsroom from '@/components/Newsroom';
@@ -16,53 +16,61 @@ import { toggleFilterMenu } from '@/features/header/header.slice';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import Pagination from '@/components/Pagination';
+
+const PAGE_SIZE = 14;
 
 export default function Products() {
-  const t = useTranslations('Shop');
   const { locale } = useParams();
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state: any) => state.auth.user) as any;
+  const user = useAppSelector((state: any) => state.auth.user);
   const filters = useAppSelector((state: any) => state.filters.filters);
-  const [triggerGetProducts, { data: products }] = useLazyGetProductsQuery();
+  const [triggerGetProducts, { data: productsData }] = useLazyGetProductsQuery();
+  const [filterSubCategory, setFilterSubCategory] = useState<string[]>([]);
+  const [filterProductTypes, setFilterProductTypes] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    if (filters) {
+      handleChangeCategories(filters);
+    }
+  }, [filters])
 
   const handleChangeCategories = (filters: string[]) => {
     const productTypes = filters
-      .filter((item) => {
-        return item.split(':')[0] === 'productType';
-      })
+      .filter((item) => item.split(':')[0] === 'productType')
       .map((item) => item.split(':')[1]);
 
     const subCategories = filters
-      .filter((item) => {
-        return item.split(':')[0] === 'sub_category';
-      })
+      .filter((item) => item.split(':')[0] === 'sub_category')
       .map((item) => item.split(':')[1]);
 
-    triggerGetProducts({
-      limit: 14,
-      productTypes,
-      subCategories,
-      role: user?.role,
-      locale: locale as string,
-    });
+    setFilterSubCategory(subCategories)
+    setFilterProductTypes(productTypes)
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   const renderProducts = () => {
-    if (!products?.length) return null;
-    return products.map((product, index) => (
+    if (!productsData?.data?.length) return null;
+    return productsData.data.map((product, index) => (
       <ProductItem key={index} product={product} />
     ));
   };
 
   useEffect(() => {
     triggerGetProducts({
-      limit: 14,
+      limit: PAGE_SIZE,
+      page: currentPage,
+      subCategories: filterSubCategory,
+      productTypes: filterProductTypes,
       role: user?.role,
-      productTypes: filters.length ? filters : undefined,
       locale: locale as string,
     });
-  }, [triggerGetProducts, user?.role, filters]);
+  }, [triggerGetProducts, user?.role, filters, currentPage, filterSubCategory, filterProductTypes]);
 
   const openFilterMobile = () => {
     dispatch(toggleFilterMenu());
@@ -71,7 +79,6 @@ export default function Products() {
   return (
     <div className="product_page">
       <div className="inner_container">
-        {/*<img src={`/images/shop/${locale}.JPG`} alt={"coming-soon"}/>*/}
         <ProductList />
         {isTablet && (
           <button className="filter-button" onClick={openFilterMobile}>
@@ -89,6 +96,13 @@ export default function Products() {
             <Filter onFilterChange={handleChangeCategories} />
           </div>
           <div className="product_block">{renderProducts()}</div>
+        </div>
+        <div className="pagination-wrapper">
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            totalPages={Math.ceil((productsData?.totalCount || 0) / PAGE_SIZE)}
+          />
         </div>
         <Achievements />
         <Newsroom />
