@@ -114,10 +114,9 @@ function Header() {
               priority
             />
           </Link>
-          <S.Phones>
-            <a href="tel:+37443120100">+374 (43) 120 100</a>
-            <a href="tel:+37433160100">+374 (33) 160 100</a>
-          </S.Phones>
+          {!isTablet && <S.Phones>
+            <a href="tel:+37444842222">+374 (44) 842 222</a>
+          </S.Phones>}
         </S.HeaderLeftSide>
 
         {isTablet ? (
@@ -149,6 +148,9 @@ function Header() {
                 onClick={toggleMenu}
               />
             )}
+            <S.Phones>
+            <a href="tel:+37444842222">+374 (44) 842 222</a>
+          </S.Phones>
           </S.HamburgerWrapper>
         ) : (
           <S.HeaderRightSide>

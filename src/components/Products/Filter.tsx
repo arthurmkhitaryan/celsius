@@ -10,9 +10,10 @@ import { useAppSelector } from '@/store/hooks';
 
 interface FilterProps {
   onFilterChange: (filters: string[]) => void;
+  initialFilters?: string[];
 }
 
-const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
+const Filter: React.FC<FilterProps> = ({ onFilterChange, initialFilters = [] }) => {
   const t = useTranslations('Shop');
   const reduxFilters = useAppSelector((state: any) => state.filters.filters);
 
@@ -45,9 +46,16 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
   const { locale } = useParams();
   const searchParams = useSearchParams();
 
-  const [selectedTypes, setSelectedTypes] = useState<
-    { type: string; filterType: string }[]
-  >([]);
+  const [selectedTypes, setSelectedTypes] = useState<{ type: string; filterType: string }[]>(
+    () => {
+      if (initialFilters.length === 0) return [];
+      
+      return initialFilters.map(filter => {
+        const [type, value] = filter.split(':');
+        return { type: value, filterType: type };
+      });
+    }
+  );
 
   const { data } = useGetAllCategoriesQuery({ locale: locale.toString() });
 
@@ -68,13 +76,14 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
   }, [data]);
 
   useEffect(() => {
-    const parsedFilters = reduxFilters.map((filter: string) => {
-      const [filterType, type] = filter.split(':');
-      return { type, filterType };
-    });
-
-    setSelectedTypes(parsedFilters);
-  }, [reduxFilters]);
+    if (initialFilters.length === 0 && reduxFilters.length > 0) {
+      const parsedFilters = reduxFilters.map((filter: string) => {
+        const [filterType, type] = filter.split(':');
+        return { type, filterType };
+      });
+      setSelectedTypes(parsedFilters);
+    }
+  }, [initialFilters, reduxFilters]);
 
   useEffect(() => {
     const categoryId = searchParams.get('category');
@@ -125,18 +134,20 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
   };
 
   const handleTypeChange = (type: string, filterType: string) => {
-    setSelectedTypes((prevState) => {
-      const isAlreadySelected = prevState.some((selected) => selected.type === type);
-
-      let updated;
-      if (isAlreadySelected) {
-        updated = prevState.filter((selected) => selected.type !== type);
+    setSelectedTypes((prev) => {
+      const newTypes = [...prev];
+      const existingIndex = newTypes.findIndex((t) => t.type === type);
+      
+      if (existingIndex !== -1) {
+        newTypes.splice(existingIndex, 1);
       } else {
-        updated = [...prevState, { type, filterType }];
+        newTypes.push({ type, filterType });
       }
-
-      onFilterChange(updated.map((item) => `${item.filterType}:${item.type}`));
-      return updated;
+      
+      const newFilters = newTypes.map((t) => `${t.filterType}:${t.type}`);
+      onFilterChange(newFilters);
+      
+      return newTypes;
     });
   };
 

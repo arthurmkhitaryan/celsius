@@ -163,9 +163,8 @@ export default function ContactUs() {
               <Phone size={18} color="#0044CC" />
               <div>
                 <span>
-                  +374(43)120100 <br />
+                +374 (44) 842 222
                 </span>
-                <span>+374(33)160100</span>
               </div>
             </S.FooterSectionItem>
             <S.FooterSectionItem>

@@ -14,28 +14,33 @@ import { useClientMediaQuery } from '@/store/useClientMediaQuery';
 import FilterOptionsIcon from '@/public/images/product/filter-options.svg';
 import { toggleFilterMenu } from '@/features/header/header.slice';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Pagination from '@/components/Pagination';
 
 const PAGE_SIZE = 14;
 
 export default function Products() {
   const { locale } = useParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const isTablet = useClientMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();
   const user = useAppSelector((state: any) => state.auth.user);
   const filters = useAppSelector((state: any) => state.filters.filters);
   const [triggerGetProducts, { data: productsData }] = useLazyGetProductsQuery();
-  const [filterSubCategory, setFilterSubCategory] = useState<string[]>([]);
-  const [filterProductTypes, setFilterProductTypes] = useState<string[]>([]);
+  const filterSubCategory = searchParams.get('subCategories')?.split(',') || [];
+  const filterProductTypes = searchParams.get('productTypes')?.split(',') || []
+
+  console.log('filterProductTypes', filterProductTypes);
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    if (filters) {
-      handleChangeCategories(filters);
-    }
-  }, [filters])
+  // Create initial filters array from URL parameters
+  const initialFilters = [
+    ...filterSubCategory.map(cat => `sub_category:${cat}`),
+    ...filterProductTypes.map(type => `productType:${type}`)
+  ].filter(Boolean);
 
   const handleChangeCategories = (filters: string[]) => {
     const productTypes = filters
@@ -46,8 +51,19 @@ export default function Products() {
       .filter((item) => item.split(':')[0] === 'sub_category')
       .map((item) => item.split(':')[1]);
 
-    setFilterSubCategory(subCategories)
-    setFilterProductTypes(productTypes)
+    // Update URL parameters
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    if (subCategories.length > 0) {
+      newSearchParams.set('subCategories', subCategories.join(','));
+    } else {
+      newSearchParams.delete('subCategories');
+    }
+    if (productTypes.length > 0) {
+      newSearchParams.set('productTypes', productTypes.join(','));
+    } else {
+      newSearchParams.delete('productTypes');
+    }
+    router.replace(`?${newSearchParams.toString()}`);
   };
 
   const handlePageChange = (page: number) => {
@@ -70,7 +86,7 @@ export default function Products() {
       role: user?.role,
       locale: locale as string,
     });
-  }, [triggerGetProducts, user?.role, filters, currentPage, filterSubCategory, filterProductTypes]);
+  }, [triggerGetProducts, user?.role, filters, currentPage, JSON.stringify(filterSubCategory), JSON.stringify(filterProductTypes)]);
 
   const openFilterMobile = () => {
     dispatch(toggleFilterMenu());
@@ -93,7 +109,10 @@ export default function Products() {
         )}
         <div className="product_sell_container">
           <div className="filters_block">
-            <Filter onFilterChange={handleChangeCategories} />
+            <Filter 
+              onFilterChange={handleChangeCategories} 
+              initialFilters={initialFilters}
+            />
           </div>
           <div className="product_block">{renderProducts()}</div>
         </div>
