@@ -165,8 +165,8 @@ const ProductsNavbar = ({ changeToggleMenu }: {changeToggleMenu: () => void}) =>
             <S.SubMenuItems>
               {category.subCategories.map((item) => (
                 <S.SubMenuSubItem
-                  href={`/products/?category=${category.id}&subCategory=${item.id}`}
-                  key={item.id}
+                href={`/products/?subCategories=${encodeURIComponent(item.name)}&productTypes=${encodeURIComponent(category.name)}`}
+                key={item.id}
                 >
                   {item.name}
                 </S.SubMenuSubItem>

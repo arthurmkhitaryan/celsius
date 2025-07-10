@@ -71,13 +71,17 @@ function Footer() {
                     <span>
                       {t('contacts.address_one')} <br />
                     </span>
+                    <span>{t('contacts.address_two')}</span>
+                    <span>{t('contacts.address_three')}</span>
                   </div>
                 </S.FooterSectionItem>
                 <S.FooterSectionItem>
                   <Phone size={18} color="#fff" />
                   <div>
                     <span>
-                      <span>+374 (44) 842 222</span>
+                      <span>+374 (43) 120 100</span> <br />
+                      <span>+374 (44) 842 222</span> <br />
+                      <span>+374 (33) 160 100</span>
                     </span>
                   </div>
                 </S.FooterSectionItem>

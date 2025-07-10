@@ -160,8 +160,9 @@
     "info": {
       "name": "Celsius ՍՊԸ",
       "contacts": "Կոնտակտներ",
-      "address_one": "HOMPLEX HYPERMALL - Աշտարակի խճուղի, Գևորգ Չաուշի 1/47",
+      "address_one": "Ք․ Երևան, Ռուբինյանց փ․ 2/10",
       "address_two": "Ք․ Երևան, Ս․ Վրացյան փ․ 73/1",
+      "address_three": "HOMPLEX HYPERMALL - Աշտարակի խճուղի, Գևորգ Չաուշի 1/47",
       "working_hours": "Աշխատանքային ժամեր",
       "days_one": "Երկ․- Ուրբ․ / 10:00 - 19:00",
       "days_two": "Շաբաթ /  10:00 - 18:00"
@@ -232,8 +233,9 @@
   "Footer": {
     "contacts": {
       "name": "Կոնտակտներ",
-      "address_one": "HOMPLEX HYPERMALL - Աշտարակի խճուղի, Գևորգ Չաուշի 1/47",
+      "address_one": "Ք․ Երևան, Ռուբինյանց փ․ 2/10",
       "address_two": "Ք․ Երևան, Ս․ Վրացյան փ․ 73/1",
+      "address_three": "HOMPLEX HYPERMALL - Աշտարակի խճուղի, Գևորգ Չաուշի 1/47",
       "days_one":"Երկ․- Ուրբ․ / 10:00 - 19:00",
       "days_two":"Շաբաթ /  10:00 - 18:00"
     },

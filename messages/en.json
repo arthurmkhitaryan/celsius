@@ -160,8 +160,9 @@
     "info": {
       "name": "Celsius LLC",
       "contacts": "Contacts",
-      "address_one": "HOMPLEX HYPERMALL – Ashtarak Highway, 1/47 Gevorg Chaush Street",
+      "address_one": "Yerevan, Rubinyants st. 2/10",
       "address_two": "Yerevan, Vratsyan st. 73/1",
+      "address_three": "HOMPLEX HYPERMALL – Ashtarak Highway, 1/47 Gevorg Chaush Street",
       "working_hours": "Working Hours",
       "days_one": "Mon - Fri / 10:00 - 19:00",
       "days_two": "Sat. / 10:00 - 18:00"
@@ -232,8 +233,9 @@
   "Footer": {
     "contacts": {
       "name": "Contacts",
-      "address_one": "HOMPLEX HYPERMALL – Ashtarak Highway, 1/47 Gevorg Chaush Street",
+      "address_one": "Yerevan, Rubinyants st. 2/10",
       "address_two": "Yerevan, Vratsyan st. 73/1",
+      "address_three": "HOMPLEX HYPERMALL – Ashtarak Highway, 1/47 Gevorg Chaush Street",
       "days_one":"Mon - Fri / 10:00 - 19:00",
       "days_two":"Sat. / 10:00 - 18:00"
     },

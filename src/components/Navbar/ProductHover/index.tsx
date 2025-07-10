@@ -26,7 +26,7 @@ const ProductHover = () => {
             <S.ContentBody>
               {category.subCategories.map((subCategory) => (
                 <S.ContentInfo
-                  href={`/products/?category=${category.id}&subCategory=${subCategory.id}`}
+                href={`/products/?subCategories=${encodeURIComponent(subCategory.name)}&productTypes=${encodeURIComponent(category.name)}`}
                 >
                   {subCategory.name}
                 </S.ContentInfo>

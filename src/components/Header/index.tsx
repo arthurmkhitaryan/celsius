@@ -140,7 +140,7 @@ function Header() {
   return (
     <S.HeaderWrapper>
       <S.MainWrapper isFilterMenuVisible={isFilterMenuVisible}>
-        <S.HeaderLeftSide>
+      {!isTablet && (<S.HeaderLeftSide>
           <Link href={`/${locale}`}>
             <Image
               src={Logo}
@@ -150,13 +150,26 @@ function Header() {
               priority
             />
           </Link>
-          {!isTablet && <S.Phones>
+          <S.Phones>
+            
+            <a href="tel:+37443120100">+374 (43) 120 100</a>
             <a href="tel:+37444842222">+374 (44) 842 222</a>
-          </S.Phones>}
-        </S.HeaderLeftSide>
+            <a href="tel:+37433160100">+374 (33) 160 100</a>
+          </S.Phones>
+        </S.HeaderLeftSide>)}
 
         {isTablet ? (
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
           <S.HamburgerWrapper>
+          <Link href={`/${locale}`}>
+            <Image
+              src={Logo}
+              alt="Celsius Logo"
+              width={136}
+              height={50}
+              priority
+            />
+          </Link>
             <Language locale={locale as string} />
             <S.CartButton onClick={toggleDrawer}>
               <Image
@@ -184,10 +197,33 @@ function Header() {
                 onClick={toggleMenu}
               />
             )}
-            <S.Phones>
-            <a href="tel:+37444842222">+374 (44) 842 222</a>
-          </S.Phones>
-          </S.HamburgerWrapper>
+           </S.HamburgerWrapper>
+   <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column',
+            marginTop: '30px',
+            gap: '10px'
+          }}> 
+          <a href="tel:+37443120100" style={{ 
+                textDecoration: 'none',
+                color: '#0044cc',
+                fontSize: '14px',
+                fontWeight: 600,
+              }}>+374 (43) 120 100</a>
+          <a href="tel:+37444842222" style={{ 
+                textDecoration: 'none',
+                color: '#0044cc',
+                fontSize: '14px',
+                fontWeight: 600,
+              }}>+374 (44) 842 222</a>
+          <a href="tel:+37433160100" style={{ 
+                textDecoration: 'none',
+                color: '#0044cc',
+                fontSize: '14px',
+                fontWeight: 600,
+              }}>+374 (33) 160 100</a>
+            </div>
+          </div>
         ) : (
           <S.HeaderRightSide>
             <Language locale={locale as string} />
