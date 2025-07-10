@@ -61,9 +61,45 @@ function Header() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { locale } = useParams();
+  const searchParams = useSearchParams();
+  const filterSubCategory = searchParams.get('subCategories')?.split(',') || [];
+  const filterProductTypes = searchParams.get('productTypes')?.split(',') || [];
+
+  const initialFilters = [
+    ...filterSubCategory.map(cat => `sub_category:${cat}`),
+    ...filterProductTypes.map(type => `productType:${type}`)
+  ].filter(Boolean);
 
   const handleChangeCategories = (filters: string[]) => {
     dispatch(setFilters(filters));
+
+    // Update URL parameters
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    const productTypes = filters
+      .filter((item) => item.split(':')[0] === 'productType')
+      .map((item) => item.split(':')[1]);
+
+    const subCategories = filters
+      .filter((item) => item.split(':')[0] === 'sub_category')
+      .map((item) => item.split(':')[1]);
+
+    // Update URL parameters
+    if (subCategories.length > 0) {
+      newSearchParams.set('subCategories', subCategories.join(','));
+    } else {
+      newSearchParams.delete('subCategories');
+    }
+    if (productTypes.length > 0) {
+      newSearchParams.set('productTypes', productTypes.join(','));
+    } else {
+      newSearchParams.delete('productTypes');
+    }
+
+    // Only update URL if it actually changed
+    const newUrl = `?${newSearchParams.toString()}`;
+    if (window.location.search !== newUrl) {
+      router.replace(newUrl, { scroll: false });
+    }
   };
 
   const isTablet = useClientMediaQuery('(max-width: 768px)');
@@ -247,7 +283,7 @@ function Header() {
         {isTablet && menuVisible && (
           <S.MobileMenu>
             {isFilterMenuVisible ? (
-              <Filter onFilterChange={handleChangeCategories} />
+              <Filter onFilterChange={handleChangeCategories} initialFilters={initialFilters} />
             ) : (
               <MobileNavbar changeToggleMenu={toggleMenu} />
             )}

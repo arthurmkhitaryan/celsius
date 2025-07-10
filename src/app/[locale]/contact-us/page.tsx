@@ -156,7 +156,6 @@ export default function ContactUs() {
                 <span>
                   {t('info.address_one')} <br />
                 </span>
-                <span>{t('info.address_two')}</span>
               </div>
             </S.FooterSectionItem>
             <S.FooterSectionItem>
