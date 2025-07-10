@@ -164,6 +164,12 @@ export default function ContactUs() {
               <Phone size={18} color="#0044CC" />
               <div>
                 <span>
+                +374 (43) 120 100
+                </span>
+                <span> <br />
+                +374 (33) 160 100
+                </span>
+                <span> <br />
                 +374 (44) 842 222
                 </span>
               </div>
