@@ -150,11 +150,11 @@ function Header() {
               priority
             />
           </Link>
-          <S.Phones>
+          <S.Phones style={{ flexDirection: 'unset' }}>
             
             <a href="tel:+37443120100">+374 (43) 120 100</a>
-            <a href="tel:+37444842222">+374 (44) 842 222</a>
             <a href="tel:+37433160100">+374 (33) 160 100</a>
+            <a href="tel:+37444842222">+374 (44) 842 222</a>
           </S.Phones>
         </S.HeaderLeftSide>)}
 
@@ -200,28 +200,27 @@ function Header() {
            </S.HamburgerWrapper>
    <div style={{ 
             display: 'flex', 
-            flexDirection: 'column',
             marginTop: '30px',
             gap: '10px'
           }}> 
           <a href="tel:+37443120100" style={{ 
                 textDecoration: 'none',
                 color: '#0044cc',
-                fontSize: '14px',
+                fontSize: '10px',
                 fontWeight: 600,
               }}>+374 (43) 120 100</a>
-          <a href="tel:+37444842222" style={{ 
-                textDecoration: 'none',
-                color: '#0044cc',
-                fontSize: '14px',
-                fontWeight: 600,
-              }}>+374 (44) 842 222</a>
           <a href="tel:+37433160100" style={{ 
                 textDecoration: 'none',
                 color: '#0044cc',
-                fontSize: '14px',
+                fontSize: '10px',
                 fontWeight: 600,
               }}>+374 (33) 160 100</a>
+          <a href="tel:+37444842222" style={{ 
+                textDecoration: 'none',
+                color: '#0044cc',
+                fontSize: '10px',
+                fontWeight: 600,
+              }}>+374 (44) 842 222</a>
             </div>
           </div>
         ) : (

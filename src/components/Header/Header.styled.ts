@@ -87,7 +87,7 @@ export const Phones = styled.div`
     a {
         text-decoration: none;
         color: #0044cc;
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 600;
     }
     
