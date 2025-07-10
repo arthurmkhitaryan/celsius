@@ -71,7 +71,7 @@ function Footer() {
                     <span>
                       {t('contacts.address_one')} <br />
                     </span>
-                    <span>{t('contacts.address_two')}</span>
+                    <span>{t('contacts.address_two')}</span> <br />
                     <span>{t('contacts.address_three')}</span>
                   </div>
                 </S.FooterSectionItem>
