@@ -13,8 +13,19 @@ interface CartState {
   productCount: number;
 }
 
+const getDefaultCartState = (): CartState => ({
+  items: [],
+  productCount: 0
+});
+
+const isBrowser = typeof window !== 'undefined';
+
+
 // Load cart state from localStorage or use initial state
 const loadCartState = (): CartState => {
+  if (!isBrowser) {
+    return getDefaultCartState();
+  }
   const storedCart = localStorage.getItem('cart');
   if (storedCart) {
     return JSON.parse(storedCart);

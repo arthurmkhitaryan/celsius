@@ -4,6 +4,16 @@ import { strapiLanguageAdapter } from '@/utils/strapi-language-adapter';
 
 export const dynamic = "force-dynamic";
 
+// Fallback metadata when Strapi is not available
+const FALLBACK_METADATA = {
+  metaTitle: "Celsius - Premium Heating Solutions",
+  metaDescription: "Discover top-quality heating solutions and temperature control systems from Celsius",
+  metaKeywords: "celsius, heating solutions, temperature control, celsius.am",
+  metaImage: {
+    data: null
+  }
+};
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = req.nextUrl;
@@ -14,27 +24,40 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Path is required" }, { status: 400 });
     }
 
+    // If we're in development and Strapi isn't running, return fallback immediately
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('⚠️  Development mode: Using fallback SEO data');
+      return NextResponse.json({ seoData: FALLBACK_METADATA });
+    }
+
     const encodedPath = encodeURIComponent(pathname);
     const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?filters[path]=${encodedPath}&populate=metaImage&locale=${strapiLanguageAdapter(locale)}`;
 
     console.log("🌐 SEO request URL:", url);
 
-    const res = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
-      },
-    });
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+        },
+        // Add timeout to prevent hanging
+        timeout: 3000
+      });
 
-    const seoData = res.data?.data?.[0]?.attributes ?? null;
+      const seoData = res.data?.data?.[0]?.attributes ?? null;
 
-    if (!seoData) {
-      return NextResponse.json({ error: "No SEO data found" }, { status: 404 });
+      if (!seoData) {
+        console.warn("⚠️ SEO data not found in Strapi, using fallback.");
+        return NextResponse.json({ seoData: FALLBACK_METADATA });
+      }
+
+      return NextResponse.json({ seoData });
+    } catch (error) {
+      console.error("❌ SEO API Error:", error instanceof Error ? error.message : 'Unknown error');
+      return NextResponse.json({ seoData: FALLBACK_METADATA });
     }
-
-    return NextResponse.json({ seoData });
-
   } catch (error: any) {
-    console.error("❌ SEO API Error:", error?.response?.data || error.message || error);
-    return NextResponse.json({ error: "Failed to fetch SEO data" }, { status: 500 });
+    console.error("❌ Unexpected error in SEO route:", error?.message || 'Unknown error');
+    return NextResponse.json({ seoData: FALLBACK_METADATA });
   }
 }

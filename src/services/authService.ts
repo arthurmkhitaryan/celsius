@@ -1,16 +1,20 @@
+// src/services/authService.ts
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-
-export const getUserFromToken = async (token: string) => {
+export async function getUserFromToken(token?: string) {
+  if (!token) return null;
+  
   try {
-    const response = await axios.get(`${API_URL}/auth/me`, {
+    const response = await axios.get('http://localhost:4000/auth/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      // Add timeout to fail fast if server is not available
+      timeout: 3000,
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching user:', error);
+    console.error('Auth service error:', error);
+    return null;
   }
-};
+}
