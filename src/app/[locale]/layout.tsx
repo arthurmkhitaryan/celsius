@@ -28,11 +28,21 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   try {
     const host = headersList.get("host");
     const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-
-    const res = await fetch(
-      `${protocol}://${host}/${locale}/api/seo?path=${pathname === locale ? "/" : pathname}&locale=${locale}`,
-      { cache: "no-store" }
-    );
+    
+    const url = `${protocol}://${host}/${locale}/api/seo?path=${encodeURIComponent(
+      pathname === locale ? "/" : pathname
+    )}&locale=${locale}`;
+    console.log('>>>url', url);
+    
+    const res = await fetch(url, { cache: "no-store" });
+    
+    if (!res.ok) {
+      console.warn(`⚠️ SEO API returned ${res.status}, using fallback metadata`);
+      return {
+        title: "Celsius",
+        description: "Celsius"
+      };
+    }
 
     const { seoData } = await res.json();
 
