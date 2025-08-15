@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   try {
     const host = headersList.get("host");
     const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-    
+
     const url = `${protocol}://${host}/${locale}/api/seo?path=${encodeURIComponent(
       pathname === locale ? "/" : pathname
     )}&locale=${locale}`;
@@ -46,20 +46,25 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
     const { seoData } = await res.json();
 
-    return {
-      title: seoData?.metaTitle || "Celsius",
-      description: seoData?.metaDescription || "Celsius",
-      keywords: seoData?.metaKeywords || "default, keywords",
-      openGraph: {
-        title: seoData?.metaTitle || "Celsius",
-        description: seoData?.metaDescription || "Celsius",
-      },
-    };
+   return {
+    title: seoData?.metaTitle || "Celsius – Կլիմատիկ լուծումներ Հայաստանում",
+    description: seoData?.metaDescription || "Celsius — առաջատար կլիմատիկ համակարգերի և օդորակիչների վաճառքի, տեղադրման և սպասարկման ոլորտում Հայաստանում։",
+    keywords: seoData?.metaKeywords || "Celsius, Celsius AM, Celsius Armenia, օդորակիչներ, կլիմատիկ համակարգեր Հայաստան",
+    openGraph: {
+      title: seoData?.metaTitle || "Celsius – Կլիմատիկ լուծումներ Հայաստանում",
+      description: seoData?.metaDescription || "Celsius — առաջատար կլիմատիկ համակարգերի և օդորակիչների վաճառքի, տեղադրման և սպասարկման ոլորտում Հայաստանում։"
+    }
+   };
   } catch (error) {
     console.error("❌ Ошибка получения SEO:", error);
     return {
-      title: "Celsius",
-      description: "Celsius",
+      title: "Celsius – Կլիմատիկ լուծումներ Հայաստանում",
+      description: "Celsius — առաջատար կլիմատիկ համակարգերի և օդորակիչների վաճառքի, տեղադրման և սպասարկման ոլորտում Հայաստանում։",
+      keywords: "Celsius, Celsius AM, Celsius Armenia, օդորակիչներ, կլիմատիկ համակարգեր Հայաստան",
+      openGraph: {
+        title: "Celsius – Կլիմատիկ լուծումներ Հայաստանում",
+        description: "Celsius — առաջատար կլիմատիկ համակարգերի և օդորակիչների վաճառքի, տեղադրման և սպասարկման ոլորտում Հայաստանում։",
+      }
     };
   }
 }
