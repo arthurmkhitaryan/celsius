@@ -20,7 +20,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, initialFilters = [] }) 
   const mockData = [
     {
       category: t('categories.brand'),
-      types: ['Midea', 'Carrier'],
+      types: ['Midea'],
       filterType: 'productType',
     },
     {
