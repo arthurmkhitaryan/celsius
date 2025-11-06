@@ -22,15 +22,19 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
 
   const router = useRouter();
 
-  const handleRedirect = (id: number): void => {
-    router.push(`/${locale}/products/${id}`);
+  const handleRedirect = (slug: string): void => {
+    router.push(`/${locale}/products/${slug}`);
   };
 
   return (
     <>
       <S.HeaderSection>
         <S.HeaderImage>
-          {isMobile ? <img src={data.mobileImage} alt="Header Image" /> : <img src={data.image} alt="Header Image" />}
+          {isMobile ? (
+            <img src={data.mobileImage} alt="Header Image" />
+          ) : (
+            <img src={data.image} alt="Header Image" />
+          )}
         </S.HeaderImage>
         {/* <S.SubImage>
           <img src={data.icon} alt="Layer Image" />
@@ -53,7 +57,7 @@ const Category = ({ params }: { params: { categoryId: number } }) => {
                 <S.ProductDescription>
                   {product.description}
                 </S.ProductDescription>
-                <S.ProductButton onClick={() => handleRedirect(product.id)}>
+                <S.ProductButton onClick={() => handleRedirect(product.slug)}>
                   See More
                 </S.ProductButton>
               </S.ProductInfo>
